@@ -1,0 +1,1 @@
+export type { PostRepository as IPostRepository } from '@/domain/repositories/PostRepository'

@@ -1,0 +1,27 @@
+
+export interface Language {
+  id: string;
+  title: string;
+}
+
+export const LANGUAGES: Language[] = [
+  { id: 'en', title: 'English' },
+  { id: 'es', title: 'Spanish' },
+  { id: 'fr', title: 'French' },
+  { id: 'de', title: 'German' },
+  { id: 'hi', title: 'Hindi' },
+  { id: 'hr', title: 'Croatian' },
+  { id: 'nl', title: 'Dutch' },
+  { id: 'it', title: 'Italian' },
+  { id: 'ja', title: 'Japanese' },
+  { id: 'ko', title: 'Korean' },
+  { id: 'pt', title: 'Portuguese' },
+  { id: 'ru', title: 'Russian' },
+  { id: 'ar', title: 'Arabic' },
+  { id: 'zh', title: 'Chinese' },
+  { id: 'pl', title: 'Polish' },
+];
+
+export const DEFAULT_LANGUAGE = 'en';
+
+export const SUPPORTED_LOCALES = LANGUAGES.map(l => l.id);

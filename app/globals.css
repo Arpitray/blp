@@ -1,0 +1,252 @@
+/* =============================================
+   BlockP Global Styles
+   Design tokens → tailwind.config.ts is the source of truth.
+   This file only contains: base resets, CSS custom properties
+   that Figma variable names reference, and @layer component
+   utilities that can't be expressed as Tailwind classes alone.
+   ============================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Anek+Latin:wght@400;500;600;700;800&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── CSS Custom Properties (mapped from Figma variable names) ── */
+
+@layer base {
+     :root {
+        /* text/ */
+        --text-primary-txt: #002954;
+        --text-accent: #1160FF;
+        --text-muted: #595959;
+        /* card/ */
+        --card-fill-start: #F6FAFF;
+        --card-fill-end: #F6FAFF;
+        --card-shadow: rgba(0, 118, 244, 0.25);
+        /* cta/ */
+        --cta-primary-fill: #0076F4;
+        --cta-primary-shadow: #004C9D;
+        --cta-primary-text: #FFFFFF;
+        /* font */
+        --font-anek: 'Anek Latin', sans-serif;
+    }
+    html {
+        @apply scroll-smooth;
+    }
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+    }
+    body {
+        font-family: var(--font-anek);
+        color: var(--text-primary-txt);
+        /* background: white;     */
+        background: linear-gradient(to bottom, var(--card-fill-start), var(--card-fill-end));
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+}
+
+
+/* ── Reusable Component Utilities ── */
+
+@layer components {
+    /* Topbar/card pill — gradient + shadow matching Figma Card/Fill + Card/Shadow */
+    .topbar-card {
+        background: linear-gradient(to bottom, var(--card-fill-start), var(--card-fill-end));
+        /* background: #FFFFFF; */
+        border-radius: 46px;
+        box-shadow: 0px 4px 4px 0px var(--card-shadow);
+    }
+    /* CTA button — the blue "Get started" button */
+    .cta-btn {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        height: 48px;
+        min-width: 160px;
+        padding-inline: 28px;
+        border-radius: 53px;
+        font-family: var(--font-anek);
+        font-size: 17.78px;
+        font-weight: 600;
+        color: var(--cta-primary-text);
+        background: var(--cta-primary-fill);
+        /* Bottom shadow layer — Figma uses a stacked rect for depth */
+        box-shadow: 0 5px 0 0 var(--cta-primary-shadow);
+        cursor: pointer;
+        border: none;
+        white-space: nowrap;
+        transition: opacity 150ms ease, transform 150ms ease;
+    }
+    .cta-btn:hover {
+        opacity: 0.9;
+        transform: translateY(-1px);
+    }
+    .cta-btn:active {
+        transform: translateY(2px);
+        box-shadow: 0 2px 0 0 var(--cta-primary-shadow);
+    }
+    /* CTA Large Button */
+    .cta-large-btn {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        height: 75px;
+        padding-inline: 50px;
+        border-radius: 53px;
+        font-family: var(--font-anek);
+        font-size: 17.78px;
+        font-weight: 600;
+        color: var(--cta-primary-text);
+        background: var(--cta-primary-fill);
+        box-shadow: 0 5px 0 0 var(--cta-primary-shadow);
+        cursor: pointer;
+        border: none;
+        white-space: nowrap;
+        transition: opacity 150ms ease, transform 150ms ease;
+    }
+    .cta-large-btn:hover {
+        opacity: 0.9;
+        transform: translateY(-1px);
+    }
+    .cta-large-btn:active {
+        transform: translateY(2px);
+        box-shadow: 0 2px 0 0 var(--cta-primary-shadow);
+    }
+    /* White CTA Button */
+    .cta-white-btn {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        height: 75px;
+        padding-inline: 100px;
+        border-radius: 53px;
+        font-family: var(--font-anek);
+        font-size: 17.78px;
+        font-weight: 600;
+        color: var(--cta-primary-fill);
+        background: #ffffff;
+        box-shadow: 0 5px 0 0 var(--cta-primary-shadow);
+        cursor: pointer;
+        border: none;
+        white-space: nowrap;
+        transition: opacity 150ms ease, transform 150ms ease;
+    }
+    .cta-white-btn:hover {
+        opacity: 0.9;
+        transform: translateY(-1px);
+    }
+    .cta-white-btn:active {
+        transform: translateY(2px);
+        box-shadow: 0 2px 0 0 var(--cta-primary-shadow);
+    }
+    /* Dropdown card — shared by Products & Language overlays */
+    .dropdown-card {
+        background: linear-gradient(to bottom, var(--card-fill-start), var(--card-fill-end));
+        /* background:#FFFFFF; */
+        box-shadow: 0px 4px 4px 0px var(--card-shadow);
+        border-radius: 0 0 25px 25px;
+    }
+    /* Nav link shared text style */
+    .nav-link {
+        @apply text-[20px] font-semibold text-brand-primary whitespace-nowrap transition-opacity duration-150;
+        font-variation-settings: 'wdth' 100;
+        line-height: normal;
+        background: transparent;
+        border: none;
+        padding: 0;
+        cursor: pointer;
+    }
+    .nav-link:hover {
+        @apply opacity-60;
+    }
+    /* Dropdown items used in Header and other menus */
+    .dropdown-item {
+        @apply flex items-center gap-[10px] min-h-[28px] w-full bg-transparent border-none p-0 cursor-pointer transition-opacity duration-150 text-left;
+    }
+    .dropdown-item:hover {
+        @apply opacity-60;
+    }
+    .dropdown-item-text {
+        @apply text-[16px] font-medium text-brand-primary whitespace-nowrap;
+        font-variation-settings: 'wdth' 100;
+    }
+    .dropdown-item-subtext {
+        @apply text-[16px] font-medium text-brand-primary opacity-60 whitespace-nowrap;
+        font-variation-settings: 'wdth' 100;
+    }
+    /* ── Premium Hyperlink Engine ── */
+    .premium-link {
+        @apply relative text-brand-accent font-bold transition-colors duration-300;
+        text-decoration: none;
+        /* Remove default */
+    }
+    .premium-link::after {
+        content: '';
+        @apply absolute left-0 bottom-[-2px] w-full h-[1.5px] bg-brand-accent/30 transition-all duration-300;
+    }
+    .premium-link:hover {
+        @apply text-brand-primary;
+    }
+    .premium-link:hover::after {
+        @apply h-[3px] bg-brand-accent opacity-100;
+    }
+}
+
+@layer utilities {
+    .no-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+    .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+    /* Custom scrollbar for premium look */
+    .custom-scrollbar::-webkit-scrollbar {
+        width: 4px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+        background: transparent;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+        background: rgba(0, 41, 84, 0.1);
+        border-radius: 10px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+        background: rgba(0, 41, 84, 0.2);
+    }
+    /* ── Footer Specific Styles (Figma Replica) ── */
+    .footer-gradient {
+        background: linear-gradient(180deg, #5E9AFF 0%, #0076F4 100%);
+    }
+    .footer-vault {
+        border-radius: 50% 50% 0 0 / 120px 120px 0 0;
+    }
+}
+
+
+/* ─────────────────────────────────────────────────────────────────
+   Blog-specific styles — add these to your globals.css
+   ───────────────────────────────────────────────────────────────── */
+
+
+/* Shimmer keyframe for heading skeleton */
+
+@keyframes shimmer {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+.blog-link:active {
+    color: #003BAD;
+    background-color: rgba(17, 96, 255, 0.13);
+}
