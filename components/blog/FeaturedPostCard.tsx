@@ -29,51 +29,39 @@ export const FeaturedPostCard: React.FC<FeaturedPostCardProps> = ({ post, lang }
 
     return (
         <div className="w-full relative">
-            <div className="w-full flex flex-col lg:flex-row items-stretch justify-between gap-10 lg:gap-[40px] pt-[15px]">
+            <div className="w-full flex flex-col lg:flex-row items-center justify-between gap-10 lg:gap-[80px] xl:gap-[120px] pt-0">
 
                 {/* Left Side Content - Utilizing Modern CSS Flexbox Architecture */}
-                {/* Flexbox auto-margins handle multi-line dynamic content to perfectly center it within available space. */}
-                <div className="flex flex-col flex-1 min-w-0 max-w-[652px] py-4">
-                    {/* my-auto elegantly calculates exact spacing on the fly, centering the block regardless of 1 or 3 line constraints. */}
-                    <div className="flex flex-col gap-4 my-auto w-full">
-                        {authorMeta && (
-                            <p className="text-[18px] font-medium text-brand-muted leading-tight">
-                                {authorMeta}
-                            </p>
-                        )}
+                <div className="flex flex-col flex-1 w-full lg:max-w-[600px] justify-center">
+                    {authorMeta && (
+                        <p className="text-[14px] md:text-[16px] font-semibold text-brand-muted mb-[16px]">
+                            {authorMeta}
+                        </p>
+                    )}
 
-                        {categoryBadges.length > 0 && (
-                            <div className="mt-[2px] flex max-w-full flex-wrap items-center gap-2 overflow-hidden">
-                                {categoryBadges.map((categoryBadge) => (
-                                    <CategoryChip
-                                        key={categoryBadge}
-                                        title={categoryBadge}
-                                        lang={lang}
-                                    />
-                                ))}
-                            </div>
-                        )}
+                    <Link href={`/${lang}/blog/${post.slug}`} className="group mb-[16px]">
+                        <h2 className="text-[40px] sm:text-[48px] lg:text-[56px] font-bold text-brand-primary leading-[1.15] group-hover:opacity-80 transition-opacity duration-150 overflow-hidden" style={{ fontVariationSettings: "'wdth' 100", display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical' }}>
+                            {post.title}
+                        </h2>
+                    </Link>
 
-                        <Link href={`/${lang}/blog/${post.slug}`} className="group">
-                            {/* Line clamping adds a defensive CSS architectural layer, gracefully handling outlier titles that exceed 3 lines */}
-                            <h2 className="text-[40px] sm:text-[56px] font-bold text-brand-primary leading-[1.05] group-hover:opacity-80 transition-opacity duration-150 overflow-hidden" style={{ fontVariationSettings: "'wdth' 100", display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical' }}>
-                                {post.title}
-                            </h2>
-                        </Link>
-                    </div>
+                    {categoryBadges.length > 0 && (
+                        <p className="text-[16px] font-medium text-brand-muted mb-[50px]">
+                            {categoryBadges.join(', ')}
+                        </p>
+                    )}
 
-                    {/* Button maintains anchor at the bottom effortlessly, taking up 0 relative vertical space from the centering calculation above */}
-                    <div className="pt-8 lg:pt-5 shrink-0">
-                        <Button href={`/${lang}/blog/${post.slug}`} variant="cta-large" className="inline-flex items-center justify-center">
+                    <div className="shrink-0 flex">
+                        <Button href={`/${lang}/blog/${post.slug}`} className="inline-flex items-center justify-center px-[48px] min-w-[200px] h-[56px] rounded-[56px] text-[18px] font-bold bg-[#0076F4] text-white hover:opacity-90 transition-opacity tracking-wide" style={{ boxShadow: '0 4px 0 0 #004C9D' }}>
                             Read More
                         </Button>
                     </div>
                 </div>
 
-                {/* Rendering right-side featured image - Mapped explicitly to Figma 514x447px container with 25px rounding */}
-                <div className="relative shrink-0 w-full lg:w-[514px] h-[350px] lg:h-[447px] rounded-[25px] overflow-hidden bg-[#e0efff]">
+            
+                <div className="relative w-full flex-1 max-w-[756px] h-[440px] lg:h-[520px] rounded-[20px] overflow-hidden ml-auto bg-gradient-to-br from-[#9CC6FF] to-[#609FFF] flex items-center justify-center p-6 lg:p-10">
                     {post.imageUrl ? (
-                        <Image src={post.imageUrl} alt={post.title} fill priority loading="eager" className="object-cover object-center" sizes="(max-width: 1024px) 100vw, 514px" />
+                        <Image src={post.imageUrl} alt={post.title} fill priority loading="eager" className="object-cover object-center" sizes="(max-width: 1024px) 100vw, 756px" />
                     ) : (
                         <div className="size-full flex items-center justify-center opacity-30">
                             <svg width="80" height="80" viewBox="0 0 24 24" fill="none" aria-hidden="true">

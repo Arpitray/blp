@@ -292,18 +292,16 @@ export default async function BlogDetailPage({
                     }}
                 >
                     {/* Main Centered Mascot */}
-                    {heroImageUrl && (
-                        <div className={`relative z-10 flex justify-center items-center ${heroImageSpacingClass} px-6`}>
-                            <Image
-                                src={heroImageUrl}
-                                alt={post.title}
-                                width={800}
-                                height={480}
-                                className="object-contain object-top max-h-[540px] w-auto rounded-xl shadow-lg"
-                                priority
-                            />
-                        </div>
-                    )}
+                    <div className={`relative z-10 flex justify-center items-center ${heroImageSpacingClass} px-6`}>
+                        <Image
+                            src="/blog/image 41.svg"
+                            alt="Mascot"
+                            width={1600}
+                            height={960}
+                            className="object-contain object-bottom max-h-[960px] w-auto drop-shadow-2xl -translate-y-16"
+                            priority
+                        />
+                    </div>
 
                     {/* White Dome Overlay - Reusable global CurveDivider component */}
                     <div className="absolute bottom-0 left-0 w-full z-20">
@@ -368,8 +366,8 @@ export default async function BlogDetailPage({
                 </div>
 
                 {/* ── Main Body ── */}
-                <article className="w-full px-[24px] md:px-[58px] max-w-[1440px] mt-24 flex flex-col lg:flex-row lg:justify-between gap-[60px] lg:gap-[80px]">
-                    <div className="flex-1 w-full max-w-[800px] mx-auto lg:mx-0">
+                <article className="w-full px-[24px] lg:px-[40px] max-w-[1722px] mt-24 flex flex-col lg:flex-row lg:justify-between gap-[60px] lg:gap-[80px]">
+                    <div className="flex-[1.5] w-full max-w-[900px]">
                         <section className="text-[#002954] w-full">
                             <PortableText value={post.body} components={portableTextComponentsServer} />
                         </section>
@@ -431,7 +429,7 @@ export default async function BlogDetailPage({
 
                 {/* ── Related Posts ── */}
                 {relatedPosts.length > 0 && (
-                    <div className="w-full max-w-[1440px] px-[58px] mt-32 mb-12 flex flex-col items-center">
+                    <div className="w-full max-w-[1722px] px-[24px] lg:px-[40px] mt-32 mb-12 flex flex-col items-center">
                         <div className="w-full h-[1.5px] bg-gradient-to-r from-transparent via-brand-accent/30 to-transparent mb-20" aria-hidden="true" />
 
                         <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-y-12 gap-x-8">

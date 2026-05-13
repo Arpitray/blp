@@ -13,26 +13,27 @@ interface NormalisedBadge {
 function normaliseBadges(footerData: FooterData): NormalisedBadge[] {
     const badges: NormalisedBadge[] = [];
 
-    // QR code first (leftmost, matching Figma)
-    if (footerData.qrCode?.imageUrl) {
-        badges.push({
-            label: footerData.qrCode.text ?? 'Scan to download',
-            imageUrl: footerData.qrCode.imageUrl,
-            linkUrl: footerData.qrCode.linkUrl ?? null, // QR may not have a deep link
-            isQR: true,
-        });
-    }
+    // Hardcoding as requested by the user
+    badges.push({
+        label: footerData.qrCode?.text ?? 'Scan to download',
+        imageUrl: '/blog/BlockP QR code 3.svg',
+        linkUrl: null,
+        isQR: true,
+    });
 
-    // Remaining download badges
-    for (const badge of footerData.downloadBadges ?? []) {
-        if (!badge?.badgeUrl) continue; // skip items with no image
-        badges.push({
-            label: badge.label ?? '',
-            imageUrl: badge.badgeUrl,
-            linkUrl: badge.url ?? null,
-            isQR: false,
-        });
-    }
+    badges.push({
+        label: 'BlockP for Mac OS',
+        imageUrl: '/download mac.svg',
+        linkUrl: 'https://apps.apple.com',
+        isQR: false,
+    });
+
+    badges.push({
+        label: 'BlockP for Chrome',
+        imageUrl: '/blog/chrome web.svg', // using chrome since typical 3rd is chrome store
+        linkUrl: 'https://chrome.google.com/webstore',
+        isQR: false,
+    });
 
     return badges;
 }
@@ -44,21 +45,21 @@ interface FooterBadgesProps {
 export default function FooterBadges({ footerData }: FooterBadgesProps) {
     const badges = normaliseBadges(footerData);
 
-    // Nothing to render — hide section entirely, including the border-top
+    // Nothing to render — hide section entirely
     if (badges.length === 0) return null;
 
     return (
-        <div className="mt-6 pt-6 border-t border-white/10">
+        <div>
             <div className="flex flex-wrap items-end gap-x-12 gap-y-10">
                 {badges.map((badge, i) => {
                     const imageElement = badge.isQR ? (
                         // QR code: white padded card, fixed square size
-                        <div className="bg-white p-3 rounded-2xl shadow-xl w-[120px] h-[120px] flex items-center justify-center flex-shrink-0">
+                        <div className="bg-white p-3 rounded-2xl shadow-xl w-[140px] h-[140px] flex items-center justify-center flex-shrink-0">
                             <Image
                                 src={badge.imageUrl}
                                 alt={badge.label || 'QR Code'}
-                                width={100}
-                                height={100}
+                                width={120}
+                                height={120}
                                 className="object-contain w-full h-full"
                             />
                         </div>
@@ -67,33 +68,35 @@ export default function FooterBadges({ footerData }: FooterBadgesProps) {
                         <Image
                             src={badge.imageUrl}
                             alt={badge.label || 'Download'}
-                            width={180}
-                            height={52}
-                            className="h-[52px] w-auto object-contain"
+                            width={200}
+                            height={56}
+                            className="h-[56px] w-auto object-contain"
                         />
                     );
 
                     return (
-                        <div key={i} className="flex flex-col items-start gap-3 group">
-                            {/* Label above image */}
+                        <div key={i} className="flex flex-col items-start justify-end gap-4 group">
+                            {/* Wrap in Link only if linkUrl exists */}
+                            <div className="h-[140px] flex items-center justify-start">
+                                {badge.linkUrl ? (
+                                    <Link
+                                        href={badge.linkUrl}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="hover:scale-105 transition-transform duration-200 block"
+                                    >
+                                        {imageElement}
+                                    </Link>
+                                ) : (
+                                    <div>{imageElement}</div>
+                                )}
+                            </div>
+
+                            {/* Label below image */}
                             {badge.label && (
-                                <span className="text-[14px] font-semibold opacity-60 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                                <span className="text-[18px] opacity-80 group-hover:opacity-100 transition-opacity whitespace-nowrap text-left">
                                     {badge.label}
                                 </span>
-                            )}
-
-                            {/* Wrap in Link only if linkUrl exists */}
-                            {badge.linkUrl ? (
-                                <Link
-                                    href={badge.linkUrl}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="hover:scale-105 transition-transform duration-200 block"
-                                >
-                                    {imageElement}
-                                </Link>
-                            ) : (
-                                <div>{imageElement}</div>
                             )}
                         </div>
                     );

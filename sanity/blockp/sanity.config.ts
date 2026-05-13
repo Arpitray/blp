@@ -14,7 +14,7 @@ export default defineConfig({
 
   plugins: [
     structureTool({
-      structure: (S, context) =>
+      structure: (S, context) => 
         S.list()
           .title('Content')
           .items([

@@ -46,23 +46,23 @@ export default function FooterBrand({ footerData }: FooterBrandProps) {
     const validSocials = (socialLinks ?? []).filter(s => s?.platform);
 
     return (
-        <div className="flex-1 max-w-[450px]">
+        <div className="max-w-[500px]">
             {/* Logo — text fallback if no image */}
             {(logoUrl || logoTitle) && (
                 <Link href="/" className="flex items-center gap-4 mb-8">
                     {logoUrl && (
-                        <div className="w-[56px] h-[56px] rounded-[14px] overflow-hidden bg-white flex items-center justify-center p-2 shadow-lg flex-shrink-0">
+                        <div className="w-[64px] h-[64px] rounded-[16px] overflow-hidden bg-white flex items-center justify-center p-2 shadow-lg flex-shrink-0">
                             <Image
                                 src={logoUrl}
                                 alt={logoTitle ?? 'Logo'}
-                                width={48}
-                                height={48}
+                                width={56}
+                                height={56}
                                 className="object-contain w-full h-full"
                             />
                         </div>
                     )}
                     {logoTitle && (
-                        <span className="text-[38px] font-extrabold tracking-tight leading-none">
+                        <span className="text-[42px] font-extrabold tracking-tight leading-none">
                             {logoTitle}
                         </span>
                     )}
@@ -71,7 +71,7 @@ export default function FooterBrand({ footerData }: FooterBrandProps) {
 
             {/* Description */}
             {description && (
-                <p className="text-[17px] leading-[1.5] opacity-85 mb-10 max-w-[400px]">
+                <p className="text-[18px] leading-[1.6] opacity-85 mb-10 max-w-[450px]">
                     {description}
                 </p>
             )}
@@ -79,12 +79,12 @@ export default function FooterBrand({ footerData }: FooterBrandProps) {
             {/* Contact Email */}
             {contactEmail && (
                 <div className="flex items-center gap-4 mb-10 group w-fit cursor-pointer">
-                    <div className="w-10 h-10 flex items-center justify-center border border-white/40 rounded-lg group-hover:bg-white/10 transition-colors flex-shrink-0">
+                    <div className="w-12 h-12 flex items-center justify-center border border-white/40 rounded-lg group-hover:bg-white/10 transition-colors flex-shrink-0">
                         <EmailIcon />
                     </div>
                     <a
                         href={`mailto:${contactEmail}`}
-                        className="text-[17px] font-medium border-b border-transparent group-hover:border-white/40 transition-all"
+                        className="text-[18px] font-medium border-b border-transparent group-hover:border-white/40 transition-all"
                     >
                         {contactEmail}
                     </a>

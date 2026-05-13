@@ -1,11 +1,12 @@
 import { Metadata } from 'next'
 import { notFound, redirect } from 'next/navigation'
 import { buildLocaleAlternates, resolveLocale } from '@/lib/seo/metadata'
+import { siteService } from '@/lib/container'
 
 const SLUG_PRIVACY = 'privacy-policy'
 const SLUG_TERMS = 'terms-and-conditions'
 const REDIRECT_TO_TERMS = new Set(['faqs', 'premium', 'data-deletion'])
-const SUPPORTED_SLUGS = [SLUG_PRIVACY, SLUG_TERMS, ...Array.from(REDIRECT_TO_TERMS)]
+const SUPPORTED_STATIC_SLUGS = [SLUG_PRIVACY, SLUG_TERMS, ...Array.from(REDIRECT_TO_TERMS)]
 
 const PRIVACY_CONTENT = `Privacy Policy
 Last Updated: 22-12-2025
@@ -137,81 +138,6 @@ function getStaticPage(slug: string): StaticPage | null {
   return null
 }
 
-export async function generateStaticParams() {
-  const { supportedLocales } = await import('@/lib/i18n')
-
-  return supportedLocales.flatMap((lang) =>
-    SUPPORTED_SLUGS.map((slug) => ({
-      lang,
-      slug,
-    }))
-  )
-}
-
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ lang: string; slug: string }>
-}): Promise<Metadata> {
-  const { lang, slug } = await params
-  const locale = resolveLocale(lang)
-
-  const page = getStaticPage(slug)
-  const title = page?.title || 'Legal'
-
-  return {
-    title: `${title} - BlockP`,
-    description: `${title} page on BlockP.`,
-    alternates: {
-      canonical: `/${locale}/${slug}`,
-      languages: buildLocaleAlternates((supportedLocale) => `/${supportedLocale}/${slug}`),
-    },
-  }
-}
-
-export default async function StaticLegalPage({
-  params,
-}: {
-  params: Promise<{ lang: string; slug: string }>
-}) {
-  const { lang, slug } = await params
-  const locale = resolveLocale(lang)
-
-  if (REDIRECT_TO_TERMS.has(slug)) {
-    redirect(`/${locale}/${SLUG_TERMS}`)
-  }
-
-  const page = getStaticPage(slug)
-
-  if (!page) {
-    notFound()
-  }
-
-  const paragraphs = page.content
-    .split('\n\n')
-    .map((segment) => segment.trim())
-    .filter(Boolean)
-
-  return (
-    <div className="mx-auto w-full max-w-[1100px] px-6 pb-24 pt-[140px] md:px-10">
-      <h1 className="mb-8 text-[36px] font-black leading-[1.15] text-brand-primary md:text-[52px]">
-        {page.title}
-      </h1>
-
-      <article className="space-y-5 text-[#002954]">
-        {paragraphs.map((paragraph, index) => (
-          <p key={`${page.slug}-${index}`} className="text-[18px] font-medium leading-[1.6]">
-            {paragraph}
-          </p>
-        ))}
-      </article>
-    </div>
-  )
-}
-import { siteService } from '@/lib/container'
-import { Metadata } from 'next'
-import { buildLocaleAlternates, resolveLocale } from '@/lib/seo/metadata'
-
 function normalizeInternalSlug(value?: string): string | null {
   if (!value) return null
   const trimmed = value.trim()
@@ -257,15 +183,15 @@ async function getManagedPages(): Promise<FooterManagedPage[]> {
 }
 
 export async function generateStaticParams() {
-  const pages = await getManagedPages()
   const { supportedLocales } = await import('@/lib/i18n')
+  const pages = await getManagedPages()
 
-  return supportedLocales.flatMap((lang) =>
-    pages.map((page) => ({
-      lang,
-      slug: page.slug,
-    }))
-  )
+  // Combine static supported slugs and managed pages, dedupe
+  const managedSlugs = pages.map((p) => p.slug)
+  const allSlugsSet = new Set([...SUPPORTED_STATIC_SLUGS, ...managedSlugs])
+  const allSlugs = Array.from(allSlugsSet)
+
+  return supportedLocales.flatMap((lang) => allSlugs.map((slug) => ({ lang, slug })))
 }
 
 export async function generateMetadata({
@@ -275,6 +201,22 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { lang, slug } = await params
   const locale = resolveLocale(lang)
+
+  // static page?
+  const staticPage = getStaticPage(slug)
+  if (staticPage) {
+    const title = staticPage.title
+    return {
+      title: `${title} - BlockP`,
+      description: `${title} page on BlockP.`,
+      alternates: {
+        canonical: `/${locale}/${slug}`,
+        languages: buildLocaleAlternates((supportedLocale) => `/${supportedLocale}/${slug}`),
+      },
+    }
+  }
+
+  // managed page
   const pages = await getManagedPages()
   const page = pages.find((entry) => entry.slug === slug)
   const pageTitle = page?.label || titleFromSlug(slug)
@@ -289,15 +231,49 @@ export async function generateMetadata({
   }
 }
 
-export default async function ManagedSlugPage({
+export default async function Page({
   params,
 }: {
   params: Promise<{ lang: string; slug: string }>
 }) {
-  const { slug } = await params
+  const { lang, slug } = await params
+  const locale = resolveLocale(lang)
+
+  if (REDIRECT_TO_TERMS.has(slug)) {
+    redirect(`/${locale}/${SLUG_TERMS}`)
+  }
+
+  // static pages first
+  const staticPage = getStaticPage(slug)
+  if (staticPage) {
+    const paragraphs = staticPage.content
+      .split('\n\n')
+      .map((segment) => segment.trim())
+      .filter(Boolean)
+
+    return (
+      <div className="mx-auto w-full max-w-[1100px] px-6 pb-24 pt-[140px] md:px-10">
+        <h1 className="mb-8 text-[36px] font-black leading-[1.15] text-brand-primary md:text-[52px]">
+          {staticPage.title}
+        </h1>
+
+        <article className="space-y-5 text-[#002954]">
+          {paragraphs.map((paragraph, index) => (
+            <p key={`${staticPage.slug}-${index}`} className="text-[18px] font-medium leading-[1.6]">
+              {paragraph}
+            </p>
+          ))}
+        </article>
+      </div>
+    )
+  }
+
+  // otherwise managed pages
   const pages = await getManagedPages()
   const page = pages.find((entry) => entry.slug === slug)
-  const pageTitle = page?.label || titleFromSlug(slug)
+  if (!page) return notFound()
+
+  const pageTitle = page.label || titleFromSlug(slug)
 
   return (
     <div className="mx-auto w-full max-w-[1100px] px-6 pb-24 pt-[140px] md:px-10">

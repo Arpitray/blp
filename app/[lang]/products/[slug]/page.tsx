@@ -55,7 +55,8 @@ export async function generateStaticParams() {
 }
 
 export default async function ProductPage({ params }: { params: Promise<{ lang: string; slug: string }> }) {
-    const { slug } = await params
+    const { lang, slug } = await params
+    const locale = resolveLocale(lang)
     const product: ProductPageData | null = await sanityClient.fetch(PRODUCT_BY_SLUG_QUERY, { slug })
 
     if (!product) {

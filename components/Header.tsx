@@ -87,12 +87,12 @@ export default function Header() {
     }
 
     return (
-        
+
         <div
             className={`w-full fixed top-0 z-[100] bg-transparent pt-[25px] pb-[10px] flex justify-center transition-all duration-500 ease-in-out ${isVisible ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0 pointer-events-none'
                 }`}
         >
-            <header className="topbar-card bg-white flex items-center justify-between pl-topbar-pl pr-topbar-pr h-[68px] w-full max-w-topbar">
+            <header className="topbar-card bg-white flex items-center justify-between px-[12px] lg:px-[40px] h-[68px] w-full max-w-[1722px] ">
                 <Link href={`/${currentLocale}`} className="shrink-0 font-extrabold text-[32px] text-brand-primary">
                     Block<span className="text-brand-accent">P</span>.
                 </Link>

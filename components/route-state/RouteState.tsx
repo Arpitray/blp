@@ -16,7 +16,7 @@ function getLoadingClasses(variant: RouteLoadingStateProps['variant']): string {
         return 'w-full flex flex-col items-center bg-[#F6FAFF] mb-[120px]'
     }
 
-    return 'w-full px-[58px] mb-[100px] max-w-[1440px] mx-auto'
+    return 'w-full px-[24px] lg:px-[40px] mb-[100px] max-w-[1722px] mx-auto'
 }
 
 function getLoadingInnerClasses(variant: RouteLoadingStateProps['variant']): string {
@@ -28,7 +28,7 @@ function getLoadingInnerClasses(variant: RouteLoadingStateProps['variant']): str
         return 'animate-pulse space-y-12 pt-[180px]'
     }
 
-    return 'w-full max-w-[1440px] px-[58px] pt-16 animate-pulse space-y-8'
+    return 'w-full max-w-[1722px] px-[24px] lg:px-[40px] pt-16 animate-pulse space-y-8'
 }
 
 function getErrorClasses(variant: RouteErrorStateProps['variant']): string {
@@ -36,7 +36,7 @@ function getErrorClasses(variant: RouteErrorStateProps['variant']): string {
         return 'w-full flex flex-col items-center bg-[#F6FAFF] mb-[120px]'
     }
 
-    return 'w-full px-[58px] pt-[120px] mb-[100px] max-w-[1440px] mx-auto'
+    return 'w-full px-[24px] lg:px-[40px] pt-[120px] mb-[100px] max-w-[1722px] mx-auto'
 }
 
 export function RouteLoadingState({ variant }: RouteLoadingStateProps) {
