@@ -10,10 +10,11 @@ import { CategoryChip } from '@/components/shared/CategoryChip'
 interface FeaturedPostCardProps {
     post: Post
     lang: string
+    isBlogHero?: boolean
 }
 
 // Rendering the featured post card component
-export const FeaturedPostCard: React.FC<FeaturedPostCardProps> = ({ post, lang }) => {
+export const FeaturedPostCard: React.FC<FeaturedPostCardProps> = ({ post, lang, isBlogHero = false }) => {
     // Resolve up to 3 category badges from structured data, with legacy string fallback.
     const structuredCategories = post.categories
         ?.map((category) => category.title?.trim())
@@ -52,15 +53,35 @@ export const FeaturedPostCard: React.FC<FeaturedPostCardProps> = ({ post, lang }
                     )}
 
                     <div className="shrink-0 flex">
-                        <Button href={`/${lang}/blog/${post.slug}`} className="inline-flex items-center justify-center px-[48px] min-w-[200px] h-[56px] rounded-[56px] text-[18px] font-bold bg-[#0076F4] text-white hover:opacity-90 transition-opacity tracking-wide" style={{ boxShadow: '0 4px 0 0 #004C9D' }}>
+                        <Button href={`/${lang}/blog/${post.slug}`} className="inline-flex items-center justify-center px-[56px] min-w-[240px] h-[56px] rounded-[56px] text-[18px] font-bold bg-[#0076F4] text-white hover:opacity-90 transition-opacity tracking-wide" style={{ boxShadow: '0 4px 0 0 #004C9D' }}>
                             Read More
                         </Button>
                     </div>
                 </div>
 
             
-                <div className="relative w-full flex-1 max-w-[756px] h-[440px] lg:h-[520px] rounded-[20px] overflow-hidden ml-auto bg-gradient-to-br from-[#9CC6FF] to-[#609FFF] flex items-center justify-center p-6 lg:p-10">
-                    {post.imageUrl ? (
+                <div className={`relative w-full flex-1 max-w-[756px] h-[440px] lg:h-[520px] rounded-[20px] ml-auto bg-gradient-to-br from-[#9CC6FF] to-[#609FFF] p-6 lg:p-10`}>
+                    {isBlogHero ? (
+                        <div className="relative w-full h-full">
+                            <Image 
+                                src="/blog/image 41.svg" 
+                                alt="Karate Pug" 
+                                fill
+                                priority 
+                                className="z-10 object-contain -translate-y-4 lg:-translate-y-8"
+                                sizes="(max-width: 1024px) 100vw, 756px"
+                            />
+                            <div className="absolute -bottom-[6px] lg:-bottom-[22px] right-[5%] lg:right-[8%] w-[440px] h-[120px] z-0 pointer-events-none">
+                                <Image 
+                                    src="/blog/Ellipse 60.svg" 
+                                    alt="Shadow" 
+                                    fill
+                                    className="object-contain opacity-100"
+                                    style={{ filter: 'brightness(0.5) blur(4px)' }}
+                                />
+                            </div>
+                        </div>
+                    ) : post.imageUrl ? (
                         <Image src={post.imageUrl} alt={post.title} fill priority loading="eager" className="object-cover object-center" sizes="(max-width: 1024px) 100vw, 756px" />
                     ) : (
                         <div className="size-full flex items-center justify-center opacity-30">

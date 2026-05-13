@@ -66,8 +66,8 @@
         align-items: center;
         justify-content: center;
         height: 48px;
-        min-width: 160px;
-        padding-inline: 28px;
+        min-width: 180px;
+        padding-inline: 32px;
         border-radius: 53px;
         font-family: var(--font-anek);
         font-size: 17.78px;

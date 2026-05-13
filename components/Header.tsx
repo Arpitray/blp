@@ -92,36 +92,38 @@ export default function Header() {
             className={`w-full fixed top-0 z-[100] bg-transparent pt-[25px] pb-[10px] flex justify-center transition-all duration-500 ease-in-out ${isVisible ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0 pointer-events-none'
                 }`}
         >
-            <header className="topbar-card bg-white flex items-center justify-between px-[12px] lg:px-[40px] h-[68px] w-full max-w-[1722px] ">
-                <Link href={`/${currentLocale}`} className="shrink-0 font-extrabold text-[32px] text-brand-primary">
-                    Block<span className="text-brand-accent">P</span>.
-                </Link>
+            <div className="w-full max-w-site px-[12px] lg:px-[40px] flex justify-center">
+                <header className="topbar-card bg-white flex items-center justify-between pl-[20px] lg:pl-[32px] pr-[8px] lg:pr-[12px] h-[68px] w-full">
+                    <Link href={`/${currentLocale}`} className="shrink-0 font-extrabold text-[32px] text-brand-primary">
+                        Block<span className="text-brand-accent">P</span>.
+                    </Link>
 
-                <div className="flex items-center ml-auto gap-[80px]">
-                    <div className="flex items-center gap-nav-gap">
-                        <nav>
-                            <ul className="flex items-center gap-nav-gap">
-                                <li ref={productsRef} className="relative h-[68px] flex items-center" onMouseEnter={() => setProductsOpen(true)} onMouseLeave={() => setProductsOpen(false)}>
-                                    <Button type="button" variant="nav" className="inline-flex items-center gap-[5px]">
-                                        {uiCopy.products} <ArrowIcon isOpen={productsOpen} />
-                                    </Button>
-                                    {productsOpen && <Dropdown items={getProductItems(currentLocale)} onItemClick={() => setProductsOpen(false)} className="min-w-[230px]" />}
-                                </li>
-                                <li className="h-[68px] flex items-center"><Button href={`/${currentLocale}/blog`} variant="nav">{uiCopy.blog}</Button></li>
-                                <li className="h-[68px] flex items-center"><Button href="/premium" variant="nav">{uiCopy.premium}</Button></li>
-                            </ul>
-                        </nav>
+                    <div className="flex items-center ml-auto gap-[80px]">
+                        <div className="flex items-center gap-nav-gap">
+                            <nav>
+                                <ul className="flex items-center gap-nav-gap">
+                                    <li ref={productsRef} className="relative h-[68px] flex items-center" onMouseEnter={() => setProductsOpen(true)} onMouseLeave={() => setProductsOpen(false)}>
+                                        <Button type="button" variant="nav" className="inline-flex items-center gap-[5px]">
+                                            {uiCopy.products} <ArrowIcon isOpen={productsOpen} />
+                                        </Button>
+                                        {productsOpen && <Dropdown items={getProductItems(currentLocale)} onItemClick={() => setProductsOpen(false)} className="min-w-[230px]" />}
+                                    </li>
+                                    <li className="h-[68px] flex items-center"><Button href={`/${currentLocale}/blog`} variant="nav">{uiCopy.blog}</Button></li>
+                                    <li className="h-[68px] flex items-center"><Button href="/premium" variant="nav">{uiCopy.premium}</Button></li>
+                                </ul>
+                            </nav>
 
-                        <div ref={langRef} className="relative h-[68px] flex items-center" onMouseEnter={() => setLangOpen(true)} onMouseLeave={() => setLangOpen(false)}>
-                            <Button type="button" variant="nav" className="inline-flex items-center gap-[5px]">
-                                <GlobeIcon /> <span className="font-bold">{currentLang}</span> <ArrowIcon isOpen={langOpen} />
-                            </Button>
-                            {langOpen && <Dropdown items={getLanguageItems(handleLangSelect)} className="min-w-[310px]" isLanguage={true} />}
+                            <div ref={langRef} className="relative h-[68px] flex items-center" onMouseEnter={() => setLangOpen(true)} onMouseLeave={() => setLangOpen(false)}>
+                                <Button type="button" variant="nav" className="inline-flex items-center gap-[5px]">
+                                    <GlobeIcon /> <span className="font-bold">{currentLang}</span> <ArrowIcon isOpen={langOpen} />
+                                </Button>
+                                {langOpen && <Dropdown items={getLanguageItems(handleLangSelect)} className="min-w-[310px]" isLanguage={true} />}
+                            </div>
                         </div>
+                        <Button href="/get-started" variant="cta">{uiCopy.getStarted}</Button>
                     </div>
-                    <Button href="/get-started" variant="cta">{uiCopy.getStarted}</Button>
-                </div>
-            </header>
+                </header>
+            </div>
         </div>
     )
 }

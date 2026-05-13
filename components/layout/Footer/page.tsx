@@ -54,7 +54,7 @@ export default async function Footer({ locale = DEFAULT_LANGUAGE }: FooterProps)
                 className="footer-gradient relative pb-20 px-6 sm:px-10 lg:px-[40px] text-white z-[60] font-anek"
                 style={{ minHeight: '724px', marginTop: '-180px' }}
             >
-                <div className="max-w-[1722px] w-full mx-auto pt-[250px] flex flex-col h-full">
+                <div className="max-w-site w-full mx-auto pt-[250px] flex flex-col h-full">
                     <div className="flex flex-col lg:flex-row justify-between gap-16 lg:gap-24">
                         {/* ── LEFT SECTION: BRAND + BADGES ── */}
                         <div className="flex flex-col gap-16 lg:gap-20">

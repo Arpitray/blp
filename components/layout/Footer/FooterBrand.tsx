@@ -51,12 +51,12 @@ export default function FooterBrand({ footerData }: FooterBrandProps) {
             {(logoUrl || logoTitle) && (
                 <Link href="/" className="flex items-center gap-4 mb-8">
                     {logoUrl && (
-                        <div className="w-[64px] h-[64px] rounded-[16px] overflow-hidden bg-white flex items-center justify-center p-2 shadow-lg flex-shrink-0">
+                        <div className="w-[84px] h-[84px] flex items-center justify-center flex-shrink-0">
                             <Image
                                 src={logoUrl}
                                 alt={logoTitle ?? 'Logo'}
-                                width={56}
-                                height={56}
+                                width={84}
+                                height={84}
                                 className="object-contain w-full h-full"
                             />
                         </div>
