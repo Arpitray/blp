@@ -298,7 +298,7 @@ export default async function BlogDetailPage({
                             alt="Mascot"
                             width={1600}
                             height={960}
-                            className="object-contain object-bottom max-h-[960px] w-auto drop-shadow-2xl -translate-y-16"
+                            className="object-contain object-bottom max-h-[960px] w-auto drop-shadow-2xl -translate-y-16 scale-[1.3] transform-gpu"
                             priority
                         />
                     </div>

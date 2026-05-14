@@ -48,7 +48,7 @@ const config: Config = {
         site:    '1898px',  // expanded site max-width
       },
       spacing: {
-        'nav-gap':    '59px',  // gap between nav items
+        'nav-gap':    '80px',  // gap between nav items
         'header-px':  '58px',  // outer left/right padding of the header wrapper
         'topbar-pl':  '64px',  // topbar inner-left padding
         'topbar-pr':  '12px',  // topbar inner-right padding

@@ -12,7 +12,7 @@ export default function FooterWave({ topColor = '#F6FAFF' }: FooterWaveProps) {
                 curveType="dip"
                 topColor={topColor}
                 bottomColor="transparent"
-                hasShadow={true}
+                hasShadow={false}
             />
         </div>
     );

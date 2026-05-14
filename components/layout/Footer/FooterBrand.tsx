@@ -25,7 +25,7 @@ function GenericIcon() {
 
 function EmailIcon() {
     return (
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <rect width="20" height="16" x="2" y="4" rx="2" />
             <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
         </svg>
@@ -79,7 +79,7 @@ export default function FooterBrand({ footerData }: FooterBrandProps) {
             {/* Contact Email */}
             {contactEmail && (
                 <div className="flex items-center gap-4 mb-10 group w-fit cursor-pointer">
-                    <div className="w-12 h-12 flex items-center justify-center border border-white/40 rounded-lg group-hover:bg-white/10 transition-colors flex-shrink-0">
+                    <div className="flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-200">
                         <EmailIcon />
                     </div>
                     <a
@@ -93,7 +93,7 @@ export default function FooterBrand({ footerData }: FooterBrandProps) {
 
             {/* Social Icons */}
             {validSocials.length > 0 && (
-                <div className="flex flex-wrap gap-3">
+                <div className="flex flex-wrap gap-5">
                     {validSocials.map((social, i) => {
                         const iconPath = PLATFORM_ICONS[social.platform];
                         const Icon = iconPath ? (
@@ -109,7 +109,7 @@ export default function FooterBrand({ footerData }: FooterBrandProps) {
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 aria-label={social.platform}
-                                className="w-10 h-10 flex items-center justify-center border border-white/25 rounded-full hover:bg-white/20 hover:scale-110 transition-all duration-200"
+                                className="flex items-center justify-center hover:scale-110 transition-all duration-200"
                             >
                                 {Icon}
                             </Link>
@@ -118,7 +118,7 @@ export default function FooterBrand({ footerData }: FooterBrandProps) {
                             <div
                                 key={i}
                                 aria-label={social.platform}
-                                className="w-10 h-10 flex items-center justify-center border border-white/25 rounded-full opacity-50"
+                                className="flex items-center justify-center opacity-50"
                             >
                                 {Icon}
                             </div>

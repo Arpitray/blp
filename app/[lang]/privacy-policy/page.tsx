@@ -1,104 +1,29 @@
-const PRIVACY_RAW = `Privacy Policy
-Last Updated: 22-12-2025
-NovaFocus Private Limited ("NovaFocus", "we", "our", or "us") operates the BlockP mobile application ("App"), a digital wellbeing and parental control application designed to help users block access to adult content, reduce distractions, and promote healthier device usage.
-We are committed to protecting your privacy. This Privacy Policy explains what data we collect, how we use it, how we protect it, and your rights.
-1. Scope of This Privacy Policy
-This Privacy Policy applies to:
-The BlockP iOS and Android mobile applications
-Related websites and services operated by NovaFocus
-By installing or using BlockP, you agree to the practices described in this policy.
-2. Purpose of the App
-BlockP is designed to:
-Block access to adult, pornographic, and harmful content
-Restrict distracting or inappropriate apps
-Support parental control and digital wellbeing use cases
-BlockP does not function as a surveillance, monitoring, or tracking application.
-3. Data We Collect
-We collect only the minimum data required to provide core app functionality.
-3.1 Information You Provide
-Email address or account identifier (if account creation is used)
-App preferences and configuration settings
-Parental control or restriction settings chosen by the user
-3.2 Automatically Collected Information (Limited)
-App usage metadata (e.g., whether a blocked app or website was accessed)
-Device status related to restriction enforcement
-MDM profile installation status (installed / active / removed)
-3.3 Information We Do NOT Collect
-We do not collect, access, or store:
-Browsing history content
-Keystrokes or typed data
-Messages, emails, or call logs
-Photos, videos, or files
-Real-time screen content
-Location data (GPS or precise location)
-Contacts or address book data
-Advertising identifiers
-4. Use of Mobile Device Management (MDM)
-On supported platforms, BlockP may use Mobile Device Management (MDM) configuration profiles strictly for parental control and content restriction purposes.
-MDM functionality may include:
-Web content filtering at the system level
-App blocking and restriction enforcement
-Preventing unauthorized removal of restrictions
-MDM is used only with explicit user consent and can be removed by the user at any time through device settings.
-5. How We Use Your Data
-We use collected data solely to:
-Provide and maintain app functionality
-Enforce content and app restrictions
-Improve app stability and performance
-Provide customer support when requested
-We do not use your data for advertising, marketing, or profiling.
-6. Data Sharing & Third Parties
-6.1 No Data Selling or Sharing
-We do not sell, rent, share, or disclose user data to third parties for:
-Advertising
-Marketing
-Analytics
-Behavioral profiling
-6.2 Service Providers
-Limited data may be processed by trusted infrastructure providers (e.g., cloud hosting) only to operate the service securely. These providers are contractually bound to confidentiality and data protection obligations.
-7. Data Security
-We use industry-standard security practices to protect your data:
-Encrypted communication (HTTPS / TLS)
-Secure storage with access controls
-Limited internal access on a need-to-know basis
-Regular security reviews and updates
-Despite our best efforts, no system can guarantee 100% security. However, we continuously work to protect your information.
-8. Data Retention
-We retain personal data only as long as necessary to provide the service or comply with legal obligations.
-Users may request deletion of their data at any time by contacting us.
-9. User Consent & Transparency
-Before enabling any restriction or MDM-based functionality:
-We clearly explain what permissions are required
-We disclose what data is used and why
-Users must explicitly consent before proceeding
-No restrictions are applied silently or without user action.
-10. Children's Privacy
-BlockP may be used by parents or guardians to protect minors.
-We do not knowingly collect personal data directly from children without parental involvement.
-If you believe a child's data has been collected improperly, please contact us immediately.
-11. Your Rights
-Depending on your jurisdiction, you may have the right to:
-Access your personal data
-Correct inaccurate information
-Request data deletion
-Withdraw consent
-You can exercise these rights by contacting us at the email below.
-12. Compliance & Audits
-BlockP complies with applicable data protection laws and may be audited by Apple or relevant authorities to verify:
-Data usage practices
-Privacy commitments
-Continued need for MDM capabilities
-13. Changes to This Privacy Policy
-We may update this Privacy Policy from time to time.
-Any changes will be posted on this page with an updated "Last Updated" date.
-14. Contact Us
-If you have any questions or concerns about this Privacy Policy or our data practices, contact us at:
-NovaFocus Private Limited
-Email: support@blockp.io
-Website: https://blockp.io`
+const PRIVACY_RAW = `BlockP Privacy Policy
+Last updated: 17 February, 2024
+This privacy policy ("Policy") explains how BlockP ("we," "us," "our") collects, uses, shares, and protects personal information collected through use of our Chrome extension.
+1. No direct collection of browsing history: BlockP does not directly collect or store your browsing history. Your web visits and pages viewed are not recorded.
+2. Blocked website data: In order to fulfill its intended function, BlockP requires a list of websites, domains, and keywords you have chosen to block. This data is stored locally on your device.
+3. Technical information: We may collect non-personally identifiable technical data for the purpose of improving BlockP. This might include browser version, operating system, and screen resolution.
+4. Usage data: To improve our understanding of BlockP's features, we may collect anonymized usage data, such as the number of active blocks configured and general feature interaction.
+Information we collect
+- How we use information providing the BlockP service: We use the information collected primarily to enable the website, content, and keyword blocking functionality within the BlockP extension.
+- Extension improvement: We may use technical and usage data to enhance features, detect malfunctions, and optimize the performance of BlockP.
+- Support: Technical information may help us troubleshoot issues you encounter with the BlockP extension.
+How we share information
+- No data sharing: BlockP does not sell or share personal information with third parties for commercial purposes.
+- Legal compliance: We may disclose information where required to do so by law, subpoenas, or in situations where failure to disclose could lead to harm to yourself or others.
+- Security measures: Your blacklist data is stored locally on your device. You may modify or remove this information at any time through the BlockP settings.
+- Information management: We take measures to secure your blocked website list, however, no data transmission over the internet can be guaranteed to be entirely secure. While we make an effort to protect your information, you use BlockP at your own risk.
+- Children's privacy: BlockP may be used to protect children under the age of 13. However, we do not knowingly collect personal information directly from children in that age group.
+- Contact us: This policy may change over time. Please refer to the "Last Updated" date for the most recent changes. Major changes will be prominently announced within the BlockP extension or via email if an address has been provided.
+- Policy updates: If you have questions or concerns about this privacy policy, please contact us at: contact@focustechs.in`
+
+import { BackButton } from '@/components/shared/BackButton';
+import { getPageTranslations } from '@/lib/pageTranslations';
+import { resolveLocale } from '@/lib/seo/metadata';
 
 type PolicyBlock = {
-    kind: 'heading' | 'paragraph'
+    kind: 'heading' | 'paragraph' | 'sub-heading'
     text: string
 }
 
@@ -108,42 +33,103 @@ function parsePolicy(raw: string): { title: string; lastUpdated: string; blocks:
         .map((line) => line.trim())
         .filter(Boolean)
 
-    const [title = 'Privacy Policy', updated = 'Last Updated', ...body] = lines
+    const [title = 'BlockP Privacy Policy', updated = 'Last updated: 17 February, 2024', ...body] = lines
 
     const blocks: PolicyBlock[] = body.map((line) => {
-        if (/^\d+(\.\d+)?\.\s+/.test(line)) {
+        if (line === 'Information we collect' || line === 'How we share information') {
+            return { kind: 'sub-heading', text: line }
+        }
+        if (/^\d+\.\s+/.test(line) || line.startsWith('- ')) {
             return { kind: 'heading', text: line }
         }
-
         return { kind: 'paragraph', text: line }
     })
 
     return { title, lastUpdated: updated, blocks }
 }
 
-export default function PrivacyPolicyPage() {
+export default async function PrivacyPolicyPage({ params }: { params: Promise<{ lang: string }> }) {
+    const { lang } = await params;
+    const locale = resolveLocale(lang);
+    const t = getPageTranslations(locale);
     const { title, lastUpdated, blocks } = parsePolicy(PRIVACY_RAW)
 
     return (
-        <section className="w-full px-6 pb-24 pt-[140px] md:px-10 md:pb-28">
-            <div className="mx-auto w-full max-w-[1200px] rounded-[28px] bg-[rgba(246,250,255,0.72)] p-6 shadow-[0px_4px_20px_0px_rgba(0,118,244,0.10)] md:p-10">
-                <header className="mb-9 text-center md:mb-10">
-                    <h1 className="text-[36px] font-black leading-[1.12] text-brand-primary md:text-[54px]">{title}</h1>
-                    <p className="mt-4 text-[20px] font-extrabold text-brand-primary md:mt-5 md:text-[30px]">{lastUpdated}</p>
-                </header>
+        <div className="w-full flex flex-col items-center bg-[#F6FAFF]">
+            <div className="w-full max-w-site px-[12px] lg:px-[40px]">
+                <section className="relative pt-[200px] pb-24 w-full flex flex-col items-center">
+                    {/* Back Button */}
+                    <BackButton 
+                        className="absolute left-[12px] lg:left-[32px] top-[205px] text-[#002954] hover:opacity-70 transition-opacity"
+                        fallbackHref="/"
+                    >
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M19 12H5M5 12L12 19M5 12L12 5" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
+                    </BackButton>
 
-                <article className="space-y-5 text-[18px] font-medium leading-[1.58] text-brand-primary md:space-y-6 md:text-[24px]">
-                    {blocks.map((block, index) =>
-                        block.kind === 'heading' ? (
-                            <h2 key={`heading-${index}`} className="pt-2 text-[28px] font-black leading-[1.24] text-brand-primary md:pt-3 md:text-[38px]">
-                                {block.text}
-                            </h2>
-                        ) : (
-                            <p key={`paragraph-${index}`}>{block.text}</p>
-                        )
-                    )}
-                </article>
+                    <div className="flex flex-col items-center w-full max-w-[1200px]">
+                        <header className="mb-24 text-center">
+                            <h1 className="text-[40px] md:text-[56px] font-black text-[#002954] leading-tight mb-8">
+                                {title}
+                            </h1>
+                            <p className="text-[16px] md:text-[18px] font-bold text-[#002954] opacity-80">
+                                {lastUpdated}
+                            </p>
+                        </header>
+
+                        <article className="w-full text-[18px] md:text-[22px] leading-[1.6] text-[#002954] font-medium space-y-12">
+                            {blocks.map((block, index) => {
+                                if (block.kind === 'sub-heading') {
+                                    return (
+                                        <h2 key={index} className="text-[32px] md:text-[36px] font-black text-[#002954] pt-8 -mb-4">
+                                            {block.text}
+                                        </h2>
+                                    );
+                                }
+
+                                if (block.kind === 'heading') {
+                                    // Remove bullet dash if it exists for rendering
+                                    const cleanText = block.text.startsWith('- ') ? block.text.slice(2) : block.text;
+                                    
+                                    // Handle colon bolding
+                                    const parts = cleanText.split(':');
+                                    if (parts.length > 1) {
+                                        return (
+                                            <div key={index} className="flex gap-3">
+                                                {block.text.startsWith('- ') && <span className="flex-shrink-0 mt-[2px]">•</span>}
+                                                <p>
+                                                    <span className="font-bold">{parts[0]}:</span>{parts.slice(1).join(':')}
+                                                </p>
+                                            </div>
+                                        );
+                                    }
+                                    return (
+                                        <div key={index} className="flex gap-3">
+                                            {block.text.startsWith('- ') && <span className="flex-shrink-0 mt-[2px]">•</span>}
+                                            <p className="font-bold">{cleanText}</p>
+                                        </div>
+                                    );
+                                }
+
+                                // Handle specific link for contact email
+                                if (block.text.includes('contact@focustechs.in')) {
+                                    const parts = block.text.split('contact@focustechs.in');
+                                    return (
+                                        <p key={index}>
+                                            {parts[0]}
+                                            <a href="mailto:contact@focustechs.in" className="font-bold hover:underline">contact@focustechs.in</a>
+                                            {parts[1]}
+                                        </p>
+                                    );
+                                }
+
+                                return <p key={index}>{block.text}</p>;
+                            })}
+                        </article>
+                    </div>
+                </section>
             </div>
-        </section>
-    )
+        </div>
+    );
 }

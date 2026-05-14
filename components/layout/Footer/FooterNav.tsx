@@ -63,16 +63,36 @@ export default function FooterNav({ columns, locale = DEFAULT_LANGUAGE }: Footer
                             .filter(l => l?.label)
                             .map((link, linkIdx) => (
                                 <li key={linkIdx} className="text-[20px] opacity-80">
-                                    {resolveHref(link, locale) ? (
-                                        <Link
-                                            href={resolveHref(link, locale) as string}
-                                            className="hover:opacity-100 hover:text-white transition-all underline-offset-4 hover:underline"
-                                        >
-                                            {link.label}
-                                        </Link>
-                                    ) : (
-                                        <span>{link.label}</span>
-                                    )}
+                                    {(() => {
+                                        const rawHref = resolveHref(link, locale);
+                                        const label = (link.label || '').toLowerCase().trim();
+                                        let href = rawHref;
+
+                                        if (label.includes('data deletion')) {
+                                            href = `/${locale}/data-deletion`;
+                                        } else if (label.includes('porn addiction test')) {
+                                            href = `/${locale}/addiction-test`;
+                                        } else if (label.includes('faq')) {
+                                            href = `/${locale}/faqs`;
+                                        } else if (label.includes('premium')) {
+                                            href = `/${locale}/premium`;
+                                        } else if (label.includes('privacy policy')) {
+                                            href = `/${locale}/privacy-policy`;
+                                        } else if (label.includes('terms') || label.includes('condition')) {
+                                            href = `/${locale}/terms-and-conditions`;
+                                        }
+                                        
+                                        return href ? (
+                                            <Link
+                                                href={href}
+                                                className="hover:opacity-100 hover:text-white transition-all underline-offset-4 hover:underline"
+                                            >
+                                                {link.label}
+                                            </Link>
+                                        ) : (
+                                            <span>{link.label}</span>
+                                        );
+                                    })()}
                                 </li>
                             ))}
                     </ul>
@@ -96,16 +116,36 @@ export default function FooterNav({ columns, locale = DEFAULT_LANGUAGE }: Footer
                                     <ul className="flex flex-col gap-5">
                                         {validLinks.map((link, linkIdx) => (
                                             <li key={linkIdx} className="text-[20px] opacity-80">
-                                                {resolveHref(link, locale) ? (
-                                                    <Link
-                                                        href={resolveHref(link, locale) as string}
-                                                        className="hover:opacity-100 hover:text-white transition-all underline-offset-4 hover:underline"
-                                                    >
-                                                        {link.label}
-                                                    </Link>
-                                                ) : (
-                                                    <span>{link.label}</span>
-                                                )}
+                                                {(() => {
+                                                    const rawHref = resolveHref(link, locale);
+                                                    const label = (link.label || '').toLowerCase().trim();
+                                                    let href = rawHref;
+
+                                                    if (label.includes('data deletion')) {
+                                                        href = `/${locale}/data-deletion`;
+                                                    } else if (label.includes('porn addiction test')) {
+                                                        href = `/${locale}/addiction-test`;
+                                                    } else if (label.includes('faq')) {
+                                                        href = `/${locale}/faqs`;
+                                                    } else if (label.includes('premium')) {
+                                                        href = `/${locale}/premium`;
+                                                    } else if (label.includes('privacy policy')) {
+                                                        href = `/${locale}/privacy-policy`;
+                                                    } else if (label.includes('terms') || label.includes('condition')) {
+                                                        href = `/${locale}/terms-and-conditions`;
+                                                    }
+
+                                                    return href ? (
+                                                        <Link
+                                                            href={href}
+                                                            className="hover:opacity-100 hover:text-white transition-all underline-offset-4 hover:underline"
+                                                        >
+                                                            {link.label}
+                                                        </Link>
+                                                    ) : (
+                                                        <span>{link.label}</span>
+                                                    );
+                                                })()}
                                             </li>
                                         ))}
                                     </ul>

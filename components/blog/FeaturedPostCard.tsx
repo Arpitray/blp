@@ -33,7 +33,7 @@ export const FeaturedPostCard: React.FC<FeaturedPostCardProps> = ({ post, lang, 
             <div className="w-full flex flex-col lg:flex-row items-center justify-between gap-10 lg:gap-[80px] xl:gap-[120px] pt-0">
 
                 {/* Left Side Content - Utilizing Modern CSS Flexbox Architecture */}
-                <div className="flex flex-col flex-1 w-full lg:max-w-[600px] justify-center">
+                <div className="flex flex-col flex-1 w-full lg:max-w-[850px] justify-center">
                     {authorMeta && (
                         <p className="text-[14px] md:text-[16px] font-semibold text-brand-muted mb-[16px]">
                             {authorMeta}

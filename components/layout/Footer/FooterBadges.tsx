@@ -77,7 +77,7 @@ export default function FooterBadges({ footerData }: FooterBadgesProps) {
                     return (
                         <div key={i} className="flex flex-col items-start justify-end gap-4 group">
                             {/* Wrap in Link only if linkUrl exists */}
-                            <div className="h-[140px] flex items-center justify-start">
+                            <div className="h-[140px] flex items-end justify-start">
                                 {badge.linkUrl ? (
                                     <Link
                                         href={badge.linkUrl}

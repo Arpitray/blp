@@ -13,9 +13,9 @@ export default function FooterCTA({ cta }: FooterCTAProps) {
   if (!cta) return null;
 
   return (
-    <div className="w-full pt-32 flex flex-col items-center justify-center gap-12 bg-card-fill relative z-[70] px-6 rounded-b-[180px]">
-      <h2 className="text-[48px] sm:text-[64px] font-[800] text-brand-primary text-center max-w-[550px] mx-auto leading-[1.2] tracking-tight font-anek">
-        {cta.title}
+    <div className="w-full pt-32 flex flex-col items-center justify-center gap-12 bg-transparent relative z-[70] px-6 rounded-b-[180px]">
+      <h2 className="text-[64px] sm:text-[80px] font-[800] text-brand-primary text-center max-w-[800px] mx-auto leading-[1.1] tracking-tight font-anek whitespace-pre-line">
+        {cta.title.replace('Some More', 'Some\nMore')}
       </h2>
       <Button
         href={cta.buttonUrl || '#'}
