@@ -57,7 +57,7 @@ export default async function PrivacyPolicyPage({ params }: { params: Promise<{ 
     return (
         <div className="w-full flex flex-col items-center bg-[#F6FAFF]">
             <div className="w-full max-w-site px-[12px] lg:px-[40px]">
-                <section className="relative pt-[200px] pb-24 w-full flex flex-col items-center">
+                <section className="relative pt-[160px] pb-24 w-full flex flex-col items-center">
                     {/* Back Button */}
                     <BackButton 
                         className="absolute left-[12px] lg:left-[32px] top-[205px] text-[#002954] hover:opacity-70 transition-opacity"
@@ -69,7 +69,7 @@ export default async function PrivacyPolicyPage({ params }: { params: Promise<{ 
                     </BackButton>
 
                     <div className="flex flex-col items-center w-full max-w-[1200px]">
-                        <header className="mb-24 text-center">
+                        <header className="mb-16 text-center">
                             <h1 className="text-[40px] md:text-[56px] font-black text-[#002954] leading-tight mb-8">
                                 {title}
                             </h1>
@@ -78,11 +78,11 @@ export default async function PrivacyPolicyPage({ params }: { params: Promise<{ 
                             </p>
                         </header>
 
-                        <article className="w-full text-[18px] md:text-[22px] leading-[1.6] text-[#002954] font-medium space-y-12">
+                        <article className="w-full text-[16px] md:text-[18px] leading-normal text-[#002954] font-medium space-y-6">
                             {blocks.map((block, index) => {
                                 if (block.kind === 'sub-heading') {
                                     return (
-                                        <h2 key={index} className="text-[32px] md:text-[36px] font-black text-[#002954] pt-8 -mb-4">
+                                        <h2 key={index} className="text-[28px] md:text-[32px] font-black text-[#002954] pt-4">
                                             {block.text}
                                         </h2>
                                     );
@@ -99,7 +99,7 @@ export default async function PrivacyPolicyPage({ params }: { params: Promise<{ 
                                             <div key={index} className="flex gap-3">
                                                 {block.text.startsWith('- ') && <span className="flex-shrink-0 mt-[2px]">•</span>}
                                                 <p>
-                                                    <span className="font-bold">{parts[0]}:</span>{parts.slice(1).join(':')}
+                                                    <span className="font-medium">{parts[0]}:</span>{parts.slice(1).join(':')}
                                                 </p>
                                             </div>
                                         );
@@ -107,7 +107,7 @@ export default async function PrivacyPolicyPage({ params }: { params: Promise<{ 
                                     return (
                                         <div key={index} className="flex gap-3">
                                             {block.text.startsWith('- ') && <span className="flex-shrink-0 mt-[2px]">•</span>}
-                                            <p className="font-bold">{cleanText}</p>
+                                            <p className="font-medium">{cleanText}</p>
                                         </div>
                                     );
                                 }

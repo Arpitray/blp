@@ -72,6 +72,16 @@ export default function FooterNav({ columns, locale = DEFAULT_LANGUAGE }: Footer
                                             href = `/${locale}/data-deletion`;
                                         } else if (label.includes('porn addiction test')) {
                                             href = `/${locale}/addiction-test`;
+                                        } else if (label.includes('porn blocker for android') || label.includes('android')) {
+                                            href = `/${locale}/products/android`;
+                                        } else if (label.includes('porn blocker for chrome') || label.includes('chrome')) {
+                                            href = `/${locale}/products/chrome`;
+                                        } else if (label.includes('ios') || label.includes('iphone')) {
+                                            href = `/${locale}/products/ios`;
+                                        } else if (label.includes('macos') || label.includes('mac')) {
+                                            href = `/${locale}/products/macos`;
+                                        } else if (label.includes('microsoft') || label.includes('windows') || label.includes('pc')) {
+                                            href = `/${locale}/products/microsoft`;
                                         } else if (label.includes('faq')) {
                                             href = `/${locale}/faqs`;
                                         } else if (label.includes('premium')) {
@@ -81,7 +91,7 @@ export default function FooterNav({ columns, locale = DEFAULT_LANGUAGE }: Footer
                                         } else if (label.includes('terms') || label.includes('condition')) {
                                             href = `/${locale}/terms-and-conditions`;
                                         }
-                                        
+
                                         return href ? (
                                             <Link
                                                 href={href}
@@ -125,6 +135,16 @@ export default function FooterNav({ columns, locale = DEFAULT_LANGUAGE }: Footer
                                                         href = `/${locale}/data-deletion`;
                                                     } else if (label.includes('porn addiction test')) {
                                                         href = `/${locale}/addiction-test`;
+                                                    } else if (label.includes('porn blocker for android') || label.includes('android')) {
+                                                        href = `/${locale}/products/android`;
+                                                    } else if (label.includes('porn blocker for chrome') || label.includes('chrome')) {
+                                                        href = `/${locale}/products/chrome`;
+                                                    } else if (label.includes('ios') || label.includes('iphone')) {
+                                                        href = `/${locale}/products/ios`;
+                                                    } else if (label.includes('macos') || label.includes('mac')) {
+                                                        href = `/${locale}/products/macos`;
+                                                    } else if (label.includes('microsoft') || label.includes('windows') || label.includes('pc')) {
+                                                        href = `/${locale}/products/microsoft`;
                                                     } else if (label.includes('faq')) {
                                                         href = `/${locale}/faqs`;
                                                     } else if (label.includes('premium')) {

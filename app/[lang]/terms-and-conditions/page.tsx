@@ -62,7 +62,7 @@ export default async function TermsAndConditionsPage({ params }: { params: Promi
     return (
         <div className="w-full flex flex-col items-center bg-[#F6FAFF]">
             <div className="w-full max-w-site px-[12px] lg:px-[40px]">
-                <section className="relative pt-[200px] pb-24 w-full flex flex-col items-center">
+                <section className="relative pt-[160px] pb-24 w-full flex flex-col items-center">
                     {/* Back Button - Aligned with BlockP logo in header (pl-20/pl-32) */}
                     <BackButton 
                         className="absolute left-[12px] lg:left-[32px] top-[205px] text-[#002954] hover:opacity-70 transition-opacity"
@@ -74,7 +74,7 @@ export default async function TermsAndConditionsPage({ params }: { params: Promi
                     </BackButton>
 
                     <div className="flex flex-col items-center w-full max-w-[1200px]">
-                        <header className="mb-24 text-center">
+                        <header className="mb-16 text-center">
                         <h1 className="text-[40px] md:text-[56px] font-black text-[#002954] leading-tight mb-8">
                             {t.termsTitle}
                         </h1>
@@ -83,12 +83,12 @@ export default async function TermsAndConditionsPage({ params }: { params: Promi
                         </p>
                     </header>
 
-                    <article className="w-full text-[16px] md:text-[18px] leading-[1.6] text-[#002954] font-medium space-y-12">
+                    <article className="w-full text-[18px] md:text-[20px] leading-normal text-[#002954] font-medium space-y-6">
                         {blocks.map((block, index) => {
                             if (block.kind === 'heading') {
                                 if (block.text === 'Contact us') {
                                     return (
-                                        <h2 key={index} className="text-[28px] md:text-[32px] font-black text-[#002954] pt-8">
+                                        <h2 key={index} className="text-[28px] md:text-[32px] font-black text-[#002954] pt-4">
                                             {block.text}
                                         </h2>
                                     );
@@ -98,11 +98,11 @@ export default async function TermsAndConditionsPage({ params }: { params: Promi
                                 if (parts.length > 1) {
                                     return (
                                         <p key={index}>
-                                            <span className="font-bold">{parts[0]}:</span>{parts.slice(1).join(':')}
+                                            <span className="font-medium">{parts[0]}:</span>{parts.slice(1).join(':')}
                                         </p>
                                     );
                                 }
-                                return <p key={index} className="font-bold">{block.text}</p>;
+                                return <p key={index} className="font-medium">{block.text}</p>;
                             }
 
                             if (block.kind === 'sub-point') {

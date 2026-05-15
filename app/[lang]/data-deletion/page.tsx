@@ -38,7 +38,7 @@ export default async function DataDeletionPage({ params }: { params: Promise<{ l
     return (
         <div className="w-full flex flex-col items-center bg-[#F6FAFF]">
             <div className="w-full max-w-site px-[12px] lg:px-[40px]">
-                <section className="relative pt-[200px] pb-24 w-full flex flex-col items-center">
+                <section className="relative pt-[160px] pb-24 w-full flex flex-col items-center">
                     <BackButton
                         className="absolute left-[12px] lg:left-[32px] top-[205px] text-[#002954] hover:opacity-70 transition-opacity"
                         fallbackHref="/"
@@ -49,17 +49,17 @@ export default async function DataDeletionPage({ params }: { params: Promise<{ l
                     </BackButton>
 
                     <div className="flex flex-col items-center w-full max-w-[1200px]">
-                        <header className="mb-24 text-center">
+                        <header className="mb-16 text-center">
                             <h1 className="text-[40px] md:text-[64px] font-black text-[#012955] leading-tight mb-8 max-w-4xl">
                                 {t.dataDeletionTitle}
                             </h1>
                         </header>
 
-                        <article className="w-full text-[18px] md:text-[22px] leading-[1.6] text-[#012955] font-medium space-y-8">
+                        <article className="w-full text-[16px] md:text-[18px] leading-normal text-[#012955] font-medium space-y-4">
                             {DATA_DELETION_BODY.map((block, index) => {
                                 if (block.kind === 'heading') {
                                     return (
-                                        <h2 key={index} className="text-[28px] md:text-[36px] font-black text-[#012955] pt-10 pb-4">
+                                        <h2 key={index} className="text-[28px] md:text-[32px] font-black text-[#012955] pt-6 pb-2">
                                             {block.text}
                                         </h2>
                                     );
@@ -71,7 +71,7 @@ export default async function DataDeletionPage({ params }: { params: Promise<{ l
                                     const content = block.text.slice(dotIndex + 1);
                                     return (
                                         <div key={index} className="flex gap-4 pl-4 md:pl-8">
-                                            <span className="font-bold">{number}</span>
+                                            <span className="font-medium">{number}</span>
                                             <span>{content}</span>
                                         </div>
                                     );

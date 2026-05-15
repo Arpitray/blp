@@ -49,20 +49,29 @@ export const PlatformList: React.FC<PlatformListProps> = ({ variant, locale = 'e
 
     // Banner variant
     return (
-        <div className="flex flex-wrap items-center justify-center gap-10 md:gap-16 px-6 relative z-10">
+        <div className="flex flex-wrap items-center justify-center gap-18 md:gap-32 px-6 relative z-10">
             {PLATFORMS.map((platform) => (
                 <Link 
                     key={platform.id} 
                     href={`/${locale}${platform.href}`}
-                    className="flex flex-col items-center gap-3 opacity-90 hover:opacity-100 hover:-translate-y-1 transition-all duration-300"
+                    className="flex flex-col items-center gap-4 transition-all duration-300"
                 >
-                    <img
-                        src={platform.icon}
-                        alt={platform.name}
-                        // Applying CSS filter to turn SVGs into brand primary color (#002954)
-                        className="w-[45px] h-[45px] md:w-[52px] md:h-[52px] object-contain filter invert-[.15] sepia-[.95] saturate-[3.5] hue-rotate-[205deg] brightness-[.4] contrast-[.9]"
+                    <div 
+                        style={{
+                            backgroundColor: '#012955',
+                            maskImage: `url(${platform.icon})`,
+                            WebkitMaskImage: `url(${platform.icon})`,
+                            maskRepeat: 'no-repeat',
+                            WebkitMaskRepeat: 'no-repeat',
+                            maskPosition: 'center',
+                            WebkitMaskPosition: 'center',
+                            maskSize: 'contain',
+                            WebkitMaskSize: 'contain'
+                        }}
+                        className="w-[55px] h-[55px] md:w-[68px] md:h-[68px]"
+                        aria-label={platform.name}
                     />
-                    <span className="text-[16px] md:text-[20px] font-bold text-[#002954] tracking-tight leading-none">{platform.name}</span>
+                    <span className="text-[18px] md:text-[22px] font-bold text-[#012955] tracking-tight leading-none">{platform.name}</span>
                 </Link>
             ))}
         </div>

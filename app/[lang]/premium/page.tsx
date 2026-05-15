@@ -112,49 +112,56 @@ export default async function PremiumPage({ params }: { params: Promise<{ lang: 
                 <div className="w-full max-w-none px-4 md:px-12 flex flex-col lg:flex-row items-center justify-center gap-4 lg:gap-4 mt-12 mb-16">
 
                     {/* Left: Free Forever */}
-                    <div className="bg-white border-2 border-[#E1EAF6] rounded-[40px] w-full lg:w-[540px] p-12 flex flex-col h-auto lg:h-[720px] shadow-sm z-10 transition-transform">
-                        <div className="text-center mb-8">
-                            <h3 className="text-[42px] font-black text-[#153B62]">{t.premiumFreeForever}</h3>
+                    <div className="bg-white border-2 border-[#E1EAF6] rounded-[40px] w-full lg:w-[650px] p-8 flex flex-col h-auto lg:h-[640px] shadow-sm z-10 transition-transform">
+                        <div className="text-center mb-6">
+                            <h3 className="text-[48px] font-black text-[#153B62]">{t.premiumFreeForever}</h3>
                         </div>
-                        <div className="w-full h-[1px] bg-[#E1EAF6] mb-10" />
-                        <div className="w-full space-y-9 flex-1 text-[#153B62]">
-                            <PricingFeature label={t.premiumFeatures[0]} status="check" />
-                            <PricingFeature label={t.premiumFeatures[1]} status="dash" />
-                            <PricingFeature label={t.premiumFeatures[2]} status="dash" />
-                            <PricingFeature label={t.premiumFeatures[3]} status="dash" />
-                            <PricingFeature label={t.premiumFeatures[4]} status="dash" />
-                            <PricingFeature label={t.premiumFeatures[5]} status="dash" />
+                        <div className="w-full h-[1px] bg-[#E1EAF6] mb-8" />
+                        <div className="w-full flex flex-col justify-between flex-1 text-[#153B62] pb-4">
+                            <PricingFeature label={t.premiumFeatures[0]} status="check" iconPath="/premium/pricing/free/no_adult_content.svg" />
+                            <PricingFeature label={t.premiumFeatures[1]} status="dash" iconPath="/premium/pricing/free/network_intel_node.svg" />
+                            <PricingFeature label={t.premiumFeatures[2]} status="dash" iconPath="/premium/pricing/free/ad_off.svg" />
+                            <PricingFeature label={t.premiumFeatures[3]} status="dash" iconPath="/premium/pricing/free/favorite.svg" />
+                            <PricingFeature label={t.premiumFeatures[4]} status="dash" iconPath="/premium/pricing/free/tune.svg" />
+                            <PricingFeature label={t.premiumFeatures[5]} status="dash" iconPath="/premium/pricing/free/devices.svg" />
                         </div>
                     </div>
 
                     {/* Center: Annual */}
                     <div
-                        className="rounded-[40px] w-full lg:w-[620px] p-12 flex flex-col shadow-2xl text-white z-20 h-auto lg:h-[840px] relative transition-transform"
+                        className="rounded-[40px] w-full lg:w-[730px] p-8 flex flex-col shadow-2xl text-white z-20 h-auto lg:h-[740px] relative transition-transform"
                         style={{ backgroundColor: "#608DFF" }}
                     >
-                        <div className="flex items-center justify-center gap-3 mb-8">
-                            <h3 className="text-[48px] font-black">{t.premiumAnnual}</h3>
-                            <span className="text-[20px] font-bold opacity-90">($10 /mo billed annually)</span>
+                        <div className="flex items-center justify-center gap-3 mb-6">
+                            <h3 className="text-[56px] font-black">{t.premiumAnnual}</h3>
+                            <span className="text-[24px] font-bold opacity-90">($10 /mo billed annually)</span>
                         </div>
-                        <div className="w-full h-[1px] bg-white/20 mb-10" />
-                        <div className="w-full space-y-10 flex-1 text-white">
-                            {t.premiumFeatures.map((f, i) => (
-                                <PricingFeature key={i} label={f} status="check" isCenter />
-                            ))}
+                        <div className="w-full h-[1px] bg-white/20 mb-8" />
+                        <div className="w-full flex flex-col justify-between flex-1 text-white pb-4">
+                            <PricingFeature label={t.premiumFeatures[0]} status="check" isCenter iconPath="/premium/pricing/free/no_adult_content.svg" />
+                            <PricingFeature label={t.premiumFeatures[1]} status="check" isCenter iconPath="/premium/pricing/free/network_intel_node.svg" />
+                            <PricingFeature label={t.premiumFeatures[2]} status="check" isCenter iconPath="/premium/pricing/free/ad_off.svg" />
+                            <PricingFeature label={t.premiumFeatures[3]} status="check" isCenter iconPath="/premium/pricing/free/favorite.svg" />
+                            <PricingFeature label={t.premiumFeatures[4]} status="check" isCenter iconPath="/premium/pricing/free/tune.svg" />
+                            <PricingFeature label={t.premiumFeatures[5]} status="check" isCenter iconPath="/premium/pricing/free/devices.svg" />
+                            <PricingFeature label={t.premiumFeatures[6]} status="check" isCenter iconPath="/premium/pricing/free/money_off.svg" />
                         </div>
                     </div>
 
                     {/* Right: Monthly */}
-                    <div className="bg-[#EEF4FB] border-2 border-[#E1EAF6] rounded-[40px] w-full lg:w-[540px] p-12 flex flex-col h-auto lg:h-[720px] shadow-sm z-10 transition-transform">
-                        <div className="flex items-center justify-center gap-3 mb-8">
-                            <h3 className="text-[42px] font-black text-[#153B62]">{t.premiumMonthly}</h3>
-                            <span className="text-[20px] font-bold text-[#153B62] opacity-80">($10 /mo )</span>
+                    <div className="bg-[#EEF4FB] border-2 border-[#E1EAF6] rounded-[40px] w-full lg:w-[650px] p-8 flex flex-col h-auto lg:h-[640px] shadow-sm z-10 transition-transform">
+                        <div className="flex items-center justify-center gap-3 mb-6">
+                            <h3 className="text-[48px] font-black text-[#153B62]">{t.premiumMonthly}</h3>
+                            <span className="text-[24px] font-bold text-[#153B62] opacity-80">($10 /mo )</span>
                         </div>
-                        <div className="w-full h-[1px] bg-[#C9D9EC] mb-10" />
-                        <div className="w-full space-y-9 flex-1 text-[#153B62]">
-                            {t.premiumFeatures.slice(0, 6).map((f, i) => (
-                                <PricingFeature key={i} label={f} status="check" />
-                            ))}
+                        <div className="w-full h-[1px] bg-[#C9D9EC] mb-8" />
+                        <div className="w-full flex flex-col justify-between flex-1 text-[#153B62] pb-4">
+                            <PricingFeature label={t.premiumFeatures[0]} status="check" iconPath="/premium/pricing/free/no_adult_content.svg" />
+                            <PricingFeature label={t.premiumFeatures[1]} status="check" iconPath="/premium/pricing/free/network_intel_node.svg" />
+                            <PricingFeature label={t.premiumFeatures[2]} status="check" iconPath="/premium/pricing/free/ad_off.svg" />
+                            <PricingFeature label={t.premiumFeatures[3]} status="check" iconPath="/premium/pricing/free/favorite.svg" />
+                            <PricingFeature label={t.premiumFeatures[4]} status="check" iconPath="/premium/pricing/free/tune.svg" />
+                            <PricingFeature label={t.premiumFeatures[5]} status="check" iconPath="/premium/pricing/free/devices.svg" />
                         </div>
                     </div>
                 </div>
@@ -176,36 +183,41 @@ export default async function PremiumPage({ params }: { params: Promise<{ lang: 
                     <div className="w-full h-[1.5px] bg-[#E8F2FF]" />
                 </div>
                 
-                <div className="w-full max-w-3xl px-6 flex flex-col items-center text-center">
+                <div className="w-full max-w-7xl px-6 flex flex-col items-center text-center">
                     {/* Stars */}
                     <div className="flex gap-2 mb-10 text-[#002954]">
                         {[1,2,3,4,5].map(i => (
-                            <svg key={i} width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                            <svg key={i} width="36" height="36" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
                             </svg>
                         ))}
                     </div>
 
-                    <p className="text-[18px] md:text-[24px] font-bold text-[#002954] leading-[1.6] mb-12">
+                    <p className="text-[24px] md:text-[32px] font-bold text-[#002954] leading-[1.4] mb-12">
                         "The best blocker app. Light on battery usage compared to competitors,
                         and powerful enough to not only block adult content but also block
                         politics and other 'toxic' stuff by adding my own custom keywords."
                     </p>
 
-                    <span className="text-[18px] font-black text-[#002954]">Hendjati Pravito</span>
+                    <div className="flex flex-col items-center gap-1">
+                        <span className="text-[22px] font-black text-[#002954]">Hendjati Pravito</span>
+                        <span className="text-[14px] font-bold text-[#002954]/50">BlockP User</span>
+                    </div>
 
                     {/* Dots pagination */}
-                    <div className="flex items-center gap-6 mt-12 text-[#002954]/30">
-                        <button className="hover:text-[#002954] transition-colors">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+                    <div className="flex items-center gap-6 mt-16 text-[#002954]">
+                        <button className="hover:opacity-60 transition-opacity">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
                         </button>
                         <div className="flex gap-3">
-                            <div className="w-2 h-2 rounded-full bg-[#002954]/15"></div>
-                            <div className="w-2 h-2 rounded-full bg-[#002954]"></div>
-                            <div className="w-2 h-2 rounded-full bg-[#002954]/15"></div>
+                            <div className="w-3 h-3 rounded-full border-2 border-[#002954]/30"></div>
+                            <div className="w-3 h-3 rounded-full border-2 border-[#002954]/30"></div>
+                            <div className="w-3 h-3 rounded-full bg-[#012955]"></div>
+                            <div className="w-3 h-3 rounded-full border-2 border-[#002954]/30"></div>
+                            <div className="w-3 h-3 rounded-full border-2 border-[#002954]/30"></div>
                         </div>
-                        <button className="hover:text-[#002954] transition-colors">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+                        <button className="hover:opacity-60 transition-opacity">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 18l6-6-6-6"/></svg>
                         </button>
                     </div>
                 </div>
@@ -218,7 +230,7 @@ export default async function PremiumPage({ params }: { params: Promise<{ lang: 
     );
 }
 
-function PricingFeature({ label, status, isCenter }: { label: string; status: 'check' | 'dash'; isCenter?: boolean }) {
+function PricingFeature({ label, status, isCenter, iconPath }: { label: string; status: 'check' | 'dash'; isCenter?: boolean; iconPath?: string }) {
     // Map feature label to specific icon roughly representing the image.
     // In actual use, strict mapping requires knowing the English label,
     // but we can use simple pattern matching to be robust against translations.
@@ -229,7 +241,7 @@ function PricingFeature({ label, status, isCenter }: { label: string; status: 'c
     if (lower.includes('standard') || lower.includes('estándar') || lower.includes('मानक')) {
         // XXX icon (Standard blocking)
         Icon = (
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                 <circle cx="12" cy="12" r="10" />
                 <path d="M7 15l2.5-3L7 9m2.5 3L12 9m-2.5 3l2.5 3" />
                 <path d="M12 15l2.5-3L12 9m2.5 3l2.5-3m-2.5 3l2.5 3" />
@@ -238,7 +250,7 @@ function PricingFeature({ label, status, isCenter }: { label: string; status: 'c
     } else if (lower.includes('ai') || lower.includes('ia')) {
         // AI Brain/Circuit icon
         Icon = (
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41M19.07 4.93l-1.41 1.41"/>
                 <circle cx="12" cy="12" r="4"/>
             </svg>
@@ -246,7 +258,7 @@ function PricingFeature({ label, status, isCenter }: { label: string; status: 'c
     } else if (lower.includes('ad') || lower.includes('anuncio') || lower.includes('publicité') || lower.includes('विज्ञापन')) {
         // No Ads (square with slash)
         Icon = (
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                 <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
                 <line x1="3" y1="3" x2="21" y2="21" />
             </svg>
@@ -254,14 +266,14 @@ function PricingFeature({ label, status, isCenter }: { label: string; status: 'c
     } else if (lower.includes('social') || lower.includes('réseaux')) {
         // Heart
         Icon = (
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
             </svg>
         );
     } else if (lower.includes('redirect') || lower.includes('redireccion') || lower.includes('redirection') || lower.includes('रीडायरेक्ट')) {
         // Sliders
         Icon = (
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                 <line x1="4" y1="21" x2="4" y2="14" />
                 <line x1="4" y1="10" x2="4" y2="3" />
                 <line x1="12" y1="21" x2="12" y2="12" />
@@ -276,7 +288,7 @@ function PricingFeature({ label, status, isCenter }: { label: string; status: 'c
     } else if (lower.includes('device') || lower.includes('dispositivo') || lower.includes('appareil') || lower.includes('डिवाइस')) {
         // Monitor + phone
         Icon = (
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                 <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
                 <line x1="8" y1="21" x2="16" y2="21" />
                 <line x1="12" y1="17" x2="12" y2="21" />
@@ -285,7 +297,7 @@ function PricingFeature({ label, status, isCenter }: { label: string; status: 'c
     } else {
         // Default / Magic wand for free trial
         Icon = (
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M21 3l-6 6" />
                 <path d="M21 8l-2-2" />
                 <path d="M3 21l8-8" />
@@ -298,19 +310,29 @@ function PricingFeature({ label, status, isCenter }: { label: string; status: 'c
         <div className="flex items-center justify-between w-full">
             <div className="flex items-center gap-3">
                 <div className="flex-shrink-0">
-                    {Icon}
+                    {iconPath ? (
+                        <Image 
+                            src={iconPath} 
+                            alt={label} 
+                            width={40} 
+                            height={40} 
+                            className={`object-contain ${isCenter ? 'brightness-0 invert' : ''}`} 
+                        />
+                    ) : (
+                        Icon
+                    )}
                 </div>
-                <span className={`text-[18px] font-semibold`}>
+                <span className={`text-[26px] font-semibold`}>
                     {label}
                 </span>
             </div>
             <div className="flex-shrink-0">
                 {status === 'check' ? (
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
                         <polyline points="20 6 9 17 4 12" />
                     </svg>
                 ) : (
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
                         <line x1="5" y1="12" x2="19" y2="12" />
                     </svg>
                 )}

@@ -10,7 +10,7 @@ function FAQItem({ question, answer }: { question: string; answer: string }) {
     const [isOpen, setIsOpen] = useState(false);
 
     return (
-        <div className={`w-full bg-white border border-[#0076F4]/20 rounded-[20px] transition-all duration-300 overflow-hidden shadow-[0px_0px_25px_rgba(0,118,244,0.18)] ${isOpen ? 'shadow-[0px_0px_35px_rgba(0,118,244,0.25)]' : ''}`}>
+        <div className={`w-full bg-white border border-[#0076F4]/20 rounded-[25px] transition-all duration-300 overflow-hidden shadow-[0px_0px_20px_rgba(0,118,244,0.08)] ${isOpen ? 'shadow-[0px_0px_30px_rgba(0,118,244,0.12)]' : ''}`}>
             <button
                 onClick={() => setIsOpen(!isOpen)}
                 className="w-full px-8 py-7 flex items-center justify-between text-left group"
@@ -41,7 +41,7 @@ export default function FAQsPage({ params }: { params: Promise<{ lang: string }>
             <div className="w-full max-w-site px-[12px] lg:px-[40px]">
                 <section className="relative pt-[200px] pb-32 w-full flex flex-col items-center">
                     <BackButton
-                        className="absolute left-[12px] lg:left-[32px] top-[205px] text-[#012955] hover:opacity-70 transition-opacity"
+                        className="absolute left-0 top-[205px] text-[#012955] hover:opacity-70 transition-opacity"
                         fallbackHref="/"
                     >
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -49,7 +49,7 @@ export default function FAQsPage({ params }: { params: Promise<{ lang: string }>
                         </svg>
                     </BackButton>
 
-                    <div className="flex flex-col items-center w-full max-w-[1000px]">
+                    <div className="flex flex-col items-center w-full">
                         <header className="mb-20 text-center">
                             <h1 className="text-[54px] md:text-[80px] font-black text-[#012955] leading-tight">
                                 {t.faqsTitle}

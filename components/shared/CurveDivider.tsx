@@ -30,8 +30,7 @@ export function CurveDivider({
             className={`w-full relative z-20 leading-[0] ${className || defaultHeightClass}`}
             style={{
                 backgroundColor: 'transparent',
-                marginBottom: isDome ? '0' : '-2px', // Prevent gap in dip
-                overflow: 'visible',
+                marginBottom: isDome ? '0' : '-2px',
             }}
         >
             <svg
@@ -39,7 +38,7 @@ export function CurveDivider({
                 preserveAspectRatio="none"
                 xmlns="http://www.w3.org/2000/svg"
                 className="w-full h-full"
-                style={{ display: 'block', overflow: 'visible' }}
+                style={{ display: 'block' }}
             >
                 {hasShadow && (
                     <defs>
@@ -78,14 +77,14 @@ export function CurveDivider({
                     <>
                         {topColor !== 'transparent' && (
                             <path
-                                d="M0 0 C360 180 1080 180 1440 0 V0 H0 Z"
+                                d="M0 0 Q720 360 1440 0 V0 H0 Z"
                                 fill={topColor}
                                 filter={hasShadow ? 'url(#curve-shadow)' : undefined}
                             />
                         )}
                         {bottomColor !== 'transparent' && (
                             <path
-                                d="M0 180 V0 C360 180 1080 180 1440 0 V180 H0 Z"
+                                d="M0 180 V0 Q720 360 1440 0 V180 H0 Z"
                                 fill={bottomColor}
                             />
                         )}
