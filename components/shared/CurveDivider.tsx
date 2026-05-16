@@ -58,13 +58,13 @@ export function CurveDivider({
                     <>
                         {topColor !== 'transparent' && (
                             <path
-                                d="M0 0 V150 Q720 -50 1440 150 V0 H0 Z"
+                                d="M0 0 V150 Q720 -150 1440 150 V0 H0 Z"
                                 fill={topColor}
                             />
                         )}
                         {bottomColor !== 'transparent' && (
                             <path
-                                d="M0 200 V150 Q720 -50 1440 150 V200 H0 Z"
+                                d="M0 200 V150 Q720 -150 1440 150 V200 H0 Z"
                                 fill={bottomColor}
                                 filter={hasShadow ? 'url(#curve-shadow)' : undefined}
                             />

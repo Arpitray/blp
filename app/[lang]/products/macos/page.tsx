@@ -34,7 +34,7 @@ export default async function MacosProductPage({ params }: { params: Promise<{ l
                 }}
             >
                 {/* Back / Breadcrumb Button */}
-                <div className="absolute top-[120px] md:top-[145px] left-[20px] md:left-[40px] z-50">
+                <div className="absolute top-[120px] md:top-[145px] left-[20px] md:left-[40px] z-50">`  ` VV
                     <Link
                         href={`/${locale}/blog`}
                         className="flex items-center text-white/80 hover:text-white transition-colors text-[18px] md:text-[22px] font-bold"

@@ -3,7 +3,6 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { CurveDivider } from '@/components/shared/CurveDivider'
 import { buildLocaleAlternates, resolveLocale } from '@/lib/seo/metadata'
-import { PremiumCta } from '@/components/shared/PremiumCta'
 import { PlatformList } from '@/components/shared/PlatformList'
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
@@ -162,7 +161,7 @@ export default async function AndroidProductPage({ params }: { params: Promise<{
                 }}
             >
                 <div className="w-full max-w-site px-6 lg:px-16 mx-auto flex flex-col md:flex-row items-center justify-between pt-24 pb-24 relative z-10" style={{ minHeight: "600px" }}>
-                    
+
                     {/* Left Side: Image */}
                     <div className="flex-1 w-full flex justify-center md:justify-start md:-ml-16 lg:-ml-20 md:translate-y-16 lg:translate-y-28">
                         <Image
@@ -177,7 +176,7 @@ export default async function AndroidProductPage({ params }: { params: Promise<{
 
                     {/* Right Side: Text */}
                     <div className="flex-1 w-full flex flex-col items-center md:items-start text-center md:text-left mt-12 md:mt-0 md:pt-24 lg:pt-32 md:pl-12 lg:pl-20">
-                        <h2 
+                        <h2
                             className="text-[72px] md:text-[100px] lg:text-[120px] font-black text-white leading-[1.0] mb-6"
                             style={{ fontVariationSettings: "'wdth' 100" }}
                         >

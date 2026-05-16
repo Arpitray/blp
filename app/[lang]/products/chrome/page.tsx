@@ -57,7 +57,7 @@ export default async function ChromeProductPage({ params }: { params: Promise<{ 
                 </div>
 
                 {/* Main Graphic - Moved INSIDE Hero with overflow-hidden to clip accurately */}
-                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full flex justify-center z-10 px-6 md:-translate-x-[calc(50%+60px)] lg:-translate-x-[calc(50%+140px)] mb-[-135px] md:mb-[-305px] lg:mb-[-455px]">
+                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full flex justify-center z-10 px-6 md:-translate-x-[calc(50%+60px)] lg:-translate-x-[calc(50%+140px)] mb-[-135px] md:mb-[-305px] lg:mb-[-130px]">
                     <div className="w-[580px] md:w-[640px] lg:w-[980px] h-auto">
                         <img
                             src="/product/chrome/chrome.svg"
