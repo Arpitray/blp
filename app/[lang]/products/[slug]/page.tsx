@@ -42,21 +42,31 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
     }
 }
 
+const HARDCODED_SLUGS = new Set(['android', 'ios', 'chrome', 'macos', 'microsoft', 'windows'])
+
 export async function generateStaticParams() {
     const slugs: { slug: string }[] = await sanityClient.fetch(ALL_PRODUCT_SLUGS_QUERY)
     const { supportedLocales } = await import('@/lib/i18n')
 
     return supportedLocales.flatMap((lang) =>
-        slugs.map((s) => ({
-            lang,
-            slug: s.slug
-        }))
+        slugs
+            .filter((s) => !HARDCODED_SLUGS.has(s.slug.toLowerCase()))
+            .map((s) => ({
+                lang,
+                slug: s.slug
+            }))
     )
 }
 
 export default async function ProductPage({ params }: { params: Promise<{ lang: string; slug: string }> }) {
     const { lang, slug } = await params
     const locale = resolveLocale(lang)
+
+    // Fallback protection: if a hardcoded slug somehow reaches here, return 404 so it doesn't mask the real page
+    if (HARDCODED_SLUGS.has(slug.toLowerCase())) {
+        notFound()
+    }
+
     const product: ProductPageData | null = await sanityClient.fetch(PRODUCT_BY_SLUG_QUERY, { slug })
 
     if (!product) {

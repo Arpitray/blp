@@ -78,6 +78,11 @@ export default async function AndroidProductPage({ params }: { params: Promise<{
                 </div>
             </div>
 
+            {/* ── Features Section ── */}
+            <div className="w-full flex-1 bg-[#F6FAFF] relative z-20">
+                <WebsiteFeaturesSection />
+            </div>
+
             {/* ── Scroll Triggered UI Section ── */}
             <AndroidScrollUI />
 
