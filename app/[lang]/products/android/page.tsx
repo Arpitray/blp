@@ -78,10 +78,20 @@ export default async function AndroidProductPage({ params }: { params: Promise<{
                 </div>
             </div>
 
-            {/* ── Features Section ── */}
-            <div className="w-full flex-1 bg-[#F6FAFF] relative z-20">
-                <WebsiteFeaturesSection />
-            </div>
+            {/* ── Scroll Triggered UI Section ── */}
+            <AndroidScrollUI />
+
+            {/* ── Why do you need a porn blocker Section ── */}
+            <AndroidWhySection />
+
+            {/* ── Why BlockP Is The Best Porn Blocker App Section ── */}
+            <AndroidBestBlockerSection />
+
+            {/* ── Benefits of using a porn blocker Section ── */}
+            <AndroidBenefitsSection />
+
+            {/* ── FAQs Section ── */}
+            <AndroidFaqsSection />
 
             {/* ── Bottom Platform Banner ── */}
             <div className="relative w-full pt-[75px] pb-[200px] flex flex-col items-center z-10">
@@ -136,21 +146,6 @@ export default async function AndroidProductPage({ params }: { params: Promise<{
                     </div>
                 </div>
             </section>
-
-            {/* ── Scroll Triggered UI Section ── */}
-            <AndroidScrollUI />
-
-            {/* ── Why do you need a porn blocker Section ── */}
-            <AndroidWhySection />
-
-            {/* ── Why BlockP Is The Best Porn Blocker App Section ── */}
-            <AndroidBestBlockerSection />
-
-            {/* ── Benefits of using a porn blocker Section ── */}
-            <AndroidBenefitsSection />
-
-            {/* ── FAQs Section ── */}
-            <AndroidFaqsSection />
         </div>
     )
 }

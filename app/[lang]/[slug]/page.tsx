@@ -5,7 +5,7 @@ import { siteService } from '@/lib/container'
 
 const SLUG_PRIVACY = 'privacy-policy'
 const SLUG_TERMS = 'terms-and-conditions'
-const REDIRECT_TO_TERMS = new Set(['faqs', 'premium', 'data-deletion'])
+const REDIRECT_TO_TERMS = new Set<string>([])
 const SUPPORTED_STATIC_SLUGS = [SLUG_PRIVACY, SLUG_TERMS, ...Array.from(REDIRECT_TO_TERMS)]
 
 const PRIVACY_CONTENT = `Privacy Policy
