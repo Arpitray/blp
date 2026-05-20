@@ -10,10 +10,10 @@ function FAQItem({ question, answer }: { question: string; answer: string }) {
     const [isOpen, setIsOpen] = useState(false);
 
     return (
-        <div className={`w-full bg-white border border-[#0076F4]/20 rounded-[25px] transition-all duration-300 overflow-hidden shadow-[0px_0px_20px_rgba(0,118,244,0.08)] ${isOpen ? 'shadow-[0px_0px_30px_rgba(0,118,244,0.12)]' : ''}`}>
+        <div className={`w-full bg-white rounded-[25px] border-0 border-none transition-all duration-300 overflow-hidden shadow-[0_10px_16px_-6px_#c4defd] ${isOpen ? 'shadow-[0_14px_20px_-6px_#c4defd]' : ''}`}>
             <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="w-full px-8 py-7 flex items-center justify-between text-left group"
+                className="w-full px-8 py-7 flex items-center justify-between text-left group border-none border-0 outline-none focus:outline-none focus:ring-0"
             >
                 <span className="text-[20px] md:text-[26px] font-black text-[#012955]">{question}</span>
                 <div className={`transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}>
@@ -23,7 +23,7 @@ function FAQItem({ question, answer }: { question: string; answer: string }) {
                 </div>
             </button>
             <div className={`transition-all duration-300 ease-in-out ${isOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'}`}>
-                <div className="px-8 pb-8 text-[18px] md:text-[20px] font-medium text-[#012955] leading-relaxed border-t border-[#E8F2FF] pt-6">
+                <div className="px-8 pb-8 text-[18px] md:text-[20px] font-medium text-[#012955] leading-relaxed pt-6 border-none border-0">
                     {answer}
                 </div>
             </div>

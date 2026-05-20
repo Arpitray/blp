@@ -60,11 +60,11 @@ function FaqItem({ question, answer }: { question: string; answer: string }) {
     }, [answer])
 
     return (
-        <div className="faq-item border border-[rgba(0,41,84,0.10)] rounded-[18px] overflow-hidden transition-shadow duration-200 hover:shadow-[0_4px_20px_rgba(0,118,244,0.10)]">
+        <div className={`w-full bg-white rounded-[25px] border-0 border-none transition-all duration-300 overflow-hidden shadow-[0_10px_16px_-6px_#c4defd] ${open ? 'shadow-[0_14px_20px_-6px_#c4defd]' : ''}`}>
             {/* Pill Header */}
             <button
                 onClick={() => setOpen((prev) => !prev)}
-                className="w-full flex items-center justify-between gap-4 px-6 py-5 text-left group"
+                className="w-full flex items-center justify-between gap-4 px-6 py-5 text-left group border-none border-0 outline-none focus:outline-none focus:ring-0"
                 aria-expanded={open}
             >
                 <span
@@ -249,152 +249,6 @@ export const portableTextComponents: PortableTextComponents = {
 
         // Section divider — manual HR block type
         sectionDivider: () => <SectionDivider />,
-    },
-            < h4
-className = "text-[18px] md:text-[20px] font-bold text-brand-primary mt-8 mb-3 leading-[1.3]"
-style = {{ fontVariationSettings: "'wdth' 100" }}
-            >
-    { children }
-            </h4 >
-        ),
-
-normal: ({ children }: { children?: React.ReactNode }) => (
-    <p className="text-[17px] md:text-[19px] font-medium text-brand-primary leading-[1.75] mb-6 tracking-[-0.01em]">
-        {children}
-    </p>
-),
-
-    blockquote: ({ children }: { children?: React.ReactNode }) => (
-        <blockquote
-            className="relative my-10 pl-6 py-1"
-            style={{
-                borderLeft: '4px solid #1160FF',
-                transform: 'skewX(-1.5deg)',
-            }}
-        >
-            {/* Large decorative quote mark */}
-            <span
-                aria-hidden
-                className="absolute -top-3 left-5 text-[72px] leading-none font-black text-[#1160FF] opacity-[0.12] select-none pointer-events-none"
-                style={{ fontFamily: 'Georgia, serif' }}
-            >
-                &quot;
-            </span>
-            <p
-                className="relative text-[18px] md:text-[20px] font-medium italic text-brand-primary leading-[1.65] opacity-80"
-                style={{ transform: 'skewX(0deg)' }} // counter-skew text so it stays readable
-            >
-                {children}
-            </p>
-        </blockquote>
-    ),
-
-        // ── List Types ────────────────────────────────────────────────────
-        list: {
-    // Arrow list (default bullet)
-    bullet: ({ children }: { children?: React.ReactNode }) => (
-        <ul className="my-6 flex flex-col gap-[10px] pl-0 list-none">
-            {children}
-        </ul>
-    ),
-        // Checkmark list
-        check: ({ children }: { children?: React.ReactNode }) => (
-            <ul className="my-6 flex flex-col gap-[10px] pl-0 list-none">
-                {children}
-            </ul>
-        ),
-            // Numbered list
-            number: ({ children }: { children?: React.ReactNode }) => (
-                <ol className="my-6 flex flex-col gap-[10px] pl-0 list-none counter-reset-[item]">
-                    {children}
-                </ol>
-            ),
-    },
-
-// ── List Item Types ───────────────────────────────────────────────
-listItem: {
-    bullet: ({ children }: { children?: React.ReactNode }) => (
-        <li className="flex items-start gap-3 text-[17px] md:text-[18px] font-medium text-brand-primary leading-[1.65] pl-2">
-            {/* Brand-blue arrow */}
-            <span
-                aria-hidden
-                className="shrink-0 mt-[4px] text-[#1160FF] font-bold text-[16px] leading-none"
-            >
-                →
-            </span>
-            <span>{children}</span>
-        </li>
-    ),
-        check: ({ children }: { children?: React.ReactNode }) => (
-            <li className="flex items-start gap-3 text-[17px] md:text-[18px] font-medium text-brand-primary leading-[1.65] pl-2">
-                {/* Brand-blue checkmark */}
-                <span
-                    aria-hidden
-                    className="shrink-0 mt-[3px] w-[20px] h-[20px] rounded-full flex items-center justify-center"
-                    style={{ background: 'rgba(17,96,255,0.10)' }}
-                >
-                    <svg width="11" height="9" viewBox="0 0 11 9" fill="none" aria-hidden>
-                        <path
-                            d="M1 4.5L4 7.5L10 1"
-                            stroke="#1160FF"
-                            strokeWidth="1.8"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                        />
-                    </svg>
-                </span>
-                <span>{children}</span>
-            </li>
-        ),
-            number: ({ children, index }: { children?: React.ReactNode; index?: number }) => (
-                <li className="flex items-start gap-3 text-[17px] md:text-[18px] font-medium text-brand-primary leading-[1.65] pl-2">
-                    <span
-                        aria-hidden
-                        className="shrink-0 mt-[2px] w-[24px] h-[24px] rounded-full flex items-center justify-center text-[12px] font-bold text-white"
-                        style={{ background: '#1160FF', minWidth: '24px' }}
-                    >
-                        {(index ?? 0) + 1}
-                    </span>
-                    <span>{children}</span>
-                </li>
-            ),
-    },
-
-// ── Inline Marks ──────────────────────────────────────────────────
-marks: {
-    // Hyperlinks — Verge-style: brand blue, underline offset, bg wash on hover
-    link: ({ children, value }: { children?: React.ReactNode; value?: { href?: string } }) => {
-        const href = value?.href ?? '#'
-        const isExternal = href.startsWith('http')
-
-        return (
-            <a
-                href={href}
-                target={isExternal ? '_blank' : undefined}
-                rel={isExternal ? 'noopener noreferrer' : undefined}
-                className="blog-link"
-            >
-                {children}
-            </a>
-        )
-    },
-
-        // Bold
-        strong: ({ children }: { children?: React.ReactNode }) => (
-            <strong className="font-extrabold text-brand-primary">{children}</strong>
-        ),
-
-            // Italic / emphasis
-            em: ({ children }: { children?: React.ReactNode }) => (
-                <em className="italic opacity-80">{children}</em>
-            ),
-
-                // Underline
-                underline: ({ children }: { children?: React.ReactNode }) => (
-                    <span className="underline underline-offset-4 decoration-[#1160FF]/50">
-                        {children}
-                    </span>
-                ),
     },
 }
 

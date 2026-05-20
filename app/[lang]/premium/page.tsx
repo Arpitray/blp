@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { getPageTranslations } from '@/lib/pageTranslations';
 import { resolveLocale } from '@/lib/seo/metadata';
+import { PremiumMascot } from '@/components/shared/PremiumMascot';
 
 export default async function PremiumPage({ params }: { params: Promise<{ lang: string }> }) {
     const { lang } = await params;
@@ -17,10 +18,10 @@ export default async function PremiumPage({ params }: { params: Promise<{ lang: 
                     minHeight: "520px",
                 }}
             >
-                <div className="w-full max-w-site px-6 lg:px-16 mx-auto flex flex-row items-center justify-between pt-36 pb-0 relative z-10" style={{ minHeight: "1000px" }}>
+                <div className="w-full max-w-site px-6 lg:px-16 mx-auto flex flex-row items-center justify-between pt-36 pb-0 relative z-20" style={{ minHeight: "1000px" }}>
                     {/* Left: Text - Centered and pushed right to match reference */}
-                    <div className="flex flex-col items-center text-center translate-y-[-40px] ml-[10%] lg:ml-[22%]">
-                        <h1 className="text-[72px] md:text-[130px] font-black text-white leading-[1.0] mb-12">
+                    <div className="flex flex-col items-center text-center translate-y-[-40px] ml-[5%] lg:ml-[14%]">
+                        <h1 className="text-[84px] md:text-[150px] font-black text-white leading-[1.0] mb-12">
                             <span className="block">{t.premiumHeroTitle[0]}</span>
                             <span className="block">{t.premiumHeroTitle[1]}</span>
                         </h1>
@@ -32,22 +33,21 @@ export default async function PremiumPage({ params }: { params: Promise<{ lang: 
                             </button>
                         </Link>
                     </div>
+                </div>
 
-                    {/* Right: Mascot — absolutely positioned so it doesn't push the hero height */}
-                    <div className="absolute bottom-0 right-[-100px] w-[500px] md:w-[750px] lg:w-[700px] translate-y-[40px] pointer-events-none z-10 translate-x-[-80px]">
-                        <Image
-                            src="/premium/premium_maskot.svg"
-                            alt="BlockP Premium Mascot"
-                            width={900}
-                            height={900}
-                            className="object-contain object-bottom w-full h-auto"
-                            priority
-                        />
-                    </div>
+                {/* Right: Mascot — Rive animation (websitepremium.riv / PremiumScreen) */}
+                <div 
+                    className="absolute pointer-events-none z-5 aspect-square w-[500px] md:w-[750px] lg:w-[700px]"
+                    style={{
+                        bottom: '-340px',
+                        right: '150px',
+                    }}
+                >
+                    <PremiumMascot className="w-full h-full" />
                 </div>
 
                 {/* Wave separator — #F6FBFE curves UP into the blue (arch/bowl shape) */}
-                <div className="absolute bottom-[-2px] left-0 w-full leading-[0] z-0">
+                <div className="absolute bottom-[-2px] left-0 w-full leading-[0] z-10">
                     <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full block">
                         <path d="M0 120 H1440 V80 Q720 -20 0 80 Z" fill="#F6FBFE"/>
                     </svg>
@@ -193,15 +193,15 @@ export default async function PremiumPage({ params }: { params: Promise<{ lang: 
                         ))}
                     </div>
 
-                    <p className="text-[24px] md:text-[32px] font-bold text-[#002954] leading-[1.4] mb-12">
+                    <p className="text-[28px] md:text-[38px] lg:text-[42px] font-bold text-[#002954] leading-[1.3] mb-12">
                         "The best blocker app. Light on battery usage compared to competitors,
                         and powerful enough to not only block adult content but also block
                         politics and other 'toxic' stuff by adding my own custom keywords."
                     </p>
 
                     <div className="flex flex-col items-center gap-1">
-                        <span className="text-[22px] font-black text-[#002954]">Hendjati Pravito</span>
-                        <span className="text-[14px] font-bold text-[#002954]/50">BlockP User</span>
+                        <span className="text-[24px] font-black text-[#002954]">Hendjati Pravito</span>
+                        <span className="text-[16px] font-bold text-[#002954]/50">BlockP User</span>
                     </div>
 
                     {/* Dots pagination */}

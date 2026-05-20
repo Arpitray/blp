@@ -15,7 +15,8 @@ const nextConfig = {
             },
         ],
     },
-    allowedDevOrigins: ['10.20.81.218']
+    allowedDevOrigins: ['10.20.81.218'],
+    transpilePackages: ['@rive-app/react-canvas', '@rive-app/canvas']
 };
 
 module.exports = nextConfig;

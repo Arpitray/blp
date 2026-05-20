@@ -15,7 +15,7 @@ files.forEach(f => {
   const p = 'd:/Coding/BlockP/Mini-Proj-1/project/' + f;
   if (!fs.existsSync(p)) return;
   let c = fs.readFileSync(p, 'utf8');
-  c = c.replace(//g, '-').replace(/—/g, '-').replace(//g, '>');
+  c = c.replace(//g, '-').replace(/ï¿½/g, '-').replace(//g, '>');
   fs.writeFileSync(p, c, 'utf8');
 });
 console.log('Fixed');

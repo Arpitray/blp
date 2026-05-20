@@ -4,6 +4,12 @@ import Link from 'next/link'
 import { CurveDivider } from '@/components/shared/CurveDivider'
 import { buildLocaleAlternates, resolveLocale } from '@/lib/seo/metadata'
 import { PlatformList } from '@/components/shared/PlatformList'
+import { WebsiteFeaturesSection } from '@/components/shared/WebsiteFeaturesSection'
+import { AndroidScrollUI } from '@/components/shared/AndroidScrollUI'
+import { AndroidWhySection } from '@/components/shared/AndroidWhySection'
+import { AndroidBestBlockerSection } from '@/components/shared/AndroidBestBlockerSection'
+import { AndroidBenefitsSection } from '@/components/shared/AndroidBenefitsSection'
+import { AndroidFaqsSection } from '@/components/shared/AndroidFaqsSection'
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
     const { lang } = await params
@@ -24,7 +30,7 @@ export default async function AndroidProductPage({ params }: { params: Promise<{
     const locale = resolveLocale(lang)
 
     return (
-        <div className="w-full flex flex-col items-center bg-[#F6FAFF] min-h-screen overflow-x-hidden">
+        <div className="w-full flex flex-col items-center bg-[#F6FAFF] min-h-screen overflow-x-clip">
             {/* ── Hero Section ── */}
             <div
                 className="w-full relative flex flex-col items-center justify-start min-h-[clamp(600px,140vh,950px)] overflow-hidden"
@@ -73,73 +79,8 @@ export default async function AndroidProductPage({ params }: { params: Promise<{
             </div>
 
             {/* ── Features Section ── */}
-            <div className="w-full flex-1 flex flex-col items-center py-24 md:py-32 gap-24 md:gap-32 bg-[#F6FAFF] relative z-20">
-
-                {/* Feature 1: AI Blocking */}
-                <div className="w-full max-w-site px-[12px] lg:px-[40px] flex flex-col md:flex-row-reverse items-center justify-between gap-12 md:gap-24">
-                    <div className="flex-1 w-full flex justify-center">
-                        <img
-                            src="/product/android/imageright.svg"
-                            alt="AI Blocking Feature"
-                            className="w-full max-w-[500px] md:max-w-[700px] h-auto drop-shadow-2xl"
-                        />
-                    </div>
-                    <div className="flex-1 w-full flex flex-col text-left">
-                        <h2
-                            className="text-[48px] md:text-[60px] lg:text-[72px] font-bold text-[#012955] leading-[1.1] mb-6"
-                            style={{ fontVariationSettings: "'wdth' 100" }}
-                        >
-                            AI<br />Blocking
-                        </h2>
-                        <p className="text-[22px] md:text-[28px] text-[#012955]/80 font-medium leading-[1.6]">
-                            Not just websites — our AI catches explicit images on YouTube, Instagram, Reddit, and more.
-                        </p>
-                    </div>
-                </div>
-
-                {/* Feature 2: Accountability Partner */}
-                <div className="w-full max-w-site px-[12px] lg:px-[40px] flex flex-col md:flex-row items-center justify-between gap-12 md:gap-24">
-                    <div className="flex-1 w-full flex justify-start">
-                        <img
-                            src="/product/android/imageleft.svg"
-                            alt="Accountability Partner Feature"
-                            className="w-full max-w-[500px] md:max-w-[700px] h-auto drop-shadow-2xl"
-                        />
-                    </div>
-                    <div className="flex-1 w-full flex flex-col text-left">
-                        <h2
-                            className="text-[48px] md:text-[60px] lg:text-[72px] font-bold text-[#012955] leading-[1.1] mb-6"
-                            style={{ fontVariationSettings: "'wdth' 100" }}
-                        >
-                            Accountability<br />partner
-                        </h2>
-                        <p className="text-[22px] md:text-[28px] text-[#012955]/80 font-medium leading-[1.6]">
-                            You made the choice to change. BlockP makes sure that decision sticks by sending reports to your accountability partner.
-                        </p>
-                    </div>
-                </div>
-
-                {/* Feature 3: Streaks Feature */}
-                <div className="w-full max-w-site px-[12px] lg:px-[40px] flex flex-col md:flex-row-reverse items-center justify-between gap-12 md:gap-24">
-                    <div className="flex-1 w-full flex justify-center">
-                        <img
-                            src="/product/android/imageright2.svg"
-                            alt="Streaks Feature"
-                            className="w-full max-w-[500px] md:max-w-[700px] h-auto drop-shadow-2xl"
-                        />
-                    </div>
-                    <div className="flex-1 w-full flex flex-col text-left">
-                        <h2
-                            className="text-[48px] md:text-[60px] lg:text-[72px] font-bold text-[#012955] leading-[1.1] mb-6"
-                            style={{ fontVariationSettings: "'wdth' 100" }}
-                        >
-                            Streaks<br />Feature
-                        </h2>
-                        <p className="text-[22px] md:text-[28px] text-[#012955]/80 font-medium leading-[1.6]">
-                            Every decision matters your streak. It's a scoreboard, not an overnight success story. Keep your eyes on progress (and safety).
-                        </p>
-                    </div>
-                </div>
+            <div className="w-full flex-1 bg-[#F6FAFF] relative z-20">
+                <WebsiteFeaturesSection />
             </div>
 
             {/* ── Bottom Platform Banner ── */}
@@ -195,6 +136,21 @@ export default async function AndroidProductPage({ params }: { params: Promise<{
                     </div>
                 </div>
             </section>
+
+            {/* ── Scroll Triggered UI Section ── */}
+            <AndroidScrollUI />
+
+            {/* ── Why do you need a porn blocker Section ── */}
+            <AndroidWhySection />
+
+            {/* ── Why BlockP Is The Best Porn Blocker App Section ── */}
+            <AndroidBestBlockerSection />
+
+            {/* ── Benefits of using a porn blocker Section ── */}
+            <AndroidBenefitsSection />
+
+            {/* ── FAQs Section ── */}
+            <AndroidFaqsSection />
         </div>
     )
 }

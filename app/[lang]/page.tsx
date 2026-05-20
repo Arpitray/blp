@@ -35,11 +35,11 @@ export default async function LandingPage({ params }: { params: Promise<{ lang: 
             <section
                 className="w-full relative flex flex-col items-center justify-start overflow-hidden bg-gradient-to-b from-[#1160FF] via-[#649DFF] to-[#87C1FF]"
                 style={{
-                    minHeight: '1500px',
+                    minHeight: '1700px',
                 }}
             >
                 {/* Hero Content */}
-                <div className="relative z-40 flex flex-col items-center pt-[180px] px-6 w-full max-w-[1440px]">
+                <div className="relative z-40 flex flex-col items-center pt-[220px] px-6 w-full max-w-[1440px]">
                     {/* Main Heading */}
                     <h1
                         className="text-[64px] font-extrabold text-white text-center leading-[1.2] mb-6 max-w-[995px]"
@@ -88,11 +88,11 @@ export default async function LandingPage({ params }: { params: Promise<{ lang: 
                 </div>
 
                 {/* Mascot - Positioned behind the white curve to hide the flat bottom */}
-                <div className="absolute bottom-[60px] md:bottom-[80px] left-1/2 -translate-x-1/2 z-10 pointer-events-none">
+                <div className="absolute bottom-[40px] md:bottom-[20px] left-1/2 -translate-x-1/2 z-10 pointer-events-none">
                     <img
                         src="/landing/maskot.svg"
                         alt="BlockP Mascot"
-                        className="w-[440px] md:w-[600px] h-auto"
+                        className="w-[540px] md:w-[740px] h-auto"
                     />
                 </div>
 
@@ -113,8 +113,8 @@ export default async function LandingPage({ params }: { params: Promise<{ lang: 
             {/* ══════════════════════════════════════════════════════
                 AS SEEN ON - Figma Design
             ══════════════════════════════════════════════════════ */}
-            <section className="w-full py-[70px] flex flex-col items-center bg-white relative z-20">
-                <div className="w-full max-w-[1522px] px-6 flex flex-col gap-[70px] items-center">
+            <section className="w-full pb-[70px] pt-0 flex flex-col items-center bg-white relative z-20">
+                <div className="w-full max-w-[1640px] px-6 flex flex-col gap-[70px] items-center -mt-[120px] md:-mt-[160px] relative z-30">
                     <h2
                         className="text-[48px] font-bold text-[#002954] text-center leading-[1.2]"
                         style={{
@@ -124,25 +124,74 @@ export default async function LandingPage({ params }: { params: Promise<{ lang: 
                     >
                         As seen on
                     </h2>
-                    <div className="flex items-center justify-center gap-[50px]">
+                    <div className="flex items-center justify-center gap-[40px] md:gap-[70px]">
                         <img
-                            src="https://www.figma.com/api/mcp/asset/21f5b6b3-db89-46c3-baad-c7f1042bf2e3"
+                            src="/landing/google.svg"
                             alt="Google"
-                            className="h-[69px] w-auto"
+                            className="h-[48px] md:h-[65px] w-auto object-contain"
                         />
                         <img
-                            src="https://www.figma.com/api/mcp/asset/c7e7a6dc-7c98-4e26-8ec1-11fa3c9fc886"
+                            src="/landing/meta.svg"
                             alt="Meta"
-                            className="h-[40px] w-auto"
+                            className="h-[40px] md:h-[55px] w-auto object-contain"
                         />
                         <img
-                            src="https://www.figma.com/api/mcp/asset/358e6b57-2934-469b-b153-5303a4c425ae"
+                            src="/landing/microsoft.svg"
                             alt="Microsoft"
-                            className="h-[44px] w-auto"
+                            className="h-[40px] md:h-[55px] w-auto object-contain"
                         />
                     </div>
                     {/* Divider Line */}
-                    <div className="w-[1120px] h-[1px] bg-gray-200"></div>
+                    <div className="w-full max-w-[1640px] h-[1px] bg-gray-200"></div>
+                </div>
+            </section>
+
+            {/* ══════════════════════════════════════════════════════
+                STAY PROTECTED ON ALL PLATFORMS
+            ══════════════════════════════════════════════════════ */}
+            <section className="w-full pb-20 pt-0 flex flex-col items-center bg-white relative z-20">
+                <div className="w-full max-w-[1640px] px-6 flex flex-col items-center">
+                    <h2
+                        className="text-[48px] font-bold text-[#002954] text-center leading-[1.2] mb-24"
+                        style={{ fontVariationSettings: "'wdth' 100" }}
+                    >
+                        Stay protected on all platforms
+                    </h2>
+
+                    <div className="flex flex-wrap justify-center gap-14 md:gap-32 lg:gap-40 px-6 mb-16">
+                        {/* Android */}
+                        <div className="flex flex-col items-center gap-4">
+                            <img src="/premium/android.svg" alt="Android" className="w-[75px] h-[75px] object-contain" />
+                            <span className="text-[20px] font-bold text-[#002954]">Android</span>
+                        </div>
+
+                        {/* iOS */}
+                        <div className="flex flex-col items-center gap-4">
+                            <img src="/premium/ios.svg" alt="iOS" className="w-[75px] h-[75px] object-contain" />
+                            <span className="text-[20px] font-bold text-[#002954]">iOS</span>
+                        </div>
+
+                        {/* macOS */}
+                        <div className="flex flex-col items-center gap-4">
+                            <img src="/premium/MacOS_logo.svg" alt="macOS" className="w-[75px] h-[75px] object-contain" />
+                            <span className="text-[20px] font-bold text-[#002954]">macOS</span>
+                        </div>
+
+                        {/* Chrome */}
+                        <div className="flex flex-col items-center gap-4">
+                            <img src="/premium/chrome.svg" alt="Chrome" className="w-[75px] h-[75px] object-contain" />
+                            <span className="text-[20px] font-bold text-[#002954]">Chrome</span>
+                        </div>
+
+                        {/* Windows */}
+                        <div className="flex flex-col items-center gap-4">
+                            <img src="/premium/windows.svg" alt="Windows" className="w-[75px] h-[75px] object-contain" />
+                            <span className="text-[20px] font-bold text-[#002954]">Windows</span>
+                        </div>
+                    </div>
+
+                    {/* Divider Line */}
+                    <div className="w-full max-w-[1640px] h-[1px] bg-gray-200"></div>
                 </div>
             </section>
 
@@ -159,7 +208,7 @@ export default async function LandingPage({ params }: { params: Promise<{ lang: 
                     </h2>
                     <div className="flex items-center justify-center gap-[25px] w-full">
                         {/* 4.4 Star */}
-                        <div className="backdrop-blur-[50px] bg-white/60 flex flex-col gap-[10px] items-center px-[50px] py-[25px] rounded-[25px] w-[326px]">
+                        <div className="flex flex-col gap-[10px] items-center w-[326px]">
                             <img
                                 src="https://www.figma.com/api/mcp/asset/5b272a04-b351-4a25-a78d-3429873e3fc6"
                                 alt="Star"
@@ -183,7 +232,7 @@ export default async function LandingPage({ params }: { params: Promise<{ lang: 
                         </div>
 
                         {/* 1M+ Downloads */}
-                        <div className="backdrop-blur-[50px] bg-white/60 flex flex-col gap-[10px] items-center px-[50px] py-[25px] rounded-[25px] w-[326px]">
+                        <div className="flex flex-col gap-[10px] items-center w-[326px]">
                             <img
                                 src="https://www.figma.com/api/mcp/asset/7e5d7210-f8f3-41cc-b26e-a229a7432e1c"
                                 alt="Download"
@@ -207,7 +256,7 @@ export default async function LandingPage({ params }: { params: Promise<{ lang: 
                         </div>
 
                         {/* 20K+ Reviews */}
-                        <div className="backdrop-blur-[50px] bg-white/60 flex flex-col gap-[10px] items-center px-[50px] py-[25px] rounded-[25px] w-[326px]">
+                        <div className="flex flex-col gap-[10px] items-center w-[326px]">
                             <img
                                 src="https://www.figma.com/api/mcp/asset/31075054-7efc-4411-a10d-e219408e6389"
                                 alt="Reviews"
@@ -237,10 +286,10 @@ export default async function LandingPage({ params }: { params: Promise<{ lang: 
                 TESTIMONIAL SECTION - Figma Design
             ══════════════════════════════════════════════════════ */}
             <section className="w-full py-[96px] flex flex-col items-center bg-white relative z-20">
-                <div className="w-full max-w-[1121px] px-6 flex flex-col gap-[96px] items-center">
-                    {/* Top Divider */}
-                    <div className="w-full h-[1px] bg-gray-200"></div>
+                {/* Top Divider - Full Width */}
+                <div className="w-full max-w-[1640px] h-[1px] bg-gray-200"></div>
 
+                <div className="w-full max-w-[1121px] px-6 mt-[96px] mb-[96px] flex flex-col items-center">
                     <div className="flex flex-col gap-[80px] items-center">
                         <h2
                             className="text-[48px] font-bold text-[#002954] text-center leading-[1.2]"
@@ -254,7 +303,7 @@ export default async function LandingPage({ params }: { params: Promise<{ lang: 
 
                         <div className="flex flex-col gap-[60px] items-center w-full max-w-[1027px]">
                             {/* Stars */}
-                            <div className="flex gap-[58px] items-center">
+                            <div className="flex gap-[8px] items-center">
                                 {[1, 2, 3, 4, 5].map((i) => (
                                     <img
                                         key={i}
@@ -276,30 +325,49 @@ export default async function LandingPage({ params }: { params: Promise<{ lang: 
                                 &quot;The best blocker app. Light on battery usage compared to competitors, and powerful enough to not only block adult content but also block politics and other &apos;toxic&apos; stuff by adding my own custom keywords.&quot;
                             </p>
 
-                            {/* Author */}
-                            <div className="flex flex-col items-center gap-[1px]">
-                                <p
-                                    className="text-[32px] font-bold text-[#002954] text-center leading-[1.44]"
-                                    style={{
-                                        fontVariationSettings: "'wdth' 100",
-                                        textShadow: '0px 0px 4px rgba(255, 255, 255, 0.35)'
-                                    }}
-                                >
-                                    Herdjati Pravito
-                                </p>
-                                <p
-                                    className="text-[20px] font-medium text-[#595959] text-center"
-                                    style={{ fontVariationSettings: "'wdth' 100" }}
-                                >
-                                    BlockP User
-                                </p>
+                            {/* Author & Pagination */}
+                            <div className="flex flex-col items-center gap-12">
+                                <div className="flex flex-col items-center gap-[1px]">
+                                    <p
+                                        className="text-[32px] font-bold text-[#002954] text-center leading-[1.44]"
+                                        style={{
+                                            fontVariationSettings: "'wdth' 100",
+                                            textShadow: '0px 0px 4px rgba(255, 255, 255, 0.35)'
+                                        }}
+                                    >
+                                        Herdjati Pravito
+                                    </p>
+                                    <p
+                                        className="text-[20px] font-medium text-[#595959] text-center"
+                                        style={{ fontVariationSettings: "'wdth' 100" }}
+                                    >
+                                        BlockP User
+                                    </p>
+                                </div>
+
+                                {/* Pagination UI */}
+                                <div className="flex items-center gap-8 text-[#002954]">
+                                    <button className="hover:opacity-60 transition-opacity">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+                                    </button>
+                                    <div className="flex gap-4">
+                                        <div className="w-3.5 h-3.5 rounded-full border-2 border-[#002954]/30"></div>
+                                        <div className="w-3.5 h-3.5 rounded-full border-2 border-[#002954]/30"></div>
+                                        <div className="w-3.5 h-3.5 rounded-full bg-[#002954]"></div>
+                                        <div className="w-3.5 h-3.5 rounded-full border-2 border-[#002954]/30"></div>
+                                        <div className="w-3.5 h-3.5 rounded-full border-2 border-[#002954]/30"></div>
+                                    </div>
+                                    <button className="hover:opacity-60 transition-opacity">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
-
-                    {/* Bottom Divider */}
-                    <div className="w-full h-[1px] bg-gray-200"></div>
                 </div>
+
+                {/* Bottom Divider - Full Width */}
+                <div className="w-full max-w-[1640px] h-[1px] bg-gray-200"></div>
             </section>
 
             {/* ══════════════════════════════════════════════════════
