@@ -43,7 +43,7 @@ const FEATURES: Feature[] = [
         ariaLabel: 'Accountability Partner animation',
         alignment: Alignment.CenterLeft,
         wrapperClass: 'shift-acc-partner',
-        sizeClass: 'max-w-[640px] md:max-w-[850px] scale-[1.08] lg:scale-[1.15]',
+        sizeClass: 'max-w-[680px] md:max-w-[900px] lg:max-w-[950px] xl:max-w-[1000px] scale-[1.15] lg:scale-[1.25]',
         titleSizeClass: 'text-[52px] md:text-[68px] lg:text-[86px]',
         descSizeClass: 'text-[24px] md:text-[32px] lg:text-[34px]',
     },

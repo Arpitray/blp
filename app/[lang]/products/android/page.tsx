@@ -83,6 +83,60 @@ export default async function AndroidProductPage({ params }: { params: Promise<{
                 <WebsiteFeaturesSection />
             </div>
 
+            {/* ── Bottom Platform Banner ── */}
+            <div className="relative w-full pt-[75px] pb-[200px] flex flex-col items-center z-10">
+                <h2
+                    className="text-[32px] md:text-[45px] lg:text-[50px] font-black text-[#012955] mb-12 text-center tracking-tight px-6 mt-10"
+                    style={{ fontVariationSettings: "'wdth' 100" }}
+                >
+                    Stay protected on all platforms
+                </h2>
+                <PlatformList variant="banner" locale={locale} />
+            </div>
+
+            {/* ── Premium CTA Section ── */}
+            <section
+                className="relative w-full overflow-hidden z-20"
+                style={{
+                    background: "linear-gradient(180deg, #6292FF 0%, #3572FF 100%)",
+                }}
+            >
+                <div className="w-full max-w-site px-6 lg:px-16 mx-auto flex flex-col md:flex-row items-center justify-between pt-24 pb-24 md:py-40 relative z-10" style={{ minHeight: "750px" }}>
+
+                    {/* Left Side: Text */}
+                    <div className="flex-1 md:max-w-[50%] w-full flex flex-col items-center text-center md:pr-6 lg:pr-10 md:translate-x-[30px]">
+                        <h2
+                            className="text-[72px] md:text-[100px] lg:text-[120px] font-black text-white leading-[1.0] mb-6"
+                            style={{ fontVariationSettings: "'wdth' 100" }}
+                        >
+                            BlockP<br />Premium.
+                        </h2>
+                        <p className="text-[24px] md:text-[32px] text-white/80 font-medium leading-[1.6] mb-12 max-w-xl">
+                            Stronger protection, full control, and priority support, so nothing stands in your way.
+                        </p>
+                        <Link href={`/${locale}/get-started`}>
+                            <button
+                                className="bg-white text-[#012955] font-semibold text-[24px] md:text-[32px] px-16 md:px-24 py-3 md:py-4 rounded-full shadow-[0px_10px_0px_#1A3B7A] md:shadow-[0px_12px_0px_#1A3B7A] hover:translate-y-1 hover:shadow-[0px_8px_0px_#1A3B7A] transition-all duration-200 whitespace-nowrap"
+                            >
+                                Start your free trial!
+                            </button>
+                        </Link>
+                    </div>
+
+                    {/* Right Side: Image */}
+                    <div className="flex-1 w-full md:absolute md:right-0 md:bottom-0 md:w-1/2 flex justify-center md:justify-end mt-12 md:mt-0 md:-mr-6 lg:-mr-8 md:-translate-x-[30px] md:translate-y-[110px] lg:translate-y-[150px]">
+                        <Image
+                            src="/premium/premium_maskot.svg"
+                            alt="BlockP Premium Feature"
+                            width={800}
+                            height={800}
+                            className="w-full max-w-[460px] md:max-w-[660px] lg:max-w-[700px] h-auto object-contain"
+                            priority
+                        />
+                    </div>
+                </div>
+            </section>
+
             {/* ── Scroll Triggered UI Section ── */}
             <AndroidScrollUI />
 
@@ -97,60 +151,6 @@ export default async function AndroidProductPage({ params }: { params: Promise<{
 
             {/* ── FAQs Section ── */}
             <AndroidFaqsSection />
-
-            {/* ── Bottom Platform Banner ── */}
-            <div className="relative w-full pt-[75px] pb-[200px] flex flex-col items-center z-10">
-                <h2
-                    className="text-[32px] md:text-[45px] lg:text-[50px] font-black text-[#012955] mb-12 text-center tracking-tight px-6 mt-10"
-                    style={{ fontVariationSettings: "'wdth' 100" }}
-                >
-                    Stay protected on all platforms
-                </h2>
-                <PlatformList variant="banner" locale={locale} />
-            </div>
-
-            {/* ── Premium CTA Section ── */}
-            <section
-                className="relative w-full overflow-hidden"
-                style={{
-                    background: "linear-gradient(180deg, #6292FF 0%, #3572FF 100%)",
-                }}
-            >
-                <div className="w-full max-w-site px-6 lg:px-16 mx-auto flex flex-col md:flex-row items-center justify-between pt-24 pb-24 relative z-10" style={{ minHeight: "600px" }}>
-
-                    {/* Left Side: Image */}
-                    <div className="flex-1 w-full flex justify-center md:justify-start md:-ml-16 lg:-ml-20 md:translate-y-16 lg:translate-y-28">
-                        <Image
-                            src="/product/android/premium.svg"
-                            alt="BlockP Premium Feature"
-                            width={700}
-                            height={700}
-                            className="w-full max-w-[500px] md:max-w-[700px] h-auto object-contain"
-                            priority
-                        />
-                    </div>
-
-                    {/* Right Side: Text */}
-                    <div className="flex-1 w-full flex flex-col items-center md:items-start text-center md:text-left mt-12 md:mt-0 md:pt-24 lg:pt-32 md:pl-12 lg:pl-20">
-                        <h2
-                            className="text-[72px] md:text-[100px] lg:text-[120px] font-black text-white leading-[1.0] mb-6"
-                            style={{ fontVariationSettings: "'wdth' 100" }}
-                        >
-                            BlockP<br />Premium
-                        </h2>
-                        <p className="text-[24px] md:text-[32px] text-white/80 font-medium leading-[1.6] mb-12 max-w-xl">
-                            Stronger protection, full control, and priority support, so nothing stands in your way.
-                        </p>
-                        <Link href={`/${locale}/get-started`}>
-                            <button
-                                className="bg-white text-[#012955] font-semibold text-[24px] md:text-[32px] px-16 md:px-24 py-3 md:py-4 rounded-full shadow-[0px_10px_0px_#1A3B7A] md:shadow-[0px_12px_0px_#1A3B7A] hover:translate-y-1 hover:shadow-[0px_8px_0px_#1A3B7A] transition-all duration-200 whitespace-nowrap"
-                            >
-                                Start your free trial!
-                            </button>
-                        </Link>
-                    </div>
-                </div>
-            </section>
         </div>
     )
 }

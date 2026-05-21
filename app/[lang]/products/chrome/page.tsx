@@ -6,6 +6,10 @@ import { buildLocaleAlternates, resolveLocale } from '@/lib/seo/metadata'
 import { PremiumCta } from '@/components/shared/PremiumCta'
 import { PlatformList } from '@/components/shared/PlatformList'
 import { WebsiteFeaturesSection } from '@/components/shared/WebsiteFeaturesSection'
+import { ChromeWhySection } from '@/components/shared/ChromeWhySection'
+import { ChromeBestBlockerSection } from '@/components/shared/ChromeBestBlockerSection'
+import { ChromeBenefitsSection } from '@/components/shared/ChromeBenefitsSection'
+import { ChromeFaqsSection } from '@/components/shared/ChromeFaqsSection'
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
     const { lang } = await params
@@ -97,25 +101,15 @@ export default async function ChromeProductPage({ params }: { params: Promise<{ 
                         background: "linear-gradient(180deg, #6292FF 0%, #3572FF 100%)",
                     }}
                 >
-                    <div className="w-full max-w-site px-6 lg:px-16 mx-auto flex flex-col md:flex-row items-center justify-between pt-24 pb-24 relative z-10" style={{ minHeight: "600px" }}>
+                    <div className="w-full max-w-site px-6 lg:px-16 mx-auto flex flex-col md:flex-row items-center justify-between pt-24 pb-24 md:py-40 relative z-10" style={{ minHeight: "750px" }}>
                         
-                        <div className="flex-1 w-full flex justify-center md:justify-start md:-ml-16 lg:-ml-20 md:translate-y-16 lg:translate-y-28">
-                            <Image
-                                src="/product/android/premium.svg"
-                                alt="BlockP Premium"
-                                width={700}
-                                height={700}
-                                className="w-full max-w-[500px] md:max-w-[700px] h-auto object-contain"
-                                priority
-                            />
-                        </div>
-
-                        <div className="flex-1 w-full flex flex-col items-center md:items-start text-center md:text-left mt-12 md:mt-0 md:pt-24 lg:pt-32 md:pl-12 lg:pl-20">
+                        {/* Left Side: Text */}
+                        <div className="flex-1 md:max-w-[50%] w-full flex flex-col items-center text-center md:pr-6 lg:pr-10 md:translate-x-[30px]">
                             <h2 
                                 className="text-[72px] md:text-[100px] lg:text-[120px] font-black text-white leading-[1.0] mb-6"
                                 style={{ fontVariationSettings: "'wdth' 100" }}
                             >
-                                BlockP<br />Premium
+                                BlockP<br />Premium.
                             </h2>
                             <p className="text-[24px] md:text-[32px] text-white/80 font-medium leading-[1.6] mb-12 max-w-xl">
                                 Stronger protection, full control, and priority support, so nothing stands in your way.
@@ -128,8 +122,32 @@ export default async function ChromeProductPage({ params }: { params: Promise<{ 
                                 </button>
                             </Link>
                         </div>
+
+                        {/* Right Side: Image */}
+                        <div className="flex-1 w-full md:absolute md:right-0 md:bottom-0 md:w-1/2 flex justify-center md:justify-end mt-12 md:mt-0 md:-mr-6 lg:-mr-8 md:-translate-x-[30px] md:translate-y-[110px] lg:translate-y-[150px]">
+                            <Image
+                                src="/premium/premium_maskot.svg"
+                                alt="BlockP Premium"
+                                width={800}
+                                height={800}
+                                className="w-full max-w-[460px] md:max-w-[660px] lg:max-w-[700px] h-auto object-contain"
+                                priority
+                            />
+                        </div>
                     </div>
                 </section>
+
+                {/* ── Why do you need a porn blocker Section ── */}
+                <ChromeWhySection />
+
+                {/* ── Why BlockP Is The Best Porn Blocker App Section ── */}
+                <ChromeBestBlockerSection />
+
+                {/* ── Benefits of using a porn blocker Section ── */}
+                <ChromeBenefitsSection />
+
+                {/* ── FAQs Section ── */}
+                <ChromeFaqsSection />
             </div>
         </div>
     )
