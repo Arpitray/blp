@@ -6,9 +6,9 @@ export function AndroidBestBlockerSection() {
             <div className="w-full max-w-site px-6 lg:px-16 mx-auto flex flex-col lg:flex-row items-center justify-between">
                 
                 {/* Left Side: Images */}
-                <div className="w-full lg:w-[56%] relative flex items-center justify-start min-h-[380px] sm:min-h-[500px] md:min-h-[600px] mb-16 lg:mb-0 lg:-ml-6 xl:-ml-12">
+                <div className="w-full lg:w-[46%] relative flex items-center justify-start min-h-[300px] sm:min-h-[400px] md:min-h-[480px] mb-16 lg:mb-0 lg:-ml-4 xl:-ml-8">
                     {/* Desktop Image */}
-                    <div className="w-[100%] sm:w-[95%] lg:w-[95%] relative z-0 -ml-4 sm:-ml-8 lg:-ml-4">
+                    <div className="w-[90%] sm:w-[85%] lg:w-[85%] relative z-0 -ml-[6px] sm:-ml-[18px] lg:-ml-[8px] xl:-ml-[40px]">
                         <img 
                             src="/product/android/desktop.svg" 
                             alt="BlockP Dashboard Desktop"
@@ -16,7 +16,7 @@ export function AndroidBestBlockerSection() {
                         />
                     </div>
                     {/* Phone Image */}
-                    <div className="absolute right-[1%] sm:right-[6%] lg:right-[40px] xl:right-[20px] top-[53%] -translate-y-[35%] w-[52%] sm:w-[44%] lg:w-[48%] xl:w-[44%] z-10">
+                    <div className="absolute right-[5%] sm:right-[16%] lg:right-[114px] xl:right-[99px] top-[53%] -translate-y-[33%] w-[46%] sm:w-[40%] lg:w-[42%] xl:w-[38%] z-10">
                         <img 
                             src="/product/android/phone.svg" 
                             alt="BlockP Android App" 
@@ -26,7 +26,7 @@ export function AndroidBestBlockerSection() {
                 </div>
 
                 {/* Right Side: Text Content */}
-                <div className="w-full lg:w-[44%] flex flex-col items-start lg:pl-0 lg:-ml-10 xl:-ml-20 2xl:-ml-28 relative z-20">
+                <div className="w-full lg:w-[54%] flex flex-col items-start lg:pl-12 xl:pl-20 relative z-20">
                     <h2 className="text-[40px] md:text-[48px] lg:text-[52px] xl:text-[56px] font-black text-[#012955] mb-6 leading-[1.15] tracking-tight">
                         Why BlockP Is The Best Porn Blocker App for Android?
                     </h2>
