@@ -14,63 +14,154 @@ export default defineConfig({
 
   plugins: [
     structureTool({
-      structure: (S, context) => 
+      structure: (S) =>
         S.list()
-          .title('Content')
+          .title('BlockP Content')
           .items([
-            // Standard singletons & filtered types
-            ...S.documentTypeListItems().filter(
-              (listItem) => !['post', 'postMetadata'].includes(listItem.getId() as string)
-            ),
-            S.divider(),
-            
-            // ─── POSTS BY SLUG (New Parent Structure) ────────────────
-            S.listItem()
-              .title('Posts (By Slug)')
-              .child(
-                S.documentTypeList('postMetadata')
-                  .title('Posts (By Slug)')
-                  .child(documentId =>
-                    S.document()
-                      .documentId(documentId)
-                      .schemaType('postMetadata')
-                      .views([
-                        S.view.form(),
-                        S.view
-                          .component(SlugEditorPane)
-                          .title('Manage Translations')
-                      ])
-                  )
-              ),
 
-            // ─── POSTS BY LANGUAGE (Legacy/Filtered View) ────────────
+            // ─── 📄 PAGES ──────────────────────────────────────────
             S.listItem()
-              .title('Posts (By Language)')
+              .title('📄 Pages')
               .child(
                 S.list()
-                  .title('Languages')
-                  .items(
-                    languages.map((lang) =>
-                      S.listItem()
-                        .title(`${lang.title} Posts`)
-                        .child(
-                          S.documentList()
-                            .title(`${lang.title} Posts`)
-                            .schemaType('post')
-                            .filter('_type == "post" && language == $lang')
-                            .params({ lang: lang.id })
-                        )
-                    )
-                  )
+                  .title('Pages')
+                  .items([
+
+                    // Homepage (one doc per language — list all)
+                    S.listItem()
+                      .title('Homepage')
+                      .schemaType('homepage')
+                      .child(
+                        S.documentTypeList('homepage')
+                          .title('Homepage — Select Language')
+                      ),
+
+                    // Premium Page (one doc per language)
+                    S.listItem()
+                      .title('Premium Page')
+                      .schemaType('premiumPage')
+                      .child(
+                        S.documentTypeList('premiumPage')
+                          .title('Premium Page — Select Language')
+                      ),
+
+                    // FAQs Page (one doc per language)
+                    S.listItem()
+                      .title('FAQs Page')
+                      .schemaType('faqsPage')
+                      .child(
+                        S.documentTypeList('faqsPage')
+                          .title('FAQs Page — Select Language')
+                      ),
+                  ])
               ),
 
+            S.divider(),
+
+            // ─── 📱 PRODUCTS ───────────────────────────────────────
             S.listItem()
-              .title('All Posts (Unfiltered)')
+              .title('📱 Products')
+              .schemaType('product')
               .child(
-                S.documentList()
-                  .title('All Posts')
-                  .schemaType('post')
-                  .filter('_type == "post"')
+                S.documentTypeList('product')
+                  .title('Products (Android, iOS, Chrome, etc.)')
+              ),
+
+            S.divider(),
+
+            // ─── 📝 BLOG ──────────────────────────────────────────
+            S.listItem()
+              .title('📝 Blog')
+              .child(
+                S.list()
+                  .title('Blog')
+                  .items([
+
+                    S.listItem()
+                      .title('Posts (By Slug)')
+                      .child(
+                        S.documentTypeList('postMetadata')
+                          .title('Posts (By Slug)')
+                          .child(documentId =>
+                            S.document()
+                              .documentId(documentId)
+                              .schemaType('postMetadata')
+                              .views([
+                                S.view.form(),
+                                S.view
+                                  .component(SlugEditorPane)
+                                  .title('Manage Translations')
+                              ])
+                          )
+                      ),
+
+                    S.listItem()
+                      .title('Posts (By Language)')
+                      .child(
+                        S.list()
+                          .title('Languages')
+                          .items(
+                            languages.map((lang) =>
+                              S.listItem()
+                                .title(`${lang.title} Posts`)
+                                .child(
+                                  S.documentList()
+                                    .title(`${lang.title} Posts`)
+                                    .schemaType('post')
+                                    .filter('_type == "post" && language == $lang')
+                                    .params({ lang: lang.id })
+                                )
+                            )
+                          )
+                      ),
+
+                    S.listItem()
+                      .title('All Posts (Unfiltered)')
+                      .child(
+                        S.documentList()
+                          .title('All Posts')
+                          .schemaType('post')
+                          .filter('_type == "post"')
+                      ),
+
+                    S.divider(),
+
+                    S.listItem()
+                      .title('Authors')
+                      .schemaType('author')
+                      .child(S.documentTypeList('author').title('Authors')),
+
+                    S.listItem()
+                      .title('Categories')
+                      .schemaType('category')
+                      .child(S.documentTypeList('category').title('Categories')),
+                  ])
+              ),
+
+            S.divider(),
+
+            // ─── ⚙️ SETTINGS ──────────────────────────────────────
+            S.listItem()
+              .title('⚙️ Settings')
+              .child(
+                S.list()
+                  .title('Settings')
+                  .items([
+                    S.listItem()
+                      .title('Site Settings')
+                      .schemaType('siteSettings')
+                      .child(
+                        S.documentTypeList('siteSettings')
+                          .title('Site Settings')
+                      ),
+                    S.listItem()
+                      .title('Footer')
+                      .schemaType('footer')
+                      .child(
+                        S.documentTypeList('footer')
+                          .title('Footer')
+                      ),
+                  ])
               ),
           ]),
     }),
@@ -81,3 +172,4 @@ export default defineConfig({
     types: schemaTypes,
   },
 })
+

@@ -2,6 +2,7 @@ import { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import { CurveDivider } from '@/components/shared/CurveDivider'
+import { PremiumMascot } from '@/components/shared/PremiumMascot'
 import { buildLocaleAlternates, resolveLocale } from '@/lib/seo/metadata'
 import { PremiumCta } from '@/components/shared/PremiumCta'
 import { PlatformList } from '@/components/shared/PlatformList'
@@ -104,7 +105,7 @@ export default async function ChromeProductPage({ params }: { params: Promise<{ 
                     <div className="w-full max-w-site px-6 lg:px-16 mx-auto flex flex-col md:flex-row items-center justify-between pt-24 pb-24 md:py-40 relative z-10" style={{ minHeight: "750px" }}>
                         
                         {/* Left Side: Text */}
-                        <div className="flex-1 md:max-w-[50%] w-full flex flex-col items-center text-center md:pr-6 lg:pr-10 md:translate-x-[30px]">
+                        <div className="flex-1 md:max-w-[50%] w-full flex flex-col items-center text-center md:pr-6 lg:pr-10 md:translate-x-[70px]">
                             <h2 
                                 className="text-[72px] md:text-[100px] lg:text-[120px] font-black text-white leading-[1.0] mb-6"
                                 style={{ fontVariationSettings: "'wdth' 100" }}
@@ -124,15 +125,8 @@ export default async function ChromeProductPage({ params }: { params: Promise<{ 
                         </div>
 
                         {/* Right Side: Image */}
-                        <div className="flex-1 w-full md:absolute md:right-0 md:bottom-0 md:w-1/2 flex justify-center md:justify-end mt-12 md:mt-0 md:-mr-6 lg:-mr-8 md:-translate-x-[30px] md:translate-y-[110px] lg:translate-y-[150px]">
-                            <Image
-                                src="/premium/premium_maskot.svg"
-                                alt="BlockP Premium"
-                                width={800}
-                                height={800}
-                                className="w-full max-w-[460px] md:max-w-[660px] lg:max-w-[700px] h-auto object-contain"
-                                priority
-                            />
+                        <div className="flex-1 w-full md:absolute md:right-0 md:bottom-0 md:w-1/2 flex justify-center md:justify-end mt-12 md:mt-0 md:-mr-6 lg:-mr-8 md:-translate-x-[160px] md:translate-y-[290px] lg:translate-y-[380px]">
+                            <PremiumMascot className="w-full max-w-[460px] md:max-w-[660px] lg:max-w-[700px] aspect-square" />
                         </div>
                     </div>
                 </section>

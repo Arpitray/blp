@@ -1,5 +1,5 @@
 'use client'
-import React, { useRef, useState, useEffect } from 'react'
+import React from 'react'
 import Image from 'next/image'
 
 const STEPS = [
@@ -31,95 +31,98 @@ const STEPS = [
 ]
 
 export function AndroidScrollUI() {
-    const containerRef = useRef<HTMLDivElement>(null)
-    const [activeIndex, setActiveIndex] = useState(0)
-
-    useEffect(() => {
-        const handleScroll = () => {
-            if (!containerRef.current) return
-            const { top, height } = containerRef.current.getBoundingClientRect()
-            const windowHeight = window.innerHeight
-            
-            // Calculate progress (0 to 1) based on scroll position inside the container
-            const scrollableDistance = height - windowHeight
-            let progress = -top / scrollableDistance
-            progress = Math.max(0, Math.min(1, progress))
-
-            // Calculate active step
-            const index = Math.min(STEPS.length - 1, Math.floor(progress * STEPS.length))
-            setActiveIndex(index)
-        }
-
-        window.addEventListener('scroll', handleScroll, { passive: true })
-        handleScroll() // Init
-        return () => window.removeEventListener('scroll', handleScroll)
-    }, [])
-
     return (
-        <div ref={containerRef} className="w-full relative bg-[#F6FAFF]" style={{ height: '500vh' }}>
-            <div className="sticky top-0 h-screen w-full flex items-center justify-center overflow-hidden pt-20">
-                <div className="w-full max-w-site px-6 lg:px-16 mx-auto flex flex-col md:flex-row items-center justify-between gap-8 md:gap-16 lg:gap-20 h-full">
-                    
-                    {/* Left Side: Text Content */}
-                    <div className="flex-1 w-full flex flex-col justify-center h-full relative z-20 md:pl-6 lg:pl-10 xl:pl-16">
-                        <div className="relative w-full flex flex-col justify-center h-[300px] md:h-[400px]">
-                            {STEPS.map((step, idx) => (
-                                <div 
-                                    key={idx}
-                                    className={`absolute left-0 top-1/2 -translate-y-1/2 w-full transition-all duration-700 ease-out ${
-                                        activeIndex === idx 
-                                            ? 'opacity-100 translate-y-[-50%] blur-none' 
-                                            : activeIndex > idx 
-                                                ? 'opacity-0 translate-y-[-100%] blur-[4px] pointer-events-none'
-                                                : 'opacity-0 translate-y-[0%] blur-[4px] pointer-events-none'
-                                    }`}
-                                >
-                                    <h2 className={`font-black text-[#012955] leading-[1.05] mb-6 ${idx === 0 ? 'text-[56px] md:text-[76px] lg:text-[90px]' : 'text-[48px] md:text-[64px] lg:text-[76px]'}`}>
-                                        {step.title}
-                                    </h2>
-                                    {step.desc && (
-                                        <p className="text-[20px] md:text-[24px] lg:text-[28px] text-[#012955]/80 font-bold max-w-[550px] leading-[1.5]">
-                                            {step.desc}
-                                        </p>
-                                    )}
-                                </div>
-                            ))}
+        <div className="w-full relative bg-[#F6FAFF]">
+            {/* Desktop Layout: Split Columns */}
+            <div className="hidden md:flex flex-row w-full max-w-site px-6 lg:px-16 mx-auto relative gap-8 md:gap-16 lg:gap-20">
+                
+                <div className="flex-1 flex flex-col w-full">
+                    {STEPS.map((step, idx) => (
+                        <div key={`text-${idx}`} className="h-screen w-full flex flex-col justify-center text-left md:pr-6 lg:pr-10 xl:pr-16 md:translate-x-12 md:translate-y-20">
+                            <h2 className={`font-black text-[#012955] leading-[1.05] mb-6 ${idx === 0 ? 'text-[62px] md:text-[84px] lg:text-[96px]' : 'text-[52px] md:text-[70px] lg:text-[82px]'}`}>
+                                {step.title}
+                            </h2>
+                            {step.desc && (
+                                <p className="text-[22px] md:text-[26px] lg:text-[30px] text-[#012955]/80 font-bold max-w-[580px] leading-[1.5]">
+                                    {step.desc}
+                                </p>
+                            )}
+                            
+                            {/* Progress Dots Indicator */}
+                            <div className="flex items-center gap-2 mt-8">
+                                {STEPS.map((_, dotIdx) => (
+                                    <div 
+                                        key={dotIdx}
+                                        className={`h-[8px] rounded-full transition-all duration-300 ${
+                                            idx === dotIdx ? 'w-10 bg-[#012955]' : 'w-[8px] bg-[#D1DFED]'
+                                        }`}
+                                    />
+                                ))}
+                            </div>
                         </div>
+                    ))}
+                </div>
 
-                        {/* Pagination Progress */}
-                        <div className="flex items-center gap-2 mt-2 z-10 relative">
-                            {STEPS.map((_, idx) => (
-                                <div 
-                                    key={idx}
-                                    className={`h-[8px] rounded-full transition-all duration-500 ease-out ${
-                                        activeIndex === idx ? 'w-10 bg-[#012955]' : 'w-[8px] bg-[#D1DFED]'
-                                    }`}
+                {/* Right Side: Sticky Phones */}
+                <div className="flex-1 w-full relative">
+                    {STEPS.map((step, idx) => (
+                        <div 
+                            key={`img-${idx}`}
+                            className="sticky top-0 h-screen w-full flex items-center justify-center bg-transparent"
+                            style={{ zIndex: idx + 10 }}
+                        >
+                            <div className="relative w-full h-[60vh] md:h-[80vh] min-h-[400px]">
+                                <Image
+                                    src={step.img}
+                                    alt={`Step ${idx + 1}`}
+                                    fill
+                                    className="object-contain"
+                                    priority={idx < 2}
                                 />
-                            ))}
+                            </div>
                         </div>
-                    </div>
+                    ))}
+                </div>
+                
+            </div>
 
-                    {/* Right Side: Phone Image */}
-                    <div className="flex-1 w-full flex justify-center items-center relative h-[60vh] md:h-[80vh] min-h-[400px] z-10 md:-ml-12 lg:-ml-24 xl:-ml-36 2xl:-ml-48">
-                        {STEPS.map((step, idx) => (
+            {/* Mobile Layout: Standard Stack */}
+            <div className="md:hidden flex flex-col w-full px-6 py-20 gap-32">
+                {STEPS.map((step, idx) => (
+                    <div key={`mob-${idx}`} className="flex flex-col items-center justify-center gap-8 w-full">
+                        <div className="w-full flex flex-col justify-center text-left">
+                            <h2 className={`font-black text-[#012955] leading-[1.05] mb-4 ${idx === 0 ? 'text-[44px]' : 'text-[36px]'}`}>
+                                {step.title}
+                            </h2>
+                            {step.desc && (
+                                <p className="text-[18px] text-[#012955]/80 font-bold leading-[1.5]">
+                                    {step.desc}
+                                </p>
+                            )}
+                            
+                            {/* Progress Dots Indicator */}
+                            <div className="flex items-center gap-2 mt-4">
+                                {STEPS.map((_, dotIdx) => (
+                                    <div 
+                                        key={dotIdx}
+                                        className={`h-[8px] rounded-full transition-all duration-300 ${
+                                            idx === dotIdx ? 'w-10 bg-[#012955]' : 'w-[8px] bg-[#D1DFED]'
+                                        }`}
+                                    />
+                                ))}
+                            </div>
+                        </div>
+                        <div className="relative w-full h-[60vh] min-h-[400px]">
                             <Image
-                                key={idx}
                                 src={step.img}
                                 alt={`Step ${idx + 1}`}
                                 fill
-                                className={`object-contain transition-all duration-700 ease-out origin-center ${
-                                    activeIndex === idx 
-                                        ? 'opacity-100 scale-100 translate-y-0 blur-none' 
-                                        : activeIndex > idx
-                                            ? 'opacity-0 scale-[0.9] -translate-y-[40px] blur-[8px]'
-                                            : 'opacity-0 scale-[1.1] translate-y-[40px] blur-[8px]'
-                                }`}
+                                className="object-contain"
                                 priority={idx < 2}
                             />
-                        ))}
+                        </div>
                     </div>
-
-                </div>
+                ))}
             </div>
         </div>
     )
