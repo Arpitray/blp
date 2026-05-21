@@ -6,27 +6,27 @@ const STEPS = [
     {
         title: <>How Does<br/>BlockP<br/>Android Porn<br/>Blocker Work?</>,
         desc: "",
-        img: "/product/android/dashmockup.png"
+        img: "/product/android/onboard/1.png"
     },
     {
         title: "Install BlockP",
         desc: "Download and install the BlockP porn blocker app for Android from the Play Store. Open the app to get started.",
-        img: "/product/android/onboard1.png"
+        img: "/product/android/onboard/2.png"
     },
     {
         title: "Grant Permissions",
         desc: "Allow the accessibility permissions to BlockP to accurately block adult content inside apps and browsers.",
-        img: "/product/android/onboard2.png"
+        img: "/product/android/onboard/3.png"
     },
     {
         title: "Turn on Blocking",
         desc: "Tap 'Start Protection' to block porn and distracting content instantly.",
-        img: "/product/android/onboard3.png"
+        img: "/product/android/onboard/4.png"
     },
     {
         title: "Customize Your Filters",
         desc: "Set up BlockP's custom filters to match your needs. BlockP is equipped to act like a flexible, fully customized Porn Blocking app.",
-        img: "/product/android/onboard4.png"
+        img: "/product/android/onboard/5.png"
     },
 ]
 

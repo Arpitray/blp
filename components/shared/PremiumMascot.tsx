@@ -7,11 +7,10 @@ interface PremiumMascotProps {
 }
 
 export function PremiumMascot({ className }: PremiumMascotProps) {
-    // There are 'Timeline 5', 'Timeline 4', 'Timeline 3', 'Timeline 2' available
-    // Playing the animations directly bypasses the need for the state machine to be configured correctly.
+    // Use the PremiumScreen state machine for the updated websitepremium.riv asset.
     const { RiveComponent } = useRive({
         src: '/websitepremium.riv',
-        animations: ['Timeline 5', 'Timeline 4', 'Timeline 3', 'Timeline 2'],
+        stateMachines: 'PremiumScreen',
         autoplay: true,
         layout: new Layout({
             fit: Fit.Contain,
