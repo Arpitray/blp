@@ -1,9 +1,9 @@
 import React from 'react'
 
-export function AndroidBestBlockerSection({ data }: { data?: any }) {
-    const title = data?.sectionTitle || "Why BlockP Is The Best Porn Blocker App for Android?"
-    const desc1 = data?.description1 || "BlockP is one of the best porn blocker apps for Android to filter adult content from your device. You can stay away from pornography with our customized filtering technology, website and app blocker."
-    const listHeading = data?.listHeading || "Our adult content blocker can:"
+export function IosBestBlockerSection({ data }: { data?: any }) {
+    const title = data?.sectionTitle || "Why BlockP Is the Best App to Block porn on an iPhone?"
+    const desc1 = data?.description1 || "BlockP is one of the best porn blocker for iOS to filter adult content from your iPhone. You can stay away from pornography with our customized filtering technology, website and app blocker."
+    const listHeading = data?.listHeading || "Our powerful free porn blocker app can:"
     const listItems = data?.listItems && data.listItems.length > 0 ? data.listItems : [
         "Help you stay away from adult websites and other distractions",
         "Filter pornography in real-time with AI-powered filters",
@@ -12,7 +12,7 @@ export function AndroidBestBlockerSection({ data }: { data?: any }) {
         "Block distracting applications like social media",
         "Block any website, be it pornography, gambling or anything else"
     ]
-    const desc2 = data?.description2 || "Discover all the unique features of the BlockP free porn blocker app for Android, including keyword and website blocking, social media controls, and many more by downloading the BlockP app from the Google Play Store."
+    const desc2 = data?.description2 || "Discover all the unique features of the BlockP free porn blocker for iPhone, including keyword and website blocking, social media controls, and many more by downloading the BlockP app from the App store."
     const desktopImg = data?.desktopImagePath || "/product/android/desktop.svg"
     const phoneImg = data?.phoneImagePath || "/product/android/phone.svg"
 
@@ -34,7 +34,7 @@ export function AndroidBestBlockerSection({ data }: { data?: any }) {
                     <div className="absolute right-[5%] sm:right-[16%] lg:right-[114px] xl:right-[99px] top-[53%] -translate-y-[33%] w-[46%] sm:w-[40%] lg:w-[42%] xl:w-[38%] z-10">
                         <img 
                             src={phoneImg} 
-                            alt="BlockP Android App" 
+                            alt="BlockP iPhone App" 
                             className="w-full h-auto drop-shadow-2xl"
                         />
                     </div>

@@ -11,14 +11,14 @@ const CARDS = [
     {
         content: (
             <>
-                <span className="underline decoration-1 underline-offset-2">67.7%</span> of porn access on smartphones happens on Android devices. BlockP helps to secure all apps and browsers on Android devices to block porn, nudity, and semi-nude content.
+                <span className="underline decoration-1 underline-offset-2">70%</span> of teens are exposed to explicit content online, often unintentionally. BlockP’s AI-powered filters act in real time to protect the children from accidental exposure to porn.
             </>
         ),
     },
     {
         content: (
             <>
-                <span className="underline decoration-1 underline-offset-2">70%</span> of teens are exposed to explicit content online, often unintentionally. BlockP's AI-powered filters act in real time to protect the children from accidental exposure to porn.
+                Over <span className="underline decoration-1 underline-offset-2">85%</span> of teens own an iPhone with TikTok and Instagram as their favorite apps. The algorithms on these platforms often push explicit content in searches and reels even in restricted mode. BlockP protects your children by restricting the social media apps.
             </>
         ),
     },
@@ -45,8 +45,8 @@ const CARDS = [
     },
 ]
 
-export function AndroidWhySection({ data }: { data?: { sectionTitle?: string; cards?: { text?: string }[] } }) {
-    const title = data?.sectionTitle || "Why do you need a porn blocker for Android ?"
+export function IosWhySection({ data }: { data?: { sectionTitle?: string; cards?: { text?: string }[] } }) {
+    const title = data?.sectionTitle || "Why do you need Porn Blocker for iPhone?"
     const cardsToUse = data?.cards && data.cards.length > 0
         ? data.cards.map(c => ({ content: <>{c.text}</> }))
         : CARDS

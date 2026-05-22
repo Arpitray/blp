@@ -61,10 +61,23 @@ export default defineConfig({
             // ─── 📱 PRODUCTS ───────────────────────────────────────
             S.listItem()
               .title('📱 Products')
-              .schemaType('product')
               .child(
-                S.documentTypeList('product')
-                  .title('Products (Android, iOS, Chrome, etc.)')
+                S.list()
+                  .title('Products')
+                  .items([
+                    S.listItem()
+                      .title('Android')
+                      .schemaType('productAndroid')
+                      .child(S.documentTypeList('productAndroid').title('Android - Select Language')),
+                    S.listItem()
+                      .title('iOS')
+                      .schemaType('productIos')
+                      .child(S.documentTypeList('productIos').title('iOS - Select Language')),
+                    S.listItem()
+                      .title('Chrome')
+                      .schemaType('productChrome')
+                      .child(S.documentTypeList('productChrome').title('Chrome - Select Language')),
+                  ])
               ),
 
             S.divider(),

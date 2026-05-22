@@ -27,24 +27,26 @@ function FAQItem({ question, answer }: { question: string; answer: string }) {
     );
 }
 
-export function AndroidFaqsSection({ data }: { data?: { sectionTitle?: string; faqs?: { question?: string; answer?: string }[] } }) {
-    const title = data?.sectionTitle || "FAQs on BlockP: Free Porn Blocker\nApp for Android"
-    const faqsToUse = data?.faqs && data.faqs.length > 0
-        ? data.faqs.map(f => ({ q: f.question || '', a: f.answer || '' }))
-        : [
-            {
-                q: "How to block porn sites in mobile?",
-                a: "Block porn sites on your mobile with BlockP - the powerful porn blocker that instantly blocks millions of adult websites. DNS-filtering and parental control tools can also offer limited protection against porn sites."
-            },
-            {
-                q: "How to block porn on android phone?",
-                a: "Block porn and explicit content on your android phone with BlockP’s android app. It blocks all adult websites and uses AI-powered filters to block explicit content in real-time."
-            },
-            {
-                q: "How to block porn sites permanently?",
-                a: "To block porn sites permanently you need a combination of blocking with features to prevent bypass. BlockP gives you porn blocking and uninstall prevention features like password protection to block porn sites permanently."
-            }
-        ];
+const FAQS = [
+    {
+        question: "how to block porn on iphone",
+        answer: "DNS filters and parental control on your iPhone can help you restrict porn. Adding a free porn blocker for iPhone like BlockP helps you block all porn and explicit content more effectively."
+    },
+    {
+        question: "how to block porn sites on an iphone",
+        answer: "When you install a porn blocker for iPhone like BlockP, it automatically blocks millions of porn sites. You can add as many sites as you want to BlockP’s blocklist for more robust porn blocking."
+    },
+    {
+        question: "How to block Adults websites on my iPhone permanently",
+        answer: "BlockP features like AI-powered filters, accountability partners, password protection, and uninstall prevention ensure more reliable blocking to prevent access to adult websites."
+    }
+]
+
+export function IosFaqsSection({ data }: { data?: { sectionTitle?: string; faqs?: { question?: string; answer?: string }[] } }) {
+    const title = data?.sectionTitle || "FAQs on BlockP: Porn Blocker\nfor iPhone"
+    const faqsToUse = data?.faqs && data.faqs.length > 0 
+        ? data.faqs.map(f => ({ question: f.question || '', answer: f.answer || '' }))
+        : FAQS
 
     return (
         <section className="w-full bg-[#F6FAFF] py-24 md:py-32 relative z-20">
@@ -52,13 +54,18 @@ export function AndroidFaqsSection({ data }: { data?: { sectionTitle?: string; f
                 <h2 className="text-[32px] md:text-[48px] lg:text-[54px] font-black text-[#012955] text-center mb-16 md:mb-24 leading-[1.2] whitespace-pre-wrap">
                     {title}
                 </h2>
-
+                
                 <div className="w-full space-y-6">
                     {faqsToUse.map((faq, idx) => (
-                        <FAQItem key={idx} question={faq.q} answer={faq.a} />
+                        <FAQItem 
+                            key={idx} 
+                            question={faq.question} 
+                            answer={faq.answer} 
+                        />
                     ))}
                 </div>
             </div>
         </section>
-    );
+    )
 }
+

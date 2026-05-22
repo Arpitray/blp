@@ -5,7 +5,9 @@ import author from './author'
 import category from './category'
 import siteSettings from './siteSettings'
 import footer from './footer'
-import product from './product'
+import productAndroid from './productAndroid'
+import productIos from './productIos'
+import productChrome from './productChrome'
 
 // ── Phase 1: Page schemas ─────────────────────────────────────
 import homepage from './homepage'
@@ -25,7 +27,9 @@ export const schemaTypes = [
   footer,
 
   // Products
-  product,
+  productAndroid,
+  productIos,
+  productChrome,
 
   // ── Phase 1: Pages ──────────────────────────────────────────
   homepage,

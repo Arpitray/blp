@@ -64,10 +64,23 @@ const FEATURES: Feature[] = [
     },
 ]
 
-export function WebsiteFeaturesSection() {
+export function WebsiteFeaturesSection({ data }: { data?: { features?: { stateMachine?: string; title?: string; description?: string }[] } }) {
+    // Merge Sanity text overrides with hardcoded config
+    const featuresToRender = FEATURES.map(feat => {
+        const override = data?.features?.find(f => f.stateMachine === feat.stateMachine)
+        if (override) {
+            return {
+                ...feat,
+                title: override.title ? <span style={{ whiteSpace: 'pre-wrap' }}>{override.title}</span> : feat.title,
+                description: override.description || feat.description
+            }
+        }
+        return feat
+    })
+
     return (
         <div className="w-full flex flex-col items-center py-16 md:py-24 gap-10 md:gap-16">
-            {FEATURES.map((feature) => (
+            {featuresToRender.map((feature) => (
                 <div
                     key={feature.stateMachine}
                     className={`w-full max-w-site px-[12px] lg:px-[40px] flex flex-col items-center justify-between gap-12 md:gap-24 ${
@@ -93,7 +106,7 @@ export function WebsiteFeaturesSection() {
                         >
                             {feature.title}
                         </h2>
-                        <p className={`${feature.descSizeClass || 'text-[24px] md:text-[32px] lg:text-[34px]'} text-[#012955]/90 font-bold leading-[1.5]`}>
+                        <p className={`${feature.descSizeClass || 'text-[24px] md:text-[32px] lg:text-[34px]'} text-[#012955]/90 font-bold leading-[1.5] whitespace-pre-wrap`}>
                             {feature.description}
                         </p>
                     </div>

@@ -31,16 +31,21 @@ const CARDS = [
     },
 ]
 
-export function ChromeWhySection() {
+export function ChromeWhySection({ data }: { data?: { sectionTitle?: string; cards?: { text?: string }[] } }) {
+    const title = data?.sectionTitle || "Why do you Need Porn Blocker Chrome Extension?"
+    const cardsToUse = data?.cards && data.cards.length > 0
+        ? data.cards.map(c => ({ content: <>{c.text}</> }))
+        : CARDS
+
     return (
         <section className="w-full bg-[#F6FAFF] py-24 md:py-32 relative z-20">
             <div className="w-full max-w-site px-6 lg:px-16 mx-auto flex flex-col items-center">
                 <h2 className="text-[32px] md:text-[48px] lg:text-[54px] font-black text-[#012955] text-center mb-16 md:mb-24 leading-[1.2]">
-                    Why do you Need Porn Blocker Chrome Extension?
+                    {title}
                 </h2>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 w-full">
-                    {CARDS.map((card, idx) => (
+                    {cardsToUse.map((card, idx) => (
                         <div 
                             key={idx} 
                             className="bg-[#e3efff] rounded-[20px] md:rounded-[24px] p-8 md:p-10 shadow-[0_10px_16px_-6px_#c4defd] flex items-center"

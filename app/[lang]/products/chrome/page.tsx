@@ -7,6 +7,8 @@ import { buildLocaleAlternates, resolveLocale } from '@/lib/seo/metadata'
 import { PremiumCta } from '@/components/shared/PremiumCta'
 import { PlatformList } from '@/components/shared/PlatformList'
 import { WebsiteFeaturesSection } from '@/components/shared/WebsiteFeaturesSection'
+import { sanityClient } from '@/infrastructure/sanity/client'
+import { PRODUCT_BY_SLUG_QUERY } from '@/infrastructure/sanity/queries'
 import { ChromeWhySection } from '@/components/shared/ChromeWhySection'
 import { ChromeBestBlockerSection } from '@/components/shared/ChromeBestBlockerSection'
 import { ChromeBenefitsSection } from '@/components/shared/ChromeBenefitsSection'
@@ -30,6 +32,38 @@ export default async function ChromeProductPage({ params }: { params: Promise<{ 
     const { lang } = await params
     const locale = resolveLocale(lang)
 
+    // Fetch data from Sanity, gracefully fallback to hardcoded if null
+    const product = await sanityClient.fetch<any>(PRODUCT_BY_SLUG_QUERY, { slug: 'chrome', lang: locale })
+
+    const rawHeroTitle = product?.heroTitle || ""
+    let heroTitle1 = "BlockP"
+    let heroTitle2 = "for Chrome."
+    if (rawHeroTitle) {
+        if (rawHeroTitle.includes('\n')) {
+            const parts = rawHeroTitle.split('\n')
+            heroTitle1 = parts[0]
+            heroTitle2 = parts[1] || ""
+        } else if (rawHeroTitle.toLowerCase().startsWith("blockp ")) {
+            heroTitle1 = rawHeroTitle.substring(0, 6)
+            heroTitle2 = rawHeroTitle.substring(6).trim()
+        } else {
+            const firstSpace = rawHeroTitle.indexOf(' ')
+            if (firstSpace !== -1) {
+                heroTitle1 = rawHeroTitle.substring(0, firstSpace)
+                heroTitle2 = rawHeroTitle.substring(firstSpace + 1)
+            } else {
+                heroTitle1 = rawHeroTitle
+                heroTitle2 = ""
+            }
+        }
+    }
+    const platformsBannerTitle = product?.platformsBannerTitle || "Stay protected on all platforms"
+    
+    const premiumTitle = product?.premiumSection?.title?.split('\n') || ["BlockP", "Premium."]
+    const premiumSubtitle = product?.premiumSection?.subtitle || "Stronger protection, full control, and priority support, so nothing stands in your way."
+    const premiumCtaText = product?.premiumSection?.ctaText || "Start your free trial!"
+    const premiumCtaUrl = product?.premiumSection?.ctaUrl || `/${locale}/get-started`
+
     return (
         <div className="w-full flex flex-col items-center bg-[#F6FAFF] min-h-screen overflow-x-hidden">
             {/* ── Hero Section ── */}
@@ -42,13 +76,13 @@ export default async function ChromeProductPage({ params }: { params: Promise<{ 
                 {/* Back / Breadcrumb Button */}
                 <div className="absolute top-[120px] md:top-[145px] left-[20px] md:left-[40px] z-50">
                     <Link
-                        href={`/${locale}/blog`}
+                        href={`/${locale}`}
                         className="flex items-center text-white/80 hover:text-white transition-colors text-[18px] md:text-[22px] font-bold"
                     >
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="mr-3">
                             <path d="M19 12H5M5 12L12 19M5 12L12 5" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
                         </svg>
-                        Home / Blogs / Does...
+                        Home / Products / Chrome Extension
                     </Link>
                 </div>
 
@@ -58,7 +92,13 @@ export default async function ChromeProductPage({ params }: { params: Promise<{ 
                         className="text-[58px] md:text-[76px] lg:text-[95px] font-bold text-white text-center leading-[1.05] mb-8 md:mb-10"
                         style={{ fontVariationSettings: "'wdth' 100" }}
                     >
-                        BlockP<br />for Chrome.
+                        {heroTitle1}
+                        {heroTitle2 && (
+                            <>
+                                <br />
+                                {heroTitle2}
+                            </>
+                        )}
                     </h1>
                 </div>
 
@@ -66,7 +106,7 @@ export default async function ChromeProductPage({ params }: { params: Promise<{ 
                 <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full flex justify-center z-10 px-6 md:-translate-x-[calc(50%+60px)] lg:-translate-x-[calc(50%+140px)] mb-[-135px] md:mb-[-305px] lg:mb-[-130px]">
                     <div className="w-[580px] md:w-[640px] lg:w-[980px] h-auto">
                         <img
-                            src="/product/chrome/chrome.svg"
+                            src={product?.heroImageUrl || "/product/chrome/chrome.svg"}
                             alt="BlockP for Chrome"
                             className="w-full h-auto drop-shadow-2xl"
                         />
@@ -82,7 +122,7 @@ export default async function ChromeProductPage({ params }: { params: Promise<{ 
             {/* Content Section - Starts right after Hero, no negative margin needed now */}
             <div className="w-full bg-[#F6FAFF] relative z-40">
                 {/* Features Section */}
-                <WebsiteFeaturesSection />
+                <WebsiteFeaturesSection data={product?.websiteFeatures} />
 
                 {/* ── Bottom Platform Banner ── */}
                 <div className="relative w-full pt-[75px] pb-[200px] flex flex-col items-center">
@@ -90,7 +130,7 @@ export default async function ChromeProductPage({ params }: { params: Promise<{ 
                         className="text-[32px] md:text-[45px] lg:text-[50px] font-black text-[#012955] mb-12 text-center tracking-tight px-6 mt-10"
                         style={{ fontVariationSettings: "'wdth' 100" }}
                     >
-                        Stay protected on all platforms
+                        {platformsBannerTitle}
                     </h2>
                     <PlatformList variant="banner" locale={locale} />
                 </div>
@@ -107,19 +147,19 @@ export default async function ChromeProductPage({ params }: { params: Promise<{ 
                         {/* Left Side: Text */}
                         <div className="flex-1 md:max-w-[50%] w-full flex flex-col items-center text-center md:pr-6 lg:pr-10 md:translate-x-[70px]">
                             <h2 
-                                className="text-[72px] md:text-[100px] lg:text-[120px] font-black text-white leading-[1.0] mb-6"
+                                className="text-[72px] md:text-[100px] lg:text-[120px] font-black text-white leading-[1.0] mb-6 whitespace-pre-wrap"
                                 style={{ fontVariationSettings: "'wdth' 100" }}
                             >
-                                BlockP<br />Premium.
+                                {premiumTitle.join('\n')}
                             </h2>
                             <p className="text-[24px] md:text-[32px] text-white/80 font-medium leading-[1.6] mb-12 max-w-xl">
-                                Stronger protection, full control, and priority support, so nothing stands in your way.
+                                {premiumSubtitle}
                             </p>
-                            <Link href={`/${locale}/get-started`}>
+                            <Link href={premiumCtaUrl}>
                                 <button
                                     className="bg-white text-[#012955] font-semibold text-[24px] md:text-[32px] px-16 md:px-24 py-3 md:py-4 rounded-full shadow-[0px_10px_0px_#1A3B7A] md:shadow-[0px_12px_0px_#1A3B7A] hover:translate-y-1 hover:shadow-[0px_8px_0px_#1A3B7A] transition-all duration-200 whitespace-nowrap"
                                 >
-                                    Start your free trial!
+                                    {premiumCtaText}
                                 </button>
                             </Link>
                         </div>
@@ -132,16 +172,16 @@ export default async function ChromeProductPage({ params }: { params: Promise<{ 
                 </section>
 
                 {/* ── Why do you need a porn blocker Section ── */}
-                <ChromeWhySection />
+                <ChromeWhySection data={product?.whySection} />
 
                 {/* ── Why BlockP Is The Best Porn Blocker App Section ── */}
-                <ChromeBestBlockerSection />
+                <ChromeBestBlockerSection data={product?.bestBlockerSection} />
 
                 {/* ── Benefits of using a porn blocker Section ── */}
-                <ChromeBenefitsSection />
+                <ChromeBenefitsSection data={product?.benefitsSection} />
 
                 {/* ── FAQs Section ── */}
-                <ChromeFaqsSection />
+                <ChromeFaqsSection data={product?.faqsSection} />
             </div>
         </div>
     )

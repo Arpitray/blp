@@ -102,7 +102,7 @@ export const FOOTER_QUERY = `
 `
 
 export const PRODUCT_BY_SLUG_QUERY = `
-  *[_type == "product" && slug.current == $slug][0] {
+  *[_type in ["productAndroid", "productIos", "productChrome"] && slug.current == $slug][0] {
     name,
     "slug": slug.current,
     heroTitle,
@@ -114,12 +114,109 @@ export const PRODUCT_BY_SLUG_QUERY = `
       description,
       layout,
       "imageUrl": image.asset->url
+    },
+    seo { metaTitle, metaDescription },
+    platformsBannerTitle,
+    premiumSection { title, subtitle, ctaText, ctaUrl },
+    scrollSteps {
+      steps[] { title, description, imagePath }
+    },
+    whySection {
+      sectionTitle,
+      cards[] { text }
+    },
+    benefitsSection {
+      sectionTitle,
+      items[] { title, iconPath, description }
+    },
+    faqsSection {
+      sectionTitle,
+      faqs[] { question, answer }
+    },
+    bestBlockerSection {
+      sectionTitle,
+      description1,
+      listHeading,
+      listItems,
+      description2,
+      desktopImagePath,
+      phoneImagePath
+    },
+    websiteFeatures {
+      features[] { stateMachine, title, description }
     }
   }
 `
 
 export const ALL_PRODUCT_SLUGS_QUERY = `
-  *[_type == "product" && defined(slug.current)] {
+  *[_type in ["productAndroid", "productIos", "productChrome"] && defined(slug.current)] {
     "slug": slug.current
+  }
+`
+
+// ── Phase 1: Page Queries ─────────────────────────────────────────────────
+
+export const HOMEPAGE_QUERY = `
+  *[_type == "homepage" && language == $lang][0] {
+    hero {
+      title,
+      subtitle,
+      ctaText,
+      ctaUrl,
+      "heroImageUrl": heroImage.asset->url,
+      "mascotImageUrl": mascotImage.asset->url
+    },
+    asSeenOn {
+      sectionTitle,
+      logos[] { name, "logoUrl": logo.asset->url, localLogoPath }
+    },
+    platforms {
+      sectionTitle,
+      platformList[] { name, "iconUrl": icon.asset->url, localIconPath, linkUrl }
+    },
+    stats {
+      sectionTitle,
+      statItems[] { "iconUrl": icon.asset->url, value, label }
+    },
+    testimonials {
+      sectionTitle,
+      testimonialItems[] { quote, authorName, authorRole, rating }
+    },
+    stopWatching {
+      sectionTitle,
+      cards[] { title, description, "imageUrl": image.asset->url }
+    },
+    faq {
+      sectionTitle,
+      faqItems[] { question, answer }
+    },
+    seo { metaTitle, metaDescription }
+  }
+`
+
+export const FAQS_PAGE_QUERY = `
+  *[_type == "faqsPage" && language == $lang][0] {
+    title,
+    faqItems[] { question, answer },
+    seo { metaTitle, metaDescription }
+  }
+`
+
+export const PREMIUM_PAGE_QUERY = `
+  *[_type == "premiumPage" && language == $lang][0] {
+    hero { titleLine1, titleLine2, ctaText, ctaUrl },
+    subheading,
+    pricing {
+      freeLabel,
+      annualLabel,
+      annualPriceNote,
+      monthlyLabel,
+      monthlyPriceNote,
+      pricingCtaText,
+      pricingCtaUrl,
+      features[] { label, iconPath, includedInFree }
+    },
+    testimonial { quote, authorName, authorRole, rating },
+    seo { metaTitle, metaDescription }
   }
 `
