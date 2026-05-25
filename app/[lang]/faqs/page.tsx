@@ -5,7 +5,7 @@ import { Metadata } from 'next'
 import { BackButton } from '@/components/shared/BackButton'
 import { FAQAccordionItem } from '@/components/shared/FAQAccordionItem'
 import { getPageTranslations } from '@/lib/pageTranslations'
-import { resolveLocale } from '@/lib/seo/metadata'
+import { buildLocaleAlternates, resolveLocale } from '@/lib/seo/metadata'
 import { sanityClient } from '@/infrastructure/sanity/client'
 import { FAQS_PAGE_QUERY } from '@/infrastructure/sanity/queries'
 
@@ -25,6 +25,10 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
     return {
         title: data?.seo?.metaTitle ?? 'Frequently Asked Questions — BlockP',
         description: data?.seo?.metaDescription ?? 'Find answers to the most common questions about BlockP.',
+        alternates: {
+            canonical: `/${locale}/faqs`,
+            languages: buildLocaleAlternates((supportedLocale) => `/${supportedLocale}/faqs`),
+        },
     }
 }
 

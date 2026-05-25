@@ -51,16 +51,29 @@ const BENEFITS = [
 export function AndroidBenefitsSection({ data }: { data?: { sectionTitle?: string; items?: { title?: string; iconPath?: string; description?: string }[] } }) {
     const title = data?.sectionTitle || "Benefits of using a porn blocker"
     const benefitsToUse = data?.items && data.items.length > 0
-        ? data.items.map(b => ({
-            title: b.title || '',
-            icon: b.iconPath || "/product/android/benifits/network.svg",
-            content: <>{b.description}</>
-        }))
+        ? data.items.map(b => {
+            if (b.title === "Community Support") {
+                return {
+                    title: b.title,
+                    icon: b.iconPath || "/product/android/benifits/community.svg",
+                    content: (
+                        <>
+                            Connect with others who are on a similar journey to quit porn through the <Link href="#" className="underline decoration-1 underline-offset-2 hover:text-[#012955]/85 transition-colors">Discord</Link> and <Link href="#" className="underline decoration-1 underline-offset-2 hover:text-[#012955]/85 transition-colors">Reddit</Link> support community of BlockP. Sharing experiences and connecting with others will motivate you to stay consistent on your quitting porn journey.
+                        </>
+                    )
+                }
+            }
+            return {
+                title: b.title || '',
+                icon: b.iconPath || "/product/android/benifits/network.svg",
+                content: <>{b.description}</>
+            }
+        })
         : BENEFITS
 
     return (
         <section className="w-full bg-[#F6FAFF] py-24 md:py-32 relative z-20">
-            <div className="w-full max-w-site px-6 lg:px-16 mx-auto flex flex-col items-center">
+            <div className="w-full max-w-site px-[12px] lg:px-[40px] mx-auto flex flex-col items-center">
                 <h2 className="text-[32px] md:text-[48px] lg:text-[54px] font-black text-[#012955] text-center mb-16 md:mb-24 leading-[1.2]">
                     {title}
                 </h2>

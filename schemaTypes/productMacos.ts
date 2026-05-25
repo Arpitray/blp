@@ -1,8 +1,8 @@
 import { defineField, defineType } from 'sanity'
 
 export default defineType({
-    name: 'productIos',
-    title: 'Product (iOS)',
+    name: 'productMacos',
+    title: 'Product (macOS)',
     type: 'document',
     fields: [
         defineField({
@@ -27,7 +27,7 @@ export default defineType({
             name: 'name',
             title: 'Platform Name',
             type: 'string',
-            description: 'Internal reference name (e.g. "Android", "iOS", "Windows").',
+            description: 'Internal reference name (e.g. "Android", "macOS").',
             validation: (Rule) => Rule.required(),
         }),
         defineField({
@@ -37,25 +37,26 @@ export default defineType({
             options: {
                 source: 'name',
                 maxLength: 96,
+                isUnique: () => true,
             },
-            description: 'The URL path segment for this product (e.g., "android" or "ios"). MUST BE "ios" for this page to work.',
+            description: 'The URL path segment for this product (e.g., "macos"). MUST BE "macos" for this page to work.',
             validation: (Rule) => Rule.required(),
-            initialValue: { current: 'ios' }
+            initialValue: { current: 'macos' }
         }),
         defineField({
             name: 'heroTitle',
             title: 'Hero Heading Text',
             type: 'text',
             rows: 2,
-            description: 'Main heading text. E.g. "BlockP\nfor iOS."',
-            initialValue: 'BlockP\nfor iOS.',
+            description: 'Main heading text. E.g. "BlockP\nfor macOS."',
+            initialValue: 'BlockP\nfor macOS.',
             validation: (Rule) => Rule.required(),
         }),
         defineField({
             name: 'storeBadge',
             title: 'Store Download Badge',
             type: 'image',
-            description: 'Image of the store badge (e.g., "Get it on Google Play").',
+            description: 'Image of the store badge (e.g., "Download for macOS").',
             options: { hotspot: true },
         }),
         defineField({
@@ -134,7 +135,6 @@ export default defineType({
                 },
             ],
         }),
-        // ─── SEO ─────────────────────────────────────────────────
         defineField({
             name: 'seo',
             title: 'SEO Settings',
@@ -144,7 +144,6 @@ export default defineType({
                 defineField({ name: 'metaDescription', title: 'Meta Description', type: 'text', rows: 3, validation: (Rule) => Rule.max(200) }),
             ],
         }),
-        // ─── PLATFORMS BANNER ─────────────────────────────────────
         defineField({
             name: 'platformsBannerTitle',
             title: 'Platforms Banner Title',
@@ -152,7 +151,6 @@ export default defineType({
             description: 'Text above the platform icons row. E.g. "Stay protected on all platforms"',
             initialValue: 'Stay protected on all platforms',
         }),
-        // ─── PREMIUM CTA SECTION ──────────────────────────────────
         defineField({
             name: 'premiumSection',
             title: 'Premium CTA Section',
@@ -165,7 +163,6 @@ export default defineType({
                 defineField({ name: 'ctaUrl', title: 'Button URL', type: 'string', initialValue: '/get-started' }),
             ],
         }),
-        // ─── SCROLL STEPS (How does it work) ──────────────────────
         defineField({
             name: 'scrollSteps',
             title: 'How It Works — Scroll Steps',
@@ -177,12 +174,11 @@ export default defineType({
                     title: 'Steps',
                     type: 'array',
                     initialValue: [
-                        { _type: 'step', title: 'How to Block\nPorn on iOS\nUsing BlockP.', description: "", imagePath: '/product/ios/1.png' },
-                        { _type: 'step', title: 'Set Up Smart Porn Blocking for iPhone', description: "BlockP gives parents its smart filtering to protect your iPhone from pornographic and harmful content. It's super simple and effective. Available as an app for iOS devices and MacBooks.", imagePath: '/product/ios/2.png' },
-                        { _type: 'step', title: 'Customize Your Protection for You and Your Family', description: "BlockP's custom blocking options let you block apps from internet search.\n1. Custom app blocking for quick adult content blocking.\n2. Keyword blocking for blocking of adult, porn based search.\n3. BlockP PIN for blocking adult content access and real-time safe search and block on all devices.", imagePath: '/product/ios/3.png' },
-                        { _type: 'step', title: 'Protect Kids with Advanced Parental Controls', description: "Use BlockP's PIN to block any website on iOS/iPad to keep secure and safe protection. Set up password protection and strict mode features to lock settings and apps.", imagePath: '/product/ios/4.png' },
-                        { _type: 'step', title: 'Improve Focus and Mental Well-being', description: "Improve focus and mental well-being with BlockP's productivity tools. Stop wasting your time on porn. Block app usage and set up sleep routine.", imagePath: '/product/ios/5.png' },
-                        { _type: 'step', title: 'Stay safe with Real-Time Detection and Safe Search', description: "Our real-time AI detection instantly blocks known adult sites. Browsing incognito and other... blocking any and every bad sites that contain illegal or adult media, text and gifs.", imagePath: '/product/ios/6new.png' }
+                        { _type: 'step', title: 'How Does BlockP Porn Blocker for Mac Work?', description: "", imagePath: '/product/macos/1.png' },
+                        { _type: 'step', title: 'Block Porn on Browsers', description: "Choose the browsers you want to block porn on - Safari, Arc, Chrome, and Opera. You can also prevent uninstalling the extension on the Chrome browser in the settings for stronger protection.", imagePath: '/product/macos/2.png' },
+                        { _type: 'step', title: 'Block the Websites and Keywords That Tempt You', description: "You can choose which websites or words to block. Add any porn site or trigger word to your block list, or just allow the safe ones with the whitelist. Our porn blocker for MacBook helps you avoid anything that pulls you back into bad habits.", imagePath: '/product/macos/3.png' },
+                        { _type: 'step', title: 'Use Custom Blocking Features to Stay Strong', description: "You can block social media, restrict reels and searches, and block gambling and other distractions with BlockP. You can also add custom block messages and redirect links as a buffer when you try to access porn.", imagePath: '/product/macos/4.png' },
+                        { _type: 'step', title: 'Stop Yourself from Disabling It', description: "Sometimes, when urges are strong, we try to turn the blocker off. That’s why BlockP porn blocker for MacBook, features powerful settings, including add accountability partner, prevent uninstall, and long sentence password.", imagePath: '/product/macos/5.png' }
                     ],
                     of: [{
                         type: 'object',
@@ -190,55 +186,49 @@ export default defineType({
                         fields: [
                             defineField({ name: 'title', title: 'Step Title', type: 'string', validation: (Rule) => Rule.required() }),
                             defineField({ name: 'description', title: 'Step Description', type: 'text', rows: 3 }),
-                            defineField({ name: 'imagePath', title: 'Image Path (in /public)', type: 'string', description: 'e.g. /product/android/onboard/2.png' }),
+                            defineField({ name: 'imagePath', title: 'Image Path (in /public)', type: 'string', description: 'e.g. /product/macos/1.png' }),
                         ],
                         preview: { select: { title: 'title', subtitle: 'description' } },
                     }],
                 }),
             ],
         }),
-        // ─── WHY SECTION ──────────────────────────────────────────
         defineField({
             name: 'whySection',
             title: 'Why Do You Need a Blocker — Section',
             type: 'object',
             fields: [
-                defineField({ name: 'sectionTitle', title: 'Section Heading', type: 'string', initialValue: 'Why do you need Porn Blocker for iPhone?' }),
+                defineField({ name: 'sectionTitle', title: 'Section Heading', type: 'string', initialValue: 'Why do you need a Porn Blocker for Mac?' }),
                 defineField({
                     name: 'cards',
                     title: 'Stat / Reason Cards',
                     type: 'array',
                     description: 'Each card is a short paragraph with a stat. Use **bold** for emphasis.',
                     initialValue: [
-                        { _type: 'card', text: "Data from adult websites shows that **87%** of porn watching happens on phones. BlockP adds a digital barrier to prevent this rampant access." },
-                        { _type: 'card', text: "**70%** of teens are exposed to explicit content online, often unintentionally. BlockP’s AI-powered filters act in real time to protect the children from accidental exposure to porn." },
-                        { _type: 'card', text: "Over **85%** of teens own an iPhone with TikTok and Instagram as their favorite apps. The algorithms on these platforms often push explicit content in searches and reels even in restricted mode. BlockP protects your children by restricting the social media apps." },
-                        { _type: 'card', text: "A typical tween (8 to 12 years) spends around **6 hours** per day on their phone and the smartphone use time goes up to **8 hours** for teens. BlockP helps parents to regulate screen time and teach healthy digital behaviors." },
-                        { _type: 'card', text: "Digital distractions can reduce productivity by **40%** and it takes **23 minutes** to refocus. BlockP helps to protect you from porn and other online distractions like social media, shopping apps etc. to protect your focus and boost productivity." },
-                        { _type: 'card', text: "Research shows that problematic porn use is strongly linked to easy and convenient access of porn on **mobile phones.** If you are trying to quit porn, BlockP prevents easy access to porn and blocks triggering content to protect you from relapse." }
+                        { _type: 'card', text: "**60%** of people admit to watching porn at work. If you are struggling with porn addiction and it's affecting your work performance, BlockP porn blocker for MacBook, will help eliminate the distraction of porn." },
+                        { _type: 'card', text: "**More than 50%** of remote workers admit to watching porn on the same device they use for work. BlockP reduces triggers and distractions to prevent impulsive browsing during work hours." },
+                        { _type: 'card', text: "**20%** of the desktop traffic on adult websites comes from macOS devices and mostly through browsers other than Safari. BlockP filters porn across all major browsers for complete protection from porn." },
+                        { _type: 'card', text: "**More than 65%** of our daily actions are habit-driven and happen on autopilot. BlockP adds a layer of friction that prevents automatic behavior triggered by digital cues." }
                     ],
                     of: [{ type: 'object', name: 'card', fields: [defineField({ name: 'text', title: 'Card Text', type: 'text', rows: 3, validation: (Rule) => Rule.required() })], preview: { select: { title: 'text' }, prepare(s: Record<string, string>) { return { title: s.title?.slice(0, 80) } } } }],
                 }),
             ],
         }),
-        // ─── BENEFITS SECTION ─────────────────────────────────────
         defineField({
             name: 'benefitsSection',
             title: 'Benefits Section',
             type: 'object',
             fields: [
-                defineField({ name: 'sectionTitle', title: 'Section Heading', type: 'string', initialValue: 'Benefits of Using BlockP: Porn Blocker for iPhone' }),
+                defineField({ name: 'sectionTitle', title: 'Section Heading', type: 'string', initialValue: 'Benefits of Using BlockP Porn Blocker for MacBook' }),
                 defineField({
                     name: 'items',
                     title: 'Benefit Items',
                     type: 'array',
                     initialValue: [
-                        { _type: 'benefit', title: "Improve Mental Health", iconPath: "/product/android/benifits/network.svg", description: "Studies show that people who watch porn frequently are at a higher risk of emotional distress. BlockP keeps you safe from explicit content that causes feelings of guilt, shame, and anxiety." },
-                        { _type: 'benefit', title: "Increase Productivity", iconPath: "/product/android/benifits/tune.svg", description: "Frequent digital interruptions reduce your productivity by 40% and it takes around 20 minutes to regain your focus after a distraction. BlockP helps to reduce exposure to not just porn but other distractions like social media to help you stay focused and productive." },
-                        { _type: 'benefit', title: "Prevent Addiction", iconPath: "/product/android/benifits/favorite.svg", description: "Nearly 65% of all our daily actions are driven by habit. Easy access to porn reinforces habitual use which can turn addictive. BlockP helps to break the urge-action cycle and reduces cravings." },
-                        { _type: 'benefit', title: "Prevent Trauma", iconPath: "/product/android/benifits/blocklist.svg", description: "Over 85% of teens use an iPhone and 71% of young adults are exposed to pornography online on social media and search results. BlockP keeps them safe from the trauma of accidental exposure to porn, nudity, and semi-nude content on their iPhones." },
-                        { _type: 'benefit', title: "Improve Sleep Quality", iconPath: "/product/android/benifits/handshake.svg", description: "Watching stimulating content like porn on your iPhone before bedtime disrupts your sleep cycles. BlockP supports deeper and restful sleep by blocking late-night triggers that keep you awake." },
-                        { _type: 'benefit', title: "Healthy Digital Habits", iconPath: "/product/android/benifits/focus.svg", description: "People spend more than 7 hours per day looking at screens, much of it in mindless scrolling and distractions. BlockP helps you learn intentional digital habits with its screen time management features." }
+                        { _type: 'benefit', title: "Protect Your Children", iconPath: "", description: "BlockP protects your children from adult websites, explicit content, nudity, misleading ads, and links that expose them to inappropriate content. It protects the mental health of your children." },
+                        { _type: 'benefit', title: "Learn Healthy Digital Habits", iconPath: "", description: "BlockP is designed to not just block porn but give you complete control over what you view on your device. You can regulate your screen time and social media use with BlockP for learning intentional digital consumption." },
+                        { _type: 'benefit', title: "Break Porn Addiction", iconPath: "", description: "BlockP is your greatest ally in quitting porn. It blocks your triggers to prevent relapse on unlimited devices. Accountability and porn-blocking features of BlockP help you stay porn-free in the long term." },
+                        { _type: 'benefit', title: "Improve Productivity", iconPath: "", description: "BlockP helps to remove distractions like porn, social media, and gambling sites. Intentional and focused use boosts your productivity at work and in studies." }
                     ],
                     of: [{
                         type: 'object',
@@ -253,21 +243,37 @@ export default defineType({
                 }),
             ],
         }),
-        // ─── FAQS SECTION ─────────────────────────────────────────
         defineField({
             name: 'faqsSection',
             title: 'FAQs Section (Product Page)',
             type: 'object',
             fields: [
-                defineField({ name: 'sectionTitle', title: 'Section Heading', type: 'string', initialValue: 'FAQs on BlockP: Porn Blocker\nfor iPhone' }),
+                defineField({ name: 'sectionTitle', title: 'Section Heading', type: 'string', initialValue: 'FAQs on BlockP: Porn Blocker for MacBook' }),
                 defineField({
                     name: 'faqs',
                     title: 'FAQ Items',
                     type: 'array',
                     initialValue: [
-                        { _type: 'faqItem', question: "how to block porn on iphone", answer: "DNS filters and parental control on your iPhone can help you restrict porn. Adding a free porn blocker for iPhone like BlockP helps you block all porn and explicit content more effectively." },
-                        { _type: 'faqItem', question: "how to block porn sites on an iphone", answer: "When you install a porn blocker for iPhone like BlockP, it automatically blocks millions of porn sites. You can add as many sites as you want to BlockP’s blocklist for more robust porn blocking." },
-                        { _type: 'faqItem', question: "How to block Adults websites on my iPhone permanently", answer: "BlockP features like AI-powered filters, accountability partners, password protection, and uninstall prevention ensure more reliable blocking to prevent access to adult websites." }
+                        {
+                            _type: 'faqItem',
+                            question: "How do I block porn websites on my MacBook for free?",
+                            answer: "You can block porn on Mac using built-in browser restrictions. If you want more reliable and real-time porn blocking, you can install BlockP porn blocker for MacBook. It uses AI-powered filters to block porn and also lets you add any website of your choice to the blacklist."
+                        },
+                        {
+                            _type: 'faqItem',
+                            question: "Can I block specific websites on Blockp for MacBook?",
+                            answer: "Yes. You can add any specific website or keyword (unrelated to porn also) that you want to block to BlockP’s custom blocklist."
+                        },
+                        {
+                            _type: 'faqItem',
+                            question: "Can BlockP block adult websites instantly on MacBook?",
+                            answer: "Yes. You can block adult websites instantly by activating the ‘Limit adult content’ on the BlockP dashboard."
+                        },
+                        {
+                            _type: 'faqItem',
+                            question: "Is BlockP safe to use on MacBook?",
+                            answer: "BlockP is a device-based porn blocker, so your personal information and browsing data will not be shared with any external servers or third parties."
+                        }
                     ],
                     of: [{
                         type: 'object',
@@ -281,29 +287,26 @@ export default defineType({
                 }),
             ],
         }),
-        // ─── BEST BLOCKER SECTION (e.g. Why BlockP is the best Android Blocker)
         defineField({
             name: 'bestBlockerSection',
             title: 'Best Blocker Section',
             type: 'object',
             fields: [
-                defineField({ name: 'sectionTitle', title: 'Section Title', type: 'string', initialValue: 'Why BlockP Is the Best App to Block porn on an iPhone?' }),
-                defineField({ name: 'description1', title: 'First Paragraph', type: 'text', rows: 3, initialValue: 'BlockP is one of the best porn blocker for iOS to filter adult content from your iPhone. You can stay away from pornography with our customized filtering technology, website and app blocker.' }),
-                defineField({ name: 'listHeading', title: 'List Heading', type: 'string', initialValue: 'Our powerful free porn blocker app can:' }),
+                defineField({ name: 'sectionTitle', title: 'Section Title', type: 'string', initialValue: 'Why BlockP Is The Best Porn Blocker for MacBook?' }),
+                defineField({ name: 'description1', title: 'First Paragraph', type: 'text', rows: 3, initialValue: 'BlockP helps you make your digital environment safer and distraction-free. It reduces exposure to porn and explicit content to help you stay focused on your goals while keeping the younger ones safe from accidental exposure to porn.' }),
+                defineField({ name: 'listHeading', title: 'List Heading', type: 'string', initialValue: 'Features that make BlockP the best:' }),
                 defineField({ name: 'listItems', title: 'List Items', type: 'array', of: [{ type: 'string' }], initialValue: [
-                    "Help you stay away from adult websites and other distractions",
-                    "Filter pornography in real-time with AI-powered filters",
-                    "Whitelist feature to control accessible content",
-                    "Accountability partner and password protection help you stay porn-free",
-                    "Block distracting applications like social media",
-                    "Block any website, be it pornography, gambling or anything else"
+                    "It is easy to install, with a user-friendly interface, and offers immediate protection.",
+                    "Inappropriate content across browsers and apps will be detected and blocked.",
+                    "You use the unlimited blocklist and whitelist to control what you want to see.",
+                    "You can completely block or limit specific features of social media platforms.",
+                    "Use password protection and accountability partner settings to prevent bypass during moments of temptation."
                 ]}),
-                defineField({ name: 'description2', title: 'Last Paragraph', type: 'text', rows: 3, initialValue: 'Discover all the unique features of the BlockP free porn blocker for iPhone, including keyword and website blocking, social media controls, and many more by downloading the BlockP app from the App store.' }),
+                defineField({ name: 'description2', title: 'Last Paragraph', type: 'text', rows: 3, initialValue: 'Whether you want to quit porn or learn healthy digital habits to reclaim your focus, BlockP supports your goals. Download the BlockP free porn blocker for MacBook today for safe and distraction-free browsing.' }),
                 defineField({ name: 'desktopImagePath', title: 'Desktop Image Path', type: 'string', initialValue: '/product/android/desktop.svg' }),
                 defineField({ name: 'phoneImagePath', title: 'Phone Image Path', type: 'string', initialValue: '/product/android/phone.svg' }),
             ],
         }),
-        // ─── WEBSITE FEATURES SECTION (Rive Animations)
         defineField({
             name: 'websiteFeatures',
             title: 'Website Features (Rive Animations)',

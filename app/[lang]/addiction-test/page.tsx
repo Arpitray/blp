@@ -2,9 +2,25 @@
 
 import { useState } from 'react';
 import { use } from 'react';
+import { Metadata } from 'next';
 import { BackButton } from '@/components/shared/BackButton';
 import { getPageTranslations } from '@/lib/pageTranslations';
-import { resolveLocale } from '@/lib/seo/metadata';
+import { buildLocaleAlternates, resolveLocale } from '@/lib/seo/metadata';
+
+// NOTE: generateMetadata can be exported from client pages in Next.js App Router.
+// The compiler extracts it at build/request time as a server-only function.
+export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
+    const { lang } = await params
+    const locale = resolveLocale(lang)
+    return {
+        title: 'Porn Addiction Test — BlockP',
+        description: 'Take our free porn addiction test to better understand your relationship with adult content and get personalized guidance.',
+        alternates: {
+            canonical: `/${locale}/addiction-test`,
+            languages: buildLocaleAlternates((supportedLocale) => `/${supportedLocale}/addiction-test`),
+        },
+    }
+}
 
 export default function AddictionTestPage({ params }: { params: Promise<{ lang: string }> }) {
     const { lang } = use(params);

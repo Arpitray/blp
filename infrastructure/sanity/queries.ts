@@ -102,7 +102,7 @@ export const FOOTER_QUERY = `
 `
 
 export const PRODUCT_BY_SLUG_QUERY = `
-  *[_type in ["productAndroid", "productIos", "productChrome"] && slug.current == $slug][0] {
+  *[_type in ["productAndroid", "productIos", "productChrome", "productMacos", "productMicrosoft"] && slug.current == $slug && language == $lang][0] {
     name,
     "slug": slug.current,
     heroTitle,
@@ -149,7 +149,7 @@ export const PRODUCT_BY_SLUG_QUERY = `
 `
 
 export const ALL_PRODUCT_SLUGS_QUERY = `
-  *[_type in ["productAndroid", "productIos", "productChrome"] && defined(slug.current)] {
+  *[_type in ["productAndroid", "productIos", "productChrome", "productMacos", "productMicrosoft"] && defined(slug.current)] {
     "slug": slug.current
   }
 `
@@ -164,19 +164,19 @@ export const HOMEPAGE_QUERY = `
       ctaText,
       ctaUrl,
       "heroImageUrl": heroImage.asset->url,
-      "mascotImageUrl": mascotImage.asset->url
+      "mascotImageUrl": coalesce(mascotImage.asset->url, fallbackMascotImageUrl)
     },
     asSeenOn {
       sectionTitle,
-      logos[] { name, "logoUrl": logo.asset->url, localLogoPath }
+      logos[] { name, "logoUrl": coalesce(logo.asset->url, localLogoPath), localLogoPath }
     },
     platforms {
       sectionTitle,
-      platformList[] { name, "iconUrl": icon.asset->url, localIconPath, linkUrl }
+      platformList[] { name, "iconUrl": coalesce(icon.asset->url, localIconPath), localIconPath, linkUrl }
     },
     stats {
       sectionTitle,
-      statItems[] { "iconUrl": icon.asset->url, value, label }
+      statItems[] { "iconUrl": coalesce(icon.asset->url, fallbackImageUrl), value, label }
     },
     testimonials {
       sectionTitle,
@@ -184,7 +184,7 @@ export const HOMEPAGE_QUERY = `
     },
     stopWatching {
       sectionTitle,
-      cards[] { title, description, "imageUrl": image.asset->url }
+      cards[] { title, description, "imageUrl": coalesce(image.asset->url, fallbackImageUrl) }
     },
     faq {
       sectionTitle,

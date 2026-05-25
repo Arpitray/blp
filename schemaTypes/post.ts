@@ -1,5 +1,5 @@
 import { defineType, defineField } from 'sanity'
-import { languages } from '../languages'
+import { languages } from '../sanity/blockp/languages'
 
 export default defineType({
   name: 'post',
@@ -7,8 +7,8 @@ export default defineType({
   type: 'document',
 
   groups: [
-    { name: 'content',  title: '📝 Content',   default: true },
-    { name: 'seo',      title: '🔍 SEO'                      },
+    { name: 'content', title: '📝 Content', default: true },
+    { name: 'seo', title: '🔍 SEO' },
   ],
 
   fields: [

@@ -6,8 +6,22 @@ const FACT_CHECKED_RAW = `Fact checked
 - Our goal is to empower you with reliable information so you can make informed decisions about your digital habits, mental wellbeing, and personal growth.
 Disclaimer: The information provided on BlockP is for educational and informational purposes only. It is not intended to replace professional medical, psychological, or psychiatric advice. Always consult a qualified healthcare or mental health professional for personalized guidance.`
 
+import { Metadata } from 'next';
 import { BackButton } from '@/components/shared/BackButton';
-import { resolveLocale } from '@/lib/seo/metadata';
+import { buildLocaleAlternates, resolveLocale } from '@/lib/seo/metadata';
+
+export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
+    const { lang } = await params
+    const locale = resolveLocale(lang)
+    return {
+        title: 'Fact Checked Content — BlockP',
+        description: 'BlockP content is fact-checked and backed by peer-reviewed research, mental health science, and reputable academic sources.',
+        alternates: {
+            canonical: `/${locale}/fact-checked`,
+            languages: buildLocaleAlternates((supportedLocale) => `/${supportedLocale}/fact-checked`),
+        },
+    }
+}
 
 type FactBlock = {
     kind: 'paragraph' | 'list-item' | 'disclaimer'

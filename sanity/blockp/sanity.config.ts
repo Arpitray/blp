@@ -1,9 +1,9 @@
-import {defineConfig} from 'sanity'
-import {structureTool} from 'sanity/structure'
-import {visionTool} from '@sanity/vision'
-import {schemaTypes} from './schemaTypes'
-import {SlugEditorPane} from './components/SlugEditorPane'
-import {languages} from './languages'
+import { defineConfig } from 'sanity'
+import { structureTool } from 'sanity/structure'
+import { visionTool } from '@sanity/vision'
+import { schemaTypes } from '../../schemaTypes'
+import { SlugEditorPane } from './components/SlugEditorPane'
+import { languages } from './languages'
 
 export default defineConfig({
   name: 'default',
@@ -77,6 +77,14 @@ export default defineConfig({
                       .title('Chrome')
                       .schemaType('productChrome')
                       .child(S.documentTypeList('productChrome').title('Chrome - Select Language')),
+                    S.listItem()
+                      .title('MacBook')
+                      .schemaType('productMacos')
+                      .child(S.documentTypeList('productMacos').title('MacBook - Select Language')),
+                    S.listItem()
+                      .title('Windows')
+                      .schemaType('productMicrosoft')
+                      .child(S.documentTypeList('productMicrosoft').title('Windows - Select Language')),
                   ])
               ),
 
@@ -182,7 +190,7 @@ export default defineConfig({
   ],
 
   schema: {
-    types: schemaTypes,
+    types: schemaTypes as any,
   },
 })
 

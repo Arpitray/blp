@@ -67,7 +67,7 @@ export default async function Footer({ locale = DEFAULT_LANGUAGE }: FooterProps)
                     </div>
 
                     {/* ── COPYRIGHT ── */}
-                    <div className="mt-auto pt-16 text-[13px] opacity-40 font-medium text-center md:text-left">
+                    <div className="mt-auto pt-24 text-[16px] md:text-[18px] opacity-40 font-medium text-center md:text-left">
                         <p>
                             © {new Date().getFullYear()}
                             {footerData.logoTitle ? ` ${footerData.logoTitle}.` : '.'} All rights reserved.

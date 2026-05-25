@@ -15,7 +15,7 @@ export const PLATFORMS: Platform[] = [
     { id: 'ios', name: 'iOS', label: 'BlockP for iOS', icon: '/apple.svg', href: '/products/ios' },
     { id: 'macos', name: 'macOS', label: 'BlockP for macOS', icon: '/macos.svg', href: '/products/macos' },
     { id: 'chrome', name: 'Chrome', label: 'BlockP for Chrome', icon: '/chrome.svg', href: '/products/chrome' },
-    { id: 'windows', name: 'Windows', label: 'BlockP for Windows', icon: '/windows.svg', href: '/products/windows' },
+    { id: 'windows', name: 'Windows', label: 'BlockP for Windows', icon: '/windows.svg', href: '/products/microsoft' },
 ]
 
 interface PlatformListProps {

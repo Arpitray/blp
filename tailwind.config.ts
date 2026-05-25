@@ -45,7 +45,7 @@ const config: Config = {
       maxWidth: {
         topbar:  '1324px',  // header pill (1440px design baseline)
         content: '1280px',  // content inner max
-        site:    '1898px',  // expanded site max-width
+        site:    '1600px',  // expanded site max-width
       },
       spacing: {
         'nav-gap':    '80px',  // gap between nav items

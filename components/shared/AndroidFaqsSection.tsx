@@ -28,7 +28,9 @@ function FAQItem({ question, answer }: { question: string; answer: string }) {
 }
 
 export function AndroidFaqsSection({ data }: { data?: { sectionTitle?: string; faqs?: { question?: string; answer?: string }[] } }) {
-    const title = data?.sectionTitle || "FAQs on BlockP: Free Porn Blocker\nApp for Android"
+    const title = !data?.sectionTitle || data.sectionTitle === "FAQs"
+        ? "FAQs on BlockP: Free Porn Blocker\nApp for Android"
+        : data.sectionTitle
     const faqsToUse = data?.faqs && data.faqs.length > 0
         ? data.faqs.map(f => ({ q: f.question || '', a: f.answer || '' }))
         : [
@@ -48,7 +50,7 @@ export function AndroidFaqsSection({ data }: { data?: { sectionTitle?: string; f
 
     return (
         <section className="w-full bg-[#F6FAFF] py-24 md:py-32 relative z-20">
-            <div className="w-full max-w-site px-6 lg:px-16 mx-auto flex flex-col items-center">
+            <div className="w-full max-w-site px-[12px] lg:px-[40px] mx-auto flex flex-col items-center">
                 <h2 className="text-[32px] md:text-[48px] lg:text-[54px] font-black text-[#012955] text-center mb-16 md:mb-24 leading-[1.2] whitespace-pre-wrap">
                     {title}
                 </h2>

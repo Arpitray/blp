@@ -15,12 +15,12 @@ export function ChromeBestBlockerSection({ data }: { data?: any }) {
 
     return (
         <section className="w-full bg-[#F6FAFF] py-16 md:py-32 relative overflow-hidden z-20">
-            <div className="w-full max-w-site px-6 lg:px-16 mx-auto flex flex-col lg:flex-row items-center justify-between">
+            <div className="w-full max-w-[1898px] px-6 lg:px-16 mx-auto flex flex-col lg:flex-row items-center justify-between">
                 
                 {/* Left Side: Images */}
-                <div className="w-full lg:w-[46%] relative flex items-center justify-start min-h-[300px] sm:min-h-[400px] md:min-h-[480px] mb-16 lg:mb-0 lg:-ml-4 xl:-ml-8">
+                <div className="w-full lg:w-[56%] relative flex items-center justify-start min-h-[280px] sm:min-h-[380px] md:min-h-[460px] mb-16 lg:mb-0 lg:-ml-6 xl:-ml-12">
                     {/* Desktop Image */}
-                    <div className="w-[90%] sm:w-[85%] lg:w-[85%] relative z-0 -ml-[6px] sm:-ml-[18px] lg:-ml-[8px] xl:-ml-[40px]">
+                    <div className="w-[80%] sm:w-[74%] lg:w-[74%] relative z-0 -ml-4 sm:-ml-8 lg:-ml-4">
                         <img 
                             src={desktopImg} 
                             alt="BlockP Dashboard Desktop"
@@ -28,7 +28,7 @@ export function ChromeBestBlockerSection({ data }: { data?: any }) {
                         />
                     </div>
                     {/* Phone Image */}
-                    <div className="absolute right-[5%] sm:right-[16%] lg:right-[114px] xl:right-[99px] top-[53%] -translate-y-[33%] w-[46%] sm:w-[40%] lg:w-[42%] xl:w-[38%] z-10">
+                    <div className="absolute right-[14%] sm:right-[18%] lg:right-[120px] xl:right-[105px] top-[53%] -translate-y-[35%] w-[42%] sm:w-[35%] lg:w-[38%] xl:w-[34%] z-10">
                         <img 
                             src={phoneImg} 
                             alt="BlockP App" 
@@ -38,7 +38,7 @@ export function ChromeBestBlockerSection({ data }: { data?: any }) {
                 </div>
 
                 {/* Right Side: Text Content */}
-                <div className="w-full lg:w-[54%] flex flex-col items-start lg:pl-12 xl:pl-20 relative z-20">
+                <div className="w-full lg:w-[44%] flex flex-col items-start lg:pl-0 lg:-ml-10 xl:-ml-20 2xl:-ml-28 relative z-20">
                     <h2 className="text-[40px] md:text-[48px] lg:text-[52px] xl:text-[56px] font-black text-[#012955] mb-6 leading-[1.15] tracking-tight">
                         {title}
                     </h2>

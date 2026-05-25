@@ -4,7 +4,7 @@ import { Metadata } from 'next'
 import '../globals.css'
 import Header from '@/components/Header'
 import Footer from '@/components/layout/Footer/page'
-import { resolveLocale } from '@/lib/seo/metadata'
+import { buildLocaleAlternates, resolveLocale, SITE_URL } from '@/lib/seo/metadata'
 
 // Initialising custom Google font
 const anekLatin = Anek_Latin({
@@ -24,10 +24,12 @@ export async function generateMetadata({
     const locale = resolveLocale(lang)
 
     return {
-        title: 'BlockP',
-        description: 'BlockP - Premium crypto & blockchain platform',
+        metadataBase: new URL(SITE_URL),
+        title: 'BlockP — #1 Free AI Porn Blocker',
+        description: 'BlockP is the #1 AI-Powered Porn Blocker — free, reliable, and intuitive software to keep your devices free from explicit content.',
         alternates: {
             canonical: `/${locale}`,
+            languages: buildLocaleAlternates((supportedLocale) => `/${supportedLocale}`),
         },
     }
 }

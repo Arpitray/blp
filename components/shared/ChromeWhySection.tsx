@@ -31,15 +31,30 @@ const CARDS = [
     },
 ]
 
+function renderFormattedText(text: string) {
+    if (!text) return "";
+    const parts = text.split("**");
+    return parts.map((part, index) => {
+        if (index % 2 === 1) {
+            return (
+                <span key={index} className="underline decoration-1 underline-offset-2 text-[#012955]">
+                    {part}
+                </span>
+            );
+        }
+        return part;
+    });
+}
+
 export function ChromeWhySection({ data }: { data?: { sectionTitle?: string; cards?: { text?: string }[] } }) {
     const title = data?.sectionTitle || "Why do you Need Porn Blocker Chrome Extension?"
     const cardsToUse = data?.cards && data.cards.length > 0
-        ? data.cards.map(c => ({ content: <>{c.text}</> }))
+        ? data.cards.map(c => ({ content: <>{renderFormattedText(c.text || '')}</> }))
         : CARDS
 
     return (
         <section className="w-full bg-[#F6FAFF] py-24 md:py-32 relative z-20">
-            <div className="w-full max-w-site px-6 lg:px-16 mx-auto flex flex-col items-center">
+            <div className="w-full max-w-site px-[12px] lg:px-[40px] mx-auto flex flex-col items-center">
                 <h2 className="text-[32px] md:text-[48px] lg:text-[54px] font-black text-[#012955] text-center mb-16 md:mb-24 leading-[1.2]">
                     {title}
                 </h2>

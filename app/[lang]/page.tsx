@@ -5,6 +5,7 @@ import { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import { CurveDivider } from '@/components/shared/CurveDivider'
+import { TestimonialsSection } from '@/components/shared/TestimonialsSection'
 import { buildLocaleAlternates, resolveLocale } from '@/lib/seo/metadata'
 import { sanityClient } from '@/infrastructure/sanity/client'
 import { HOMEPAGE_QUERY } from '@/infrastructure/sanity/queries'
@@ -12,17 +13,17 @@ import { HOMEPAGE_QUERY } from '@/infrastructure/sanity/queries'
 // ─── Fallback data (original hardcoded content preserved here) ──────────────
 const FALLBACK_STATS = [
     {
-        iconUrl: 'https://www.figma.com/api/mcp/asset/5b272a04-b351-4a25-a78d-3429873e3fc6',
+        iconUrl: '/landing/star_shine.svg',
         value: '4.4 Star',
         label: 'Average rating based on reviews',
     },
     {
-        iconUrl: 'https://www.figma.com/api/mcp/asset/7e5d7210-f8f3-41cc-b26e-a229a7432e1c',
+        iconUrl: '/landing/download.svg',
         value: '1M+ Downloads',
         label: 'Across all platforms',
     },
     {
-        iconUrl: 'https://www.figma.com/api/mcp/asset/31075054-7efc-4411-a10d-e219408e6389',
+        iconUrl: '/landing/thumbs_up_double.svg',
         value: '20K+ Reviews',
         label: 'On google play store',
     },
@@ -41,42 +42,42 @@ const FALLBACK_STOP_WATCHING_CARDS = [
     {
         title: 'Meditation',
         description: 'The art of meditation helps you to get away from your urges. You can listen to calming music or use a meditation app. BlockP also has a feature that reduces your urge when you feel like giving up. It also has a meditation mode which can help you concentrate and understand the main cause of your addiction.',
-        imageUrl: 'https://www.figma.com/api/mcp/asset/573c24ec-3ea9-43f6-a550-f6e11a6e9c2c',
+        imageUrl: '/landing/stop-watching-placeholder.svg',
     },
     {
         title: 'Physical activity',
         description: 'To tackle your addiction healthily, pick a sport you enjoy or hit the gym. This way you can stay physically fit and tackle your urges.',
-        imageUrl: 'https://www.figma.com/api/mcp/asset/628871a7-a1b1-42fa-849e-48f7793a68bf',
+        imageUrl: '/landing/stop-watching-placeholder.svg',
     },
     {
         title: 'Seek help from your close ones',
         description: 'Sometimes it is difficult to handle a problem alone and it is okay to seek help from your friends and family. Getting through it can be difficult, when you know you will get sudden urges that are hard to resist.',
-        imageUrl: 'https://www.figma.com/api/mcp/asset/d701dbe1-50e7-4bc8-bd76-1ca0981be85e',
+        imageUrl: '/landing/stop-watching-placeholder.svg',
     },
     {
         title: 'Prioritize your values',
         description: 'Everyone has some values that they need to prioritize to live a moral and good life. By doing this, it will help to let go of things that aren\'t right for you. Start by understanding your values and aligning yourself with them. Gradually you will understand what is important to you and what is not.',
-        imageUrl: 'https://www.figma.com/api/mcp/asset/0f132157-cddd-4366-b6d3-b1563809093d',
+        imageUrl: '/landing/stop-watching-placeholder.svg',
     },
     {
         title: 'Consult a sexologist',
         description: 'They can help you understand the underlying cause of your addiction, it could be anything like relationship problems, emotional problems, family problems, etc.',
-        imageUrl: 'https://www.figma.com/api/mcp/asset/cbb7d393-42d6-4384-8c5c-6f62399c3499',
+        imageUrl: '/landing/stop-watching-placeholder.svg',
     },
     {
         title: 'Install a porn blocker',
         description: 'Installing a porn blocker on your device would help control your sudden urges; BlockP is the best adult content blocker that will act as a barrier, driving you to act consciously.',
-        imageUrl: 'https://www.figma.com/api/mcp/asset/573c24ec-3ea9-43f6-a550-f6e11a6e9c2c',
+        imageUrl: '/landing/stop-watching-placeholder.svg',
     },
     {
         title: 'Join a support group',
         description: 'It can be difficult to face this alone, joining a support group of people going through the same thing will give you more confidence. Having a support network can offer new viewpoints and coping techniques, as well as a sense of understanding. To join this type of community we have BlockP Community. Join Now!',
-        imageUrl: 'https://www.figma.com/api/mcp/asset/0c7e468c-c696-4e21-b839-284f02361e54',
+        imageUrl: '/landing/stop-watching-placeholder.svg',
     },
     {
         title: 'Replace the habit',
         description: 'Redirect your energy into a healthy hobby or passion project that fills the gap – like reading, art, music, or learning a new skill. Creative pursuits fill your time, reduce boredom and uplift your mood.',
-        imageUrl: 'https://www.figma.com/api/mcp/asset/f4c881f4-69e0-4ef0-8cf6-4239651f555e',
+        imageUrl: '/landing/stop-watching-placeholder.svg',
     },
 ]
 
@@ -103,11 +104,25 @@ const FALLBACK_FAQ_ITEMS = [
     },
 ]
 
+const FALLBACK_LOGOS = [
+    { name: 'Google', logoUrl: '/landing/google.svg', localLogoPath: '/landing/google.svg' },
+    { name: 'Meta', logoUrl: '/landing/meta.svg', localLogoPath: '/landing/meta.svg' },
+    { name: 'Microsoft', logoUrl: '/landing/microsoft.svg', localLogoPath: '/landing/microsoft.svg' }
+]
+
+const FALLBACK_PLATFORMS = [
+    { name: 'Android', iconUrl: '/premium/android.svg', localIconPath: '/premium/android.svg' },
+    { name: 'iOS', iconUrl: '/premium/ios.svg', localIconPath: '/premium/ios.svg' },
+    { name: 'macOS', iconUrl: '/premium/MacOS_logo.svg', localIconPath: '/premium/MacOS_logo.svg' },
+    { name: 'Chrome', iconUrl: '/premium/chrome.svg', localIconPath: '/premium/chrome.svg' },
+    { name: 'Windows', iconUrl: '/premium/windows.svg', localIconPath: '/premium/windows.svg' }
+]
+
 // ─── Types ───────────────────────────────────────────────────────────────────
 interface HomepageData {
     hero?: { title?: string; subtitle?: string; ctaText?: string; ctaUrl?: string; heroImageUrl?: string; mascotImageUrl?: string }
-    asSeenOn?: { sectionTitle?: string }
-    platforms?: { sectionTitle?: string }
+    asSeenOn?: { sectionTitle?: string; logos?: { name: string; logoUrl?: string; localLogoPath?: string }[] }
+    platforms?: { sectionTitle?: string; platformList?: { name: string; iconUrl?: string; localIconPath?: string; linkUrl?: string }[] }
     stats?: { sectionTitle?: string; statItems?: { iconUrl?: string; value: string; label: string }[] }
     testimonials?: { sectionTitle?: string; testimonialItems?: { quote: string; authorName: string; authorRole?: string; rating?: number }[] }
     stopWatching?: { sectionTitle?: string; cards?: { title: string; description: string; imageUrl?: string }[] }
@@ -141,13 +156,14 @@ export default async function LandingPage({ params }: { params: Promise<{ lang: 
     const hp = await sanityClient.fetch<HomepageData | null>(HOMEPAGE_QUERY, { lang: locale })
 
     // 2️⃣ Derive data with fallbacks — page is NEVER blank
-    const heroImage = hp?.hero?.heroImageUrl ?? 'https://www.figma.com/api/mcp/asset/5cc7e642-0b96-4abb-b9ef-51e638e4dd08'
+    const heroImage = hp?.hero?.heroImageUrl
     const mascotSrc = hp?.hero?.mascotImageUrl ?? '/landing/maskot.svg'
+    const asSeenOnLogos = hp?.asSeenOn?.logos?.length ? hp.asSeenOn.logos : FALLBACK_LOGOS
+    const platformList = hp?.platforms?.platformList?.length ? hp.platforms.platformList : FALLBACK_PLATFORMS
     const stats = hp?.stats?.statItems?.length ? hp.stats.statItems : FALLBACK_STATS
     const testimonials = hp?.testimonials?.testimonialItems?.length ? hp.testimonials.testimonialItems : FALLBACK_TESTIMONIALS
     const stopWatchingCards = hp?.stopWatching?.cards?.length ? hp.stopWatching.cards : FALLBACK_STOP_WATCHING_CARDS
     const faqItems = hp?.faq?.faqItems?.length ? hp.faq.faqItems : FALLBACK_FAQ_ITEMS
-    const testimonial = testimonials[0]
 
     return (
         <div className="w-full flex flex-col items-center bg-white min-h-screen overflow-x-hidden">
@@ -188,13 +204,15 @@ export default async function LandingPage({ params }: { params: Promise<{ lang: 
                 </div>
 
                 {/* Hero Image */}
-                <div className="absolute right-0 bottom-0 z-30 pointer-events-none">
-                    <img
-                        src={heroImage}
-                        alt="BlockP Hero"
-                        className="w-[780px] h-[963px] object-cover object-bottom"
-                    />
-                </div>
+                {heroImage && (
+                    <div className="absolute right-0 bottom-0 z-30 pointer-events-none">
+                        <img
+                            src={heroImage}
+                            alt="BlockP Hero"
+                            className="w-[780px] h-[963px] object-cover object-bottom"
+                        />
+                    </div>
+                )}
 
                 {/* Mascot */}
                 <div className="absolute bottom-[40px] md:bottom-[20px] left-1/2 -translate-x-1/2 z-10 pointer-events-none">
@@ -229,9 +247,9 @@ export default async function LandingPage({ params }: { params: Promise<{ lang: 
                         {hp?.asSeenOn?.sectionTitle ?? 'As seen on'}
                     </h2>
                     <div className="flex items-center justify-center gap-[40px] md:gap-[70px]">
-                        <img src="/landing/google.svg" alt="Google" className="h-[48px] md:h-[65px] w-auto object-contain" />
-                        <img src="/landing/meta.svg" alt="Meta" className="h-[40px] md:h-[55px] w-auto object-contain" />
-                        <img src="/landing/microsoft.svg" alt="Microsoft" className="h-[40px] md:h-[55px] w-auto object-contain" />
+                        {asSeenOnLogos.map((logo, i) => (
+                            <img key={i} src={logo.logoUrl ?? logo.localLogoPath ?? ''} alt={logo.name} className="h-[40px] md:h-[55px] w-auto object-contain" />
+                        ))}
                     </div>
                     <div className="w-full max-w-[1640px] h-[1px] bg-gray-200" />
                 </div>
@@ -250,26 +268,12 @@ export default async function LandingPage({ params }: { params: Promise<{ lang: 
                     </h2>
 
                     <div className="flex flex-wrap justify-center gap-14 md:gap-32 lg:gap-40 px-6 mb-16">
-                        <div className="flex flex-col items-center gap-4">
-                            <img src="/premium/android.svg" alt="Android" className="w-[75px] h-[75px] object-contain" />
-                            <span className="text-[20px] font-bold text-[#002954]">Android</span>
-                        </div>
-                        <div className="flex flex-col items-center gap-4">
-                            <img src="/premium/ios.svg" alt="iOS" className="w-[75px] h-[75px] object-contain" />
-                            <span className="text-[20px] font-bold text-[#002954]">iOS</span>
-                        </div>
-                        <div className="flex flex-col items-center gap-4">
-                            <img src="/premium/MacOS_logo.svg" alt="macOS" className="w-[75px] h-[75px] object-contain" />
-                            <span className="text-[20px] font-bold text-[#002954]">macOS</span>
-                        </div>
-                        <div className="flex flex-col items-center gap-4">
-                            <img src="/premium/chrome.svg" alt="Chrome" className="w-[75px] h-[75px] object-contain" />
-                            <span className="text-[20px] font-bold text-[#002954]">Chrome</span>
-                        </div>
-                        <div className="flex flex-col items-center gap-4">
-                            <img src="/premium/windows.svg" alt="Windows" className="w-[75px] h-[75px] object-contain" />
-                            <span className="text-[20px] font-bold text-[#002954]">Windows</span>
-                        </div>
+                        {platformList.map((platform, i) => (
+                            <div key={i} className="flex flex-col items-center gap-4">
+                                <img src={platform.iconUrl ?? platform.localIconPath ?? ''} alt={platform.name} className="w-[75px] h-[75px] object-contain" />
+                                <span className="text-[20px] font-bold text-[#002954]">{platform.name}</span>
+                            </div>
+                        ))}
                     </div>
                     <div className="w-full max-w-[1640px] h-[1px] bg-gray-200" />
                 </div>
@@ -289,7 +293,7 @@ export default async function LandingPage({ params }: { params: Promise<{ lang: 
                     <div className="flex items-center justify-center gap-[25px] w-full">
                         {stats.map((stat, i) => (
                             <div key={i} className="flex flex-col gap-[10px] items-center w-[326px]">
-                                <img src={stat.iconUrl} alt={stat.value} className="w-[135px] h-[135px]" />
+                                <img src={stat.iconUrl} alt={stat.value} className="w-[135px] h-[135px] object-contain" />
                                 <p
                                     className="text-[32px] font-bold text-[#002954] text-center leading-[1.44]"
                                     style={{ fontVariationSettings: "'wdth' 100", textShadow: '0px 0px 4px rgba(255, 255, 255, 0.35)' }}
@@ -311,81 +315,10 @@ export default async function LandingPage({ params }: { params: Promise<{ lang: 
             {/* ══════════════════════════════════════════════════════
                 TESTIMONIAL SECTION
             ══════════════════════════════════════════════════════ */}
-            <section className="w-full py-[96px] flex flex-col items-center bg-white relative z-20">
-                <div className="w-full max-w-[1640px] h-[1px] bg-gray-200" />
-
-                <div className="w-full max-w-[1121px] px-6 mt-[96px] mb-[96px] flex flex-col items-center">
-                    <div className="flex flex-col gap-[80px] items-center">
-                        <h2
-                            className="text-[48px] font-bold text-[#002954] text-center leading-[1.2]"
-                            style={{ fontVariationSettings: "'wdth' 100", textShadow: '0px 0px 4px rgba(255, 255, 255, 0.35)' }}
-                        >
-                            {hp?.testimonials?.sectionTitle ?? 'What our users say about us'}
-                        </h2>
-
-                        <div className="flex flex-col gap-[60px] items-center w-full max-w-[1027px]">
-                            {/* Stars */}
-                            <div className="flex gap-[8px] items-center">
-                                {Array.from({ length: testimonial.rating ?? 5 }).map((_, i) => (
-                                    <img
-                                        key={i}
-                                        src="https://www.figma.com/api/mcp/asset/7a62653e-8ad9-4b1b-a2f9-fc5d4e6165dd"
-                                        alt="Star"
-                                        className="w-[66px] h-[66px]"
-                                    />
-                                ))}
-                            </div>
-
-                            {/* Quote */}
-                            <p
-                                className="text-[32px] font-bold text-[#002954] text-center leading-[1.44]"
-                                style={{ fontVariationSettings: "'wdth' 100", textShadow: '0px 0px 4px rgba(255, 255, 255, 0.35)' }}
-                            >
-                                &quot;{testimonial.quote}&quot;
-                            </p>
-
-                            {/* Author & Pagination */}
-                            <div className="flex flex-col items-center gap-12">
-                                <div className="flex flex-col items-center gap-[1px]">
-                                    <p
-                                        className="text-[32px] font-bold text-[#002954] text-center leading-[1.44]"
-                                        style={{ fontVariationSettings: "'wdth' 100", textShadow: '0px 0px 4px rgba(255, 255, 255, 0.35)' }}
-                                    >
-                                        {testimonial.authorName}
-                                    </p>
-                                    <p
-                                        className="text-[20px] font-medium text-[#595959] text-center"
-                                        style={{ fontVariationSettings: "'wdth' 100" }}
-                                    >
-                                        {testimonial.authorRole ?? 'BlockP User'}
-                                    </p>
-                                </div>
-
-                                {/* Pagination dots */}
-                                <div className="flex items-center gap-8 text-[#002954]">
-                                    <button className="hover:opacity-60 transition-opacity">
-                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M15 18l-6-6 6-6" /></svg>
-                                    </button>
-                                    <div className="flex gap-4">
-                                        {testimonials.map((_, i) => (
-                                            <div key={i} className={`w-3.5 h-3.5 rounded-full ${i === 0 ? 'bg-[#002954]' : 'border-2 border-[#002954]/30'}`} />
-                                        ))}
-                                        {/* If only one testimonial, ensure at least 5 dots for design */}
-                                        {testimonials.length < 2 && [1,2,3,4].map((i) => (
-                                            <div key={`extra-${i}`} className="w-3.5 h-3.5 rounded-full border-2 border-[#002954]/30" />
-                                        ))}
-                                    </div>
-                                    <button className="hover:opacity-60 transition-opacity">
-                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M9 18l6-6-6-6" /></svg>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="w-full max-w-[1640px] h-[1px] bg-gray-200" />
-            </section>
+            <TestimonialsSection
+                sectionTitle={hp?.testimonials?.sectionTitle}
+                testimonials={testimonials}
+            />
 
             {/* ══════════════════════════════════════════════════════
                 HOW CAN YOU STOP WATCHING PORN
@@ -432,67 +365,7 @@ export default async function LandingPage({ params }: { params: Promise<{ lang: 
                 </div>
             </section>
 
-            {/* ══════════════════════════════════════════════════════
-                FOOTER (hardcoded — driven by footer schema separately)
-            ══════════════════════════════════════════════════════ */}
-            <footer className="w-full bg-gradient-to-b from-[#1160FF] to-[#0076F4] py-[120px] relative">
-                <div className="w-full max-w-[1524px] mx-auto px-[123px] flex flex-col gap-[40px]">
-                    <div className="flex flex-col gap-[20px]">
-                        <h3 className="text-[47px] font-extrabold text-white leading-[1.2]" style={{ fontVariationSettings: "'wdth' 100" }}>
-                            BlockP.
-                        </h3>
-                        <p className="text-[20px] font-medium text-white max-w-[438px]" style={{ fontVariationSettings: "'wdth' 100" }}>
-                            BlockP: Porn and Website Blocker. BlockP is the best porn blocker which offers a safe browsing experience with its exceptional safety and security features.
-                        </p>
-                    </div>
 
-                    <div className="grid grid-cols-3 gap-[80px] mt-[40px]">
-                        <div className="flex flex-col gap-[20px]">
-                            <h4 className="text-[32px] font-bold text-white" style={{ fontVariationSettings: "'wdth' 100" }}>Documentation</h4>
-                            <div className="flex flex-col gap-[15px] text-[20px] font-medium text-white">
-                                <Link href={`/${locale}/privacy-policy`}>Privacy Policy</Link>
-                                <Link href={`/${locale}/terms-and-conditions`}>Terms &amp; Conditions</Link>
-                                <Link href={`/${locale}/faqs`}>FAQs</Link>
-                                <Link href={`/${locale}/premium`}>Premium</Link>
-                                <a href="https://community.blockp.in/" target="_blank" rel="noopener noreferrer">BlockP Community</a>
-                                <Link href={`/${locale}/data-deletion`}>Data Deletion</Link>
-                            </div>
-                        </div>
-
-                        <div className="flex flex-col gap-[20px]">
-                            <h4 className="text-[32px] font-bold text-white" style={{ fontVariationSettings: "'wdth' 100" }}>Products</h4>
-                            <div className="flex flex-col gap-[15px] text-[20px] font-medium text-white">
-                                <Link href={`/${locale}/products/android`}>Porn Blocker for Android</Link>
-                                <Link href={`/${locale}/products/chrome`}>Porn Blocker Chrome extension</Link>
-                                <Link href={`/${locale}/products/ios`}>Porn Blocker for IOS</Link>
-                                <Link href={`/${locale}/products/microsoft`}>Porn Blocker for Windows</Link>
-                                <Link href={`/${locale}/products/macos`}>Porn Blocker for Macbook</Link>
-                            </div>
-                            <div className="flex flex-col gap-[20px] mt-[40px]">
-                                <h4 className="text-[32px] font-bold text-white" style={{ fontVariationSettings: "'wdth' 100" }}>Helpful resources</h4>
-                                <Link href={`/${locale}/addiction-test`} className="text-[20px] font-medium text-white" style={{ fontVariationSettings: "'wdth' 100" }}>
-                                    Porn addiction test
-                                </Link>
-                            </div>
-                        </div>
-
-                        <div className="flex flex-col gap-[30px]">
-                            <div className="flex items-center gap-[15px]">
-                                <img src="https://www.figma.com/api/mcp/asset/9a5a6727-0bff-45e3-b9af-a19a302a1d21" alt="Email" className="w-[45px] h-[45px]" />
-                                <p className="text-[20px] font-medium text-white" style={{ fontVariationSettings: "'wdth' 100" }}>support@blockp.io</p>
-                            </div>
-                            <div className="flex items-center gap-[12px]">
-                                <img src="https://www.figma.com/api/mcp/asset/19f803dc-6e3b-403b-aaa2-f4f4b77de99f" alt="Facebook" className="w-[35px] h-[35px]" />
-                                <img src="https://www.figma.com/api/mcp/asset/25ae7e47-ef07-4125-a4c7-f2d29a09ebd8" alt="Twitter" className="w-[43px] h-[43px]" />
-                                <img src="https://www.figma.com/api/mcp/asset/e6ed0f94-196c-4f0b-80c8-594a89a85adc" alt="Instagram" className="w-[35px] h-[35px]" />
-                                <img src="https://www.figma.com/api/mcp/asset/90726b46-c3f4-4424-8600-6e6dce4eb527" alt="LinkedIn" className="w-[35px] h-[35px]" />
-                                <img src="https://www.figma.com/api/mcp/asset/dd85fc3b-ddd9-4845-ac02-a7bb8c814fdc" alt="Reddit" className="w-[40px] h-[40px]" />
-                                <img src="https://www.figma.com/api/mcp/asset/dfe4fb16-752c-44e8-8a19-5a633e453737" alt="Discord" className="w-[43px] h-[43px]" />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </footer>
         </div>
     )
 }

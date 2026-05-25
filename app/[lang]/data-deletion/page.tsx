@@ -1,6 +1,20 @@
+import { Metadata } from 'next';
 import { BackButton } from '@/components/shared/BackButton';
 import { getPageTranslations } from '@/lib/pageTranslations';
-import { resolveLocale } from '@/lib/seo/metadata';
+import { buildLocaleAlternates, resolveLocale } from '@/lib/seo/metadata';
+
+export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
+    const { lang } = await params
+    const locale = resolveLocale(lang)
+    return {
+        title: 'Data Deletion Policy — BlockP',
+        description: 'Learn how to delete your BlockP account and all associated data from our Android app.',
+        alternates: {
+            canonical: `/${locale}/data-deletion`,
+            languages: buildLocaleAlternates((supportedLocale) => `/${supportedLocale}/data-deletion`),
+        },
+    }
+}
 
 // The static content blocks (English only - translated title/date come from translations)
 const DATA_DELETION_BODY = [

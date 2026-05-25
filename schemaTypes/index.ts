@@ -8,6 +8,8 @@ import footer from './footer'
 import productAndroid from './productAndroid'
 import productIos from './productIos'
 import productChrome from './productChrome'
+import productMacos from './productMacos'
+import productMicrosoft from './productMicrosoft'
 
 // ── Phase 1: Page schemas ─────────────────────────────────────
 import homepage from './homepage'
@@ -30,6 +32,8 @@ export const schemaTypes = [
   productAndroid,
   productIos,
   productChrome,
+  productMacos,
+  productMicrosoft,
 
   // ── Phase 1: Pages ──────────────────────────────────────────
   homepage,

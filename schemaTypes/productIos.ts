@@ -1,8 +1,8 @@
 import { defineField, defineType } from 'sanity'
 
 export default defineType({
-    name: 'productAndroid',
-    title: 'Product (Android)',
+    name: 'productIos',
+    title: 'Product (iOS)',
     type: 'document',
     fields: [
         defineField({
@@ -37,18 +37,19 @@ export default defineType({
             options: {
                 source: 'name',
                 maxLength: 96,
+                isUnique: () => true,
             },
-            description: 'The URL path segment for this product (e.g., "android" or "ios"). MUST BE "android" for this page to work.',
+            description: 'The URL path segment for this product (e.g., "android" or "ios"). MUST BE "ios" for this page to work.',
             validation: (Rule) => Rule.required(),
-            initialValue: { current: 'android' }
+            initialValue: { current: 'ios' }
         }),
         defineField({
             name: 'heroTitle',
             title: 'Hero Heading Text',
             type: 'text',
             rows: 2,
-            description: 'Main heading text. E.g. "BlockP\nfor Android."',
-            initialValue: 'BlockP\nfor Android.',
+            description: 'Main heading text. E.g. "BlockP\nfor iOS."',
+            initialValue: 'BlockP\nfor iOS.',
             validation: (Rule) => Rule.required(),
         }),
         defineField({
@@ -177,9 +178,12 @@ export default defineType({
                     title: 'Steps',
                     type: 'array',
                     initialValue: [
-                        { _type: 'step', title: 'Install the App & Provide Essential Permissions', description: "A blocker needs deep access to Android to ensure it cannot be bypassed. During setup, you'll be prompted to grant permissions like Accessibility and Device Admin.", imagePath: '/product/android/onboard/1.png' },
-                        { _type: 'step', title: 'Enable BlockP Protection', description: "Once permissions are granted, simply toggle the main switch to activate protection. BlockP will immediately begin filtering adult content across all browsers and apps.", imagePath: '/product/android/onboard/2.png' },
-                        { _type: 'step', title: 'Customize Your Blocking Preferences', description: "Every journey is unique. You can enable Strict Mode to prevent uninstalling the app, or customize your blocked keywords and sites for a personalized safe space.", imagePath: '/product/android/onboard/3.png' }
+                        { _type: 'step', title: 'How to Block\nPorn on iOS\nUsing BlockP', description: "", imagePath: '/product/ios/1.png' },
+                        { _type: 'step', title: 'Set Up Smart Porn Blocking for iPhone', description: "BlockP gives powerful, AI-driven filtering to protect your iPhone from pornographic and harmful content. It’s fast, simple and effective. Available as an app for iOS devices and MacBook.", imagePath: '/product/ios/2.png' },
+                        { _type: 'step', title: 'Customize Your Protection for You and Your Family', description: "BlockP’s custom blocking options help you set up filters that suit your needs. \nStandard porn blocker for basic adult content blocking\nAI-powered blocking for blocking all adult content and nudity\nBlockP VPN for blocking adult content across your internet to protect all connected devices.", imagePath: '/product/ios/3.png' },
+                        { _type: 'step', title: 'Protect Kids with Advanced Parental Controls', description: "Use the Blocklist to block any website or Whitelist to allow access to only safe websites. Set up password protection and block social media features that put your kids at risk.", imagePath: '/product/ios/4.png' },
+                        { _type: 'step', title: 'Improve Focus and Mental Well-being', description: "Reduce digital distractions and gain more mental clarity. BlockP helps you stay on task, reduce screen stress and sleep better.", imagePath: '/product/ios/5.png' },
+                        { _type: 'step', title: 'Stay safe with Real-Time Detection and Safe Search', description: "Our real-time AI detection and Safe Search features make your browsing cleaner and safer – blocking not just porn, but also other unwanted things like social media, and gambling.", imagePath: '/product/ios/6new.png' }
                     ],
                     of: [{
                         type: 'object',
@@ -200,7 +204,7 @@ export default defineType({
             title: 'Why Do You Need a Blocker — Section',
             type: 'object',
             fields: [
-                defineField({ name: 'sectionTitle', title: 'Section Heading', type: 'string', initialValue: 'Why do you need Porn Blocker for Android?' }),
+                defineField({ name: 'sectionTitle', title: 'Section Heading', type: 'string', initialValue: 'Why do you need Porn Blocker for iPhone?' }),
                 defineField({
                     name: 'cards',
                     title: 'Stat / Reason Cards',
@@ -208,8 +212,8 @@ export default defineType({
                     description: 'Each card is a short paragraph with a stat. Use **bold** for emphasis.',
                     initialValue: [
                         { _type: 'card', text: "Data from adult websites shows that **87%** of porn watching happens on phones. BlockP adds a digital barrier to prevent this rampant access." },
-                        { _type: 'card', text: "**67.7%** of porn access on smartphones happens on Android devices. BlockP helps to secure all apps and browsers on Android devices to block porn, nudity, and semi-nude content." },
                         { _type: 'card', text: "**70%** of teens are exposed to explicit content online, often unintentionally. BlockP’s AI-powered filters act in real time to protect the children from accidental exposure to porn." },
+                        { _type: 'card', text: "Over **85%** of teens own an iPhone with TikTok and Instagram as their favorite apps. The algorithms on these platforms often push explicit content in searches and reels even in restricted mode. BlockP protects your children by restricting the social media apps." },
                         { _type: 'card', text: "A typical tween (8 to 12 years) spends around **6 hours** per day on their phone and the smartphone use time goes up to **8 hours** for teens. BlockP helps parents to regulate screen time and teach healthy digital behaviors." },
                         { _type: 'card', text: "Digital distractions can reduce productivity by **40%** and it takes **23 minutes** to refocus. BlockP helps to protect you from porn and other online distractions like social media, shopping apps etc. to protect your focus and boost productivity." },
                         { _type: 'card', text: "Research shows that problematic porn use is strongly linked to easy and convenient access of porn on **mobile phones.** If you are trying to quit porn, BlockP prevents easy access to porn and blocks triggering content to protect you from relapse." }
@@ -224,16 +228,18 @@ export default defineType({
             title: 'Benefits Section',
             type: 'object',
             fields: [
-                defineField({ name: 'sectionTitle', title: 'Section Heading', type: 'string', initialValue: 'Benefits of using a porn blocker' }),
+                defineField({ name: 'sectionTitle', title: 'Section Heading', type: 'string', initialValue: 'Benefits of Using BlockP: Porn Blocker for iPhone' }),
                 defineField({
                     name: 'items',
                     title: 'Benefit Items',
                     type: 'array',
                     initialValue: [
-                        { _type: 'benefit', title: "Increased Focus & Productivity", iconPath: "/product/android/benifits/network.svg", description: "By removing the distraction and temptation of adult content, you can reclaim hours of your day. This newfound time and mental energy can be redirected towards your personal goals, work, and hobbies." },
-                        { _type: 'benefit', title: "Healthier Brain Chemistry", iconPath: "/product/android/benifits/health.svg", description: "Consistent consumption of adult content can alter dopamine pathways. A blocker helps break this cycle, allowing your brain to reset and find pleasure in everyday, real-world activities and achievements." },
-                        { _type: 'benefit', title: "Better Mental Health", iconPath: "/product/android/benifits/mental_health.svg", description: "Many users report reduced anxiety, lower levels of depression, and a significant decrease in brain fog after quitting porn. A reliable blocker is a powerful tool to support this mental health journey." },
-                        { _type: 'benefit', title: "Improved Relationships", iconPath: "/product/android/benifits/relationships.svg", description: "Without the unrealistic expectations often created by adult content, you can foster deeper, more authentic connections with your partner and experience greater satisfaction in real-world intimacy." }
+                        { _type: 'benefit', title: "Improve Mental Health", iconPath: "/product/android/benifits/network.svg", description: "Studies show that people who watch porn frequently are at a higher risk of emotional distress. BlockP keeps you safe from explicit content that causes feelings of guilt, shame, and anxiety." },
+                        { _type: 'benefit', title: "Increase Productivity", iconPath: "/product/android/benifits/tune.svg", description: "Frequent digital interruptions reduce your productivity by 40% and it takes around 20 minutes to regain your focus after a distraction. BlockP helps to reduce exposure to not just porn but other distractions like social media to help you stay focused and productive." },
+                        { _type: 'benefit', title: "Prevent Addiction", iconPath: "/product/android/benifits/favorite.svg", description: "Nearly 65% of all our daily actions are driven by habit. Easy access to porn reinforces habitual use which can turn addictive. BlockP helps to break the urge-action cycle and reduces cravings." },
+                        { _type: 'benefit', title: "Prevent Trauma", iconPath: "/product/android/benifits/blocklist.svg", description: "Over 85% of teens use an iPhone and 71% of young adults are exposed to pornography online on social media and search results. BlockP keeps them safe from the trauma of accidental exposure to porn, nudity, and semi-nude content on their iPhones." },
+                        { _type: 'benefit', title: "Improve Sleep Quality", iconPath: "/product/android/benifits/handshake.svg", description: "Watching stimulating content like porn on your iPhone before bedtime disrupts your sleep cycles. BlockP supports deeper and restful sleep by blocking late-night triggers that keep you awake." },
+                        { _type: 'benefit', title: "Healthy Digital Habits", iconPath: "/product/android/benifits/focus.svg", description: "People spend more than 7 hours per day looking at screens, much of it in mindless scrolling and distractions. BlockP helps you learn intentional digital habits with its screen time management features." }
                     ],
                     of: [{
                         type: 'object',
@@ -254,20 +260,15 @@ export default defineType({
             title: 'FAQs Section (Product Page)',
             type: 'object',
             fields: [
-                defineField({ name: 'sectionTitle', title: 'Section Heading', type: 'string', initialValue: 'FAQs' }),
+                defineField({ name: 'sectionTitle', title: 'Section Heading', type: 'string', initialValue: 'FAQs on BlockP: Porn Blocker\nfor iPhone' }),
                 defineField({
                     name: 'faqs',
                     title: 'FAQ Items',
                     type: 'array',
                     initialValue: [
-                        { _type: 'faqItem', question: "How to block porn on Android for free?", answer: "Install the BlockP app from the Google Play Store. The free version offers robust, basic protection to block adult websites effectively." },
-                        { _type: 'faqItem', question: "Which is the best free porn blocker for teens or young adults?", answer: "BlockP is highly recommended. It offers strong un-bypassable features, making it ideal for protecting teens and young adults from adult content." },
-                        { _type: 'faqItem', question: "How to block porn sites permanently on Android?", answer: "By installing BlockP and enabling features like Strict Mode and Uninstall Protection, you can create a nearly permanent barrier against adult sites." },
-                        { _type: 'faqItem', question: "What does the BlockP Android app do?", answer: "It actively monitors web traffic and app usage to instantly block access to adult websites, nudity, and customized keywords on your Android device." },
-                        { _type: 'faqItem', question: "Can the BlockP app help me quit porn addiction?", answer: "Yes. By removing the immediate accessibility of adult content, BlockP provides the necessary friction to help break the cycle of addiction." },
-                        { _type: 'faqItem', question: "Does BlockP work in Incognito mode or private browsing?", answer: "Yes! BlockP uses accessibility and VPN-like services to filter content across all browsers, including Incognito and private tabs." },
-                        { _type: 'faqItem', question: "Does this app block adult content on YouTube, Reddit, or Twitter?", answer: "Absolutely. BlockP is designed to filter out NSFW content and adult material even within popular social media and video apps." },
-                        { _type: 'faqItem', question: "Can this app help during NoFap or digital detox journeys?", answer: "Yes, it is an essential companion for NoFap. It eliminates triggers, helping you maintain your streak and successfully complete your digital detox." }
+                        { _type: 'faqItem', question: "how to block porn on iphone", answer: "DNS filters and parental control on your iPhone can help you restrict porn. Adding a free porn blocker for iPhone like BlockP helps you block all porn and explicit content more effectively." },
+                        { _type: 'faqItem', question: "how to block porn sites on an iphone", answer: "When you install a porn blocker for iPhone like BlockP, it automatically blocks millions of porn sites. You can add as many sites as you want to BlockP’s blocklist for more robust porn blocking." },
+                        { _type: 'faqItem', question: "How to block Adults websites on my iPhone permanently", answer: "BlockP features like AI-powered filters, accountability partners, password protection, and uninstall prevention ensure more reliable blocking to prevent access to adult websites." }
                     ],
                     of: [{
                         type: 'object',
@@ -287,16 +288,18 @@ export default defineType({
             title: 'Best Blocker Section',
             type: 'object',
             fields: [
-                defineField({ name: 'sectionTitle', title: 'Section Title', type: 'string', initialValue: 'Why BlockP Is The Best Porn Blocker App For Android' }),
-                defineField({ name: 'description1', title: 'First Paragraph', type: 'text', rows: 3, initialValue: 'BlockP is the best Android porn blocker because it offers an uncompromising, multi-layered approach to content filtering. While many blockers rely on simple DNS filtering that can be easily bypassed, BlockP combines advanced AI analysis with deep system-level integration.' }),
-                defineField({ name: 'listHeading', title: 'List Heading', type: 'string', initialValue: 'Key advantages include:' }),
+                defineField({ name: 'sectionTitle', title: 'Section Title', type: 'string', initialValue: 'Why BlockP Is the Best App to Block porn on an iPhone?' }),
+                defineField({ name: 'description1', title: 'First Paragraph', type: 'text', rows: 3, initialValue: 'BlockP is one of the best porn blocker for iOS to filter adult content from your iPhone. You can stay away from pornography with our customized filtering technology, website and app blocker.' }),
+                defineField({ name: 'listHeading', title: 'List Heading', type: 'string', initialValue: 'Our powerful free porn blocker app can:' }),
                 defineField({ name: 'listItems', title: 'List Items', type: 'array', of: [{ type: 'string' }], initialValue: [
-                    "Un-bypassable protection with advanced uninstall prevention.",
-                    "Real-time AI scanning that catches new and hidden adult sites.",
-                    "Customizable blocklists and keyword filtering for your specific needs.",
-                    "Lightweight design that won't drain your Android's battery."
+                    "Help you stay away from adult websites and other distractions",
+                    "Filter pornography in real-time with AI-powered filters",
+                    "Whitelist feature to control accessible content",
+                    "Accountability partner and password protection help you stay porn-free",
+                    "Block distracting applications like social media",
+                    "Block any website, be it pornography, gambling or anything else"
                 ]}),
-                defineField({ name: 'description2', title: 'Last Paragraph', type: 'text', rows: 3, initialValue: 'By securing your device at its core, BlockP ensures that your digital environment remains safe, clean, and entirely under your control.' }),
+                defineField({ name: 'description2', title: 'Last Paragraph', type: 'text', rows: 3, initialValue: 'Discover all the unique features of the BlockP free porn blocker for iPhone, including keyword and website blocking, social media controls, and many more by downloading the BlockP app from the App store.' }),
                 defineField({ name: 'desktopImagePath', title: 'Desktop Image Path', type: 'string', initialValue: '/product/android/desktop.svg' }),
                 defineField({ name: 'phoneImagePath', title: 'Phone Image Path', type: 'string', initialValue: '/product/android/phone.svg' }),
             ],

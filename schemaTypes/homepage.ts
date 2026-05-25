@@ -66,8 +66,8 @@ export default defineType({
                     name: 'title',
                     title: 'Main Heading',
                     type: 'string',
-                    description: 'The big white H1 heading. Current: "BlockP: #1 Free AI porn blocker to increase your productivity"',
-                    initialValue: 'BlockP: #1 Free AI porn blocker to increase your productivity',
+                    description: 'The big white H1 heading. Current: "BlockP: #1 Free AI porn blocker \\nto increase your productivity"',
+                    initialValue: 'BlockP: #1 Free AI porn blocker \nto increase your productivity',
                     validation: (Rule) => Rule.required(),
                 }),
                 defineField({
@@ -108,6 +108,13 @@ export default defineType({
                     type: 'image',
                     description: 'The mascot SVG/image shown at the bottom of the hero above the white curve.',
                     options: { hotspot: true },
+                }),
+                defineField({
+                    name: 'fallbackMascotImageUrl',
+                    title: 'Fallback Mascot Image URL',
+                    type: 'string',
+                    description: 'Image path or URL used if no mascot image is uploaded. E.g. /landing/maskot.svg',
+                    initialValue: '/landing/maskot.svg',
                 }),
             ],
         }),
@@ -168,6 +175,11 @@ export default defineType({
                                 },
                             },
                         },
+                    ],
+                    initialValue: [
+                        { _key: 'google', _type: 'logo', name: 'Google', localLogoPath: '/landing/google.svg' },
+                        { _key: 'meta', _type: 'logo', name: 'Meta', localLogoPath: '/landing/meta.svg' },
+                        { _key: 'microsoft', _type: 'logo', name: 'Microsoft', localLogoPath: '/landing/microsoft.svg' }
                     ],
                 }),
             ],
@@ -235,6 +247,13 @@ export default defineType({
                             },
                         },
                     ],
+                    initialValue: [
+                        { _key: 'android', _type: 'platform', name: 'Android', localIconPath: '/premium/android.svg' },
+                        { _key: 'ios', _type: 'platform', name: 'iOS', localIconPath: '/premium/ios.svg' },
+                        { _key: 'macos', _type: 'platform', name: 'macOS', localIconPath: '/premium/MacOS_logo.svg' },
+                        { _key: 'chrome', _type: 'platform', name: 'Chrome', localIconPath: '/premium/chrome.svg' },
+                        { _key: 'windows', _type: 'platform', name: 'Windows', localIconPath: '/premium/windows.svg' }
+                    ],
                 }),
             ],
         }),
@@ -274,6 +293,12 @@ export default defineType({
                                     options: { hotspot: true },
                                 }),
                                 defineField({
+                                    name: 'fallbackImageUrl',
+                                    title: 'Fallback Icon URL',
+                                    type: 'string',
+                                    description: 'Icon URL used if no image is uploaded. E.g. https://...',
+                                }),
+                                defineField({
                                     name: 'value',
                                     title: 'Stat Value',
                                     type: 'string',
@@ -296,6 +321,11 @@ export default defineType({
                                 },
                             },
                         },
+                    ],
+                    initialValue: [
+                        { _key: 'stat1', _type: 'stat', fallbackImageUrl: '/landing/star_shine.svg', value: '4.4 Star', label: 'Average rating based on reviews' },
+                        { _key: 'stat2', _type: 'stat', fallbackImageUrl: '/landing/download.svg', value: '1M+ Downloads', label: 'Across all platforms' },
+                        { _key: 'stat3', _type: 'stat', fallbackImageUrl: '/landing/thumbs_up_double.svg', value: '20K+ Reviews', label: 'On google play store' }
                     ],
                 }),
             ],
@@ -374,6 +404,9 @@ export default defineType({
                             },
                         },
                     ],
+                    initialValue: [
+                        { _key: 'test1', _type: 'testimonial', quote: 'The best blocker app. Light on battery usage compared to competitors, and powerful enough to not only block adult content but also block politics and other \'toxic\' stuff by adding my own custom keywords.', authorName: 'Herdjati Pravito', authorRole: 'BlockP User', rating: 5 }
+                    ],
                 }),
             ],
         }),
@@ -427,6 +460,12 @@ export default defineType({
                                     description: 'The illustration shown at the top of the card.',
                                     options: { hotspot: true },
                                 }),
+                                defineField({
+                                    name: 'fallbackImageUrl',
+                                    title: 'Fallback Image URL',
+                                    type: 'string',
+                                    description: 'Image URL used if no image is uploaded.',
+                                }),
                             ],
                             preview: {
                                 select: {
@@ -435,6 +474,16 @@ export default defineType({
                                 },
                             },
                         },
+                    ],
+                    initialValue: [
+                        { _key: 'card1', _type: 'card', title: 'Meditation', description: 'The art of meditation helps you to get away from your urges. You can listen to calming music or use a meditation app. BlockP also has a feature that reduces your urge when you feel like giving up. It also has a meditation mode which can help you concentrate and understand the main cause of your addiction.', fallbackImageUrl: '/landing/stop-watching-placeholder.svg' },
+                        { _key: 'card2', _type: 'card', title: 'Physical activity', description: 'To tackle your addiction healthily, pick a sport you enjoy or hit the gym. This way you can stay physically fit and tackle your urges.', fallbackImageUrl: '/landing/stop-watching-placeholder.svg' },
+                        { _key: 'card3', _type: 'card', title: 'Seek help from your close ones', description: 'Sometimes it is difficult to handle a problem alone and it is okay to seek help from your friends and family. Getting through it can be difficult, when you know you will get sudden urges that are hard to resist.', fallbackImageUrl: '/landing/stop-watching-placeholder.svg' },
+                        { _key: 'card4', _type: 'card', title: 'Prioritize your values', description: 'Everyone has some values that they need to prioritize to live a moral and good life. By doing this, it will help to let go of things that aren\'t right for you. Start by understanding your values and aligning yourself with them. Gradually you will understand what is important to you and what is not.', fallbackImageUrl: '/landing/stop-watching-placeholder.svg' },
+                        { _key: 'card5', _type: 'card', title: 'Consult a sexologist', description: 'They can help you understand the underlying cause of your addiction, it could be anything like relationship problems, emotional problems, family problems, etc.', fallbackImageUrl: '/landing/stop-watching-placeholder.svg' },
+                        { _key: 'card6', _type: 'card', title: 'Install a porn blocker', description: 'Installing a porn blocker on your device would help control your sudden urges; BlockP is the best adult content blocker that will act as a barrier, driving you to act consciously.', fallbackImageUrl: '/landing/stop-watching-placeholder.svg' },
+                        { _key: 'card7', _type: 'card', title: 'Join a support group', description: 'It can be difficult to face this alone, joining a support group of people going through the same thing will give you more confidence. Having a support network can offer new viewpoints and coping techniques, as well as a sense of understanding. To join this type of community we have BlockP Community. Join Now!', fallbackImageUrl: '/landing/stop-watching-placeholder.svg' },
+                        { _key: 'card8', _type: 'card', title: 'Replace the habit', description: 'Redirect your energy into a healthy hobby or passion project that fills the gap – like reading, art, music, or learning a new skill. Creative pursuits fill your time, reduce boredom and uplift your mood.', fallbackImageUrl: '/landing/stop-watching-placeholder.svg' }
                     ],
                 }),
             ],
@@ -487,6 +536,13 @@ export default defineType({
                                 },
                             },
                         },
+                    ],
+                    initialValue: [
+                        { _key: 'faq1', _type: 'faqItem', question: 'Is BlockP free?', answer: 'Yes! BlockP offers a free tier with standard content blocking. Upgrade to Premium for AI-powered blocking, multi-device support, and advanced features.' },
+                        { _key: 'faq2', _type: 'faqItem', question: 'What platforms does BlockP support?', answer: 'BlockP works on Android, iOS, macOS, Chrome, and Windows — covering virtually every device your family uses.' },
+                        { _key: 'faq3', _type: 'faqItem', question: 'Can my child bypass BlockP?', answer: 'BlockP uses advanced tamper-protection technology that makes it extremely difficult to bypass. Premium users get additional uninstall protection.' },
+                        { _key: 'faq4', _type: 'faqItem', question: 'How does the AI blocking work?', answer: 'Our AI analyzes images and text in real-time across all apps — not just browsers. It detects explicit content even on platforms like YouTube, Instagram, and Reddit.' },
+                        { _key: 'faq5', _type: 'faqItem', question: 'Is my data private?', answer: 'Absolutely. BlockP never stores or transmits your browsing data. All filtering happens locally on your device. Read our privacy policy for details.' }
                     ],
                 }),
             ],

@@ -22,10 +22,25 @@ Contact us
 If you have any questions about these Terms or the Services, please contact us at: contact@novafocus.in
 By accessing or using the Services, you agree to these Terms. Thank you for using BlockP!`
 
+import { Metadata } from 'next';
 import Link from 'next/link';
 import { BackButton } from '@/components/shared/BackButton';
 import { getPageTranslations } from '@/lib/pageTranslations';
-import { resolveLocale } from '@/lib/seo/metadata';
+import { buildLocaleAlternates, resolveLocale } from '@/lib/seo/metadata';
+
+export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
+    const { lang } = await params
+    const locale = resolveLocale(lang)
+    return {
+        title: 'Terms & Conditions — BlockP',
+        description: 'Read BlockP\'s Terms & Conditions to understand the rules governing use of our service.',
+        alternates: {
+            canonical: `/${locale}/terms-and-conditions`,
+            languages: buildLocaleAlternates((supportedLocale) => `/${supportedLocale}/terms-and-conditions`),
+        },
+    }
+}
+
 
 type PolicyBlock = {
     kind: 'heading' | 'paragraph' | 'sub-point'

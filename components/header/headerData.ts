@@ -324,8 +324,8 @@ export function getLocalizedProducts(locale: string): DropdownItem[] {
         { label: labels.ios, icon: '/apple.svg', href: '/products/ios' },
         { label: labels.android, icon: '/android.svg', href: '/products/android' },
         { label: labels.chrome, icon: '/chrome.svg', href: '/products/chrome' },
-        { label: labels.macbook, icon: '/macos.svg', href: '/products/macbook' },
-        { label: labels.windows, icon: '/windows.svg', href: '/products/windows' },
+        { label: labels.macbook, icon: '/macos.svg', href: '/products/macos' },
+        { label: labels.windows, icon: '/windows.svg', href: '/products/microsoft' },
     ];
 }
 

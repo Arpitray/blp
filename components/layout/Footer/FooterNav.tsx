@@ -52,7 +52,7 @@ export default function FooterNav({ columns, locale = DEFAULT_LANGUAGE }: Footer
             {/* LEFT COLUMN */}
             <div className="flex flex-col gap-8">
                 {leftColumn.title && (
-                    <h4 className="text-[32px] font-bold tracking-tight leading-tight">
+                    <h4 className="text-[36px] md:text-[38px] lg:text-[40px] font-bold tracking-tight leading-tight">
                         {leftColumn.title}
                     </h4>
                 )}
@@ -62,7 +62,7 @@ export default function FooterNav({ columns, locale = DEFAULT_LANGUAGE }: Footer
                         {(leftColumn.links ?? [])
                             .filter(l => l?.label)
                             .map((link, linkIdx) => (
-                                <li key={linkIdx} className="text-[20px] opacity-80">
+                                <li key={linkIdx} className="text-[21px] md:text-[22px] lg:text-[24px] opacity-80 leading-normal">
                                     {(() => {
                                         const rawHref = resolveHref(link, locale);
                                         const label = (link.label || '').toLowerCase().trim();
@@ -117,7 +117,7 @@ export default function FooterNav({ columns, locale = DEFAULT_LANGUAGE }: Footer
                         return (
                             <div key={colIdx} className="flex flex-col gap-8">
                                 {col.title && (
-                                    <h4 className="text-[32px] font-bold tracking-tight leading-tight">
+                                    <h4 className="text-[36px] md:text-[38px] lg:text-[40px] font-bold tracking-tight leading-tight">
                                         {col.title}
                                     </h4>
                                 )}
@@ -125,7 +125,7 @@ export default function FooterNav({ columns, locale = DEFAULT_LANGUAGE }: Footer
                                 {validLinks.length > 0 && (
                                     <ul className="flex flex-col gap-5">
                                         {validLinks.map((link, linkIdx) => (
-                                            <li key={linkIdx} className="text-[20px] opacity-80">
+                                            <li key={linkIdx} className="text-[21px] md:text-[22px] lg:text-[24px] opacity-80 leading-normal">
                                                 {(() => {
                                                     const rawHref = resolveHref(link, locale);
                                                     const label = (link.label || '').toLowerCase().trim();

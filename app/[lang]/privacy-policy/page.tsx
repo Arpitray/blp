@@ -18,9 +18,24 @@ How we share information
 - Contact us: This policy may change over time. Please refer to the "Last Updated" date for the most recent changes. Major changes will be prominently announced within the BlockP extension or via email if an address has been provided.
 - Policy updates: If you have questions or concerns about this privacy policy, please contact us at: contact@focustechs.in`
 
+import { Metadata } from 'next';
 import { BackButton } from '@/components/shared/BackButton';
 import { getPageTranslations } from '@/lib/pageTranslations';
-import { resolveLocale } from '@/lib/seo/metadata';
+import { buildLocaleAlternates, resolveLocale } from '@/lib/seo/metadata';
+
+export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
+    const { lang } = await params
+    const locale = resolveLocale(lang)
+    return {
+        title: 'Privacy Policy — BlockP',
+        description: 'Read BlockP\'s Privacy Policy to understand how we collect, use, and protect your personal information.',
+        alternates: {
+            canonical: `/${locale}/privacy-policy`,
+            languages: buildLocaleAlternates((supportedLocale) => `/${supportedLocale}/privacy-policy`),
+        },
+    }
+}
+
 
 type PolicyBlock = {
     kind: 'heading' | 'paragraph' | 'sub-heading'

@@ -71,7 +71,7 @@ export default function FooterBrand({ footerData }: FooterBrandProps) {
 
             {/* Description */}
             {description && (
-                <p className="text-[18px] leading-[1.6] opacity-85 mb-10 max-w-[450px]">
+                <p className="text-[21px] md:text-[22px] leading-[1.6] opacity-85 mb-10 max-w-[450px]">
                     {description}
                 </p>
             )}
@@ -84,7 +84,7 @@ export default function FooterBrand({ footerData }: FooterBrandProps) {
                     </div>
                     <a
                         href={`mailto:${contactEmail}`}
-                        className="text-[18px] font-medium border-b border-transparent group-hover:border-white/40 transition-all"
+                        className="text-[21px] md:text-[22px] font-medium border-b border-transparent group-hover:border-white/40 transition-all"
                     >
                         {contactEmail}
                     </a>

@@ -94,7 +94,7 @@ export default function FooterBadges({ footerData }: FooterBadgesProps) {
 
                             {/* Label below image */}
                             {badge.label && (
-                                <span className="text-[18px] opacity-80 group-hover:opacity-100 transition-opacity whitespace-nowrap text-left">
+                                <span className="text-[21px] md:text-[22px] opacity-80 group-hover:opacity-100 transition-opacity whitespace-nowrap text-left">
                                     {badge.label}
                                 </span>
                             )}

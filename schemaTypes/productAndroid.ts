@@ -1,8 +1,8 @@
 import { defineField, defineType } from 'sanity'
 
 export default defineType({
-    name: 'productChrome',
-    title: 'Product (Chrome)',
+    name: 'productAndroid',
+    title: 'Product (Android)',
     type: 'document',
     fields: [
         defineField({
@@ -37,18 +37,19 @@ export default defineType({
             options: {
                 source: 'name',
                 maxLength: 96,
+                isUnique: () => true,
             },
-            description: 'The URL path segment for this product (e.g., "android" or "ios"). MUST BE "chrome" for this page to work.',
+            description: 'The URL path segment for this product (e.g., "android" or "ios"). MUST BE "android" for this page to work.',
             validation: (Rule) => Rule.required(),
-            initialValue: { current: 'chrome' }
+            initialValue: { current: 'android' }
         }),
         defineField({
             name: 'heroTitle',
             title: 'Hero Heading Text',
             type: 'text',
             rows: 2,
-            description: 'Main heading text. E.g. "BlockP\nfor Chrome."',
-            initialValue: 'BlockP\nfor Chrome.',
+            description: 'Main heading text. E.g. "BlockP\nfor Android."',
+            initialValue: 'BlockP\nfor Android.',
             validation: (Rule) => Rule.required(),
         }),
         defineField({
@@ -165,24 +166,56 @@ export default defineType({
                 defineField({ name: 'ctaUrl', title: 'Button URL', type: 'string', initialValue: '/get-started' }),
             ],
         }),
-
+        // ─── SCROLL STEPS (How does it work) ──────────────────────
+        defineField({
+            name: 'scrollSteps',
+            title: 'How It Works — Scroll Steps',
+            type: 'object',
+            description: 'The step-by-step section showing how to set up BlockP.',
+            fields: [
+                defineField({
+                    name: 'steps',
+                    title: 'Steps',
+                    type: 'array',
+                    initialValue: [
+                        { _type: 'step', title: "How Does\nBlockP\nAndroid Porn\nBlocker Work?", description: "", imagePath: '/product/android/onboard/1.png' },
+                        { _type: 'step', title: "Install BlockP", description: "Download and install the BlockP porn blocker app for Android from the Play Store. Open the app to get started.", imagePath: '/product/android/onboard/2.png' },
+                        { _type: 'step', title: "Grant Permissions", description: "Allow the accessibility permissions to BlockP to accurately block adult content inside apps and browsers.", imagePath: '/product/android/onboard/3.png' },
+                        { _type: 'step', title: "Turn on Blocking", description: "Tap 'Start Protection' to block porn and distracting content instantly.", imagePath: '/product/android/onboard/4.png' },
+                        { _type: 'step', title: "Customize Your Filters", description: "Set up BlockP's custom filters to match your needs. On BlockP's dashboard you will see 3 modes of porn blocking:\n\n1. Off - No porn blocking\n2. Normal - Blocks common adult content\n3. Strict - Maximum protection from any porn, nudity, and potential triggers\n\nWith the custom options in the settings, you can fine-tune your protection by blocking apps, websites, keywords, and social media features based on your personal triggers.", imagePath: '/product/android/onboard/5.png' }
+                    ],
+                    of: [{
+                        type: 'object',
+                        name: 'step',
+                        fields: [
+                            defineField({ name: 'title', title: 'Step Title', type: 'string', validation: (Rule) => Rule.required() }),
+                            defineField({ name: 'description', title: 'Step Description', type: 'text', rows: 3 }),
+                            defineField({ name: 'imagePath', title: 'Image Path (in /public)', type: 'string', description: 'e.g. /product/android/onboard/2.png' }),
+                        ],
+                        preview: { select: { title: 'title', subtitle: 'description' } },
+                    }],
+                }),
+            ],
+        }),
         // ─── WHY SECTION ──────────────────────────────────────────
         defineField({
             name: 'whySection',
             title: 'Why Do You Need a Blocker — Section',
             type: 'object',
             fields: [
-                defineField({ name: 'sectionTitle', title: 'Section Heading', type: 'string', initialValue: 'Why do you Need Porn Blocker Chrome Extension?' }),
+                defineField({ name: 'sectionTitle', title: 'Section Heading', type: 'string', initialValue: 'Why do you need Porn Blocker for Android?' }),
                 defineField({
                     name: 'cards',
                     title: 'Stat / Reason Cards',
                     type: 'array',
                     description: 'Each card is a short paragraph with a stat. Use **bold** for emphasis.',
                     initialValue: [
-                        { _type: 'card', text: "Chrome accounts for **53%** of desktop porn browsing. As desktops are primarily used for work or study, easy access while browsing keeps the urges active and weakens self-control. BlockP protects deep focus by blocking triggering content on websites." },
-                        { _type: 'card', text: "**33%** of people admit to visiting adult websites on personal computers that they also use for work. BlockP prevents the blurring of boundaries between work and browser distractions." },
-                        { _type: 'card', text: "**60%** of people admit to watching porn at work. If you are struggling with porn addiction and it's affecting your work performance, BlockP Chrome extension will help you stay focused." },
-                        { _type: 'card', text: "Most young people encounter porn when they are **alone and at home**. BlockP's Chrome extension secures shared systems while browsing to prevent the trauma of accidental exposure." }
+                        { _type: 'card', text: "Data from adult websites shows that **87%** of porn watching happens on phones. BlockP adds a digital barrier to prevent this rampant access." },
+                        { _type: 'card', text: "**67.7%** of porn access on smartphones happens on Android devices. BlockP helps to secure all apps and browsers on Android devices to block porn, nudity, and semi-nude content." },
+                        { _type: 'card', text: "**70%** of teens are exposed to explicit content online, often unintentionally. BlockP’s AI-powered filters act in real time to protect the children from accidental exposure to porn." },
+                        { _type: 'card', text: "A typical tween (8 to 12 years) spends around **6 hours** per day on their phone and the smartphone use time goes up to **8 hours** for teens. BlockP helps parents to regulate screen time and teach healthy digital behaviors." },
+                        { _type: 'card', text: "Digital distractions can reduce productivity by **40%** and it takes **23 minutes** to refocus. BlockP helps to protect you from porn and other online distractions like social media, shopping apps etc. to protect your focus and boost productivity." },
+                        { _type: 'card', text: "Research shows that problematic porn use is strongly linked to easy and convenient access of porn on **mobile phones.** If you are trying to quit porn, BlockP prevents easy access to porn and blocks triggering content to protect you from relapse." }
                     ],
                     of: [{ type: 'object', name: 'card', fields: [defineField({ name: 'text', title: 'Card Text', type: 'text', rows: 3, validation: (Rule) => Rule.required() })], preview: { select: { title: 'text' }, prepare(s: Record<string, string>) { return { title: s.title?.slice(0, 80) } } } }],
                 }),
@@ -194,18 +227,60 @@ export default defineType({
             title: 'Benefits Section',
             type: 'object',
             fields: [
-                defineField({ name: 'sectionTitle', title: 'Section Heading', type: 'string', initialValue: 'Benefits of Using BlockP Porn\nBlocker Chrome Extension' }),
+                defineField({ name: 'sectionTitle', title: 'Section Heading', type: 'string', initialValue: 'Benefits of using a porn blocker' }),
                 defineField({
                     name: 'items',
                     title: 'Benefit Items',
                     type: 'array',
                     initialValue: [
-                        { _type: 'benefit', title: "Instant Porn Blocking", iconPath: "/product/android/benifits/network.svg", description: "When you have an urge to watch adult content, BlockP protects you by instantly blocking millions of adult websites with a single click without any complicated set-up." },
-                        { _type: 'benefit', title: "User-Friendly Interface", iconPath: "/product/android/benifits/focus.svg", description: "Modify settings based on your needs easily with a simple user-friendly design." },
-                        { _type: 'benefit', title: "Unlimited Customization", iconPath: "/product/android/benifits/blocklist.svg", description: "Add unlimited keywords and websites to the blocklist to create a blocking system based on your need." },
-                        { _type: 'benefit', title: "Flexible Blocking", iconPath: "/product/android/benifits/tune.svg", description: "Get complete control over your browsing - decide what websites you want to allow and for how long." },
-                        { _type: 'benefit', title: "Password Protection", iconPath: "/product/android/benifits/bypass.svg", description: "Secure BlockP settings with a password to prevent bypass or unauthorized changes" },
-                        { _type: 'benefit', title: "Community Support", iconPath: "/product/android/benifits/community.svg", description: "Join BlockP's support community on Reddit and Discord to connect with others who are trying to quit porn and reclaim their lives." }
+                        { 
+                            _type: 'benefit', 
+                            title: "AI-Powered Porn Blocking", 
+                            iconPath: "/product/android/benifits/network.svg", 
+                            description: "BlockP's AI-powered filters can detect nude, semi-nude, and AI-generated adult content. It can detect and block hidden or disguised content in real-time to keep you safe across browsers and apps." 
+                        },
+                        { 
+                            _type: 'benefit', 
+                            title: "Personalized Blocking", 
+                            iconPath: "/product/android/benifits/tune.svg", 
+                            description: "BlockP lets you customize your digital space with options to block specific keywords and websites that are triggering for you. You are in full control of what you see." 
+                        },
+                        { 
+                            _type: 'benefit', 
+                            title: "Social Media Blocking", 
+                            iconPath: "/product/android/benifits/favorite.svg", 
+                            description: "BlockP gives you greater control by letting you block searches, stories, and reels on social media platforms for distraction-free browsing. Platforms like Instagram have semi-nude content and Reddit has NSFW content. BlockP's AI-powered filters can detect and block such unsafe content on social media apps." 
+                        },
+                        { 
+                            _type: 'benefit', 
+                            title: "Blocklist & Whitelist", 
+                            iconPath: "/product/android/benifits/blocklist.svg", 
+                            description: "BlockP's blocklist is not restricted to adult websites. You can add any website that is distracting for you to this infinite blocklist. At the same time, you can permit seamless access to essential websites with the whitelist." 
+                        },
+                        { 
+                            _type: 'benefit', 
+                            title: "Accountability Partner", 
+                            iconPath: "/product/android/benifits/handshake.svg", 
+                            description: "Support from a loved one can help you stay consistent even during difficult moments. BlockP lets you create a system of support and commitment by adding a trusted friend or a parent as an accountability partner." 
+                        },
+                        { 
+                            _type: 'benefit', 
+                            title: "Focus Mode", 
+                            iconPath: "/product/android/benifits/focus.svg", 
+                            description: "BlockP's focus mode lets you block distracting apps and notifications to boost productivity. It lets you schedule periods of focus for working or studying without distraction from your phone" 
+                        },
+                        { 
+                            _type: 'benefit', 
+                            title: "Bypass Prevention", 
+                            iconPath: "/product/android/benifits/bypass.svg", 
+                            description: "BlockP lets you secure your settings with a password and set up uninstall prevention. So, even during your weakest moments you can not disable the blocker to watch porn." 
+                        },
+                        { 
+                            _type: 'benefit', 
+                            title: "Community Support", 
+                            iconPath: "/product/android/benifits/community.svg", 
+                            description: "Connect with others who are on a similar journey to quit porn through the Discord and Reddit support community of BlockP. Sharing experiences and connecting with others will motivate you to stay consistent on your quitting porn journey." 
+                        }
                     ],
                     of: [{
                         type: 'object',
@@ -226,20 +301,15 @@ export default defineType({
             title: 'FAQs Section (Product Page)',
             type: 'object',
             fields: [
-                defineField({ name: 'sectionTitle', title: 'Section Heading', type: 'string', initialValue: 'FAQs on BlockP: Porn Blocker\nChrome extension' }),
+                defineField({ name: 'sectionTitle', title: 'Section Heading', type: 'string', initialValue: 'FAQs on BlockP: Free Porn Blocker App for Android' }),
                 defineField({
                     name: 'faqs',
                     title: 'FAQ Items',
                     type: 'array',
                     initialValue: [
-                        { _type: 'faqItem', question: "How to Block Porn on Chrome For Free?", answer: "Install the BlockP Chrome extension. You can block porn for free." },
-                        { _type: 'faqItem', question: "Which is the best free porn blocker extension for teens or young adults?", answer: "BlockP is the best free porn blocker if you are looking to protect young adults from exposure to porn and teach them healthy digital habits." },
-                        { _type: 'faqItem', question: "How to block porn sites permanently?", answer: "You can install a porn blocker like BlockP to block porn sites permanently." },
-                        { _type: 'faqItem', question: "What does Porn Blocker chrome extension do?", answer: "A porn blocker Chrome extension like BlockP blocks adult websites along with nude and semi-nude content." },
-                        { _type: 'faqItem', question: "Can BlockP extension help me quit porn addiction?", answer: "Yes. BlockP helps you block porn and other sexual content that triggers relapse." },
-                        { _type: 'faqItem', question: "Does BlockP work in Incognito mode or private browsing?", answer: "Yes. BlockP Chrome extension blocks porn in incognito mode or private browsing." },
-                        { _type: 'faqItem', question: "Does this extension block adult content on YouTube, Reddit, or Twitter?", answer: "Yes. BlockP extension blocks content on YouTube like Shorts and other social media platforms like Reddit and Twitter." },
-                        { _type: 'faqItem', question: "Can this extension help during NoFap or digital detox journeys?", answer: "Yes. BlockP helps you block your triggers, track your streak to stay motivated, and learn better digital habits." }
+                        { _type: 'faqItem', question: "How to block porn sites in mobile?", answer: "Block porn sites on your mobile with BlockP - the powerful porn blocker that instantly blocks millions of adult websites. DNS-filtering and parental control tools can also offer limited protection against porn sites." },
+                        { _type: 'faqItem', question: "How to block porn on android phone?", answer: "Block porn and explicit content on your android phone with BlockP’s android app. It blocks all adult websites and uses AI-powered filters to block explicit content in real-time." },
+                        { _type: 'faqItem', question: "How to block porn sites permanently?", answer: "To block porn sites permanently you need a combination of blocking with features to prevent bypass. BlockP gives you porn blocking and uninstall prevention features like password protection to block porn sites permanently." }
                     ],
                     of: [{
                         type: 'object',
@@ -259,16 +329,18 @@ export default defineType({
             title: 'Best Blocker Section',
             type: 'object',
             fields: [
-                defineField({ name: 'sectionTitle', title: 'Section Title', type: 'string', initialValue: 'Why BlockP Is The Best Porn Blocker Chrome Extension?' }),
-                defineField({ name: 'description1', title: 'First Paragraph', type: 'text', rows: 3, initialValue: 'BlockP is an effective porn blocker for PC, offering a simple and fast way to block inappropriate sites in Chrome.' }),
-                defineField({ name: 'listHeading', title: 'List Heading', type: 'string', initialValue: 'Key advantages include:' }),
+                defineField({ name: 'sectionTitle', title: 'Section Title', type: 'string', initialValue: 'Why BlockP Is The Best Porn Blocker App for Android?' }),
+                defineField({ name: 'description1', title: 'First Paragraph', type: 'text', rows: 3, initialValue: 'BlockP is one of the best porn blocker apps for Android to filter adult content from your device. You can stay away from pornography with our customized filtering technology, website and app blocker.' }),
+                defineField({ name: 'listHeading', title: 'List Heading', type: 'string', initialValue: 'Our adult content blocker can:' }),
                 defineField({ name: 'listItems', title: 'List Items', type: 'array', of: [{ type: 'string' }], initialValue: [
-                    "It is easy to install, with a user-friendly interface and offers immediate protection.",
-                    "Inappropriate content across browsers will be detected and blocked by AI-powered filters",
-                    "You can create a ‘blacklist’ of specific websites and keywords that you do not want to see.",
-                    "You can completely block or limit specific features of social media platforms."
+                    "Help you stay away from adult websites and other distractions",
+                    "Filter pornography in real-time with AI-powered filters",
+                    "Whitelist feature to control accessible content",
+                    "Accountability partner and password protection help you stay porn-free",
+                    "Block distracting applications like social media",
+                    "Block any website, be it pornography, gambling or anything else"
                 ]}),
-                defineField({ name: 'description2', title: 'Last Paragraph', type: 'text', rows: 3, initialValue: 'Discover all the unique features of the BlockP Chrome extension including keyword and website blocking, inspirational quotes, custom redirect URLs and many more by visiting the Chrome Web Store and downloading our extension today.' }),
+                defineField({ name: 'description2', title: 'Last Paragraph', type: 'text', rows: 3, initialValue: 'Discover all the unique features of the BlockP free porn blocker app for Android, including keyword and website blocking, social media controls, and many more by downloading the BlockP app from the Google Play Store.' }),
                 defineField({ name: 'desktopImagePath', title: 'Desktop Image Path', type: 'string', initialValue: '/product/android/desktop.svg' }),
                 defineField({ name: 'phoneImagePath', title: 'Phone Image Path', type: 'string', initialValue: '/product/android/phone.svg' }),
             ],
