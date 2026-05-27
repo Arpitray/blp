@@ -476,14 +476,202 @@ export default defineType({
                         },
                     ],
                     initialValue: [
-                        { _key: 'card1', _type: 'card', title: 'Meditation', description: 'The art of meditation helps you to get away from your urges. You can listen to calming music or use a meditation app. BlockP also has a feature that reduces your urge when you feel like giving up. It also has a meditation mode which can help you concentrate and understand the main cause of your addiction.', fallbackImageUrl: '/landing/stop-watching-placeholder.svg' },
-                        { _key: 'card2', _type: 'card', title: 'Physical activity', description: 'To tackle your addiction healthily, pick a sport you enjoy or hit the gym. This way you can stay physically fit and tackle your urges.', fallbackImageUrl: '/landing/stop-watching-placeholder.svg' },
-                        { _key: 'card3', _type: 'card', title: 'Seek help from your close ones', description: 'Sometimes it is difficult to handle a problem alone and it is okay to seek help from your friends and family. Getting through it can be difficult, when you know you will get sudden urges that are hard to resist.', fallbackImageUrl: '/landing/stop-watching-placeholder.svg' },
-                        { _key: 'card4', _type: 'card', title: 'Prioritize your values', description: 'Everyone has some values that they need to prioritize to live a moral and good life. By doing this, it will help to let go of things that aren\'t right for you. Start by understanding your values and aligning yourself with them. Gradually you will understand what is important to you and what is not.', fallbackImageUrl: '/landing/stop-watching-placeholder.svg' },
-                        { _key: 'card5', _type: 'card', title: 'Consult a sexologist', description: 'They can help you understand the underlying cause of your addiction, it could be anything like relationship problems, emotional problems, family problems, etc.', fallbackImageUrl: '/landing/stop-watching-placeholder.svg' },
-                        { _key: 'card6', _type: 'card', title: 'Install a porn blocker', description: 'Installing a porn blocker on your device would help control your sudden urges; BlockP is the best adult content blocker that will act as a barrier, driving you to act consciously.', fallbackImageUrl: '/landing/stop-watching-placeholder.svg' },
-                        { _key: 'card7', _type: 'card', title: 'Join a support group', description: 'It can be difficult to face this alone, joining a support group of people going through the same thing will give you more confidence. Having a support network can offer new viewpoints and coping techniques, as well as a sense of understanding. To join this type of community we have BlockP Community. Join Now!', fallbackImageUrl: '/landing/stop-watching-placeholder.svg' },
-                        { _key: 'card8', _type: 'card', title: 'Replace the habit', description: 'Redirect your energy into a healthy hobby or passion project that fills the gap – like reading, art, music, or learning a new skill. Creative pursuits fill your time, reduce boredom and uplift your mood.', fallbackImageUrl: '/landing/stop-watching-placeholder.svg' }
+                        { _key: 'card1', _type: 'card', title: 'Meditation', description: 'The art of meditation helps you to get away from your urges. You can listen to calming music or use a meditation app. BlockP also has a feature that reduces your urge when you feel like giving up. It also has a meditation mode which can help you concentrate and understand the main cause of your addiction.', fallbackImageUrl: '/landing/1.png' },
+                        { _key: 'card2', _type: 'card', title: 'Physical activity', description: 'To tackle your addiction healthily, pick a sport you enjoy or hit the gym. This way you can stay physically fit and tackle your urges.', fallbackImageUrl: '/landing/2.png' },
+                        { _key: 'card3', _type: 'card', title: 'Seek help from your close ones', description: 'Sometimes it is difficult to handle a problem alone and it is okay to seek help from your friends and family. Getting through it can be difficult, when you know you will get sudden urges that are hard to resist.', fallbackImageUrl: '/landing/3.png' },
+                        { _key: 'card4', _type: 'card', title: 'Prioritize your values', description: 'Everyone has some values that they need to prioritize to live a moral and good life. By doing this, it will help to let go of things that aren\'t right for you. Start by understanding your values and aligning yourself with them. Gradually you will understand what is important to you and what is not.', fallbackImageUrl: '/landing/4.png' },
+                        { _key: 'card5', _type: 'card', title: 'Consult a sexologist', description: 'They can help you understand the underlying cause of your addiction, it could be anything like relationship problems, emotional problems, family problems, etc.', fallbackImageUrl: '/landing/5.png' },
+                        { _key: 'card6', _type: 'card', title: 'Install a porn blocker', description: 'Installing a porn blocker on your device would help control your sudden urges; BlockP is the best adult content blocker that will act as a barrier, driving you to act consciously.', fallbackImageUrl: '/landing/6.png' },
+                        { _key: 'card7', _type: 'card', title: 'Join a support group', description: 'It can be difficult to face this alone, joining a support group of people going through the same thing will give you more confidence. Having a support network can offer new viewpoints and coping techniques, as well as a sense of understanding. To join this type of community we have BlockP Community. Join Now!', fallbackImageUrl: '/landing/7.png' },
+                        { _key: 'card8', _type: 'card', title: 'Replace the habit', description: 'Redirect your energy into a healthy hobby or passion project that fills the gap – like reading, art, music, or learning a new skill. Creative pursuits fill your time, reduce boredom and uplift your mood.', fallbackImageUrl: '/landing/8.png' }
+                    ],
+                }),
+            ],
+        }),
+
+        // ─────────────────────────────────────────────────────────
+        //  6.5 "BENEFITS AFTER QUITTING PORN" CARDS
+        // ─────────────────────────────────────────────────────────
+        defineField({
+            name: 'benefitsQuittingPorn',
+            title: '6.5 "Benefits you\'ll enjoy after quitting porn" Cards',
+            type: 'object',
+            description: 'The 3-column grid of benefit cards (Mental Clarity, Physical Fitness, etc.)',
+            fields: [
+                defineField({
+                    name: 'sectionTitle',
+                    title: 'Section Heading',
+                    type: 'string',
+                    initialValue: 'Benefits you\'ll enjoy after quitting porn',
+                    validation: (Rule) => Rule.required(),
+                }),
+                defineField({
+                    name: 'cards',
+                    title: 'Benefit Cards',
+                    type: 'array',
+                    description: 'Each card has an image, title, and description. Displayed in a 3-column grid.',
+                    of: [
+                        {
+                            type: 'object',
+                            name: 'card',
+                            title: 'Benefit Card',
+                            fields: [
+                                defineField({
+                                    name: 'title',
+                                    title: 'Card Title',
+                                    type: 'string',
+                                    description: 'e.g. "Mental Clarity" or "Physical Fitness"',
+                                    validation: (Rule) => Rule.required(),
+                                }),
+                                defineField({
+                                    name: 'description',
+                                    title: 'Card Description',
+                                    type: 'text',
+                                    rows: 4,
+                                    description: 'The paragraph text on the card.',
+                                    validation: (Rule) => Rule.required(),
+                                }),
+                                defineField({
+                                    name: 'image',
+                                    title: 'Card Image',
+                                    type: 'image',
+                                    description: 'The illustration shown at the top of the card.',
+                                    options: { hotspot: true },
+                                }),
+                                defineField({
+                                    name: 'fallbackImageUrl',
+                                    title: 'Fallback Image URL',
+                                    type: 'string',
+                                    description: 'Image URL used if no image is uploaded.',
+                                }),
+                            ],
+                            preview: {
+                                select: {
+                                    title: 'title',
+                                    media: 'image',
+                                },
+                            },
+                        },
+                    ],
+                    initialValue: [
+                        { _key: 'bcard1', _type: 'card', title: 'Mental Clarity', description: 'Quitting porn helps with clearing the brain fog induced by watching too much porn. You get more clarity in life and make better decisions. You regain focus and the ability to concentrate. Mental clarity helps in getting things done. Procrastination is no longer a hindrance to your success.', fallbackImageUrl: '/landing/1.png' },
+                        { _key: 'bcard2', _type: 'card', title: 'Physical Fitness', description: 'Many people have reported that after they reduce the time spent on pornography, they start working out in their physical health, running and hit the weights with intention. You also feel the energy level increase in your body and motivated. You\'re put in the gym and get in better shape.', fallbackImageUrl: '/landing/2.png' },
+                        { _key: 'bcard3', _type: 'card', title: 'Reduced Depression', description: 'Porn addiction is linked to depression and anxiety. Someone who watches porn regularly can build a tolerance towards pornography which ends up requiring extreme forms to stimulate them. Quitting porn may give you more time to do things you enjoy.', fallbackImageUrl: '/landing/3.png' },
+                        { _key: 'bcard4', _type: 'card', title: 'Better sleep', description: 'Watching porn is a very arousing activity which causes feelings of emptiness, frustration and low self-esteem. Knowing what is right for you and with what purpose? Quitting will lead to focus on meaningful activities rather than ruining its means.', fallbackImageUrl: '/landing/4.png' },
+                        { _key: 'bcard5', _type: 'card', title: 'Improved sense of purpose', description: 'Watching porn is a time consuming activity which leaves feelings of emptiness. Quitting porn leads to more focus on meaningful activities, hobbies and things in order.', fallbackImageUrl: '/landing/5.png' },
+                        { _key: 'bcard6', _type: 'card', title: 'Improved Self Esteem', description: 'Continuous viewing of porn often leads to feelings of guilt and embarrassment. It makes a person feel like they are limited in some way. By quitting porn, some of the negative feelings go away completely and you regain confidence and self-esteem. Start feeling better about yourself.', fallbackImageUrl: '/landing/6.png' }
+                    ],
+                }),
+            ],
+        }),
+
+        // ─────────────────────────────────────────────────────────
+        //  6.75 "WHY DO YOU NEED A PORN BLOCKER" SECTION
+        // ─────────────────────────────────────────────────────────
+        defineField({
+            name: 'whyNeedPornBlocker',
+            title: '6.75 "Why do you need a porn blocker" Section',
+            type: 'object',
+            description: 'The horizontal card section explaining why users need a blocker.',
+            fields: [
+                defineField({
+                    name: 'title',
+                    title: 'Section Title',
+                    type: 'string',
+                    initialValue: 'Why do you need a porn blocker?',
+                    validation: (Rule) => Rule.required(),
+                }),
+                defineField({
+                    name: 'paragraph1',
+                    title: 'First Paragraph',
+                    type: 'text',
+                    rows: 4,
+                    initialValue: '79% of accidental exposures to porn among kids take place on the internet at home! Most children do not go online looking for porn, but they stumble upon it when they click on malicious pop-ups, misleading articles, or unregulated ads.',
+                    validation: (Rule) => Rule.required(),
+                }),
+                defineField({
+                    name: 'paragraph2',
+                    title: 'Second Paragraph',
+                    type: 'text',
+                    rows: 5,
+                    initialValue: 'BlockP provides instant porn protection by filtering the sites and apps to remove explicit content before it reaches your screen. Unlike standard filters, BlockP\'s AI-powered porn filters can detect pornography, nudity, and semi-nude content faster and more effectively. It provides you with greater protection against common bypass techniques and triggers. Custom blocking tools of BlockP let you curate a porn-free digital environment to keep your loved ones safe online.',
+                    validation: (Rule) => Rule.required(),
+                }),
+                defineField({
+                    name: 'image',
+                    title: 'Side Image',
+                    type: 'image',
+                    description: 'The image shown on the left side of the card.',
+                    options: { hotspot: true },
+                }),
+                defineField({
+                    name: 'fallbackImageUrl',
+                    title: 'Fallback Image URL',
+                    type: 'string',
+                    description: 'Image URL used if no image is uploaded.',
+                    initialValue: '/landing/7.png',
+                }),
+            ],
+        }),
+
+        // ─────────────────────────────────────────────────────────
+        //  6.8 "TYPES OF PORN BLOCKERS" SECTION
+        // ─────────────────────────────────────────────────────────
+        defineField({
+            name: 'typesOfPornBlockers',
+            title: '6.8 "Types of porn blockers" Section',
+            type: 'object',
+            description: 'The section explaining different types of blockers (Browser, Device, App).',
+            fields: [
+                defineField({
+                    name: 'sectionTitle',
+                    title: 'Section Heading',
+                    type: 'string',
+                    initialValue: 'Types of porn blockers to block adult content',
+                    validation: (Rule) => Rule.required(),
+                }),
+                defineField({
+                    name: 'cards',
+                    title: 'Blocker Cards',
+                    type: 'array',
+                    description: 'Cards detailing the types. The first two appear side-by-side, the third spans full width.',
+                    of: [
+                        {
+                            type: 'object',
+                            name: 'card',
+                            title: 'Blocker Card',
+                            fields: [
+                                defineField({
+                                    name: 'title',
+                                    title: 'Card Title',
+                                    type: 'string',
+                                    validation: (Rule) => Rule.required(),
+                                }),
+                                defineField({
+                                    name: 'description',
+                                    title: 'Card Description',
+                                    type: 'text',
+                                    rows: 4,
+                                    validation: (Rule) => Rule.required(),
+                                }),
+                                defineField({
+                                    name: 'exampleText',
+                                    title: 'Example Text',
+                                    type: 'string',
+                                    description: 'e.g. "For Example: Porn Blocker for Android"',
+                                }),
+                            ],
+                            preview: {
+                                select: {
+                                    title: 'title',
+                                },
+                            },
+                        },
+                    ],
+                    initialValue: [
+                        { _key: 'type1', _type: 'card', title: 'Browser extensions', description: 'These are browser extensions directly embedded in web browsers like Chrome. They offer easy access and can block inappropriate content across various websites visited through the browser.', exampleText: 'For Example: Porn Blocker Chrome Extension' },
+                        { _key: 'type2', _type: 'card', title: 'Device-Level Blockers', description: 'Program or setting installed directly on your computer, smartphone, or tablet. In addition to blocking access to inappropriate content, they also offer system-wide protection.', exampleText: 'For Example: Porn Blocker for Windows and Porn Blocker for MacBook' },
+                        { _key: 'type3', _type: 'card', title: 'App-Based blockers', description: 'There are mobile applications for both Android and iOS devices that enhance online safety by providing robust filtering capabilities. For instance, an app like BlockP is available on both Android and iOS and can block specific websites, URLs, and apps, offering comprehensive features such as content filtering within browsers and restrictions on app access. They ensure users have a protected experience on their phones and tablets.', exampleText: 'For Example: Porn Blocker for Android and Porn Blocker for iOS' }
                     ],
                 }),
             ],

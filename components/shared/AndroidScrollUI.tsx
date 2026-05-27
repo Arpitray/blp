@@ -101,11 +101,11 @@ export function AndroidScrollUI({ data }: { data?: { title?: string; description
                                     idx === activeIndex ? 'opacity-100 pointer-events-auto translate-y-0' : 'opacity-0 pointer-events-none translate-y-4'
                                 }`}
                             >
-                                <h2 className={`font-black text-[#012955] leading-[1.05] mb-6 whitespace-pre-line ${idx === 0 ? 'text-[62px] md:text-[84px] lg:text-[96px]' : 'text-[52px] md:text-[70px] lg:text-[82px]'}`}>
+                                <h2 className={`font-black text-[#012955] leading-[1.05] mb-6 whitespace-pre-line ${idx === 0 ? 'text-[44px] md:text-[60px] lg:text-[72px]' : 'text-[32px] md:text-[44px] lg:text-[54px]'}`}>
                                     {step.title}
                                 </h2>
                                 {step.desc && (
-                                    <p className="text-[22px] md:text-[26px] lg:text-[30px] text-[#012955]/80 font-bold max-w-[700px] leading-[1.5] whitespace-pre-line">
+                                    <p className="text-[18px] md:text-[20px] lg:text-[22px] text-[#012955]/80 font-bold max-w-[700px] leading-[1.5] whitespace-pre-line">
                                         {step.desc}
                                     </p>
                                 )}
@@ -154,11 +154,11 @@ export function AndroidScrollUI({ data }: { data?: { title?: string; description
                 {stepsToUse.map((step, idx) => (
                     <div key={`mob-${idx}`} className="flex flex-col items-center justify-center gap-8 w-full">
                         <div className="w-full flex flex-col justify-center text-left">
-                            <h2 className={`font-black text-[#012955] leading-[1.05] mb-4 whitespace-pre-line ${idx === 0 ? 'text-[44px]' : 'text-[36px]'}`}>
+                            <h2 className={`font-black text-[#012955] leading-[1.05] mb-4 whitespace-pre-line ${idx === 0 ? 'text-[32px]' : 'text-[26px]'}`}>
                                 {step.title}
                             </h2>
                             {step.desc && (
-                                <p className="text-[18px] text-[#012955]/80 font-bold leading-[1.5] whitespace-pre-line">
+                                <p className="text-[16px] text-[#012955]/80 font-bold leading-[1.5] whitespace-pre-line">
                                     {step.desc}
                                 </p>
                             )}

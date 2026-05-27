@@ -91,7 +91,7 @@ export default async function AndroidProductPage({ params }: { params: Promise<{
                 {/* Hero Content */}
                 <div className="relative z-40 flex flex-col items-center pt-[140px] md:pt-[180px] px-[12px] lg:px-[40px] w-full max-w-site">
                     <h1
-                        className="text-[58px] md:text-[76px] lg:text-[95px] font-bold text-white text-center leading-[1.05] mb-8 md:mb-10"
+                        className="text-[42px] md:text-[56px] lg:text-[72px] font-bold text-white text-center leading-[1.05] mb-8 md:mb-10"
                         style={{ fontVariationSettings: "'wdth' 100" }}
                     >
                         {heroTitle1}

@@ -186,6 +186,20 @@ export const HOMEPAGE_QUERY = `
       sectionTitle,
       cards[] { title, description, "imageUrl": coalesce(image.asset->url, fallbackImageUrl) }
     },
+    benefitsQuittingPorn {
+      sectionTitle,
+      cards[] { title, description, "imageUrl": coalesce(image.asset->url, fallbackImageUrl) }
+    },
+    whyNeedPornBlocker {
+      title,
+      paragraph1,
+      paragraph2,
+      "imageUrl": coalesce(image.asset->url, fallbackImageUrl)
+    },
+    typesOfPornBlockers {
+      sectionTitle,
+      cards[] { title, description, exampleText }
+    },
     faq {
       sectionTitle,
       faqItems[] { question, answer }

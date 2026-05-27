@@ -42,43 +42,89 @@ const FALLBACK_STOP_WATCHING_CARDS = [
     {
         title: 'Meditation',
         description: 'The art of meditation helps you to get away from your urges. You can listen to calming music or use a meditation app. BlockP also has a feature that reduces your urge when you feel like giving up. It also has a meditation mode which can help you concentrate and understand the main cause of your addiction.',
-        imageUrl: '/landing/stop-watching-placeholder.svg',
+        imageUrl: '/landing/1.png',
     },
     {
         title: 'Physical activity',
         description: 'To tackle your addiction healthily, pick a sport you enjoy or hit the gym. This way you can stay physically fit and tackle your urges.',
-        imageUrl: '/landing/stop-watching-placeholder.svg',
+        imageUrl: '/landing/2.png',
     },
     {
         title: 'Seek help from your close ones',
         description: 'Sometimes it is difficult to handle a problem alone and it is okay to seek help from your friends and family. Getting through it can be difficult, when you know you will get sudden urges that are hard to resist.',
-        imageUrl: '/landing/stop-watching-placeholder.svg',
+        imageUrl: '/landing/3.png',
     },
     {
         title: 'Prioritize your values',
         description: 'Everyone has some values that they need to prioritize to live a moral and good life. By doing this, it will help to let go of things that aren\'t right for you. Start by understanding your values and aligning yourself with them. Gradually you will understand what is important to you and what is not.',
-        imageUrl: '/landing/stop-watching-placeholder.svg',
+        imageUrl: '/landing/4.png',
     },
     {
         title: 'Consult a sexologist',
         description: 'They can help you understand the underlying cause of your addiction, it could be anything like relationship problems, emotional problems, family problems, etc.',
-        imageUrl: '/landing/stop-watching-placeholder.svg',
+        imageUrl: '/landing/5.png',
     },
     {
         title: 'Install a porn blocker',
         description: 'Installing a porn blocker on your device would help control your sudden urges; BlockP is the best adult content blocker that will act as a barrier, driving you to act consciously.',
-        imageUrl: '/landing/stop-watching-placeholder.svg',
+        imageUrl: '/landing/6.png',
     },
     {
         title: 'Join a support group',
         description: 'It can be difficult to face this alone, joining a support group of people going through the same thing will give you more confidence. Having a support network can offer new viewpoints and coping techniques, as well as a sense of understanding. To join this type of community we have BlockP Community. Join Now!',
-        imageUrl: '/landing/stop-watching-placeholder.svg',
+        imageUrl: '/landing/7.png',
     },
     {
         title: 'Replace the habit',
         description: 'Redirect your energy into a healthy hobby or passion project that fills the gap – like reading, art, music, or learning a new skill. Creative pursuits fill your time, reduce boredom and uplift your mood.',
-        imageUrl: '/landing/stop-watching-placeholder.svg',
+        imageUrl: '/landing/8.png',
     },
+]
+
+const FALLBACK_BENEFITS_CARDS = [
+    {
+        title: 'Mental Clarity',
+        description: 'Quitting porn helps with clearing the brain fog induced by watching too much porn. You get more clarity in life and make better decisions. You regain focus and the ability to concentrate. Mental clarity helps in getting things done. Procrastination is no longer a hindrance to your success.',
+        imageUrl: '/landing/1.png',
+    },
+    {
+        title: 'Physical Fitness',
+        description: 'Many people have reported that after they reduce the time spent on pornography, they start working out in their physical health, running and hit the weights with intention. You also feel the energy level increase in your body and motivated. You\'re put in the gym and get in better shape.',
+        imageUrl: '/landing/2.png',
+    },
+    {
+        title: 'Reduced Depression',
+        description: 'Porn addiction is linked to depression and anxiety. Someone who watches porn regularly can build a tolerance towards pornography which ends up requiring extreme forms to stimulate them. Quitting porn may give you more time to do things you enjoy.',
+        imageUrl: '/landing/3.png',
+    },
+    {
+        title: 'Better sleep',
+        description: 'Watching porn is a very arousing activity which causes feelings of emptiness, frustration and low self-esteem. Knowing what is right for you and with what purpose? Quitting will lead to focus on meaningful activities rather than ruining its means.',
+        imageUrl: '/landing/4.png',
+    },
+    {
+        title: 'Improved sense of purpose',
+        description: 'Watching porn is a time consuming activity which leaves feelings of emptiness. Quitting porn leads to more focus on meaningful activities, hobbies and things in order.',
+        imageUrl: '/landing/5.png',
+    },
+    {
+        title: 'Improved Self Esteem',
+        description: 'Continuous viewing of porn often leads to feelings of guilt and embarrassment. It makes a person feel like they are limited in some way. By quitting porn, some of the negative feelings go away completely and you regain confidence and self-esteem. Start feeling better about yourself.',
+        imageUrl: '/landing/6.png',
+    },
+]
+
+const FALLBACK_WHY_NEED_BLOCKER = {
+    title: 'Why do you need a porn blocker?',
+    paragraph1: '79% of accidental exposures to porn among kids take place on the internet at home! Most children do not go online looking for porn, but they stumble upon it when they click on malicious pop-ups, misleading articles, or unregulated ads.',
+    paragraph2: 'BlockP provides instant porn protection by filtering the sites and apps to remove explicit content before it reaches your screen. Unlike standard filters, BlockP\'s AI-powered porn filters can detect pornography, nudity, and semi-nude content faster and more effectively. It provides you with greater protection against common bypass techniques and triggers. Custom blocking tools of BlockP let you curate a porn-free digital environment to keep your loved ones safe online.',
+    imageUrl: '/landing/7.png',
+}
+
+const FALLBACK_TYPES_OF_BLOCKERS = [
+    { title: 'Browser extensions', description: 'These are browser extensions directly embedded in web browsers like Chrome. They offer easy access and can block inappropriate content across various websites visited through the browser.', exampleText: 'For Example: Porn Blocker Chrome Extension' },
+    { title: 'Device-Level Blockers', description: 'Program or setting installed directly on your computer, smartphone, or tablet. In addition to blocking access to inappropriate content, they also offer system-wide protection.', exampleText: 'For Example: Porn Blocker for Windows and Porn Blocker for MacBook' },
+    { title: 'App-Based blockers', description: 'There are mobile applications for both Android and iOS devices that enhance online safety by providing robust filtering capabilities. For instance, an app like BlockP is available on both Android and iOS and can block specific websites, URLs, and apps, offering comprehensive features such as content filtering within browsers and restrictions on app access. They ensure users have a protected experience on their phones and tablets.', exampleText: 'For Example: Porn Blocker for Android and Porn Blocker for iOS' }
 ]
 
 const FALLBACK_FAQ_ITEMS = [
@@ -126,6 +172,9 @@ interface HomepageData {
     stats?: { sectionTitle?: string; statItems?: { iconUrl?: string; value: string; label: string }[] }
     testimonials?: { sectionTitle?: string; testimonialItems?: { quote: string; authorName: string; authorRole?: string; rating?: number }[] }
     stopWatching?: { sectionTitle?: string; cards?: { title: string; description: string; imageUrl?: string }[] }
+    benefitsQuittingPorn?: { sectionTitle?: string; cards?: { title: string; description: string; imageUrl?: string }[] }
+    whyNeedPornBlocker?: { title?: string; paragraph1?: string; paragraph2?: string; imageUrl?: string }
+    typesOfPornBlockers?: { sectionTitle?: string; cards?: { title: string; description: string; exampleText?: string }[] }
     faq?: { sectionTitle?: string; faqItems?: { question: string; answer: string }[] }
     seo?: { metaTitle?: string; metaDescription?: string }
 }
@@ -163,6 +212,9 @@ export default async function LandingPage({ params }: { params: Promise<{ lang: 
     const stats = hp?.stats?.statItems?.length ? hp.stats.statItems : FALLBACK_STATS
     const testimonials = hp?.testimonials?.testimonialItems?.length ? hp.testimonials.testimonialItems : FALLBACK_TESTIMONIALS
     const stopWatchingCards = hp?.stopWatching?.cards?.length ? hp.stopWatching.cards : FALLBACK_STOP_WATCHING_CARDS
+    const benefitsCards = hp?.benefitsQuittingPorn?.cards?.length ? hp.benefitsQuittingPorn.cards : FALLBACK_BENEFITS_CARDS
+    const whyNeedBlocker = hp?.whyNeedPornBlocker ?? FALLBACK_WHY_NEED_BLOCKER
+    const typesOfBlockers = hp?.typesOfPornBlockers?.cards?.length ? hp.typesOfPornBlockers.cards : FALLBACK_TYPES_OF_BLOCKERS
     const faqItems = hp?.faq?.faqItems?.length ? hp.faq.faqItems : FALLBACK_FAQ_ITEMS
 
     return (
@@ -323,8 +375,8 @@ export default async function LandingPage({ params }: { params: Promise<{ lang: 
             {/* ══════════════════════════════════════════════════════
                 HOW CAN YOU STOP WATCHING PORN
             ══════════════════════════════════════════════════════ */}
-            <section className="w-full py-[70px] flex flex-col items-center bg-white relative z-20">
-                <div className="w-full max-w-[1522px] px-[80px] flex flex-col gap-[70px] items-center">
+            <section className="w-full py-[70px] flex flex-col items-center bg-gradient-to-b from-white to-[#F6FAFF] relative z-20">
+                <div className="w-full max-w-[1800px] px-[20px] md:px-[40px] lg:px-[80px] flex flex-col gap-[70px] items-center">
                     <h2
                         className="text-[48px] font-bold text-[#002954] text-center leading-[1.2]"
                         style={{ fontVariationSettings: "'wdth' 100" }}
@@ -332,7 +384,7 @@ export default async function LandingPage({ params }: { params: Promise<{ lang: 
                         {hp?.stopWatching?.sectionTitle ?? 'How can you stop watching porn?'}
                     </h2>
 
-                    <div className="grid grid-cols-2 gap-[25px] w-full max-w-[1332px]">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-[25px] w-full">
                         {stopWatchingCards.map((card, i) => (
                             <StopWatchingCard
                                 key={i}
@@ -341,6 +393,109 @@ export default async function LandingPage({ params }: { params: Promise<{ lang: 
                                 description={card.description}
                             />
                         ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* ══════════════════════════════════════════════════════
+                BENEFITS YOU'LL ENJOY AFTER QUITTING PORN
+            ══════════════════════════════════════════════════════ */}
+            <section className="w-full py-[70px] flex flex-col items-center bg-[#F6FAFF] relative z-20">
+                <div className="w-full max-w-[1800px] px-[20px] md:px-[40px] lg:px-[80px] flex flex-col gap-[70px] items-center">
+                    <h2
+                        className="text-[48px] font-bold text-[#002954] text-center leading-[1.2]"
+                        style={{ fontVariationSettings: "'wdth' 100" }}
+                    >
+                        {hp?.benefitsQuittingPorn?.sectionTitle ?? 'Benefits you\'ll enjoy after quitting porn'}
+                    </h2>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[25px] w-full">
+                        {benefitsCards.map((card, i) => (
+                            <StopWatchingCard
+                                key={i}
+                                image={card.imageUrl ?? ''}
+                                title={card.title}
+                                description={card.description}
+                            />
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* ══════════════════════════════════════════════════════
+                WHY DO YOU NEED A PORN BLOCKER
+            ══════════════════════════════════════════════════════ */}
+            <section className="w-full py-[70px] flex flex-col items-center bg-[#F6FAFF] relative z-20">
+                <div className="w-full max-w-[1800px] px-[20px] md:px-[40px] lg:px-[80px]">
+                    <div className="bg-white rounded-[25px] overflow-hidden shadow-[0px_4px_4px_0px_rgba(0,118,244,0.25)] flex flex-col lg:flex-row w-full">
+                        <div className="w-full lg:w-[45%] min-h-[300px] lg:min-h-[500px] relative">
+                            <img 
+                                src={whyNeedBlocker.imageUrl ?? '/landing/7.png'} 
+                                alt={whyNeedBlocker.title} 
+                                className="absolute inset-0 w-full h-full object-cover"
+                            />
+                        </div>
+                        <div className="w-full lg:w-[55%] p-[40px] lg:p-[80px] xl:pl-[100px] flex flex-col justify-center">
+                            <h2 
+                                className="text-[40px] lg:text-[56px] font-extrabold text-[#002954] leading-[1.15] mb-8 max-w-[550px]"
+                                style={{ fontVariationSettings: "'wdth' 100" }}
+                            >
+                                {whyNeedBlocker.title}
+                            </h2>
+                            <div className="flex flex-col gap-6 max-w-[750px]">
+                                <p 
+                                    className="text-[18px] lg:text-[22px] font-medium text-[#002954] leading-[1.4]"
+                                    style={{ fontVariationSettings: "'wdth' 100" }}
+                                >
+                                    {whyNeedBlocker.paragraph1}
+                                </p>
+                                <p 
+                                    className="text-[18px] lg:text-[22px] font-medium text-[#002954] leading-[1.4]"
+                                    style={{ fontVariationSettings: "'wdth' 100" }}
+                                >
+                                    {whyNeedBlocker.paragraph2}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* ══════════════════════════════════════════════════════
+                TYPES OF PORN BLOCKERS
+            ══════════════════════════════════════════════════════ */}
+            <section className="w-full py-[70px] flex flex-col items-center bg-[#F6FAFF] relative z-20">
+                <div className="w-full max-w-[1800px] px-[20px] md:px-[40px] lg:px-[80px] flex flex-col items-center gap-[60px]">
+                    <h2
+                        className="text-[40px] lg:text-[48px] font-bold text-[#002954] text-center leading-[1.2] max-w-[700px]"
+                        style={{ fontVariationSettings: "'wdth' 100" }}
+                    >
+                        {hp?.typesOfPornBlockers?.sectionTitle ?? 'Types of porn blockers to block adult content'}
+                    </h2>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-[25px] w-full">
+                        {typesOfBlockers.map((card, i) => {
+                            const isLastAndOdd = i === typesOfBlockers.length - 1 && typesOfBlockers.length % 2 !== 0;
+                            return (
+                                <div 
+                                    key={i} 
+                                    className={`bg-white rounded-[25px] p-[40px] flex flex-col gap-6 shadow-[0px_4px_4px_0px_rgba(0,118,244,0.1)] ${isLastAndOdd ? 'md:col-span-2' : ''}`}
+                                >
+                                    <div className="flex items-center gap-4 mb-2">
+                                        <img src="/landing/devices.svg" alt="Device icon" className="w-7 h-7 shrink-0" />
+                                        <h3 className="text-[28px] font-bold text-[#002954] m-0" style={{ fontVariationSettings: "'wdth' 100" }}>
+                                            {card.title}
+                                        </h3>
+                                    </div>
+                                    <p className="text-[18px] font-medium text-[#002954] leading-relaxed mb-auto" style={{ fontVariationSettings: "'wdth' 100" }}>
+                                        {card.description}
+                                    </p>
+                                    <p className="text-[16px] text-[#002954] leading-relaxed mt-4">
+                                        {card.exampleText}
+                                    </p>
+                                </div>
+                            );
+                        })}
                     </div>
                 </div>
             </section>
