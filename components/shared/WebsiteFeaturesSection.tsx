@@ -50,7 +50,7 @@ const FEATURES: Feature[] = [
     },
     {
         stateMachine: 'Streaks',
-        title: <>Streaks<br />Feature</>,
+        title: <>Streaks</>,
         description:
             "Every day clean adds to your streak. It's a small thing, but seeing that number climb gives you something real to protect. Progress you can see is progress that sticks.",
         imageRight: true,
@@ -85,9 +85,8 @@ export function WebsiteFeaturesSection({ data }: { data?: { features?: { stateMa
             {featuresToRender.map((feature) => (
                 <div
                     key={feature.stateMachine}
-                    className={`w-full max-w-site px-[12px] lg:px-[40px] flex flex-col items-center justify-between gap-12 md:gap-24 ${
-                        feature.imageRight ? 'md:flex-row-reverse' : 'md:flex-row'
-                    }`}
+                    className={`w-full max-w-site px-[12px] lg:px-[40px] flex flex-col items-center justify-between gap-12 md:gap-24 ${feature.imageRight ? 'md:flex-row-reverse' : 'md:flex-row'
+                        }`}
                 >
                     {/* Rive Animation */}
                     <div className={`${feature.animationFlexClass || 'flex-[1.2]'} w-full flex ${feature.imageRight ? 'justify-end' : 'justify-start'}`}>

@@ -66,7 +66,7 @@ export function MacosScrollUI({ data }: { data?: { title?: string; description?:
     }, []);
 
     return (
-        <div className="w-full relative bg-[#F6FAFF] overflow-x-clip">
+        <div className="w-full relative overflow-x-clip">
             <style dangerouslySetInnerHTML={{__html: `
                 .scroll-ui-text-col {
                     padding-left: 32px;
@@ -110,11 +110,11 @@ export function MacosScrollUI({ data }: { data?: { title?: string; description?:
                                     idx === activeIndex ? 'opacity-100 pointer-events-auto translate-y-0' : 'opacity-0 pointer-events-none translate-y-4'
                                 }`}
                             >
-                                <h2 className={`font-black text-[#012955] leading-[1.05] mb-6 whitespace-pre-line ${idx === 0 ? 'text-[62px] md:text-[84px] lg:text-[96px]' : 'text-[52px] md:text-[70px] lg:text-[82px]'}`}>
+                                <h2 className={`font-black text-[#012955] leading-[1.05] mb-6 whitespace-pre-line text-[36px] md:text-[52px] lg:text-[64px]`}>
                                     {step.title}
                                 </h2>
                                 {step.desc && (
-                                    <p className="text-[22px] md:text-[26px] lg:text-[30px] text-[#012955]/80 font-bold max-w-[760px] leading-[1.5] whitespace-pre-line">
+                                    <p className="text-[18px] lg:text-[20px] text-[#012955]/80 font-bold max-w-[760px] leading-[1.5] whitespace-pre-line">
                                         {step.desc}
                                     </p>
                                 )}

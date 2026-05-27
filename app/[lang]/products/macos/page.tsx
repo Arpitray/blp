@@ -14,6 +14,8 @@ import { MacosBestBlockerSection } from '@/components/shared/MacosBestBlockerSec
 import { MacosBenefitsSection } from '@/components/shared/MacosBenefitsSection'
 import { MacosFaqsSection } from '@/components/shared/MacosFaqsSection'
 
+import { PremiumScrollWrapper } from '@/components/shared/PremiumScrollWrapper'
+
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
     const { lang } = await params
     const locale = resolveLocale(lang)
@@ -126,6 +128,9 @@ export default async function MacosProductPage({ params }: { params: Promise<{ l
                 <WebsiteFeaturesSection data={product?.websiteFeatures} />
             </div>
 
+            {/* ── Premium Scroll Wrapper encompassing both banner and CTA ── */}
+            <PremiumScrollWrapper>
+
             {/* ── Bottom Platform Banner ── */}
             <div className="relative w-full pt-[75px] pb-[200px] flex flex-col items-center z-10">
                 <h2
@@ -138,28 +143,22 @@ export default async function MacosProductPage({ params }: { params: Promise<{ l
             </div>
 
             {/* ── Premium CTA Section ── */}
-            <section
-                className="relative w-full overflow-hidden z-20"
-                style={{
-                    background: "linear-gradient(180deg, #6292FF 0%, #3572FF 100%)",
-                }}
-            >
-                <div className="w-full max-w-[1898px] px-6 lg:px-16 mx-auto flex flex-col md:flex-row items-center justify-between pt-24 pb-24 md:py-40 relative z-10" style={{ minHeight: "750px" }}>
+            <div className="w-full max-w-[1898px] px-6 lg:px-16 mx-auto flex flex-col md:flex-row items-center justify-between pt-24 pb-24 md:py-40 relative z-10 min-h-[750px] lg:min-h-screen">
 
                     {/* Left Side: Text */}
                     <div className="flex-1 md:max-w-[50%] w-full flex flex-col items-center text-center md:pr-6 lg:pr-10 md:translate-x-[70px]">
                         <h2
-                            className="text-[72px] md:text-[100px] lg:text-[120px] font-black text-white leading-[1.0] mb-6 whitespace-pre-wrap"
+                            className="text-[48px] lg:text-[80px] font-black text-white leading-[1.0] mb-6 whitespace-nowrap"
                             style={{ fontVariationSettings: "'wdth' 100" }}
                         >
-                            {premiumTitle.join('\n')}
+                            {premiumTitle.join(' ')}
                         </h2>
-                        <p className="text-[24px] md:text-[32px] text-white/80 font-medium leading-[1.6] mb-12 max-w-xl">
+                        <p className="text-[20px] lg:text-[32px] text-white font-medium leading-[1.3] mb-12 max-w-xl">
                             {premiumSubtitle}
                         </p>
                         <Link href={premiumCtaUrl}>
                             <button
-                                className="bg-white text-[#012955] font-semibold text-[24px] md:text-[32px] px-16 md:px-24 py-3 md:py-4 rounded-full shadow-[0px_10px_0px_#1A3B7A] md:shadow-[0px_12px_0px_#1A3B7A] hover:translate-y-1 hover:shadow-[0px_8px_0px_#1A3B7A] transition-all duration-200 whitespace-nowrap"
+                                className="bg-white text-[#012955] font-semibold text-[20px] lg:text-[24px] px-16 lg:px-24 py-3 lg:py-4 rounded-full shadow-[0px_8px_0px_#1A3B7A] lg:shadow-[0px_10px_0px_#1A3B7A] hover:translate-y-1 hover:shadow-[0px_6px_0px_#1A3B7A] transition-all duration-200 whitespace-nowrap"
                             >
                                 {premiumCtaText}
                             </button>
@@ -171,7 +170,7 @@ export default async function MacosProductPage({ params }: { params: Promise<{ l
                         <PremiumMascot className="w-full max-w-[460px] md:max-w-[660px] lg:max-w-[700px] aspect-square" />
                     </div>
                 </div>
-            </section>
+            </PremiumScrollWrapper>
 
             {/* ── Scroll Triggered UI Section ── */}
             <MacosScrollUI data={product?.scrollSteps?.steps} />

@@ -165,6 +165,9 @@ export default async function ProductPage({ params }: { params: Promise<{ lang: 
                 })}
             </div>
 
+            {/* ── Premium Scroll Wrapper encompassing both banner and CTA ── */}
+            <PremiumScrollWrapper>
+
             {/* ── Bottom Platform Banner ── */}
             <div className="relative w-full pt-[75px] pb-[100px] flex flex-col items-center z-10">
                 <h2 className="text-[32px] md:text-[45px] lg:text-[50px] font-black text-[#002954] mb-12 text-center tracking-tight px-6 mt-10" style={{ fontVariationSettings: "'wdth' 100" }}>

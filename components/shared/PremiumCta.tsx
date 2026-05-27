@@ -22,10 +22,10 @@ export const PremiumCta: React.FC<PremiumCtaProps> = ({
       <div className="container mx-auto px-6 flex flex-col lg:flex-row items-center justify-between gap-12 z-10">
         {/* Text Content */}
         <div className="text-center lg:text-left max-w-2xl">
-          <h1 className="text-5xl md:text-7xl font-bold text-white leading-tight tracking-tight">
+          <h1 className="text-5xl lg:text-[80px] font-bold text-white leading-tight tracking-tight">
             {title}
           </h1>
-          <p className="mt-6 text-lg md:text-xl text-white/90 font-medium max-w-xl mx-auto lg:mx-0">
+          <p className="mt-6 text-lg lg:text-[32px] text-white/90 font-medium max-w-xl mx-auto lg:mx-0">
             {subHeadline}
           </p>
           <div className="mt-10 flex justify-center lg:justify-start">

@@ -72,7 +72,7 @@ export function AndroidScrollUI({ data }: { data?: { title?: string; description
     }, []);
 
     return (
-        <div className="w-full relative bg-[#F6FAFF]">
+        <div className="w-full relative">
             {/* Desktop Layout: Split Columns */}
             <div 
                 className="hidden md:flex flex-row w-full max-w-site px-[12px] lg:px-[40px] mx-auto relative gap-8 md:gap-16 lg:gap-20"
@@ -101,11 +101,11 @@ export function AndroidScrollUI({ data }: { data?: { title?: string; description
                                     idx === activeIndex ? 'opacity-100 pointer-events-auto translate-y-0' : 'opacity-0 pointer-events-none translate-y-4'
                                 }`}
                             >
-                                <h2 className={`font-black text-[#012955] leading-[1.05] mb-6 whitespace-pre-line ${idx === 0 ? 'text-[44px] md:text-[60px] lg:text-[72px]' : 'text-[32px] md:text-[44px] lg:text-[54px]'}`}>
+                                <h2 className={`font-black text-[#012955] leading-[1.05] mb-6 whitespace-pre-line text-[36px] md:text-[52px] lg:text-[64px]`}>
                                     {step.title}
                                 </h2>
                                 {step.desc && (
-                                    <p className="text-[18px] md:text-[20px] lg:text-[22px] text-[#012955]/80 font-bold max-w-[700px] leading-[1.5] whitespace-pre-line">
+                                    <p className="text-[18px] lg:text-[20px] text-[#012955]/80 font-bold max-w-[700px] leading-[1.5] whitespace-pre-line">
                                         {step.desc}
                                     </p>
                                 )}
