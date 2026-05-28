@@ -223,8 +223,7 @@ export default async function LandingPage({ params }: { params: Promise<{ lang: 
                 HERO SECTION
             ══════════════════════════════════════════════════════ */}
             <section
-                className="w-full relative flex flex-col items-center justify-start overflow-hidden bg-gradient-to-b from-[#1160FF] via-[#649DFF] to-[#87C1FF]"
-                style={{ minHeight: '1700px' }}
+                className="w-full relative flex flex-col items-center justify-start overflow-hidden bg-gradient-to-b from-[#1160FF] via-[#649DFF] to-[#87C1FF] min-h-[1300px] xl:min-h-[1700px]"
             >
                 {/* Hero Content */}
                 <div className="relative z-40 flex flex-col items-center pt-[220px] px-[12px] lg:px-[40px] w-full max-w-site">
@@ -257,21 +256,21 @@ export default async function LandingPage({ params }: { params: Promise<{ lang: 
 
                 {/* Hero Image */}
                 {heroImage && (
-                    <div className="absolute right-0 bottom-0 z-30 pointer-events-none">
+                    <div className="absolute right-0 bottom-0 z-30 pointer-events-none hidden lg:block">
                         <img
                             src={heroImage}
                             alt="BlockP Hero"
-                            className="w-[780px] h-[963px] object-cover object-bottom"
+                            className="w-[780px] max-w-[50vw] xl:max-w-[780px] h-auto object-cover object-bottom"
                         />
                     </div>
                 )}
 
                 {/* Mascot */}
-                <div className="absolute bottom-[40px] md:bottom-[20px] left-1/2 -translate-x-1/2 z-10 pointer-events-none">
+                <div className="absolute bottom-[40px] md:bottom-[20px] left-1/2 -translate-x-1/2 z-10 pointer-events-none w-[90%] md:w-auto">
                     <img
                         src={mascotSrc}
                         alt="BlockP Mascot"
-                        className="w-[540px] md:w-[740px] h-auto"
+                        className="w-full md:w-[740px] max-w-full h-auto"
                     />
                 </div>
 
@@ -298,9 +297,9 @@ export default async function LandingPage({ params }: { params: Promise<{ lang: 
                     >
                         {hp?.asSeenOn?.sectionTitle ?? 'As seen on'}
                     </h2>
-                    <div className="flex items-center justify-center gap-[40px] md:gap-[70px]">
+                    <div className="flex flex-wrap items-center justify-center gap-[40px] md:gap-[70px]">
                         {asSeenOnLogos.map((logo, i) => (
-                            <img key={i} src={logo.logoUrl ?? logo.localLogoPath ?? ''} alt={logo.name} className="h-[40px] md:h-[55px] w-auto object-contain" />
+                            <img key={i} src={logo.logoUrl ?? logo.localLogoPath ?? ''} alt={logo.name} className="h-[30px] md:h-[40px] lg:h-[55px] w-auto object-contain" />
                         ))}
                     </div>
                     <div className="w-full max-w-site h-[1px] bg-gray-200" />
@@ -342,9 +341,9 @@ export default async function LandingPage({ params }: { params: Promise<{ lang: 
                     >
                         {hp?.stats?.sectionTitle ?? 'Join the millions of users who trust us'}
                     </h2>
-                    <div className="flex items-center justify-center gap-[25px] w-full">
+                    <div className="flex flex-wrap items-center justify-center gap-10 lg:gap-[25px] w-full">
                         {stats.map((stat, i) => (
-                            <div key={i} className="flex flex-col gap-[10px] items-center w-[326px]">
+                            <div key={i} className="flex flex-col gap-[10px] items-center w-full max-w-[326px]">
                                 <img src={stat.iconUrl} alt={stat.value} className="w-[135px] h-[135px] object-contain" />
                                 <p
                                     className="text-[32px] font-bold text-[#002954] text-center leading-[1.44]"

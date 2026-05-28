@@ -98,10 +98,10 @@ export default function Header() {
                         Block<span className="text-brand-accent">P</span>.
                     </Link>
 
-                    <div className="flex items-center ml-auto gap-[80px]">
-                        <div className="flex items-center gap-nav-gap">
+                    <div className="flex items-center ml-auto gap-4 lg:gap-8 xl:gap-[80px]">
+                        <div className="flex items-center gap-2 lg:gap-8 xl:gap-nav-gap">
                             <nav>
-                                <ul className="flex items-center gap-nav-gap">
+                                <ul className="flex items-center gap-2 lg:gap-8 xl:gap-nav-gap">
                                     <li ref={productsRef} className="relative h-[68px] flex items-center" onMouseEnter={() => setProductsOpen(true)} onMouseLeave={() => setProductsOpen(false)}>
                                         <Button type="button" variant="nav" className="inline-flex items-center gap-[5px]">
                                             {uiCopy.products} <ArrowIcon isOpen={productsOpen} />
