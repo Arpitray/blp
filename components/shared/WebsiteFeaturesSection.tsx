@@ -85,7 +85,7 @@ export function WebsiteFeaturesSection({ data }: { data?: { features?: { stateMa
             {featuresToRender.map((feature) => (
                 <div
                     key={feature.stateMachine}
-                    className={`w-full max-w-site px-[12px] lg:px-[40px] flex flex-col items-center justify-between gap-12 md:gap-24 ${feature.imageRight ? 'md:flex-row-reverse' : 'md:flex-row'
+                    className={`w-[92%] lg:w-[88%] max-w-[1400px] mx-auto flex flex-col items-center justify-between gap-12 md:gap-24 ${feature.imageRight ? 'md:flex-row-reverse' : 'md:flex-row'
                         }`}
                 >
                     {/* Rive Animation */}

@@ -76,7 +76,7 @@ export default async function TermsAndConditionsPage({ params }: { params: Promi
 
     return (
         <div className="w-full flex flex-col items-center bg-[#F6FAFF]">
-            <div className="w-full max-w-site px-[12px] lg:px-[40px]">
+            <div className="w-[92%] lg:w-[88%] max-w-[1400px] mx-auto">
                 <section className="relative pt-[160px] pb-24 w-full flex flex-col items-center">
                     {/* Back Button - Aligned with BlockP logo in header (pl-20/pl-32) */}
                     <BackButton 

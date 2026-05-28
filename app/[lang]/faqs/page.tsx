@@ -49,7 +49,7 @@ export default async function FAQsPage({ params }: { params: Promise<{ lang: str
 
     return (
         <div className="w-full flex flex-col items-center bg-[#F6FAFF]">
-            <div className="w-full max-w-site px-[12px] lg:px-[40px]">
+            <div className="w-[92%] lg:w-[88%] max-w-[1400px] mx-auto">
                 <section className="relative pt-[200px] pb-32 w-full flex flex-col items-center">
                     <BackButton
                         className="absolute left-0 top-[205px] text-[#012955] hover:opacity-70 transition-opacity"

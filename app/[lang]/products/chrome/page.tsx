@@ -77,7 +77,7 @@ export default async function ChromeProductPage({ params }: { params: Promise<{ 
             >
                 {/* Back / Breadcrumb Button */}
                 <div className="absolute top-[120px] md:top-[145px] left-0 w-full flex justify-center z-50 pointer-events-none">
-                    <div className="w-full max-w-site px-[12px] lg:px-[40px] flex justify-start pointer-events-auto">
+                    <div className="w-[92%] lg:w-[88%] max-w-[1400px] mx-auto flex justify-start pointer-events-auto">
                     <Link
                         href={`/${locale}`}
                         className="flex items-center text-white/80 hover:text-white transition-colors text-[18px] md:text-[22px] font-bold"
@@ -91,7 +91,7 @@ export default async function ChromeProductPage({ params }: { params: Promise<{ 
                 </div>
 
                 {/* Hero Content */}
-                <div className="relative z-40 flex flex-col items-center pt-[140px] md:pt-[180px] px-[12px] lg:px-[40px] w-full max-w-site">
+                <div className="relative z-40 flex flex-col items-center pt-[140px] md:pt-[180px] px-[12px] lg:px-[60px] xl:px-[100px] 2xl:px-[140px] w-full max-w-site">
                     <h1
                         className="text-[42px] md:text-[56px] lg:text-[72px] font-bold text-white text-center leading-[1.05] mb-8 md:mb-10"
                         style={{ fontVariationSettings: "'wdth' 100" }}
@@ -143,7 +143,7 @@ export default async function ChromeProductPage({ params }: { params: Promise<{ 
                 </div>
 
                 {/* ── Premium CTA Section ── */}
-                <div className="w-full max-w-[1898px] px-6 lg:px-16 mx-auto flex flex-col md:flex-row items-center justify-between pt-24 pb-24 md:py-40 relative z-10 min-h-[750px] lg:min-h-screen">
+                <div className="w-full max-w-site px-[12px] lg:px-[40px] mx-auto flex flex-col md:flex-row items-center justify-between pt-24 pb-24 md:py-40 relative z-10 min-h-[750px] lg:min-h-screen">
                         
                         {/* Left Side: Text */}
                         <div className="flex-1 md:max-w-[50%] w-full flex flex-col items-center text-center md:pr-6 lg:pr-10 md:translate-x-[70px]">

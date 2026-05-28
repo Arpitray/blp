@@ -252,7 +252,7 @@ export default async function Page({
       .filter(Boolean)
 
     return (
-      <div className="mx-auto w-full max-w-[1100px] px-6 pb-24 pt-[140px] md:px-10">
+      <div className="mx-auto w-full max-w-[1100px] px-[12px] lg:px-[60px] xl:px-[100px] 2xl:px-[140px] pb-24 pt-[140px]">
         <h1 className="mb-8 text-[36px] font-black leading-[1.15] text-brand-primary md:text-[52px]">
           {staticPage.title}
         </h1>
@@ -276,7 +276,7 @@ export default async function Page({
   const pageTitle = page.label || titleFromSlug(slug)
 
   return (
-    <div className="mx-auto w-full max-w-[1100px] px-6 pb-24 pt-[140px] md:px-10">
+    <div className="mx-auto w-full max-w-[1100px] px-[12px] lg:px-[60px] xl:px-[100px] 2xl:px-[140px] pb-24 pt-[140px]">
       <h1 className="mb-6 text-[36px] font-black leading-[1.15] text-brand-primary md:text-[52px]">
         {pageTitle}
       </h1>

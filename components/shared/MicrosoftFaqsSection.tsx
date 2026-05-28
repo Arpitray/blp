@@ -56,7 +56,7 @@ export function MicrosoftFaqsSection({ data }: { data?: { sectionTitle?: string;
 
     return (
         <section className="w-full bg-[#F6FAFF] py-24 md:py-32 relative z-20">
-            <div className="w-full max-w-site px-[12px] lg:px-[40px] mx-auto flex flex-col items-center">
+            <div className="w-[92%] lg:w-[88%] max-w-[1400px] mx-auto mx-auto flex flex-col items-center">
                 <h2 className="text-[32px] md:text-[48px] lg:text-[54px] font-black text-[#012955] text-center mb-16 md:mb-24 leading-[1.2] whitespace-pre-wrap">
                     {title}
                 </h2>

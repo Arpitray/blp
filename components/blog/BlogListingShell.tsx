@@ -35,7 +35,7 @@ export function BlogListingShell({
     return (
         <>
             {breadcrumbs.length > 0 && (
-                <div className="w-full max-w-site mx-auto px-[12px] lg:px-[40px] pt-[160px] lg:pt-[180px]">
+                <div className="w-full max-w-site mx-auto px-[12px] lg:px-[60px] xl:px-[100px] 2xl:px-[140px] pt-[160px] lg:pt-[180px]">
                     <div className="mb-[40px] lg:mb-[60px] flex items-center gap-3">
                         <BackButton
                             ariaLabel="Go to previous page"
@@ -55,7 +55,7 @@ export function BlogListingShell({
                 </div>
             )}
 
-            <main className={`w-full max-w-site mx-auto px-[12px] lg:px-[40px] ${breadcrumbs.length > 0 ? (showHero ? 'pt-0' : 'pt-[60px]') : (showHero ? 'pt-[160px]' : 'pt-[180px]')} mb-[100px]`}>
+            <main className={`w-full max-w-site mx-auto px-[12px] lg:px-[60px] xl:px-[100px] 2xl:px-[140px] ${breadcrumbs.length > 0 ? (showHero ? 'pt-0' : 'pt-[60px]') : (showHero ? 'pt-[160px]' : 'pt-[180px]')} mb-[100px]`}>
 
                 {showHero && featuredPost && (
                     <section className="mb-[50px]">

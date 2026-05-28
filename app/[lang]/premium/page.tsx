@@ -129,7 +129,7 @@ export default async function PremiumPage({ params }: { params: Promise<{ lang: 
                 className="relative w-full overflow-hidden"
                 style={{ background: 'linear-gradient(180deg, #6292FF 0%, #3572FF 100%)', minHeight: '520px' }}
             >
-                <div className="w-full max-w-site px-[12px] lg:px-[40px] mx-auto flex flex-row items-center justify-between pt-36 pb-0 relative z-20" style={{ minHeight: '1000px' }}>
+                <div className="w-[92%] lg:w-[88%] max-w-[1400px] mx-auto mx-auto flex flex-row items-center justify-between pt-36 pb-0 relative z-20" style={{ minHeight: '1000px' }}>
                     <div className="flex flex-col items-center text-center translate-y-[-40px] ml-[5%] lg:ml-[14%]">
                         <h1 className="text-[84px] md:text-[150px] font-black text-white leading-[1.0] mb-12">
                             <span className="block">{heroTitle1}</span>
@@ -189,7 +189,7 @@ export default async function PremiumPage({ params }: { params: Promise<{ lang: 
 
             {/* ── PRICING SECTION ── */}
             <section className="w-full py-20 flex flex-col items-center overflow-hidden">
-                <div className="w-full max-w-none px-4 md:px-12 flex flex-col lg:flex-row items-center justify-center gap-4 lg:gap-4 mt-12 mb-16">
+                <div className="w-full max-w-site mx-auto px-[12px] lg:px-[60px] xl:px-[100px] 2xl:px-[140px] flex flex-col lg:flex-row items-center justify-center gap-4 lg:gap-4 mt-12 mb-16">
 
                     {/* Free Forever */}
                     <div className="bg-white border-2 border-[#E1EAF6] rounded-[40px] w-full lg:w-[650px] p-8 flex flex-col h-auto lg:h-[640px] shadow-sm z-10 transition-transform">
@@ -246,7 +246,7 @@ export default async function PremiumPage({ params }: { params: Promise<{ lang: 
                     <div className="w-full h-[1.5px] bg-[#E8F2FF]" />
                 </div>
 
-                <div className="w-full max-w-site px-[12px] lg:px-[40px] flex flex-col items-center text-center">
+                <div className="w-[92%] lg:w-[88%] max-w-[1400px] mx-auto flex flex-col items-center text-center">
                     <div className="flex gap-2 mb-10 text-[#002954]">
                         {Array.from({ length: testimonialRating }).map((_, i) => (
                             <svg key={i} width="36" height="36" viewBox="0 0 24 24" fill="currentColor">

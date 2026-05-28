@@ -92,7 +92,7 @@ export default function Header() {
             className={`w-full fixed top-0 z-[100] bg-transparent pt-[25px] pb-[10px] flex justify-center transition-all duration-500 ease-in-out ${isVisible ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0 pointer-events-none'
                 }`}
         >
-            <div className="w-full max-w-site px-[12px] lg:px-[40px] flex justify-center">
+            <div className="w-[92%] lg:w-[88%] max-w-[1400px] mx-auto flex justify-center">
                 <header className="topbar-card bg-white flex items-center justify-between pl-[20px] lg:pl-[32px] pr-[8px] lg:pr-[12px] h-[68px] w-full">
                     <Link href={`/${currentLocale}`} className="shrink-0 font-extrabold text-[32px] text-brand-primary">
                         Block<span className="text-brand-accent">P</span>.

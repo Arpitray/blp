@@ -226,7 +226,7 @@ export default async function LandingPage({ params }: { params: Promise<{ lang: 
                 className="w-full relative flex flex-col items-center justify-start overflow-hidden bg-gradient-to-b from-[#1160FF] via-[#649DFF] to-[#87C1FF] min-h-[1300px] xl:min-h-[1700px]"
             >
                 {/* Hero Content */}
-                <div className="relative z-40 flex flex-col items-center pt-[220px] px-[12px] lg:px-[40px] w-full max-w-site">
+                <div className="relative z-40 flex flex-col items-center pt-[220px] px-[12px] lg:px-[60px] xl:px-[100px] 2xl:px-[140px] w-full max-w-site">
                     <h1
                         className="text-[64px] font-extrabold text-white text-center leading-[1.2] mb-6 max-w-[995px]"
                         style={{ fontVariationSettings: "'wdth' 100", textShadow: '0px 4px 4px rgba(0, 118, 244, 0.25)' }}
@@ -290,7 +290,7 @@ export default async function LandingPage({ params }: { params: Promise<{ lang: 
                 AS SEEN ON
             ══════════════════════════════════════════════════════ */}
             <section className="w-full pb-[70px] pt-0 flex flex-col items-center bg-white relative z-20">
-                <div className="w-full max-w-site px-[12px] lg:px-[40px] flex flex-col gap-[70px] items-center -mt-[120px] md:-mt-[160px] relative z-30">
+                <div className="w-[92%] lg:w-[88%] max-w-[1400px] mx-auto flex flex-col gap-[70px] items-center -mt-[120px] md:-mt-[160px] relative z-30">
                     <h2
                         className="text-[48px] font-bold text-[#002954] text-center leading-[1.2]"
                         style={{ fontVariationSettings: "'wdth' 100", textShadow: '0px 0px 4px rgba(255, 255, 255, 0.35)' }}
@@ -302,7 +302,7 @@ export default async function LandingPage({ params }: { params: Promise<{ lang: 
                             <img key={i} src={logo.logoUrl ?? logo.localLogoPath ?? ''} alt={logo.name} className="h-[30px] md:h-[40px] lg:h-[55px] w-auto object-contain" />
                         ))}
                     </div>
-                    <div className="w-full max-w-site h-[1px] bg-gray-200" />
+                    <div className="w-[92%] lg:w-[88%] max-w-[1400px] mx-auto h-[1px] bg-gray-200" />
                 </div>
             </section>
 
@@ -310,7 +310,7 @@ export default async function LandingPage({ params }: { params: Promise<{ lang: 
                 STAY PROTECTED ON ALL PLATFORMS
             ══════════════════════════════════════════════════════ */}
             <section className="w-full pb-20 pt-0 flex flex-col items-center bg-white relative z-20">
-                <div className="w-full max-w-site px-[12px] lg:px-[40px] flex flex-col items-center">
+                <div className="w-[92%] lg:w-[88%] max-w-[1400px] mx-auto flex flex-col items-center">
                     <h2
                         className="text-[48px] font-bold text-[#002954] text-center leading-[1.2] mb-24"
                         style={{ fontVariationSettings: "'wdth' 100" }}
@@ -326,7 +326,7 @@ export default async function LandingPage({ params }: { params: Promise<{ lang: 
                             </div>
                         ))}
                     </div>
-                    <div className="w-full max-w-site h-[1px] bg-gray-200" />
+                    <div className="w-[92%] lg:w-[88%] max-w-[1400px] mx-auto h-[1px] bg-gray-200" />
                 </div>
             </section>
 
@@ -334,7 +334,7 @@ export default async function LandingPage({ params }: { params: Promise<{ lang: 
                 STATS SECTION
             ══════════════════════════════════════════════════════ */}
             <section className="w-full py-[70px] flex flex-col items-center bg-white relative z-20">
-                <div className="w-full max-w-site px-[12px] lg:px-[40px] flex flex-col gap-[70px] items-center">
+                <div className="w-[92%] lg:w-[88%] max-w-[1400px] mx-auto flex flex-col gap-[70px] items-center">
                     <h2
                         className="text-[48px] font-bold text-[#002954] text-center leading-[1.2] max-w-[810px]"
                         style={{ fontVariationSettings: "'wdth' 100" }}
@@ -375,7 +375,7 @@ export default async function LandingPage({ params }: { params: Promise<{ lang: 
                 HOW CAN YOU STOP WATCHING PORN
             ══════════════════════════════════════════════════════ */}
             <section className="w-full py-[70px] flex flex-col items-center bg-gradient-to-b from-white to-[#F6FAFF] relative z-20">
-                <div className="w-full max-w-site px-[12px] lg:px-[40px] flex flex-col gap-[70px] items-center">
+                <div className="w-[92%] lg:w-[88%] max-w-[1400px] mx-auto flex flex-col gap-[70px] items-center">
                     <h2
                         className="text-[48px] font-bold text-[#002954] text-center leading-[1.2]"
                         style={{ fontVariationSettings: "'wdth' 100" }}
@@ -400,7 +400,7 @@ export default async function LandingPage({ params }: { params: Promise<{ lang: 
                 BENEFITS YOU'LL ENJOY AFTER QUITTING PORN
             ══════════════════════════════════════════════════════ */}
             <section className="w-full py-[70px] flex flex-col items-center bg-[#F6FAFF] relative z-20">
-                <div className="w-full max-w-site px-[12px] lg:px-[40px] flex flex-col gap-[70px] items-center">
+                <div className="w-[92%] lg:w-[88%] max-w-[1400px] mx-auto flex flex-col gap-[70px] items-center">
                     <h2
                         className="text-[48px] font-bold text-[#002954] text-center leading-[1.2]"
                         style={{ fontVariationSettings: "'wdth' 100" }}
@@ -425,7 +425,7 @@ export default async function LandingPage({ params }: { params: Promise<{ lang: 
                 WHY DO YOU NEED A PORN BLOCKER
             ══════════════════════════════════════════════════════ */}
             <section className="w-full py-[70px] flex flex-col items-center bg-[#F6FAFF] relative z-20">
-                <div className="w-full max-w-site px-[12px] lg:px-[40px]">
+                <div className="w-[92%] lg:w-[88%] max-w-[1400px] mx-auto">
                     <div className="bg-white rounded-[25px] overflow-hidden shadow-[0px_4px_4px_0px_rgba(0,118,244,0.25)] flex flex-col lg:flex-row w-full">
                         <div className="w-full lg:w-[45%] min-h-[300px] lg:min-h-[500px] relative">
                             <img 
@@ -464,7 +464,7 @@ export default async function LandingPage({ params }: { params: Promise<{ lang: 
                 TYPES OF PORN BLOCKERS
             ══════════════════════════════════════════════════════ */}
             <section className="w-full py-[70px] flex flex-col items-center bg-[#F6FAFF] relative z-20">
-                <div className="w-full max-w-site px-[12px] lg:px-[40px] flex flex-col items-center gap-[60px]">
+                <div className="w-[92%] lg:w-[88%] max-w-[1400px] mx-auto flex flex-col items-center gap-[60px]">
                     <h2
                         className="text-[40px] lg:text-[48px] font-bold text-[#002954] text-center leading-[1.2] max-w-[700px]"
                         style={{ fontVariationSettings: "'wdth' 100" }}
@@ -503,7 +503,7 @@ export default async function LandingPage({ params }: { params: Promise<{ lang: 
                 FAQ SECTION
             ══════════════════════════════════════════════════════ */}
             <section className="w-full py-16 md:py-24 flex flex-col items-center bg-[#F6FAFF] relative z-20">
-                <div className="w-full max-w-site px-[12px] lg:px-[40px]">
+                <div className="w-[92%] lg:w-[88%] max-w-[1400px] mx-auto">
                     <h2
                         className="text-[36px] md:text-[52px] lg:text-[64px] font-bold text-[#012955] text-center leading-[1.1] mb-16"
                         style={{ fontVariationSettings: "'wdth' 100" }}

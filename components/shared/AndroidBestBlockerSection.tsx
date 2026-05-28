@@ -18,7 +18,7 @@ export function AndroidBestBlockerSection({ data }: { data?: any }) {
 
     return (
         <section className="w-full bg-[#F6FAFF] py-16 md:py-32 relative overflow-hidden z-20">
-            <div className="w-full max-w-[1898px] px-6 lg:px-16 mx-auto flex flex-col lg:flex-row items-center justify-between">
+            <div className="w-[92%] lg:w-[88%] max-w-[1400px] mx-auto mx-auto flex flex-col lg:flex-row items-center justify-between">
                 
                 {/* Left Side: Images */}
                 <div className="w-full lg:w-[56%] relative flex items-center justify-start min-h-[280px] sm:min-h-[380px] md:min-h-[460px] mb-16 lg:mb-0 lg:-ml-6 xl:-ml-12">

@@ -16,7 +16,7 @@ function getLoadingClasses(variant: RouteLoadingStateProps['variant']): string {
         return 'w-full flex flex-col items-center bg-[#F6FAFF] mb-[120px]'
     }
 
-    return 'w-full px-[12px] lg:px-[40px] mb-[100px] max-w-site mx-auto'
+    return 'w-full px-[12px] lg:px-[60px] xl:px-[100px] 2xl:px-[140px] mb-[100px] max-w-site mx-auto'
 }
 
 function getLoadingInnerClasses(variant: RouteLoadingStateProps['variant']): string {
@@ -28,7 +28,7 @@ function getLoadingInnerClasses(variant: RouteLoadingStateProps['variant']): str
         return 'animate-pulse space-y-12 pt-[180px]'
     }
 
-    return 'w-full max-w-site px-[12px] lg:px-[40px] pt-16 animate-pulse space-y-8'
+    return 'w-[92%] lg:w-[88%] max-w-[1400px] mx-auto pt-16 animate-pulse space-y-8'
 }
 
 function getErrorClasses(variant: RouteErrorStateProps['variant']): string {
@@ -36,7 +36,7 @@ function getErrorClasses(variant: RouteErrorStateProps['variant']): string {
         return 'w-full flex flex-col items-center bg-[#F6FAFF] mb-[120px]'
     }
 
-    return 'w-full px-[12px] lg:px-[40px] pt-[120px] mb-[100px] max-w-site mx-auto'
+    return 'w-full px-[12px] lg:px-[60px] xl:px-[100px] 2xl:px-[140px] pt-[120px] mb-[100px] max-w-site mx-auto'
 }
 
 export function RouteLoadingState({ variant }: RouteLoadingStateProps) {
@@ -96,7 +96,7 @@ export function RouteErrorState({ variant, title, description, reset }: RouteErr
                 <div className="w-full bg-gray-100 py-2 px-10 text-xs font-mono border-b border-gray-200 uppercase">
                     <span className="text-gray-500">Blog</span>
                 </div>
-                <div className="w-full max-w-[960px] px-6 py-24">
+                <div className="w-full max-w-[960px] px-[12px] lg:px-[60px] xl:px-[100px] 2xl:px-[140px] py-24">
                     <div className="rounded-[32px] border border-gray-200 bg-white p-8 shadow-sm">
                         <h2 className="text-3xl font-bold text-brand-primary">{title}</h2>
                         <p className="mt-4 text-brand-muted">{description}</p>
