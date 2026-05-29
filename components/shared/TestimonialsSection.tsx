@@ -29,7 +29,7 @@ export function TestimonialsSection({ sectionTitle, testimonials }: Testimonials
 
     return (
         <section className="w-full py-[96px] flex flex-col items-center bg-white relative z-20 overflow-hidden">
-            <div className="w-[92%] lg:w-[88%] max-w-[1400px] mx-auto h-[1px] bg-gray-200" />
+            <div className="w-[94%] lg:w-[90%] max-w-[1500px] mx-auto h-[1px] bg-gray-200" />
 
             <div className="w-[92%] lg:w-[88%] max-w-[1121px] mx-auto mt-[96px] mb-[96px] flex flex-col items-center">
                 <div className="flex flex-col gap-[80px] items-center w-full">
@@ -136,7 +136,7 @@ export function TestimonialsSection({ sectionTitle, testimonials }: Testimonials
                 </div>
             </div>
 
-            <div className="w-[92%] lg:w-[88%] max-w-[1400px] mx-auto h-[1px] bg-gray-200" />
+            <div className="w-[94%] lg:w-[90%] max-w-[1500px] mx-auto h-[1px] bg-gray-200" />
         </section>
     )
 }

@@ -71,7 +71,7 @@ export default async function PrivacyPolicyPage({ params }: { params: Promise<{ 
 
     return (
         <div className="w-full flex flex-col items-center bg-[#F6FAFF]">
-            <div className="w-[92%] lg:w-[88%] max-w-[1400px] mx-auto">
+            <div className="w-[94%] lg:w-[90%] max-w-[1500px] mx-auto">
                 <section className="relative pt-[160px] pb-24 w-full flex flex-col items-center">
                     {/* Back Button */}
                     <BackButton 

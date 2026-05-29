@@ -429,7 +429,7 @@ export default async function BlogDetailPage({
 
                 {/* ── Related Posts ── */}
                 {relatedPosts.length > 0 && (
-                    <div className="w-[92%] lg:w-[88%] max-w-[1400px] mx-auto mt-32 mb-12 flex flex-col items-center">
+                    <div className="w-[94%] lg:w-[90%] max-w-[1500px] mx-auto mt-32 mb-12 flex flex-col items-center">
                         <div className="w-full h-[1.5px] bg-gradient-to-r from-transparent via-brand-accent/30 to-transparent mb-20" aria-hidden="true" />
 
                         <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-y-12 gap-x-8">

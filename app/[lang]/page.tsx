@@ -9,6 +9,7 @@ import { TestimonialsSection } from '@/components/shared/TestimonialsSection'
 import { buildLocaleAlternates, resolveLocale } from '@/lib/seo/metadata'
 import { sanityClient } from '@/infrastructure/sanity/client'
 import { HOMEPAGE_QUERY } from '@/infrastructure/sanity/queries'
+import { BlueLandingSection } from '@/components/shared/BlueLandingSection'
 
 // ─── Fallback data (original hardcoded content preserved here) ──────────────
 const FALLBACK_STATS = [
@@ -218,7 +219,7 @@ export default async function LandingPage({ params }: { params: Promise<{ lang: 
     const faqItems = hp?.faq?.faqItems?.length ? hp.faq.faqItems : FALLBACK_FAQ_ITEMS
 
     return (
-        <div className="w-full flex flex-col items-center bg-white min-h-screen overflow-x-hidden">
+        <div className="w-full flex flex-col items-center bg-white min-h-screen overflow-clip">
             {/* ══════════════════════════════════════════════════════
                 HERO SECTION
             ══════════════════════════════════════════════════════ */}
@@ -290,7 +291,7 @@ export default async function LandingPage({ params }: { params: Promise<{ lang: 
                 AS SEEN ON
             ══════════════════════════════════════════════════════ */}
             <section className="w-full pb-[70px] pt-0 flex flex-col items-center bg-white relative z-20">
-                <div className="w-[92%] lg:w-[88%] max-w-[1400px] mx-auto flex flex-col gap-[70px] items-center -mt-[120px] md:-mt-[160px] relative z-30">
+                <div className="w-[94%] lg:w-[90%] max-w-[1500px] mx-auto flex flex-col gap-[70px] items-center -mt-[120px] md:-mt-[160px] relative z-30">
                     <h2
                         className="text-[48px] font-bold text-[#002954] text-center leading-[1.2]"
                         style={{ fontVariationSettings: "'wdth' 100", textShadow: '0px 0px 4px rgba(255, 255, 255, 0.35)' }}
@@ -302,7 +303,7 @@ export default async function LandingPage({ params }: { params: Promise<{ lang: 
                             <img key={i} src={logo.logoUrl ?? logo.localLogoPath ?? ''} alt={logo.name} className="h-[30px] md:h-[40px] lg:h-[55px] w-auto object-contain" />
                         ))}
                     </div>
-                    <div className="w-[92%] lg:w-[88%] max-w-[1400px] mx-auto h-[1px] bg-gray-200" />
+                    <div className="w-[94%] lg:w-[90%] max-w-[1500px] mx-auto h-[1px] bg-gray-200" />
                 </div>
             </section>
 
@@ -310,7 +311,7 @@ export default async function LandingPage({ params }: { params: Promise<{ lang: 
                 STAY PROTECTED ON ALL PLATFORMS
             ══════════════════════════════════════════════════════ */}
             <section className="w-full pb-20 pt-0 flex flex-col items-center bg-white relative z-20">
-                <div className="w-[92%] lg:w-[88%] max-w-[1400px] mx-auto flex flex-col items-center">
+                <div className="w-[94%] lg:w-[90%] max-w-[1500px] mx-auto flex flex-col items-center">
                     <h2
                         className="text-[48px] font-bold text-[#002954] text-center leading-[1.2] mb-24"
                         style={{ fontVariationSettings: "'wdth' 100" }}
@@ -326,7 +327,7 @@ export default async function LandingPage({ params }: { params: Promise<{ lang: 
                             </div>
                         ))}
                     </div>
-                    <div className="w-[92%] lg:w-[88%] max-w-[1400px] mx-auto h-[1px] bg-gray-200" />
+                    <div className="w-[94%] lg:w-[90%] max-w-[1500px] mx-auto h-[1px] bg-gray-200" />
                 </div>
             </section>
 
@@ -334,7 +335,7 @@ export default async function LandingPage({ params }: { params: Promise<{ lang: 
                 STATS SECTION
             ══════════════════════════════════════════════════════ */}
             <section className="w-full py-[70px] flex flex-col items-center bg-white relative z-20">
-                <div className="w-[92%] lg:w-[88%] max-w-[1400px] mx-auto flex flex-col gap-[70px] items-center">
+                <div className="w-[94%] lg:w-[90%] max-w-[1500px] mx-auto flex flex-col gap-[70px] items-center">
                     <h2
                         className="text-[48px] font-bold text-[#002954] text-center leading-[1.2] max-w-[810px]"
                         style={{ fontVariationSettings: "'wdth' 100" }}
@@ -375,7 +376,7 @@ export default async function LandingPage({ params }: { params: Promise<{ lang: 
                 HOW CAN YOU STOP WATCHING PORN
             ══════════════════════════════════════════════════════ */}
             <section className="w-full py-[70px] flex flex-col items-center bg-gradient-to-b from-white to-[#F6FAFF] relative z-20">
-                <div className="w-[92%] lg:w-[88%] max-w-[1400px] mx-auto flex flex-col gap-[70px] items-center">
+                <div className="w-[94%] lg:w-[90%] max-w-[1500px] mx-auto flex flex-col gap-[70px] items-center">
                     <h2
                         className="text-[48px] font-bold text-[#002954] text-center leading-[1.2]"
                         style={{ fontVariationSettings: "'wdth' 100" }}
@@ -400,7 +401,7 @@ export default async function LandingPage({ params }: { params: Promise<{ lang: 
                 BENEFITS YOU'LL ENJOY AFTER QUITTING PORN
             ══════════════════════════════════════════════════════ */}
             <section className="w-full py-[70px] flex flex-col items-center bg-[#F6FAFF] relative z-20">
-                <div className="w-[92%] lg:w-[88%] max-w-[1400px] mx-auto flex flex-col gap-[70px] items-center">
+                <div className="w-[94%] lg:w-[90%] max-w-[1500px] mx-auto flex flex-col gap-[70px] items-center">
                     <h2
                         className="text-[48px] font-bold text-[#002954] text-center leading-[1.2]"
                         style={{ fontVariationSettings: "'wdth' 100" }}
@@ -425,7 +426,7 @@ export default async function LandingPage({ params }: { params: Promise<{ lang: 
                 WHY DO YOU NEED A PORN BLOCKER
             ══════════════════════════════════════════════════════ */}
             <section className="w-full py-[70px] flex flex-col items-center bg-[#F6FAFF] relative z-20">
-                <div className="w-[92%] lg:w-[88%] max-w-[1400px] mx-auto">
+                <div className="w-[94%] lg:w-[90%] max-w-[1500px] mx-auto">
                     <div className="bg-white rounded-[25px] overflow-hidden shadow-[0px_4px_4px_0px_rgba(0,118,244,0.25)] flex flex-col lg:flex-row w-full">
                         <div className="w-full lg:w-[45%] min-h-[300px] lg:min-h-[500px] relative">
                             <img 
@@ -464,7 +465,7 @@ export default async function LandingPage({ params }: { params: Promise<{ lang: 
                 TYPES OF PORN BLOCKERS
             ══════════════════════════════════════════════════════ */}
             <section className="w-full py-[70px] flex flex-col items-center bg-[#F6FAFF] relative z-20">
-                <div className="w-[92%] lg:w-[88%] max-w-[1400px] mx-auto flex flex-col items-center gap-[60px]">
+                <div className="w-[94%] lg:w-[90%] max-w-[1500px] mx-auto flex flex-col items-center gap-[60px]">
                     <h2
                         className="text-[40px] lg:text-[48px] font-bold text-[#002954] text-center leading-[1.2] max-w-[700px]"
                         style={{ fontVariationSettings: "'wdth' 100" }}
@@ -499,11 +500,13 @@ export default async function LandingPage({ params }: { params: Promise<{ lang: 
                 </div>
             </section>
 
+            <BlueLandingSection />
+
             {/* ══════════════════════════════════════════════════════
                 FAQ SECTION
             ══════════════════════════════════════════════════════ */}
             <section className="w-full py-16 md:py-24 flex flex-col items-center bg-[#F6FAFF] relative z-20">
-                <div className="w-[92%] lg:w-[88%] max-w-[1400px] mx-auto">
+                <div className="w-[94%] lg:w-[90%] max-w-[1500px] mx-auto">
                     <h2
                         className="text-[36px] md:text-[52px] lg:text-[64px] font-bold text-[#012955] text-center leading-[1.1] mb-16"
                         style={{ fontVariationSettings: "'wdth' 100" }}
@@ -511,7 +514,7 @@ export default async function LandingPage({ params }: { params: Promise<{ lang: 
                         {hp?.faq?.sectionTitle ?? 'Have More Questions?'}
                     </h2>
 
-                    <div className="max-w-3xl mx-auto flex flex-col gap-4">
+                    <div className="w-full space-y-6">
                         {faqItems.map((item, i) => (
                             <FaqItem key={i} question={item.question} answer={item.answer} />
                         ))}
@@ -550,14 +553,14 @@ function StopWatchingCard({ image, title, description }: { image: string; title:
 
 function FaqItem({ question, answer }: { question: string; answer: string }) {
     return (
-        <details className="group bg-white rounded-[20px] shadow-card overflow-hidden">
-            <summary className="flex items-center justify-between cursor-pointer px-8 py-6 text-[18px] md:text-[22px] font-bold text-[#012955] hover:bg-[#F0F6FF] transition-colors duration-200 list-none">
-                <span>{question}</span>
-                <svg className="w-6 h-6 text-brand-accent shrink-0 ml-4 transition-transform duration-300 group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+        <details className="group bg-white rounded-[25px] border-none shadow-[0_10px_16px_-6px_#c4defd] open:shadow-[0_14px_20px_-6px_#c4defd] transition-all duration-300 overflow-hidden">
+            <summary className="flex items-center justify-between cursor-pointer px-8 py-7 text-left border-none outline-none focus:outline-none focus:ring-0 list-none">
+                <span className="text-[20px] md:text-[26px] font-black text-[#012955]">{question}</span>
+                <svg className="w-6 h-6 text-[#012955] shrink-0 ml-4 transition-transform duration-300 group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                     <polyline points="6 9 12 15 18 9" />
                 </svg>
             </summary>
-            <div className="px-8 pb-6 text-[16px] md:text-[18px] text-[#012955]/70 font-medium leading-[1.7]">
+            <div className="px-8 pb-8 text-[18px] md:text-[20px] font-medium text-[#012955] leading-relaxed pt-6 border-none">
                 {answer}
             </div>
         </details>

@@ -70,7 +70,7 @@ export function IosScrollUI({ data }: { data?: { title?: string; description?: s
     }, []);
 
     return (
-        <div className="w-full relative">
+        <div className="w-full relative bg-[#F6FAFF]">
             {/* Desktop Layout: Split Columns */}
             <div 
                 className="hidden md:flex flex-row w-full max-w-site px-[12px] lg:px-[40px] mx-auto relative gap-8 md:gap-16 lg:gap-20"

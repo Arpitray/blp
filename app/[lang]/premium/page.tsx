@@ -129,7 +129,7 @@ export default async function PremiumPage({ params }: { params: Promise<{ lang: 
                 className="relative w-full overflow-hidden"
                 style={{ background: 'linear-gradient(180deg, #6292FF 0%, #3572FF 100%)', minHeight: '520px' }}
             >
-                <div className="w-[92%] lg:w-[88%] max-w-[1400px] mx-auto mx-auto flex flex-row items-center justify-between pt-36 pb-0 relative z-20" style={{ minHeight: '1000px' }}>
+                <div className="w-[94%] lg:w-[90%] max-w-[1500px] mx-auto mx-auto flex flex-row items-center justify-between pt-36 pb-0 relative z-20" style={{ minHeight: '1000px' }}>
                     <div className="flex flex-col items-center text-center translate-y-[-40px] ml-[5%] lg:ml-[14%]">
                         <h1 className="text-[84px] md:text-[150px] font-black text-white leading-[1.0] mb-12">
                             <span className="block">{heroTitle1}</span>
@@ -246,7 +246,7 @@ export default async function PremiumPage({ params }: { params: Promise<{ lang: 
                     <div className="w-full h-[1.5px] bg-[#E8F2FF]" />
                 </div>
 
-                <div className="w-[92%] lg:w-[88%] max-w-[1400px] mx-auto flex flex-col items-center text-center">
+                <div className="w-[94%] lg:w-[90%] max-w-[1500px] mx-auto flex flex-col items-center text-center">
                     <div className="flex gap-2 mb-10 text-[#002954]">
                         {Array.from({ length: testimonialRating }).map((_, i) => (
                             <svg key={i} width="36" height="36" viewBox="0 0 24 24" fill="currentColor">

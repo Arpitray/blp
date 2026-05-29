@@ -14,8 +14,6 @@ import { AndroidBestBlockerSection } from '@/components/shared/AndroidBestBlocke
 import { AndroidBenefitsSection } from '@/components/shared/AndroidBenefitsSection'
 import { AndroidFaqsSection } from '@/components/shared/AndroidFaqsSection'
 
-import { PremiumScrollWrapper } from '@/components/shared/PremiumScrollWrapper'
-
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
     const { lang } = await params
     const locale = resolveLocale(lang)
@@ -77,7 +75,7 @@ export default async function AndroidProductPage({ params }: { params: Promise<{
             >
                 {/* Back / Breadcrumb Button */}
                 <div className="absolute top-[120px] md:top-[145px] left-0 w-full flex justify-center z-50 pointer-events-none">
-                    <div className="w-[92%] lg:w-[88%] max-w-[1400px] mx-auto flex justify-start pointer-events-auto">
+                    <div className="w-full max-w-site px-[12px] lg:px-[40px] flex justify-start pointer-events-auto">
                         <Link
                             href={`/${locale}`}
                             className="flex items-center text-white/80 hover:text-white transition-colors text-[18px] md:text-[22px] font-bold"
@@ -91,7 +89,7 @@ export default async function AndroidProductPage({ params }: { params: Promise<{
                 </div>
 
                 {/* Hero Content */}
-                <div className="relative z-40 flex flex-col items-center pt-[140px] md:pt-[180px] px-[12px] lg:px-[60px] xl:px-[100px] 2xl:px-[140px] w-full max-w-site">
+                <div className="relative z-40 flex flex-col items-center pt-[140px] md:pt-[180px] px-[12px] lg:px-[40px] w-full max-w-site">
                     <h1
                         className="text-[64px] md:text-[56px] lg:text-[64px] font-bold text-white text-center leading-[1.05] mb-8 md:mb-10"
                         style={{ fontVariationSettings: "'wdth' 100" }}
@@ -128,9 +126,6 @@ export default async function AndroidProductPage({ params }: { params: Promise<{
                 <WebsiteFeaturesSection data={product?.websiteFeatures} />
             </div>
 
-            {/* ── Premium Scroll Wrapper encompassing both banner and CTA ── */}
-            <PremiumScrollWrapper>
-            
             {/* ── Bottom Platform Banner ── */}
             <div className="relative w-full pt-[75px] pb-[200px] flex flex-col items-center z-10">
                 <h2
@@ -143,12 +138,18 @@ export default async function AndroidProductPage({ params }: { params: Promise<{
             </div>
 
             {/* ── Premium CTA Section ── */}
-            <div className="w-full max-w-site px-[12px] lg:px-[40px] mx-auto flex flex-col md:flex-row items-center justify-between pt-24 pb-24 md:py-40 relative z-10 min-h-[750px] lg:min-h-screen">
+            <section
+                className="relative w-full overflow-hidden z-20"
+                style={{
+                    background: "linear-gradient(180deg, #6292FF 0%, #3572FF 100%)",
+                }}
+            >
+                <div className="w-full max-w-[1898px] px-6 lg:px-16 mx-auto flex flex-col md:flex-row items-center justify-between pt-24 pb-24 md:py-40 relative z-10" style={{ minHeight: "750px" }}>
 
                     {/* Left Side: Text */}
                     <div className="flex-1 md:max-w-[50%] w-full flex flex-col items-center text-center md:pr-6 lg:pr-10 md:translate-x-[70px]">
                         <h2
-                            className="text-[48px] lg:text-[80px] font-black text-white leading-[1.0] mb-6 whitespace-nowrap"
+                            className="text-[48px] lg:text-[64px] font-black text-white leading-[1.0] mb-6 whitespace-nowrap"
                             style={{ fontVariationSettings: "'wdth' 100" }}
                         >
                             {premiumTitle.join(' ')}
@@ -170,7 +171,7 @@ export default async function AndroidProductPage({ params }: { params: Promise<{
                         <PremiumMascot className="w-full max-w-[460px] md:max-w-[660px] lg:max-w-[700px] aspect-square" />
                     </div>
                 </div>
-            </PremiumScrollWrapper>
+            </section>
 
             {/* ── Scroll Triggered UI Section ── */}
             <AndroidScrollUI data={product?.scrollSteps?.steps} />

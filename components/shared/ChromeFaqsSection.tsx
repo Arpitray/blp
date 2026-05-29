@@ -68,7 +68,7 @@ export function ChromeFaqsSection({ data }: { data?: { sectionTitle?: string; fa
 
     return (
         <section className="w-full bg-[#F6FAFF] py-24 md:py-32 relative z-20">
-            <div className="w-[92%] lg:w-[88%] max-w-[1400px] mx-auto mx-auto flex flex-col items-center">
+            <div className="w-[94%] lg:w-[90%] max-w-[1500px] mx-auto mx-auto flex flex-col items-center">
                 <h2 className="text-[32px] md:text-[48px] lg:text-[54px] font-black text-[#012955] text-center mb-16 md:mb-24 leading-[1.2] whitespace-pre-wrap">
                     {title}
                 </h2>

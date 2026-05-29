@@ -28,7 +28,7 @@ function getLoadingInnerClasses(variant: RouteLoadingStateProps['variant']): str
         return 'animate-pulse space-y-12 pt-[180px]'
     }
 
-    return 'w-[92%] lg:w-[88%] max-w-[1400px] mx-auto pt-16 animate-pulse space-y-8'
+    return 'w-[94%] lg:w-[90%] max-w-[1500px] mx-auto pt-16 animate-pulse space-y-8'
 }
 
 function getErrorClasses(variant: RouteErrorStateProps['variant']): string {

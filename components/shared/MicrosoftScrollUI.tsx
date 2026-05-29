@@ -66,7 +66,7 @@ export function MicrosoftScrollUI({ data }: { data?: { title?: string; descripti
     }, []);
 
     return (
-        <div className="w-full relative overflow-x-clip">
+        <div className="w-full relative bg-[#F6FAFF] overflow-x-clip">
             <style dangerouslySetInnerHTML={{__html: `
                 .scroll-ui-text-col {
                     padding-left: 32px;

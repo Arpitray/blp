@@ -7,7 +7,6 @@ import { CurveDivider } from '@/components/shared/CurveDivider'
 import { buildLocaleAlternates, resolveLocale } from '@/lib/seo/metadata'
 import { PremiumCta } from '@/components/shared/PremiumCta'
 import { PlatformList } from '@/components/shared/PlatformList'
-import { PremiumScrollWrapper } from '@/components/shared/PremiumScrollWrapper'
 
 interface ProductFeature {
     title: string
@@ -166,9 +165,6 @@ export default async function ProductPage({ params }: { params: Promise<{ lang: 
                 })}
             </div>
 
-            {/* ── Premium Scroll Wrapper encompassing both banner and CTA ── */}
-            <PremiumScrollWrapper>
-
             {/* ── Bottom Platform Banner ── */}
             <div className="relative w-full pt-[75px] pb-[100px] flex flex-col items-center z-10">
                 <h2 className="text-[32px] md:text-[45px] lg:text-[50px] font-black text-[#002954] mb-12 text-center tracking-tight px-6 mt-10" style={{ fontVariationSettings: "'wdth' 100" }}>
@@ -176,9 +172,8 @@ export default async function ProductPage({ params }: { params: Promise<{ lang: 
                 </h2>
                 <PlatformList variant="banner" locale={locale} />
             </div>
-            {/* ── Premium CTA Section ── */}
+            {/*/ ── Premium CTA Section ── */}
             <PremiumCta buttonHref="/pricing" title={`Upgrade to BlockP Premium for ${product.name}`} subHeadline="Unlock advanced features, priority support, and enhanced protection across all your devices." />
-            </PremiumScrollWrapper>
         </div>
     )
 }
