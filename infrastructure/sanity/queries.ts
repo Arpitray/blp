@@ -200,6 +200,22 @@ export const HOMEPAGE_QUERY = `
       sectionTitle,
       cards[] { title, description, exampleText }
     },
+    benefitsUsingBlocker {
+      sectionTitle,
+      subtitle,
+      cards[] { title, description, iconPath }
+    },
+    blueLandingSection {
+      section1 { heading, paragraph1, paragraph2, paragraph3, ctaText, ctaUrl },
+      section2WhyBest {
+        heading,
+        featureCards[] { title, description, iconPath }
+      },
+      scrollSlides[] { title, subtext, imagePath },
+      howDoesItWork { heading, paragraph1, paragraph2, paragraph3 },
+      adultBlockerCan { heading, bullets },
+      premiumCta { heading, subtext, ctaText, ctaUrl }
+    },
     faq {
       sectionTitle,
       faqItems[] { question, answer }
@@ -207,6 +223,7 @@ export const HOMEPAGE_QUERY = `
     seo { metaTitle, metaDescription }
   }
 `
+
 
 export const FAQS_PAGE_QUERY = `
   *[_type == "faqsPage" && language == $lang][0] {

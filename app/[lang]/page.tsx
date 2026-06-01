@@ -9,7 +9,7 @@ import { TestimonialsSection } from '@/components/shared/TestimonialsSection'
 import { buildLocaleAlternates, resolveLocale } from '@/lib/seo/metadata'
 import { sanityClient } from '@/infrastructure/sanity/client'
 import { HOMEPAGE_QUERY } from '@/infrastructure/sanity/queries'
-import { BlueLandingSection } from '@/components/shared/BlueLandingSection'
+import { BlueLandingSection, type BlueLandingSlide, type BlueLandingFeatureCard, type BlueLandingBenefitCard } from '@/components/shared/BlueLandingSection'
 
 // ─── Fallback data (original hardcoded content preserved here) ──────────────
 const FALLBACK_STATS = [
@@ -165,6 +165,71 @@ const FALLBACK_PLATFORMS = [
     { name: 'Windows', iconUrl: '/premium/windows.svg', localIconPath: '/premium/windows.svg' }
 ]
 
+const FALLBACK_BENEFITS_USING_BLOCKER = {
+    sectionTitle: 'Benefits of using a porn blocker',
+    subtitle: "The benefits of using BlockP go beyond just blocking porn, it's about helping you take control of your life, build better habits, and enjoy the internet without distractions. Our free porn blocker can help you in different ways:",
+    cards: [
+        { title: 'Positive development', description: 'The content youngsters ingest these days can have an effect on their growth as individuals. With a porn blocker, it is possible to avoid explicit content that could hinder their development.', iconPath: '/landing/benifits/trending_up.png' },
+        { title: 'Customization flexibility', description: 'A good porn blocker allows you to customize settings according to your preferences. You can choose what you want to view and what you want to stay away from.', iconPath: '/landing/benifits/tune.png' },
+        { title: 'Accuracy matters', description: 'An accurate porn blocker should be able to differentiate between explicit and safe content.', iconPath: '/landing/benifits/target.png' },
+        { title: 'Community support', description: 'Non-judgmental accountability and 24/7 support from a community of people who are going through the same thing as you.', iconPath: '/landing/benifits/diversity_2.png' },
+        { title: 'Enhanced focus', description: 'Enables you to stay focused on productive activities by getting rid of distractions. BlockP has a special focus mode to help with this.', iconPath: '/landing/benifits/blur_on.png' },
+        { title: 'Parental control support', description: 'Helps you to keep the children safe online with explicit content filters and monitoring tools.', iconPath: '/landing/benifits/escalator_warning.png' },
+    ] as BlueLandingBenefitCard[],
+}
+
+const FALLBACK_BLUE_SECTION = {
+    section1: {
+        heading: 'Our free\nporn blocker',
+        paragraph1: 'With BlockP you can now easily block access to several websites and applications. It encourages a healthier lifestyle by minimizing exposure to explicit content and enabling controlled online activity.',
+        paragraph2: 'Take advantage of all the unique features like Password Protection, Prevent Uninstall, Focus Mode, Whitelist, BlockP VPN, and many more.',
+        paragraph3: 'Moreover, BlockP is available as a browser extension for Chrome and as an app for both Android and iOS. Download BlockP now, to get rid of pornography, making it easier to resist cravings and practice healthier digital habits.',
+        ctaText: 'Get started',
+        ctaUrl: '/premium',
+    },
+    section2WhyBest: {
+        heading: 'Why is BlockP\nthe best adult\ncontent blocker?',
+        featureCards: [
+            { title: 'Uninstall prevention', description: "Prevents the app from being uninstalled. Can't delete it during urges, so you can't escape your commitment to quit porn.", iconPath: '/landing/blue/blocker/delete_forever.png' },
+            { title: 'Multi-platform availability', description: 'Available as a Chrome extension and as an app for Android and iOS, ensuring protection across all your devices.', iconPath: '/landing/blue/blocker/devices.png' },
+            { title: 'Accountability partner', description: 'Your chosen accountability partner gets the password to change BlockP settings. This keeps you from disabling the blocker during urges.', iconPath: '/landing/blue/blocker/handshake.png' },
+            { title: 'Password protection', description: 'Password-protected, only authorized users can modify the settings.', iconPath: '/landing/blue/blocker/encrypted.png' },
+            { title: 'Community support', description: 'Support groups and communities to help users stay motivated.', iconPath: '/landing/blue/blocker/diversity_2.png' },
+            { title: 'Customizable filtering', description: "Offers filtering options, allowing users to block the exact websites, keywords, and content they don't want to see.", iconPath: '/landing/blue/blocker/tune.png' },
+        ] as BlueLandingFeatureCard[],
+    },
+    scrollSlides: [
+        { title: 'More BlockP\nfeatures\nFor a safer\nexperience', subtext: '', imagePath: '/landing/blue/scroll1.png' },
+        { title: 'AI-powered\nblocking', subtext: "BlockP uses advanced AI to scan web pages and filter explicit content in real time.\n\nThe AI-powered blocking goes beyond keywords and blacklists. It analyzes the text, images, and video on the website and Apps to detect explicit content. \n\nBlockP's AI works in real-time to accurately block even newly created or disguised content to prevent accidental exposure to nudity and explicit content.", imagePath: '/landing/blue/scroll2.png' },
+        { title: 'App\nblocking', subtext: 'BlockP can detect and block adult content within your Apps. It can monitor and restrict access to adult material across your browser, messaging apps, or video-sharing platforms.', imagePath: '/landing/blue/scroll3.png' },
+        { title: 'Advanced\nblocking', subtext: "BlockP's advanced blocking features are designed to detect and prevent any efforts to bypass its restrictions.\n\nEven when you are using VPNs or incognito mode, BlockP hides inappropriate thumbnails, images, and video previews before they load. \n\nIt uses SafeSearch settings on popular search engines to filter explicit search results.", imagePath: '/landing/blue/scroll4.png' },
+        { title: 'Social Media\nBlocking', subtext: "BlockP's robust controls help to restrict access to specific features on popular social media platforms such as Instagram, Facebook, YouTube, Reddit, and Telegram. \n\nSo, even if social media moderators fail to detect explicit content in comments or through hashtags, BlockP will protect you.\n\nIt also lets you disable the search functionality and block access to distracting content like Instagram reels or YouTube shorts.", imagePath: '/landing/blue/scroll5.png' },
+    ] as BlueLandingSlide[],
+    howDoesItWork: {
+        heading: 'How does\nBlockP Work?',
+        paragraph1: 'BlockP is the most effective app to filter adult content from your device and offers effective porn protection.',
+        paragraph2: 'You can control exposure to adult content and online pornography with our filtering technology, website and app blocker tool.',
+        paragraph3: "BlockP utilizes advanced technology to analyze a website's content in real-time. Websites are constantly evolving, with new user-generated pages being added every day. This changing nature of the internet requires a porn filter that can analyze content and block porn.",
+    },
+    adultBlockerCan: {
+        heading: 'Our adult content blocker can:',
+        bullets: [
+            'Keeps you away from porn or mature websites.',
+            'Filter pornography in real-time with AI.',
+            'Whitelist feature that gives you control over the control that can be accessed.',
+            'Block distracting apps like Instagram, YouTube, Facebook, WhatsApp etc.',
+            'Block custom websites not just restricted to adult content but also gambling, drugs, and any other site you want to stay away from.',
+            'Block custom keywords like "porn", "sex", or anything triggering, BlockP lets you filter out specific keywords across browsers and apps, giving you full control to avoid tempting or harmful content.',
+        ],
+    },
+    premiumCta: {
+        heading: 'BlockP Premium.',
+        subtext: 'Stronger protection, full control, and priority support, so nothing stands in your way.',
+        ctaText: 'Start your free trial',
+        ctaUrl: '/premium',
+    },
+}
+
 // ─── Types ───────────────────────────────────────────────────────────────────
 interface HomepageData {
     hero?: { title?: string; subtitle?: string; ctaText?: string; ctaUrl?: string; heroImageUrl?: string; mascotImageUrl?: string }
@@ -176,6 +241,15 @@ interface HomepageData {
     benefitsQuittingPorn?: { sectionTitle?: string; cards?: { title: string; description: string; imageUrl?: string }[] }
     whyNeedPornBlocker?: { title?: string; paragraph1?: string; paragraph2?: string; imageUrl?: string }
     typesOfPornBlockers?: { sectionTitle?: string; cards?: { title: string; description: string; exampleText?: string }[] }
+    benefitsUsingBlocker?: { sectionTitle?: string; subtitle?: string; cards?: { title: string; description: string; iconPath?: string }[] }
+    blueLandingSection?: {
+        section1?: { heading?: string; paragraph1?: string; paragraph2?: string; paragraph3?: string; ctaText?: string; ctaUrl?: string }
+        section2WhyBest?: { heading?: string; featureCards?: { title: string; description: string; iconPath?: string }[] }
+        scrollSlides?: { title: string; subtext?: string; imagePath: string }[]
+        howDoesItWork?: { heading?: string; paragraph1?: string; paragraph2?: string; paragraph3?: string }
+        adultBlockerCan?: { heading?: string; bullets?: string[] }
+        premiumCta?: { heading?: string; subtext?: string; ctaText?: string; ctaUrl?: string }
+    }
     faq?: { sectionTitle?: string; faqItems?: { question: string; answer: string }[] }
     seo?: { metaTitle?: string; metaDescription?: string }
 }
@@ -217,6 +291,16 @@ export default async function LandingPage({ params }: { params: Promise<{ lang: 
     const whyNeedBlocker = hp?.whyNeedPornBlocker ?? FALLBACK_WHY_NEED_BLOCKER
     const typesOfBlockers = hp?.typesOfPornBlockers?.cards?.length ? hp.typesOfPornBlockers.cards : FALLBACK_TYPES_OF_BLOCKERS
     const faqItems = hp?.faq?.faqItems?.length ? hp.faq.faqItems : FALLBACK_FAQ_ITEMS
+
+    // ── New sections
+    const bub = hp?.benefitsUsingBlocker
+    const bls = hp?.blueLandingSection
+    const blueSection1 = bls?.section1
+    const blueSection2 = bls?.section2WhyBest
+    const blueScrollSlides = bls?.scrollSlides?.length ? (bls.scrollSlides as BlueLandingSlide[]) : FALLBACK_BLUE_SECTION.scrollSlides
+    const blueHowItWorks = bls?.howDoesItWork
+    const blueAdultBlocker = bls?.adultBlockerCan
+    const bluePremiumCta = bls?.premiumCta
 
     return (
         <div className="w-full flex flex-col items-center bg-white min-h-screen overflow-clip">
@@ -500,7 +584,80 @@ export default async function LandingPage({ params }: { params: Promise<{ lang: 
                 </div>
             </section>
 
-            <BlueLandingSection />
+            <BlueLandingSection
+                // Section 1
+                section1Heading={blueSection1?.heading}
+                section1Paragraph1={blueSection1?.paragraph1}
+                section1Paragraph2={blueSection1?.paragraph2}
+                section1Paragraph3={blueSection1?.paragraph3}
+                section1CtaText={blueSection1?.ctaText}
+                section1CtaUrl={blueSection1?.ctaUrl}
+                // Section 2 — Why is BlockP the best
+                section2Heading={blueSection2?.heading}
+                featureCards={blueSection2?.featureCards?.length ? (blueSection2.featureCards as BlueLandingFeatureCard[]) : undefined}
+                // Section 3 — Scroll slides
+                scrollSlides={blueScrollSlides}
+                // Section 4 — How does BlockP Work
+                howItWorksHeading={blueHowItWorks?.heading}
+                howItWorksParagraph1={blueHowItWorks?.paragraph1}
+                howItWorksParagraph2={blueHowItWorks?.paragraph2}
+                howItWorksParagraph3={blueHowItWorks?.paragraph3}
+                // Section 5 — Adult blocker can
+                adultBlockerHeading={blueAdultBlocker?.heading}
+                adultBlockerBullets={blueAdultBlocker?.bullets?.length ? blueAdultBlocker.bullets : undefined}
+                // Section 6 — Premium CTA
+                premiumCtaHeading={bluePremiumCta?.heading}
+                premiumCtaSubtext={bluePremiumCta?.subtext}
+                premiumCtaButtonText={bluePremiumCta?.ctaText}
+                premiumCtaButtonUrl={bluePremiumCta?.ctaUrl}
+            />
+
+            <section className="w-full bg-[#F6FAFF] py-24 md:py-32 relative z-20">
+                <div className="w-[94%] lg:w-[90%] max-w-[1500px] mx-auto flex flex-col items-center">
+
+                    <h2
+                        className="text-[32px] md:text-[48px] lg:text-[54px] font-black text-[#012955] text-center mb-6 leading-[1.2]"
+                        style={{ fontVariationSettings: "'wdth' 100" }}
+                    >
+                        {bub?.sectionTitle ?? FALLBACK_BENEFITS_USING_BLOCKER.sectionTitle}
+                    </h2>
+
+                    <p className="text-[16px] md:text-[18px] lg:text-[20px] text-[#3B547C] font-semibold text-center leading-[1.6] max-w-[960px] mb-16 md:mb-24">
+                        {bub?.subtitle ?? FALLBACK_BENEFITS_USING_BLOCKER.subtitle}
+                    </p>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-[25px] w-full">
+                        {(bub?.cards?.length ? bub.cards : FALLBACK_BENEFITS_USING_BLOCKER.cards).map((card, i) => (
+                            <div
+                                key={i}
+                                className="bg-white rounded-[25px] border border-[#e3efff] p-8 md:p-10 flex flex-col gap-4 shadow-[0_10px_20px_rgba(26,59,122,0.06)]"
+                            >
+                                <div className="flex items-center gap-4">
+                                    {card.iconPath && (
+                                        <Image
+                                            src={card.iconPath}
+                                            alt={`${card.title} icon`}
+                                            width={32}
+                                            height={32}
+                                            className="w-8 h-8 object-contain shrink-0"
+                                        />
+                                    )}
+                                    <h3
+                                        className="font-black text-[#012955] text-[22px] md:text-[26px] lg:text-[32px] leading-tight"
+                                        style={{ fontVariationSettings: "'wdth' 100" }}
+                                    >
+                                        {card.title}
+                                    </h3>
+                                </div>
+                                <p className="text-[#3B547C] text-[16px] md:text-[18px] lg:text-[20px] leading-relaxed font-medium mt-1">
+                                    {card.description}
+                                </p>
+                            </div>
+                        ))}
+                    </div>
+
+                </div>
+            </section>
 
             {/* ══════════════════════════════════════════════════════
                 FAQ SECTION

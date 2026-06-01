@@ -737,6 +737,197 @@ export default defineType({
         }),
 
         // ─────────────────────────────────────────────────────────
+        //  7.5 "BENEFITS OF USING A PORN BLOCKER" SECTION
+        // ─────────────────────────────────────────────────────────
+        defineField({
+            name: 'benefitsUsingBlocker',
+            title: '7.5 "Benefits of using a porn blocker" Section',
+            type: 'object',
+            description: 'The 2-column card grid just after the Blue Landing Section.',
+            fields: [
+                defineField({
+                    name: 'sectionTitle',
+                    title: 'Section Heading',
+                    type: 'string',
+                    initialValue: 'Benefits of using a porn blocker',
+                    validation: (Rule) => Rule.required(),
+                }),
+                defineField({
+                    name: 'subtitle',
+                    title: 'Section Subtitle',
+                    type: 'text',
+                    rows: 3,
+                    initialValue: "The benefits of using BlockP go beyond just blocking porn, it's about helping you take control of your life, build better habits, and enjoy the internet without distractions. Our free porn blocker can help you in different ways:",
+                    validation: (Rule) => Rule.required(),
+                }),
+                defineField({
+                    name: 'cards',
+                    title: 'Benefit Cards',
+                    type: 'array',
+                    description: 'Each card has an icon (local path), title, and description.',
+                    of: [
+                        {
+                            type: 'object',
+                            name: 'benefitCard',
+                            title: 'Benefit Card',
+                            fields: [
+                                defineField({ name: 'title', title: 'Card Title', type: 'string', validation: (Rule) => Rule.required() }),
+                                defineField({ name: 'description', title: 'Card Description', type: 'text', rows: 3, validation: (Rule) => Rule.required() }),
+                                defineField({ name: 'iconPath', title: 'Icon Path (in /public)', type: 'string', description: 'e.g. /landing/benifits/trending_up.png' }),
+                            ],
+                            preview: { select: { title: 'title' } },
+                        },
+                    ],
+                    initialValue: [
+                        { _key: 'ben1', _type: 'benefitCard', title: 'Positive development', description: 'The content youngsters ingest these days can have an effect on their growth as individuals. With a porn blocker, it is possible to avoid explicit content that could hinder their development.', iconPath: '/landing/benifits/trending_up.png' },
+                        { _key: 'ben2', _type: 'benefitCard', title: 'Customization flexibility', description: 'A good porn blocker allows you to customize settings according to your preferences. You can choose what you want to view and what you want to stay away from.', iconPath: '/landing/benifits/tune.png' },
+                        { _key: 'ben3', _type: 'benefitCard', title: 'Accuracy matters', description: 'An accurate porn blocker should be able to differentiate between explicit and safe content.', iconPath: '/landing/benifits/target.png' },
+                        { _key: 'ben4', _type: 'benefitCard', title: 'Community support', description: 'Non-judgmental accountability and 24/7 support from a community of people who are going through the same thing as you.', iconPath: '/landing/benifits/diversity_2.png' },
+                        { _key: 'ben5', _type: 'benefitCard', title: 'Enhanced focus', description: 'Enables you to stay focused on productive activities by getting rid of distractions. BlockP has a special focus mode to help with this.', iconPath: '/landing/benifits/blur_on.png' },
+                        { _key: 'ben6', _type: 'benefitCard', title: 'Parental control support', description: 'Helps you to keep the children safe online with explicit content filters and monitoring tools.', iconPath: '/landing/benifits/escalator_warning.png' },
+                    ],
+                }),
+            ],
+        }),
+
+        // ─────────────────────────────────────────────────────────
+        //  7.75 BLUE LANDING SECTION (entire blue block)
+        // ─────────────────────────────────────────────────────────
+        defineField({
+            name: 'blueLandingSection',
+            title: '7.75 Blue Landing Section',
+            type: 'object',
+            description: 'The large blue section: "Our free porn blocker", scroll slides, "Why is BlockP the best", "How does BlockP work", bullet list, and Premium CTA.',
+            fields: [
+
+                // Sub-section 1: Our Free Porn Blocker
+                defineField({
+                    name: 'section1',
+                    title: 'Section 1 — "Our free porn blocker"',
+                    type: 'object',
+                    fields: [
+                        defineField({ name: 'heading', title: 'Heading', type: 'string', initialValue: 'Our free\nporn blocker', validation: (Rule) => Rule.required() }),
+                        defineField({ name: 'paragraph1', title: 'Paragraph 1', type: 'text', rows: 3, initialValue: 'With BlockP you can now easily block access to several websites and applications. It encourages a healthier lifestyle by minimizing exposure to explicit content and enabling controlled online activity.' }),
+                        defineField({ name: 'paragraph2', title: 'Paragraph 2', type: 'text', rows: 3, initialValue: 'Take advantage of all the unique features like Password Protection, Prevent Uninstall, Focus Mode, Whitelist, BlockP VPN, and many more.' }),
+                        defineField({ name: 'paragraph3', title: 'Paragraph 3', type: 'text', rows: 3, initialValue: 'Moreover, BlockP is available as a browser extension for Chrome and as an app for both Android and iOS. Download BlockP now, to get rid of pornography, making it easier to resist cravings and practice healthier digital habits.' }),
+                        defineField({ name: 'ctaText', title: 'CTA Button Text', type: 'string', initialValue: 'Get started' }),
+                        defineField({ name: 'ctaUrl', title: 'CTA Button URL', type: 'string', initialValue: '/premium' }),
+                    ],
+                }),
+
+                // Sub-section 2: Why is BlockP the best
+                defineField({
+                    name: 'section2WhyBest',
+                    title: 'Section 2 — "Why is BlockP the best adult content blocker?"',
+                    type: 'object',
+                    fields: [
+                        defineField({ name: 'heading', title: 'Heading', type: 'string', initialValue: 'Why is BlockP\nthe best adult\ncontent blocker?', validation: (Rule) => Rule.required() }),
+                        defineField({
+                            name: 'featureCards',
+                            title: 'Feature Cards',
+                            type: 'array',
+                            of: [{
+                                type: 'object',
+                                name: 'featureCard',
+                                title: 'Feature Card',
+                                fields: [
+                                    defineField({ name: 'title', title: 'Card Title', type: 'string', validation: (Rule) => Rule.required() }),
+                                    defineField({ name: 'description', title: 'Card Description', type: 'text', rows: 3, validation: (Rule) => Rule.required() }),
+                                    defineField({ name: 'iconPath', title: 'Icon Path (in /public)', type: 'string', description: 'e.g. /landing/blue/blocker/delete_forever.png' }),
+                                ],
+                                preview: { select: { title: 'title' } },
+                            }],
+                            initialValue: [
+                                { _key: 'fc1', _type: 'featureCard', title: 'Uninstall prevention', description: "Prevents the app from being uninstalled. Can't delete it during urges, so you can't escape your commitment to quit porn.", iconPath: '/landing/blue/blocker/delete_forever.png' },
+                                { _key: 'fc2', _type: 'featureCard', title: 'Multi-platform availability', description: 'Available as a Chrome extension and as an app for Android and iOS, ensuring protection across all your devices.', iconPath: '/landing/blue/blocker/devices.png' },
+                                { _key: 'fc3', _type: 'featureCard', title: 'Accountability partner', description: 'Your chosen accountability partner gets the password to change BlockP settings. This keeps you from disabling the blocker during urges.', iconPath: '/landing/blue/blocker/handshake.png' },
+                                { _key: 'fc4', _type: 'featureCard', title: 'Password protection', description: 'Password-protected, only authorized users can modify the settings.', iconPath: '/landing/blue/blocker/encrypted.png' },
+                                { _key: 'fc5', _type: 'featureCard', title: 'Community support', description: 'Support groups and communities to help users stay motivated.', iconPath: '/landing/blue/blocker/diversity_2.png' },
+                                { _key: 'fc6', _type: 'featureCard', title: 'Customizable filtering', description: "Offers filtering options, allowing users to block the exact websites, keywords, and content they don't want to see.", iconPath: '/landing/blue/blocker/tune.png' },
+                            ],
+                        }),
+                    ],
+                }),
+
+                // Sub-section 3: Scroll Slides
+                defineField({
+                    name: 'scrollSlides',
+                    title: 'Section 3 — Scroll Feature Slides',
+                    type: 'array',
+                    description: 'The animated scroll section — each slide has a title, subtext, and phone mockup image path.',
+                    of: [{
+                        type: 'object',
+                        name: 'scrollSlide',
+                        title: 'Scroll Slide',
+                        fields: [
+                            defineField({ name: 'title', title: 'Slide Title (use \\n for line breaks)', type: 'string', validation: (Rule) => Rule.required() }),
+                            defineField({ name: 'subtext', title: 'Slide Body Text (use \\n\\n for paragraph breaks)', type: 'text', rows: 5 }),
+                            defineField({ name: 'imagePath', title: 'Image Path (in /public)', type: 'string', validation: (Rule) => Rule.required() }),
+                        ],
+                        preview: { select: { title: 'title' } },
+                    }],
+                    initialValue: [
+                        { _key: 'sl1', _type: 'scrollSlide', title: 'More BlockP\nfeatures\nFor a safer\nexperience', subtext: '', imagePath: '/landing/blue/scroll1.png' },
+                        { _key: 'sl2', _type: 'scrollSlide', title: 'AI-powered\nblocking', subtext: "BlockP uses advanced AI to scan web pages and filter explicit content in real time.\n\nThe AI-powered blocking goes beyond keywords and blacklists. It analyzes the text, images, and video on the website and Apps to detect explicit content. \n\nBlockP's AI works in real-time to accurately block even newly created or disguised content to prevent accidental exposure to nudity and explicit content.", imagePath: '/landing/blue/scroll2.png' },
+                        { _key: 'sl3', _type: 'scrollSlide', title: 'App\nblocking', subtext: 'BlockP can detect and block adult content within your Apps. It can monitor and restrict access to adult material across your browser, messaging apps, or video-sharing platforms.', imagePath: '/landing/blue/scroll3.png' },
+                        { _key: 'sl4', _type: 'scrollSlide', title: 'Advanced\nblocking', subtext: "BlockP's advanced blocking features are designed to detect and prevent any efforts to bypass its restrictions.\n\nEven when you are using VPNs or incognito mode, BlockP hides inappropriate thumbnails, images, and video previews before they load. \n\nIt uses SafeSearch settings on popular search engines to filter explicit search results.", imagePath: '/landing/blue/scroll4.png' },
+                        { _key: 'sl5', _type: 'scrollSlide', title: 'Social Media\nBlocking', subtext: "BlockP's robust controls help to restrict access to specific features on popular social media platforms such as Instagram, Facebook, YouTube, Reddit, and Telegram. \n\nSo, even if social media moderators fail to detect explicit content in comments or through hashtags, BlockP will protect you.\n\nIt also lets you disable the search functionality and block access to distracting content like Instagram reels or YouTube shorts.", imagePath: '/landing/blue/scroll5.png' },
+                    ],
+                }),
+
+                // Sub-section 4: How Does BlockP Work
+                defineField({
+                    name: 'howDoesItWork',
+                    title: 'Section 4 — "How does BlockP Work?"',
+                    type: 'object',
+                    fields: [
+                        defineField({ name: 'heading', title: 'Heading', type: 'string', initialValue: 'How does\nBlockP Work?' }),
+                        defineField({ name: 'paragraph1', title: 'Paragraph 1', type: 'text', rows: 3, initialValue: 'BlockP is the most effective app to filter adult content from your device and offers effective porn protection.' }),
+                        defineField({ name: 'paragraph2', title: 'Paragraph 2', type: 'text', rows: 3, initialValue: 'You can control exposure to adult content and online pornography with our filtering technology, website and app blocker tool.' }),
+                        defineField({ name: 'paragraph3', title: 'Paragraph 3', type: 'text', rows: 4, initialValue: "BlockP utilizes advanced technology to analyze a website's content in real-time. Websites are constantly evolving, with new user-generated pages being added every day. This changing nature of the internet requires a porn filter that can analyze content and block porn." }),
+                    ],
+                }),
+
+                // Sub-section 5: Adult Blocker Can
+                defineField({
+                    name: 'adultBlockerCan',
+                    title: 'Section 5 — "Our adult content blocker can:"',
+                    type: 'object',
+                    fields: [
+                        defineField({ name: 'heading', title: 'Heading', type: 'string', initialValue: 'Our adult content blocker can:' }),
+                        defineField({
+                            name: 'bullets',
+                            title: 'Bullet Points',
+                            type: 'array',
+                            of: [{ type: 'string' }],
+                            initialValue: [
+                                'Keeps you away from porn or mature websites.',
+                                'Filter pornography in real-time with AI.',
+                                'Whitelist feature that gives you control over the control that can be accessed.',
+                                'Block distracting apps like Instagram, YouTube, Facebook, WhatsApp etc.',
+                                'Block custom websites not just restricted to adult content but also gambling, drugs, and any other site you want to stay away from.',
+                                'Block custom keywords like "porn", "sex", or anything triggering, BlockP lets you filter out specific keywords across browsers and apps, giving you full control to avoid tempting or harmful content.',
+                            ],
+                        }),
+                    ],
+                }),
+
+                // Sub-section 6: Premium CTA
+                defineField({
+                    name: 'premiumCta',
+                    title: 'Section 6 — Premium CTA',
+                    type: 'object',
+                    fields: [
+                        defineField({ name: 'heading', title: 'Heading', type: 'string', initialValue: 'BlockP Premium.' }),
+                        defineField({ name: 'subtext', title: 'Subtitle', type: 'text', rows: 2, initialValue: 'Stronger protection, full control, and priority support, so nothing stands in your way.' }),
+                        defineField({ name: 'ctaText', title: 'CTA Button Text', type: 'string', initialValue: 'Start your free trial' }),
+                        defineField({ name: 'ctaUrl', title: 'CTA Button URL', type: 'string', initialValue: '/premium' }),
+                    ],
+                }),
+            ],
+        }),
+
+        // ─────────────────────────────────────────────────────────
         //  8. SEO
         // ─────────────────────────────────────────────────────────
         defineField({
@@ -765,6 +956,7 @@ export default defineType({
             ],
         }),
     ],
+
 
     preview: {
         select: {
