@@ -24,9 +24,8 @@ export const FeaturedPostCard: React.FC<FeaturedPostCardProps> = ({ post, lang, 
         : []
     const categoryBadges = (structuredCategories.length > 0 ? structuredCategories : fallbackCategories).slice(0, 3)
 
-    // Formatting author and date metadata
     const authorName = post.author?.name ? (post.author.credential ? `${post.author.name}, ${post.author.credential}` : post.author.name) : null
-    const authorMeta = [authorName, post.publishedAt ? formatDate(post.publishedAt) : null].filter(Boolean).join(', ')
+    const formattedDate = post.publishedAt ? formatDate(post.publishedAt) : null
 
     return (
         <div className="w-full relative">
@@ -34,9 +33,13 @@ export const FeaturedPostCard: React.FC<FeaturedPostCardProps> = ({ post, lang, 
 
                 {/* Left Side Content - Utilizing Modern CSS Flexbox Architecture */}
                 <div className="flex flex-col flex-1 w-full lg:max-w-[850px] justify-center">
-                    {authorMeta && (
+                    {(authorName || formattedDate) && (
                         <p className="text-[14px] md:text-[16px] font-semibold text-brand-muted mb-[16px]">
-                            {authorMeta}
+                            <Link href={`/${lang}/author/${(post.author?.slug || 'editorial-team').replace(/^author\//, '')}`} className="hover:text-brand-primary transition-colors">
+                                {authorName || 'Editorial Team'}
+                            </Link>
+                            {authorName && formattedDate && <span>, </span>}
+                            {formattedDate && <span>{formattedDate}</span>}
                         </p>
                     )}
 

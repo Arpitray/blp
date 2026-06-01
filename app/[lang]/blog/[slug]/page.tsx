@@ -366,7 +366,7 @@ export default async function BlogDetailPage({
                 </div>
 
                 {/* ── Main Body ── */}
-                <article className="w-full px-[12px] lg:px-[60px] xl:px-[100px] 2xl:px-[140px] max-w-site mt-24 flex flex-col lg:flex-row lg:justify-between gap-[60px] lg:gap-[80px]">
+                <article className="w-[94%] lg:w-[90%] max-w-[1500px] mx-auto mt-24 flex flex-col lg:flex-row lg:justify-between gap-[60px] lg:gap-[80px]">
                     <div className="flex-[1.5] w-full max-w-[900px]">
                         <section className="text-[#002954] w-full">
                             <PortableText value={post.body} components={portableTextComponentsServer} />
@@ -385,8 +385,8 @@ export default async function BlogDetailPage({
                                         Written By:
                                     </h4>
                                 </div>
-                                <div className="flex items-center gap-6 mb-6">
-                                    <div className="w-[80px] h-[80px] md:w-[100px] md:h-[100px] shrink-0 overflow-hidden rounded-[50px] bg-brand-muted/10 relative">
+                                <Link href={`/${locale}/author/${(post.author?.slug || 'editorial-team').replace(/^author\//, '')}`} className="flex items-center gap-6 mb-6 hover:opacity-80 transition-opacity group">
+                                    <div className="w-[80px] h-[80px] md:w-[100px] md:h-[100px] shrink-0 overflow-hidden rounded-[50px] bg-brand-muted/10 relative group-hover:shadow-md transition-shadow">
                                         {post.author?.image?.asset ? (
                                             <Image
                                                 src={urlFor(post.author.image).url()}
@@ -401,7 +401,7 @@ export default async function BlogDetailPage({
                                         )}
                                     </div>
                                     <div>
-                                        <h5 className="text-[22px] md:text-[28px] font-black text-[#002954]" style={{ fontVariationSettings: "'wdth' 100" }}>
+                                        <h5 className="text-[22px] md:text-[28px] font-black text-[#002954] group-hover:text-brand-accent transition-colors" style={{ fontVariationSettings: "'wdth' 100" }}>
                                             {post.author?.name || "Editorial Team"}
                                         </h5>
                                         {post.author?.credential && (
@@ -410,7 +410,7 @@ export default async function BlogDetailPage({
                                             </p>
                                         )}
                                     </div>
-                                </div>
+                                </Link>
                                 <p className="text-[16px] md:text-[18px] font-medium leading-[1.6] text-brand-primary opacity-80">
                                     {post.author?.bio || "Expert insights and research-backed reporting on standard web guidelines and wellness."}
                                 </p>

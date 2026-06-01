@@ -43,8 +43,12 @@ export class BlogService {
     return post
   }
 
-  async getAuthorArticles(authorId: string): Promise<Post[]> {
-    return this.repository.getPostsByAuthorId(authorId)
+  async getAuthorArticles(authorSlug: string, lang?: string): Promise<Post[]> {
+    return this.repository.getPostsByAuthorSlug(authorSlug, lang)
+  }
+
+  async getAuthorProfile(slug: string): Promise<any> {
+    return this.repository.getAuthorBySlug(slug)
   }
 
   async getCategories(lang?: string): Promise<string[]> {

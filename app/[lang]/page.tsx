@@ -10,6 +10,7 @@ import { buildLocaleAlternates, resolveLocale } from '@/lib/seo/metadata'
 import { sanityClient } from '@/infrastructure/sanity/client'
 import { HOMEPAGE_QUERY } from '@/infrastructure/sanity/queries'
 import { BlueLandingSection, type BlueLandingSlide, type BlueLandingFeatureCard, type BlueLandingBenefitCard } from '@/components/shared/BlueLandingSection'
+import { HeroMascot } from '@/components/shared/HeroMascot'
 
 // ─── Fallback data (original hardcoded content preserved here) ──────────────
 const FALLBACK_STATS = [
@@ -199,11 +200,11 @@ const FALLBACK_BLUE_SECTION = {
         ] as BlueLandingFeatureCard[],
     },
     scrollSlides: [
-        { title: 'More BlockP\nfeatures\nFor a safer\nexperience', subtext: '', imagePath: '/landing/blue/scroll1.png' },
-        { title: 'AI-powered\nblocking', subtext: "BlockP uses advanced AI to scan web pages and filter explicit content in real time.\n\nThe AI-powered blocking goes beyond keywords and blacklists. It analyzes the text, images, and video on the website and Apps to detect explicit content. \n\nBlockP's AI works in real-time to accurately block even newly created or disguised content to prevent accidental exposure to nudity and explicit content.", imagePath: '/landing/blue/scroll2.png' },
-        { title: 'App\nblocking', subtext: 'BlockP can detect and block adult content within your Apps. It can monitor and restrict access to adult material across your browser, messaging apps, or video-sharing platforms.', imagePath: '/landing/blue/scroll3.png' },
-        { title: 'Advanced\nblocking', subtext: "BlockP's advanced blocking features are designed to detect and prevent any efforts to bypass its restrictions.\n\nEven when you are using VPNs or incognito mode, BlockP hides inappropriate thumbnails, images, and video previews before they load. \n\nIt uses SafeSearch settings on popular search engines to filter explicit search results.", imagePath: '/landing/blue/scroll4.png' },
-        { title: 'Social Media\nBlocking', subtext: "BlockP's robust controls help to restrict access to specific features on popular social media platforms such as Instagram, Facebook, YouTube, Reddit, and Telegram. \n\nSo, even if social media moderators fail to detect explicit content in comments or through hashtags, BlockP will protect you.\n\nIt also lets you disable the search functionality and block access to distracting content like Instagram reels or YouTube shorts.", imagePath: '/landing/blue/scroll5.png' },
+        { title: 'More BlockP\nfeatures\nFor a safer\nexperience', subtext: '', imagePath: '/landing/landing page mockups/landing page mockups/1.png' },
+        { title: 'AI-powered\nblocking', subtext: "BlockP uses advanced AI to scan web pages and filter explicit content in real time.\n\nThe AI-powered blocking goes beyond keywords and blacklists. It analyzes the text, images, and video on the website and Apps to detect explicit content. \n\nBlockP's AI works in real-time to accurately block even newly created or disguised content to prevent accidental exposure to nudity and explicit content.", imagePath: '/landing/landing page mockups/landing page mockups/2.png' },
+        { title: 'App\nblocking', subtext: 'BlockP can detect and block adult content within your Apps. It can monitor and restrict access to adult material across your browser, messaging apps, or video-sharing platforms.', imagePath: '/landing/landing page mockups/landing page mockups/3.png' },
+        { title: 'Advanced\nblocking', subtext: "BlockP's advanced blocking features are designed to detect and prevent any efforts to bypass its restrictions.\n\nEven when you are using VPNs or incognito mode, BlockP hides inappropriate thumbnails, images, and video previews before they load. \n\nIt uses SafeSearch settings on popular search engines to filter explicit search results.", imagePath: '/landing/landing page mockups/landing page mockups/4.png' },
+        { title: 'Social Media\nBlocking', subtext: "BlockP's robust controls help to restrict access to specific features on popular social media platforms such as Instagram, Facebook, YouTube, Reddit, and Telegram. \n\nSo, even if social media moderators fail to detect explicit content in comments or through hashtags, BlockP will protect you.\n\nIt also lets you disable the search functionality and block access to distracting content like Instagram reels or YouTube shorts.", imagePath: '/landing/landing page mockups/landing page mockups/5.png' },
     ] as BlueLandingSlide[],
     howDoesItWork: {
         heading: 'How does\nBlockP Work?',
@@ -308,7 +309,7 @@ export default async function LandingPage({ params }: { params: Promise<{ lang: 
                 HERO SECTION
             ══════════════════════════════════════════════════════ */}
             <section
-                className="w-full relative flex flex-col items-center justify-start overflow-hidden bg-gradient-to-b from-[#1160FF] via-[#649DFF] to-[#87C1FF] min-h-[1300px] xl:min-h-[1700px]"
+                className="w-full relative flex flex-col items-center justify-start overflow-hidden bg-gradient-to-b from-[#1160FF] via-[#649DFF] to-[#87C1FF] min-h-[1250px] xl:min-h-[1550px]"
             >
                 {/* Hero Content */}
                 <div className="relative z-40 flex flex-col items-center pt-[220px] px-[12px] lg:px-[60px] xl:px-[100px] 2xl:px-[140px] w-full max-w-site">
@@ -351,12 +352,8 @@ export default async function LandingPage({ params }: { params: Promise<{ lang: 
                 )}
 
                 {/* Mascot */}
-                <div className="absolute bottom-[40px] md:bottom-[20px] left-1/2 -translate-x-1/2 z-10 pointer-events-none w-[90%] md:w-auto">
-                    <img
-                        src={mascotSrc}
-                        alt="BlockP Mascot"
-                        className="w-full md:w-[740px] max-w-full h-auto"
-                    />
+                <div className="absolute bottom-[-80px] md:bottom-[-180px] left-1/2 -translate-x-[calc(50%-20px)] z-10 w-full md:w-[1000px] aspect-square pointer-events-auto">
+                    <HeroMascot className="w-full h-full" />
                 </div>
 
                 {/* Background Ellipse */}

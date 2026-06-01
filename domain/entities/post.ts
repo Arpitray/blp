@@ -47,6 +47,7 @@ export type Post = {
   headings?: Heading[]
   author?: {
     name?: string
+    slug?: string
     credential?: string
     bio?: string
     linkedinUrl?: string

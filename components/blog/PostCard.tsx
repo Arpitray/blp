@@ -21,10 +21,8 @@ export const PostCard: React.FC<PostCardProps> = ({ post, lang }) => {
         : []
     const categoryBadges = (structuredCategories.length > 0 ? structuredCategories : fallbackCategories).slice(0, 3)
 
-    // Format author and date metadata
     const authorName = post.author?.name ? (post.author.credential ? `${post.author.name}, ${post.author.credential}` : post.author.name) : null
     const formattedDate = post.publishedAt ? formatDate(post.publishedAt, 'numerical') : null
-    const authorAndDate = [authorName, formattedDate].filter(Boolean).join(', ')
 
     return (
         <div className="flex flex-col gap-4 w-full relative group">
@@ -72,13 +70,17 @@ export const PostCard: React.FC<PostCardProps> = ({ post, lang }) => {
                     </h3>
                 </Link>
 
-                {authorAndDate && (
-                    <p
+                {(authorName || formattedDate) && (
+                    <div
                         className="font-medium leading-[1.44] text-[20px] text-brand-muted"
                         style={{ fontFamily: "'Anek Latin', sans-serif" }}
                     >
-                        {authorAndDate}
-                    </p>
+                        <Link href={`/${lang}/author/${(post.author?.slug || 'editorial-team').replace(/^author\//, '')}`} className="hover:text-brand-primary transition-colors">
+                            {authorName || 'Editorial Team'}
+                        </Link>
+                        {authorName && formattedDate && <span>, </span>}
+                        {formattedDate && <span>{formattedDate}</span>}
+                    </div>
                 )}
             </div>
         </div>

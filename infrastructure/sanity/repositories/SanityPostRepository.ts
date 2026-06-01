@@ -7,6 +7,7 @@ import {
   POST_BY_SLUG_QUERY,
   POST_COUNT_QUERY,
   POSTS_BY_AUTHOR_QUERY,
+  AUTHOR_BY_SLUG_QUERY,
 } from '@/infrastructure/sanity/queries'
 
 type SanityFetchClient = {
@@ -32,8 +33,12 @@ export class SanityPostRepository implements PostRepository {
     return this.client.fetch<Post | null>(POST_BY_SLUG_QUERY, { slug, lang })
   }
 
-  async getPostsByAuthorId(authorId: string): Promise<Post[]> {
-    return this.client.fetch<Post[]>(POSTS_BY_AUTHOR_QUERY, { authorId })
+  async getPostsByAuthorSlug(authorSlug: string, lang = ''): Promise<Post[]> {
+    return this.client.fetch<Post[]>(POSTS_BY_AUTHOR_QUERY, { authorSlug, lang })
+  }
+
+  async getAuthorBySlug(slug: string): Promise<any> {
+    return this.client.fetch<any>(AUTHOR_BY_SLUG_QUERY, { slug })
   }
 
   async getCategories(): Promise<string[]> {

@@ -6,7 +6,7 @@ const POST_FIELDS = `
   "imageUrl": coalesce(metadata->mainImage.asset->url, mainImage.asset->url),
   "publishedAt": coalesce(metadata->publishedAt, publishedAt),
   "categories": coalesce(metadata->categories[]->{ "_id": _id, "title": title }, categories[]->{ "_id": _id, "title": title }),
-  "author": coalesce(metadata->author->{ name, credential, image { asset }, linkedinUrl, bio }, author->{ name, credential, image { asset }, linkedinUrl, bio }),
+  "author": coalesce(metadata->author->{ name, "slug": slug.current, credential, image { asset }, linkedinUrl, bio }, author->{ name, "slug": slug.current, credential, image { asset }, linkedinUrl, bio }),
   "isFeatured": coalesce(metadata->isFeatured, isFeatured, false),
   "isHidden": coalesce(metadata->isHidden, false),
   language
@@ -64,10 +64,27 @@ export const ALL_SLUGS_QUERY = `
   }
 `
 
+export const AUTHOR_BY_SLUG_QUERY = `
+  *[_type == "author" && (slug.current == $slug || slug.current == "author/" + $slug)][0] {
+    _id,
+    name,
+    "slug": slug.current,
+    credential,
+    image { asset },
+    linkedinUrl,
+    bio
+  }
+`
+
 export const POSTS_BY_AUTHOR_QUERY = `
   *[_type == "post" 
-    && (metadata->author._ref == $authorId || author._ref == $authorId) 
+    && (
+      coalesce(metadata->author->slug.current, author->slug.current) == $authorSlug ||
+      coalesce(metadata->author->slug.current, author->slug.current) == "author/" + $authorSlug ||
+      ($authorSlug == 'editorial-team' && !defined(coalesce(metadata->author, author)))
+    )
     && coalesce(metadata->isHidden, false) != true
+    && ($lang == "" || language == $lang)
   ] | order(coalesce(metadata->publishedAt, publishedAt) desc) {
     ${POST_FIELDS}
   }
